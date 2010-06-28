@@ -1,0 +1,1146 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+*/
+
+
+#include <arch.h>
+#include <stdlib.h>
+#include <stdio.h>
+#ifdef _MSC_VER
+# include <windows.h>
+# include <winsock.h>
+# define EAGAIN EWOULDBLOCK
+# define errno WSAGetLastError()
+# define strerror(errno) "wince does not have errno"
+# define perror(x)
+#else
+# include <sys/socket.h>
+# include <sys/types.h>
+# include <netinet/tcp.h>
+# include <errno.h>
+#endif
+
+#include <string.h>
+
+#include "TCPSocket.h"
+
+namespace isab {
+   
+#ifdef _MSC_VER	// Windows specific init functions.
+
+   WSADATA TCPSocket::c_wsaData;
+   
+   bool TCPSocket::initWinsock()
+   {
+      if ( WSAStartup( MAKEWORD(1,1), &c_wsaData) != 0 ) {
+         // ERROR!
+         return false;
+      }
+      return true;
+   }
+
+   // Init winsock once I hope.
+   bool TCPSocket::c_winsockOK = TCPSocket::initWinsock();
+#endif
+   
+   TCPSocket::TCPSocket(int backlog) : 
+      m_error(0), c_tcp_proto_nbr(0), m_ip(0)
+   {
+      init(SOCKET_ERROR, backlog);
+   }
+
+   TCPSocket::TCPSocket(SOCKET sock, int backlog, TCPSocketState state) :
+      m_error(0), c_tcp_proto_nbr(0), m_ip(0)
+   {
+      init(sock, backlog);
+      /* init() sets m_currentState to UNKNOWN, so we need to set it to */
+      /* the correct value afterwards. */
+      m_currentState = state;
+      setupSocket();
+   }
+
+   void
+   TCPSocket::init(SOCKET sock, int backlog)
+   {
+      
+#if !defined(_MSC_VER) 
+      if ( c_tcp_proto_nbr == 0 ) {
+         /* Not initialized, probably windows. */
+         c_tcp_proto_nbr = getprotobyname("tcp")->p_proto;
+         if ( c_tcp_proto_nbr == 0 ) {
+            exit(1); /* XXX */
+         }
+      }
+#else
+      // WinCE 
+      c_tcp_proto_nbr = 0;
+#endif
+      m_blocking = true;
+      m_backlog = backlog;
+      m_socket = sock;
+      m_currentState = UNKNOWN;
+   }
+
+   int
+   TCPSocket::setupSocket()
+   {
+      /* Make sure we have a valid fd. */
+      if (m_socket == SOCKET_ERROR) {
+         
+         return -1;
+      }
+
+      m_blocking = true;
+      /* The socket should send data as soon as it is available. */
+      unsigned int on = 1;
+      /* Apparently, Windows does not separate the socket options into */
+      /* levels as Unix does. */
+      /* Windows CE says that it should be IPPROTO_TCP */
+#if defined(_MSC_VER) && !defined(_WIN32_WINCE)
+      int level = SOL_SOCKET;
+#else
+      int level = IPPROTO_TCP;
+#endif
+      /* Disables Nagle algorithm for the socket (adds a small delay to */
+      /* further writes until the ack for the first one has arrived). */
+      /* Not to be confused with non-blocking IO! */
+      if (setsockopt(m_socket,
+                     level,
+                     TCP_NODELAY,
+                     (char*)&on,
+                     sizeof(on)) < 0 ) {
+         //setupSocket, failed to set TCP_NODELAY 
+         // Continue
+      }
+
+      /* Try to advice the OS that we want to reuse the port */
+      /* as soon as possible (default behaviour in Linux */
+      /* (but not in Solaris)) */
+      if (setsockopt(m_socket, SOL_SOCKET, SO_REUSEADDR,
+                     (char*)&on, sizeof(on)) < 0 ) {
+         //setupSocket, failed to set SO_REUSEADDR
+         return -1;
+      }
+
+      /* Make the OS send keepalive packets when no data (for about 2 hours) */
+      /* has been received or sent. The keepalive will result in one of */
+      /* three actions: */
+      /* 1. An ACK is received, and the keepalive timer is reset. */
+      /* 2. A RST is received, indicating that the connection is broken. */
+      /* 3. Nothing is received and the OS retries the keepalive for an */
+      /*    additional 9 times 75 seconds apart. If no answer is gotten */
+      /*    the connection is broken. */
+      int keepOption = SO_KEEPALIVE;
+      int keepLevel = SOL_SOCKET;
+
+      if (setsockopt(m_socket, keepLevel, keepOption,
+                     (char*)&on, sizeof(on) ) < 0 ) {
+         // setupSocket, failed to set SO_KEEPALIVE
+         return -1;
+      }
+
+
+#if defined(_MSC_VER) && defined(_WIN32_WINCE)
+      DWORD timeout = 30000; //30seconds
+      if(setsockopt(m_socket, SOL_SOCKET, SO_RCVTIMEO, 
+                    &timeout, sizeof(timeout)) < 0){
+         return -1;
+      }
+      if(setsockopt(m_socket, SOL_SOCKET, SO_SNDTIMEO, 
+                    &timeout, sizeof(timeout)) < 0){
+         return -1;
+      }
+#endif
+
+
+      return 1;
+   }
+
+   bool
+   TCPSocket::getHostAddr(sockaddr_in *sin, const char *hostname)
+   {
+      struct hostent *hostEntry;
+
+      if ((hostEntry = gethostbyname(hostname)) != 0) {
+         memcpy(&sin->sin_addr, hostEntry->h_addr, hostEntry->h_length);
+      } else {
+         /* Probably shouldn't use inet_addr() since it is */
+         /* being phased out... However it is portable */
+         /* (and available on most platforms) and the only */
+         /* problem with it is that it returns -1 as error, */
+         /* but that is a valid address (255.255.255.255) */
+         sin->sin_addr.s_addr = inet_addr(hostname);
+#ifdef __SVR4
+         if (inet_addr(hostname) < 0 )
+#else
+         if (sin->sin_addr.s_addr == INADDR_NONE)
+#endif
+         {
+            return (false);
+         }
+      }
+      return true;
+   }
+
+   bool
+   TCPSocket::create()
+   {
+
+      if ( m_socket == SOCKET_ERROR ) {
+         
+         /* Create a new TCP socket. */
+         m_socket = socket( PF_INET, SOCK_STREAM, c_tcp_proto_nbr );
+
+         if ( m_socket < 0 || m_socket == SOCKET_ERROR ) {
+            perror("TCPSocket::create() failure");
+            m_socket = SOCKET_ERROR;
+            return false;
+         }
+         
+      } else {
+         
+      }
+
+
+      m_currentState = OPEN;
+      if (setupSocket() < 0) {
+         /* Failed setup. */
+         perror("setupSocket failure");
+         return false;
+      }
+
+      return true;
+   }
+
+   TCPSocket::~TCPSocket()
+   {
+      
+
+      if ( m_socket != SOCKET_ERROR ) {
+         this->close();
+      }
+   }
+
+   void
+   TCPSocket::ignorePipe() {
+#if !defined(_MSC_VER)
+      // If the socket is closed by the other side during transmission, we
+      // receve the SIGPIPE-signal that normaly leads to program exit.
+      // But now this signal is ignord during read  --> read() returns
+      // -1 if this happens.
+      ::signal(SIGPIPE, SIG_IGN);
+#endif
+   }  
+
+   void
+   TCPSocket::setPipeDefault() {
+#if !defined(_MSC_VER)
+      // Let the default handler take care of the SIGPIPE-signal now when
+      // data read.
+      ::signal(SIGPIPE, SIG_DFL);
+#endif
+   }
+
+   int
+   TCPSocket::close()
+   {
+      
+
+      // Don't close stdin or whatever.
+      if ( m_socket == SOCKET_ERROR ) {
+         //ERR("close - m_socket == SOCKET_ERROR.\n");
+         return -1;
+      }
+
+      // finish with graceful close
+      ::shutdown(m_socket, 0); // Close input
+
+      char c;
+
+      /* Empty socket. */
+#if !defined(_MSC_VER)
+      fcntl(m_socket, F_SETFL, O_NONBLOCK);
+      int i = ::read(m_socket, &c, 1);
+#else
+      unsigned long arg = 1;
+      ioctlsocket(m_socket, FIONBIO, &arg);
+      int i = ::recv(m_socket, &c, 1, 0);
+#endif
+
+      while ( !( (i == 0) || (i == SOCKET_ERROR) ) ) {
+
+#if !defined(_MSC_VER) 
+         i = ::read(m_socket, &c, 1);
+#else
+         i = ::recv(m_socket, &c, 1, 0);
+#endif
+      }
+      ::shutdown(m_socket, 2); // Close both input and output
+
+#if !defined(_MSC_VER)
+      ::close(m_socket);
+#else
+      ::closesocket(m_socket);
+#endif
+
+      m_socket = SOCKET_ERROR;
+      m_currentState = CLOSED;
+
+      return 1;
+   }
+
+   int TCPSocket::setupConnection ( int32 connParam )
+   {
+      return None;
+   }
+
+   int
+   TCPSocket::bind(const char *hostname, uint16 portnumber)
+   {
+      
+      m_portNumber = portnumber;
+      struct sockaddr_in sin;
+
+      memset(&sin, 0, sizeof(sin));
+      /* Use Internet address family. */
+      sin.sin_family = AF_INET;
+      if (!portnumber) {
+         /* Use ephemeral port */
+         /* Zero should be the correct value, but it's already */
+         /* set to zero by the memset above. */
+         /* sin.sin_port = 0; */
+      } else {
+         sin.sin_port = htons((u_short)portnumber);
+      }
+
+      if (!hostname) {
+      /* Default to respond on all interfaces. */
+         sin.sin_addr.s_addr=INADDR_ANY; 
+      } else {
+         if (!getHostAddr(&sin, hostname)) {
+            /* Fatal failure. */
+            //TCPSocket::connect():sys_inet_addr failure
+            //Could not connect to host
+            return -2;
+         }
+      }
+
+      if (::bind( m_socket, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+         //TCPSocket::bindSocket() failure
+         if (errno == EADDRINUSE) {
+            /* Transient failure. */
+            return -1;
+         } else {
+            /* Fatal failure. */
+            return -2;
+         }
+      }
+      m_currentState = TCPSocket::BOUND;
+      return 1;
+   }
+
+   uint16
+   TCPSocket::listen(uint16 portnumber, TCPPortChoice pc)
+   {
+      bool done = false;
+      int nbrTries;
+
+      if (!create()) {
+         return 0;
+      }
+
+      if (pc == FINDFREEPORT) {
+         nbrTries = MAX_NBR_TRIES_PORTFIND;
+      } else {
+         nbrTries = 1;
+      }
+
+      if (m_currentState != TCPSocket::BOUND) {
+         while (nbrTries > 0 && !done) {
+            
+
+            switch (pc) {
+               case GENERIC:
+                  /* Bind to all interfaces and this portnumber. */
+                  if (bind(NULL, portnumber) < 0) {
+                     /* Can't bind the port. */
+                     return 0;
+                  }
+                  done = true;
+                  break;
+               case DONTCARE:
+                  /* Get an ephemeral port. */
+                  if (bind(NULL, 0) < 0) {
+                     /* Can't bind the port. */
+                     /* This is actually a more serious error, */
+                     /* since we asked for _any_ port. */
+                     return 0;
+                  }
+                  done = true;
+                  break;
+               case FINDFREEPORT:
+                  /* Get the first free port over the port specified. */
+                  if (bind(NULL, portnumber) < 0) {
+                     /* Failed, try the next higher portnumber. */
+                     portnumber++;
+                     nbrTries--;
+                     // Port already in use, trying the next one
+                  } else {
+                     done = true;
+                  }
+                  break;
+            }
+         }
+      }
+
+      /* We only decrement nbrTries when we're doing a FINDFREEPORT */
+      if (nbrTries == 0) {
+         // No free port found!
+         return 0;
+      }
+
+      /* Now listen on the socket. */
+      if (::listen(m_socket, m_backlog) == SOCKET_ERROR) {
+         /* Failed system call. */
+         perror("TCPSocket::listen() failure: ");
+         return 0;
+      }
+
+      m_currentState = LISTEN;
+
+      return portnumber;
+   }
+
+   TCPSocket*
+   TCPSocket::accept()
+   {
+           
+      SOCKET tmpsock;
+      struct sockaddr_in peer;// {0,0,{0},{0}};
+
+#ifdef _MSC_VER
+
+	  // Microsoft defines size_t as unsigned int*. Since MS use int* in the third parameter
+
+	  // we have to create a unique definition for it.
+
+      int peerlen = sizeof(peer);
+
+#else
+
+	  size_t peerlen = sizeof(peer);
+
+#endif
+      memset( &peer, 0, peerlen );
+
+      if ((tmpsock = ::accept(m_socket, (struct sockaddr *)&peer, &peerlen)) == SOCKET_ERROR)
+      {
+         /* If we're nonblocking, we will return an error here. */
+         if (!m_blocking && (errno == EWOULDBLOCK || errno == EAGAIN)) {
+            //ERR("TCPSocket::accept() failure: %s\n", strerror(errno));
+            /* Return different error? */
+            return NULL;
+         }
+         //ERR("TCPSocket::accept() failure: %s\n",strerror(errno));
+         return NULL;
+      } else {
+
+#ifndef _MSC_VER
+// 		 char buf[200];
+//        DEBOGG("TCPSocket::accept() from : %s:%i\n",
+//               inet_ntop(AF_INET, &peer.sin_addr, buf, 200),
+//               ntohs(peer.sin_port));
+
+#else
+//        DEBOGG("TCPSocket::accept() from : %s:%d\n",
+//               inet_ntoa(peer.sin_addr), ntohs(peer.sin_port)); 
+       
+#endif
+      }
+
+      return new TCPSocket(tmpsock, DEFAULT_BACKLOG, CONNECTED);
+   }
+
+   TCPSocket*
+   TCPSocket::accept(uint32 micros)
+   {
+      
+      
+      fd_set rfds;
+      struct timeval tv;
+#ifndef _STRICT_ANSI
+      FD_ZERO(&rfds);
+#else
+      ::memset( &rfds, 0, sizeof(rfds) );
+#endif
+      FD_SET(m_socket, &rfds);
+      tv.tv_sec = micros / 1000000;
+      tv.tv_usec = micros % 1000000;
+#if !defined(_MSC_VER)
+      select(getdtablesize(), &rfds, NULL, NULL, &tv);
+#else
+      select(0, &rfds, NULL, NULL, &tv);
+#endif
+
+      if(!FD_ISSET(m_socket, &rfds)) {
+         return NULL;   // Timeout before connection attempt
+      }
+
+      // XXX This will block if the connection is removed
+      // The correct solution is to set the socket to non-blocking
+      // and then call accept. Accept will return EWOULDBLOCK if
+      // the connection is removed.
+      return (accept());
+   }
+
+#ifndef _MSC_VER
+#define WSA(arg) arg
+#else
+#define WSA(arg) WSA##arg
+#endif
+
+   int
+   TCPSocket::doConnect(struct sockaddr_in *sin)
+   {
+      //store ip in host order.
+      m_ip = ntohl(sin->sin_addr.s_addr);
+
+      if (::connect(m_socket,
+                    (struct sockaddr *)sin,
+                    sizeof(struct sockaddr_in)) == 0) {
+         m_currentState = CONNECTED;
+         setupSocket(); // Didn't this get called in create?
+         return None;
+      } else {
+         if(m_blocking){
+            switch(errno){
+            case ECONNREFUSED: return Refused;
+            case ETIMEDOUT:    return Timeout;
+            default:           return Unable;
+            }
+         } else if(errno != WSA(EINPROGRESS) && errno != WSA(EALREADY)){
+            perror ("doConnect() Failed connecting");
+            return Unable; //XXX not quite true, but still...
+         } else {
+            /* When connecting using a nonblocking socket, the call */
+            /* returns immediately with EINPROGRESS as error. */
+            /* We should probably wait here (or somewhere else) */
+            /* using select so we an identify when the connect */
+            /* handshake is completed. */
+            /* Set state connected for now. */
+            m_currentState = CONNECTED;
+            return None;
+         }
+      }
+      //      return true;
+   }
+
+   int
+   TCPSocket::connect(const char *hostname, int portnumber)
+   {
+      if (!create()) {
+         return Unable;
+      }
+
+      if (m_socket == SOCKET_ERROR) {
+         //TCPSocket::connect - m_socket == SOCKET_ERROR
+         return Unable;
+      }
+
+      struct sockaddr_in sin;
+
+      memset(&sin, 0, sizeof(sin));
+      sin.sin_family = AF_INET;
+      sin.sin_port = htons((u_short)portnumber);
+
+      if (!getHostAddr(&sin, hostname)) {
+         //ERR("TCPSocket::connect():sys_inet_addr failure: %s\n",
+         //      strerror(errno));
+         //ERR("Could not connect to %s:%i\n", hostname, portnumber);
+            return NoLookup;
+      }
+
+      int retErr = doConnect(&sin);
+      if(retErr == None){
+         return 1;
+      } else {
+         return retErr;
+      }
+//       if (!doConnect(&sin)) {
+//          // ERR("TCPSocket::connect():sys_connect failure: %s\n",
+//          //     strerror(errno));
+//          // ERR("Could not connect to %s:%i\n", hostname, portnumber);
+//          return -2;
+//       }
+//       return 1;
+   }
+
+   int
+   TCPSocket::connect(uint32 hostip, uint16 portnumber)
+   {
+      if (!create()) {
+         return Unable;
+      }
+
+      if ( m_socket == SOCKET_ERROR ) {
+         //TCPSocket::connect - m_socket == SOCKET_ERROR.
+         return Unable;
+      }
+
+      struct sockaddr_in sin;
+
+      memset(&sin, 0, sizeof(sin));
+      sin.sin_family = AF_INET;
+      sin.sin_port = htons((u_short)portnumber);
+      sin.sin_addr.s_addr = htonl(hostip);
+
+      int retErr = doConnect(&sin);
+      if(retErr == None){
+         return 1;
+      } else {
+         return retErr;
+      }
+//       if (!doConnect(&sin)) {
+//             ERR("TCPSocket::connect():sys_connect failure: %s\n",
+//                  strerror(errno));
+//             ERR("Could not connect to 0x%08x:%i\n", hostip, portnumber);
+//             return -2;
+//       }
+//       return 1;
+   }
+
+   ssize_t
+   TCPSocket::protectedRead(uint8* buffer, ssize_t size)
+   {
+      ssize_t readLength;
+#ifndef _MSC_VER
+#  ifdef EINTR
+      do { // Read until the error isn't EINTR
+         readLength = ::read(m_socket, (char*)buffer, size);
+         if ( readLength < 0 && errno == EINTR ) {
+            /* Probably JTC thread signals, retry. */
+            //INFO("TCPSocket::protectedRead - EINTR - trying again\n");
+         }
+      } while ( readLength < 0 && errno == EINTR );
+#  else
+      readLength = ::read(m_socket, buffer, size);
+#  endif
+
+#else // IT IS _MSC_VER
+      readLength = ::recv(m_socket, (char *)buffer, size, 0);
+#endif
+      // FIXME: Should the function really return -1 when EOF?
+      if(readLength <= 0)
+         return (-1);
+      else
+         return readLength;
+   }
+
+   ssize_t
+   TCPSocket::protectedWrite( const uint8* buffer,
+                            ssize_t size )
+   {
+      ssize_t writtenLength;
+#ifndef _MSC_VER
+#  ifdef EINTR
+      do { // Write until the error isn't EINTR
+         writtenLength = ::write(m_socket, (char*)buffer, size);
+         if ( writtenLength < 0 && errno == EINTR ) {
+            //INFO("TCPSocket::protectedWrite - EINTR - trying again\n");
+         }
+      } while ( writtenLength < 0 && errno == EINTR );
+#  else
+      writtenLength = ::write(m_socket, buffer, size);
+#  endif
+
+#else // IT IS _MSC_VER
+      writtenLength = ::send(m_socket, (char *)buffer, size, 0);
+#endif
+      // FIXME: Should the function really return -1 when EOF?
+      return writtenLength;
+   }
+
+
+   ssize_t
+   TCPSocket::read(uint8 *buffer, ssize_t size)
+   {
+   /*    cerr << "TCPSocket::readBytes(buffer = " << &buffer */
+   /*         << ", size = " << size << ")" << endl; */
+
+      if (m_socket == SOCKET_ERROR ) {
+//          ERR("TCPSocket::read - m_socket == SOCKET_ERROR\n");
+         return -1;
+      }
+      ignorePipe();
+      ssize_t result = protectedRead(buffer, size);
+      setPipeDefault();
+      return result;
+   }
+
+   ssize_t
+   TCPSocket::write( const uint8 *buffer,
+                     ssize_t length  )
+   {
+      
+      //      DEBOGGDUMP("write data:", buffer, length);
+      if ( m_socket == SOCKET_ERROR ) {
+         //ERR("TCPSocket::write - m_socket == SOCKET_ERROR\n");
+         return -1;
+      }
+
+
+      // If the socket is closed by the other side during transmission, we
+      // receve the SIGPIPE-signal that normaly leads to program exit.
+      // But now this signal is ignord during writing --> write() returns
+      // -1 if this happens.
+      // No effect in MSC_VER.
+      ignorePipe();
+
+      ssize_t writeLength = protectedWrite(buffer, length);
+
+
+      ssize_t totalWrite = writeLength;
+
+      
+
+      while ( ( totalWrite > -1 ) && ( totalWrite < length) ) {
+
+         
+
+         writeLength = protectedWrite( (buffer + totalWrite),
+                                       length-totalWrite );
+
+         // XXX: Is this correct? What happens if we have written
+         //      40 bytes and we want to write 80. Then we don't
+         //      know how many we wrote.
+         if (writeLength > -1)
+            totalWrite += writeLength;
+         else
+            totalWrite = writeLength;
+      }
+      
+
+      // Let the default handler take care of the SIGPIPE-signal now when
+      // data written.
+      // No effect in MSC.
+      setPipeDefault();
+
+      if (totalWrite < 0) {
+         //ERR("TCPSocket::write RETURN -1 : %s\n", strerror(errno));
+         return (-1);
+      }
+      return totalWrite;
+   }
+
+
+   SOCKET
+   TCPSocket::getSOCKET() const {
+      return m_socket;
+   }
+
+
+   bool
+   TCPSocket::getPeerName(uint32& IP, uint16& port) {
+      
+
+      if ( m_socket == SOCKET_ERROR ) {
+         //ERR("TCPSocket::getPeerName failure: NO SOCKET!\n");
+         return false;
+      }
+
+      struct sockaddr_in addr;
+#if _WIN32 //???
+      int size = sizeof(struct sockaddr_in);
+#else
+      uint32 size = sizeof(struct sockaddr_in);
+#endif
+
+      if ( getpeername( m_socket,
+                        (struct sockaddr *)&addr,
+                        (&size) ) == 0 ) {
+         port = ntohs(addr.sin_port);
+         IP = ntohl(addr.sin_addr.s_addr);
+         return true;
+      } else {
+         //ERR("TCPSocket::getPeerName failure: %s\n", strerror(errno));
+         return false;
+      }
+   }
+
+#if 0 
+   ssize_t
+   TCPSocket::readExactly(uint8 *buffer,
+                         ssize_t length,
+                         long micros,
+                         long totalMicros)
+   {
+      cerr << "TCPSocket::read(buffer = " << buffer
+             << "length = " << length << endl;
+
+      if ( m_socket == 0 ) {
+         cerr << "TCPSocket::read - socket == 0" << endl;
+         return -1;
+      }
+
+      int totalRead = 0;
+      if (micros != TCPSOCKET_INFINITE_TIMEOUT ||
+          totalMicros != TCPSOCKET_INFINITE_TIMEOUT) {
+         totalRead = readMinMaxBytes(buffer, length, length, micros, totalMicros);
+      } else {
+
+         // If the socket is closed by the other side during transmission, we
+         // receve the SIGPIPE-signal that normaly leads to program exit.
+         // But now this signal is ignord during reading --> read() returns
+         // -1 if this happens.
+         ignorePipe();
+
+         ssize_t readLength = protectedRead(buffer, length);
+
+         totalRead = readLength;
+         int offset = 0;
+         cerr << "readlength = " << readLength << ", length = "
+                << length << endl;
+            while (readLength > 0 && (uint32) totalRead < length) {
+               cerr << "readlength = " << readLength << ", length = "
+                      << length << endl;
+               offset = totalRead;
+
+               readLength = protectedRead(buffer + offset, (length-totalRead));
+
+               if (readLength > 0)
+                  totalRead += readLength;
+               else
+                  totalRead = readLength;
+            }
+
+         // Let the default handler take care of the SIGPIPE-signal now when
+         // data read.
+         setPipeDefault();
+
+         if (totalRead <= 0)
+            return (-1);
+      } // if INFINITE_TIMEOUT
+      return totalRead;
+   }
+#endif
+
+#if 0
+   ssize_t
+   TCPSocket::readMinMaxBytes(uint8* buffer,
+                              ssize_t minLength,
+                              ssize_t maxLength,
+                              long micros,
+                              long totalMicros)
+   {
+      cerr << "TCPSocket::readMinMaxBytes(buffer = " << buffer
+             << ", minLength = " << minLength
+             << ", maxLength = " << maxLength
+             << ", micros = " << micros
+             << ", totalMicros = " << totalMicros << ")"
+             << endl;
+
+      // granularity is milliseconds.
+      long stopTime =
+         Utility::getCurrentTime() +
+         totalMicros / 1000; // in milliseconds
+
+      long timeLeftMicros = micros;
+
+      // Check if we have a total timeout.
+      if ( totalMicros != TCPSOCKET_INFINITE_TIMEOUT ) {
+         if ( micros == TCPSOCKET_INFINITE_TIMEOUT ) {
+            // Only count down.
+            timeLeftMicros = totalMicros;
+         } else {
+            // Start by waiting micros if it is smaller.
+            // This way we will wait micros for the first byte
+            // and then count down the time until everything is received.
+            timeLeftMicros = MIN(micros, totalMicros);
+         }
+      }
+
+      ssize_t totalBytesRead = 0;
+      ssize_t currentBytesRead = 0;
+
+      // Do until timeout here or in readMaxBytes or we have read everything.
+      do {
+         currentBytesRead = readMaxBytes(buffer + totalBytesRead,
+                                         maxLength - totalBytesRead,
+                                         timeLeftMicros);
+         if (currentBytesRead > 0) {
+            totalBytesRead += currentBytesRead;
+         }
+         // Check if we have a total timeout.
+         if ( totalMicros != TCPSOCKET_INFINITE_TIMEOUT ) {
+            // Now we have received some bytes or nothing.
+            // Next time we will use the total timeout instead.
+            // If we haven't received any we will exit the loop.
+            timeLeftMicros = (stopTime - Utility::getCurrentTime()) * 1000;
+         } else {
+            // Total time left is the same as micros all the time
+            // if we don't have a total-timeout.
+            timeLeftMicros = micros;
+         }
+      } while ((timeLeftMicros > 0) &&
+               (totalBytesRead < (int) minLength) &&
+               (currentBytesRead > 0));
+
+      ssize_t result = totalBytesRead;
+      if ((currentBytesRead == 0) ||
+          (currentBytesRead == -2))
+      {
+         // last read timed out
+         result = -2;
+      } else if ((currentBytesRead < 0) ||
+                 (totalBytesRead < (int) minLength))
+      {
+         // some other error occured
+         result = -1;
+      }
+
+         if (result <= 0) {
+            cerr << "\n readMinMaxBytes was insuccessful:"
+                 << "\n currentBytesRead = " << currentBytesRead
+                 << "\n totalBytesRead = " << totalBytesRead
+                 << "\n minLength = " << minLength
+                 << "\n maxLenght = " << maxLength
+                 << "\n micros = " << micros
+                 << "\n totalMicros = " << totalMicros
+                 << "\n timeLeftMicros = " << timeLeftMicros
+                 << "\n result = " << result
+                 << endl;
+            perror("Last system error is");
+         }
+      return result;
+   }
+#endif
+
+#if 0
+   ssize_t
+   TCPSocket::read(uint8* buffer,
+                   ssize_t size,
+                   uint32 micros)
+   {
+      cerr << "TCPSocket::readMaxBytes(buffer = " << buffer
+             << ", size = " << size << ", micros = " << micros << ")"
+             << endl;
+
+
+      // Check th fd
+      if ( m_socket == 0 ) {
+         cerr << "TCPSocket::readMaxBytes(uint8*, ssize_t, uint32) m_socket ==0"
+              << endl;
+         return -1;
+      }
+
+      // Check if socket has cached data to fullfill read.
+      if ( checkForCachedData( buffer, size ) ) {
+         return size;
+      }
+
+      fd_set rfds;
+      struct timeval tv;
+      int retval;
+
+      /* Add our fd to the set */
+      FD_ZERO(&rfds);
+      FD_SET(m_socket, &rfds);
+
+      /* Put the microseconds into tv */
+      tv.tv_sec = micros / 1000000;
+      tv.tv_usec = micros % 1000000;
+
+      /* Do the selection */
+#ifndef _MSC_VER
+      retval = select(getdtablesize(), &rfds, NULL, NULL, &tv);
+#else
+      retval = select(0, &rfds, NULL, NULL, &tv);
+#endif
+      if ( retval < 0 ) {
+         cerr << "TCPSocket::read(uint8*, ssize_t, uint32) failed\n";
+         perror("Last system error");
+      }
+      if ( FD_ISSET(m_socket, &rfds) ) {
+         // Hope this works.
+         // If readMaxBytes gets interrupted and there is nothing
+         // to read the next time we try it will not. Then we should
+         // select again maybe? It shouldn't happen though.
+         ssize_t len = readMaxBytes(buffer, size);
+         if ( len == 0 ) // Disconnected (EOF)
+            return -1;
+         else
+            return len;
+      } else {
+         /* Timeout */
+         return -2;
+      }
+   }
+#endif
+
+#if 0
+   bool
+   TCPSocket::checkForCachedData( uint8* buffer, ssize_t size ) {
+      return false;
+   }
+
+
+   ssize_t
+   TCPSocket::readUntilClosed(uint8 *buffer,
+                              ssize_t size  )
+   {
+
+      ssize_t totalBytesRead = 0;
+      ssize_t nbrRead;
+      while ((nbrRead = readMaxBytes(buffer, size)) > 0) {
+         totalBytesRead += nbrRead;
+         buffer += nbrRead;
+         size -= nbrRead;
+      }
+
+      return (totalBytesRead);
+   }
+#endif
+
+#if 0
+   int32
+   TCPSocket::readString(char* target, uint32 maxstringlength)
+   {
+      cerr << "TCPSocket::readString(target = " << target
+             << ", maxstringlength = " << maxstringlength << ")" << endl;
+
+      int nbr;
+      uint32 nbrRead = 0;
+      char c = '\0';
+
+      nbr = read((uint8*)&c, 1, TCPSOCKET_DEFAULT_TIMEOUT);
+      cerr << "read #" << c << "#" << endl;
+      while ( (nbr == 1) && (c != '\0') && (c != '\n') && // \n debug
+              (nbrRead < maxstringlength) ) {
+         // More to read and not end of string
+         target[nbrRead++] = c;
+         nbr = read((uint8*)&c, 1, TCPSOCKET_DEFAULT_TIMEOUT);
+         cerr << "read #" << c << "#" << endl;
+      }
+
+      if ( (nbr == 1) && ( (c == '\0') || (c == '\n') ) ) {
+         // Has read a string ; \n is for debug
+         target[nbrRead] = '\0';
+         return nbrRead;
+      } else {
+         target[nbrRead] = '\0';
+         return -1;
+      }
+   }
+#endif
+
+   bool
+   TCPSocket::setBlocking(bool blocking)
+   {
+      if ( blocking ) {
+#if !defined(_MSC_VER)
+         int res = fcntl( m_socket, F_SETFL, O_SYNC );
+#else
+         unsigned long arg = 0;
+         int res = ioctlsocket(m_socket, FIONBIO, &arg);
+#endif
+         if ( res >= 0 ) {
+            m_blocking = true;
+            return true;
+         } else {
+            return false;
+         }
+      } else {
+#if !defined(_MSC_VER)
+         int res = fcntl(m_socket, F_SETFL, O_NONBLOCK);
+#else
+         unsigned long arg = 1;
+         int res = ioctlsocket(m_socket, FIONBIO, &arg);
+#endif
+         if ( res >= 0 ) {
+            m_blocking = false;
+            return true;
+         } else {
+            return false;
+         }
+      }
+   }
+
+#if 0
+   int
+   TCPSocket::readLine(char* target, uint32 maxlinelength)
+   {
+      cerr << "TCPSocket::readLine(target = " << target
+             << ", maxlinelength = " << maxlinelength << ")" << endl;
+
+      int nbr;
+      uint32 nbrRead = 0;
+      char c;
+
+      nbr = read((uint8*)&c, 1, TCPSOCKET_DEFAULT_TIMEOUT);
+      cerr << "read #" << c << "#" << endl;
+      while ( (nbr == 1) && (c != '\r') && (c != '\n') &&
+              (nbrRead < maxlinelength) ) {
+         // More to read and not end of line
+         target[nbrRead++] = c;
+         nbr = read((uint8*)&c, 1, TCPSOCKET_DEFAULT_TIMEOUT);
+         cerr << "read #" << c << "#" << endl;
+      }
+
+      // Skip linebreak
+      if ( (nbr == 1) && (c == '\r') ) { // Has read CR
+         nbr = read((uint8*)&c, 1, TCPSOCKET_DEFAULT_TIMEOUT); // Then read the LF
+         cerr << "read #" << c << "#" << endl;
+      }
+      target[nbrRead] = '\0';
+      cerr << "Line: " << target << endl;
+      return nbrRead;
+   }
+#endif
+
+   TCPSocket::TCPSocketState
+   TCPSocket::getState() const
+   {
+      return (m_currentState);
+   }
+
+#if 0
+   const char*
+   TCPSocket::getStateAsString() const
+   {
+      switch (m_currentState) {
+         case (UNKNOWN) :
+            return ("UNKNOWN");
+         case (OPEN) :
+            return ("OPEN");
+         case (LISTEN) :
+            return ("LISTEN");
+         case (CONNECTED) :
+            return ("CONNECTED");
+         case (CLOSED) :
+            return ("CLOSED");
+      }
+      return ("UNHANDLED STATE");
+   }
+#endif
+   
+   void TCPSocket::cancelAll()
+      {
+      }
+
+   uint32 TCPSocket::getIP() const
+   {
+      return m_ip;
+   }
+
+
+}; /* namespace isab */
+

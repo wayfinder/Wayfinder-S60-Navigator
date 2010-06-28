@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="97.398" height="99.941" viewBox="0 0 97.398 99.941">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<path d="M97.398,68.456c0,20.985-9.365,31.485-28.101,31.485c-18.745,0-28.113-10.5-28.113-31.485V31.145     C41.184,10.379,50.552,0,69.297,0c18.735,0,28.101,10.379,28.101,31.145V68.456z M79.648,67.641V32.167     c0-11.664-3.452-17.488-10.351-17.488c-6.908,0-10.366,5.825-10.366,17.488v35.474c0,11.55,3.458,17.324,10.366,17.324     C76.196,84.965,79.648,79.19,79.648,67.641z"/>
+<path d="M29.056,99.941H12.384v-70.35L0,34.998V15.97L29.056,0.433V99.941z"/>
+</g>
+</g>
+</switch>
+</svg>

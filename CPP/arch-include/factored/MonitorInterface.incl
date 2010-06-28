@@ -1,0 +1,121 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+public:
+
+      /**
+       *   Constructor.
+       */
+      Monitor();
+
+      /**
+       *   Destructor.
+       *   XXX Made virtual to combat problems in symbian. -JN
+       */
+      virtual ~Monitor();
+      
+      /** Return status from wait. */
+      enum waitStatus{
+         /** A system call failed. */
+         WAIT_FAIL = -1,
+         /** The calling Thread doesn't own this Monitor.*/
+         DONT_OWN = 0,
+         /** The Moitor's notify(All) method was called. */ 
+         WOKE_ON_NOTIFY,
+         /** The wait call timed out. */
+         TIMED_OUT,
+         /** The Thread was interrupted. */
+         INTERRUPTED     
+      };
+
+      /** Causes the calling thread to block until either woken up 
+       * by a call to notify or notifyAll or until the call times 
+       * out. The timeout is specified by argument. A thread must 
+       * have a lock on this object before it can call wait.
+       * @param timeout time to block until timeout, in 
+       *                milliseconds. If timeout is less than 0, the call
+       *                will not time out. 
+       * @return WOKE_ON_NOTIFY if a call to the Monitor's notify or
+       *         notifyAll caused the wait call to unblock. TIMED_OUT if
+       *         the wait call timed out. DONT_OWN if the calling Thread
+       *         didn't own this Monitor. WAIT_FAIL if a system call
+       *         failed.  
+       */
+      waitStatus wait(long timeout = -1);
+
+      /**
+       *  Wake one random thread waiting on this object.
+       *  @return false if the calling thread didn't have a lock on this
+       *          monitor, true otherwise.
+       */
+      bool notify();
+
+      /**
+       *  Wake all threads waiting on this object.
+       *  @return false if the calling thread didn't have a lock on this
+       *          monitor, true otherwise.
+       */
+      bool notifyAll();
+
+      enum lockStatus{
+         /** A system call failed. */
+         LOCK_FAIL = 0,
+         /** The monitor was successfully claimed. */
+         LOCK_LOCKED = 1 
+      };
+      
+      /**
+       *  Claim this monitor. Blocks until the lock is obtained.
+       *  @return LOCK_LOCKED if the Monitor was succefully
+       *         claimed. LOCK_FAIL indicates that a system call failed. 
+       */
+      lockStatus lock();
+
+      /** Return values for unlock. */
+      enum unlockStatus {
+         /** The calling thread didn't own the monitor.*/  
+         NOT_OWNER = 0,
+         /** The monitor was released. */
+         RELEASED = 1,
+         /** The thread has more locks on this monitor. */ 
+         STILL_OWNER = 2
+      };
+
+      /** Return status from tryLock. */
+      enum tryStatus{
+         /** A system call failed. */
+         TRY_FAIL = 0,
+         /** The Monitor was succefully claimed. */
+         TRY_LOCKED,
+          /** The Monitor was already claimed by someone else. */ 
+         ALREADY_LOCKED
+      };
+      
+      /*
+       *  This is not implemented in windows.
+       *  Claim this monitor. This is a nonblocking version of lock.
+       *  @return true if the monitor was successfully claimed.
+       *          false otherwise.
+       */
+      //tryStatus tryLock();
+      
+      /**
+       *  Releases this monitor. 
+       *  @return NOT_OWNER if the calling thread didn't own this
+       *          monitor. RELEASED if the monitor was completely
+       *          released. STILL_OWNER if one lock was released but the
+       *          calling thread still owns this monitor due to recursive
+       *          locking. 
+       */
+      unlockStatus unlock();
+

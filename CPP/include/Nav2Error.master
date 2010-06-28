@@ -1,0 +1,223 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ */
+
+// NOTE!!!!!
+// NOTE!!!!!
+// NOTE!!!!!    This file is included multiple time from the same file. It
+// NOTE!!!!!    is only to be used with special defines to extract various data
+// NOTE!!!!!    from it. 
+// NOTE!!!!!
+// NOTE!!!!!
+// NOTE!!!!!
+// NOTE!!!!!
+// NOTE!!!!!
+
+   /**
+    * Error numbers in Nav2.
+    * 
+    * Values from 0 to 0xFFFF.
+    *
+    * 0x0000      NO_ERRORS.
+    *    NB! This value is not intended for sending between 
+    *    modules.
+    *
+    *    The value tells that everything is ok. Typically this
+    *    value is used when only a ErrorNbr value is possible to
+    *    use for telling if a method succeeded or not.
+    *    
+    *
+    * 0x0001 to 0x00EF USER_ERRORS. 
+    *    USER_ERRRORS are when the user gives some input or failes 
+    *    to give some input, making it impossible for the system 
+    *    to perform some task.
+    *
+    * 0x00F0      MAX_USER_ERROR.
+    *    Reserved value for checking if an error is a USER_ERROR 
+    *    or a SYSTEM_WARNING.
+    *
+    * 0x00F1 to 0x00FF SYSTEM PANICS
+    *    Reserved for system panics and other special messages.
+    *
+    * 0x0100 to 0xFFFE SYSTEM_WARNINGS.
+    *    SYSTEM_WARNINGS are recoverable, and not caused by some user
+    *    input or lack of input.
+    *
+    * 0xFFFF         INVALID_ERROR_NBR
+    *    Used for checking if the error number has been set.
+    *
+    * SYSTEM_ERRORS do not have error number. When such an error  
+    * occurs, the system cant recover and therfore the GUI is 
+    * instructed to inform the user that the progam will be shut 
+    * down. When this has been done, Nav2 tries to write a log 
+    * message and shut down the program.
+    *
+    * Error prefixes (used for associting errors with different 
+    * parts of the system).
+    *
+    * NSC     NavServerCom Module
+    * NT      NavTask Module
+    * DEST    Destinations Module
+    * UC      UiCtlr Module
+    * SERVER  The MC2 Server
+    * BT      BlueTooth Module
+    * PARAM   Parameter Module
+    * GUIPROT The Gui Module
+    */
+    /* This vector must be sorted on errorNbr! */
+
+
+      NAV2ERROR_LINE(  NO_ERRORS,                        0x00000000,    "" )
+
+      NAV2ERROR_LINE(  MAX_USER_ERROR,                   0x00f0,    "" )
+
+      NAV2ERROR_LINE(  PANIC_ABORT,                      0x00f1,    "" )    // When this is sent, the 
+                                                                                // application is immediately
+                                                                                // shut down.
+
+      NAV2ERROR_LINE(  DUMMY_ERROR,                      0x00f2,    "" )    // This error is used when the error type is not yet known
+                                                                                // but an error type is needed to compile. This error is 
+                                                                                // not allowed to remain in the program.
+                   
+      // Destinations Module Errors.
+      NAV2ERROR_LINE(  DEST_SYNC_ALREADY_IN_PROGRESS,    0x0100, qtn_wf_ERR_DEST_01 )
+      NAV2ERROR_LINE(  DEST_SYNC_FAILED,                 0x0101, qtn_wf_ERR_DEST_02 )
+      NAV2ERROR_LINE(  DEST_REMOVE_DEST_MISSING_DEST_ID, 0x0102, qtn_wf_ERR_DEST_03 )
+      NAV2ERROR_LINE(  DEST_TO_LONG_STRING_IN_DEST,      0x0103, qtn_wf_ERR_DEST_04 )
+      NAV2ERROR_LINE(  DEST_DEST_INFO_MISSING_DEST_ID,   0x0104, qtn_wf_ERR_DEST_05 )
+      NAV2ERROR_LINE(  DEST_INVALID_FAVORTE_ID_IN_LIST,  0x0105, qtn_wf_ERR_DEST_06 )
+
+      // NavServerCom Module Errors.
+      NAV2ERROR_LINE(  NSC_NO_GPS,                       0x0200, qtn_wf_ERR_NSC_01 )   /// Cant send request since we have no gps data
+      NAV2ERROR_LINE(  NSC_OUT_OF_SERVERS,               0x0201, qtn_wf_ERR_NSC_02 )   /// Tried all known servers, none responded
+#if defined(NAV2_CLIENT_SERIES60_V1) || defined (NAV2_CLIENT_SERIES60_V2) || defined (NAV2_CLIENT_SERIES60_V3)
+      NAV2ERROR_LINE(  NSC_EXPIRED_USER,                 0x0202, qtn_wf_ERR_NSC_03_S60 )   /// The users account has expired
+#elif defined (NAV2_CLIENT_SERIES80) || defined (NAV2_CLIENT_SERIES90_V1)
+      NAV2ERROR_LINE(  NSC_EXPIRED_USER,                 0x0202, qtn_wf_ERR_NSC_03_S80 )   /// The users account has expired
+#elif defined (NAV2_CLIENT_UIQ) || defined (NAV2_CLIENT_UIQ3)
+      NAV2ERROR_LINE(  NSC_EXPIRED_USER,                 0x0202, qtn_wf_ERR_NSC_03_UIQ )   /// The users account has expired
+#else
+      NAV2ERROR_LINE(  NSC_EXPIRED_USER,                 0x0202, qtn_wf_ERR_NSC_03 )   /// The users account has expired
+#endif
+      //NAV2ERROR_LINE(  NSC_AUTHORIZATION_FAILED,         0x0203, qtn_wf_ERR_NSC_04 )   /// User name and/or password unknown.
+      NAV2ERROR_LINE(  NSC_AUTHORIZATION_FAILED,         0x0203, qtn_wf_ERR_NSC_04 )   /// User name and/or password unknown.
+      NAV2ERROR_LINE(  NSC_CANCELED_BY_REQUEST,          0x0204, qtn_wf_ERR_NSC_05 )   /// Request canceled by request
+      NAV2ERROR_LINE(  NSC_OUT_OF_THIS_WORLD,            0x0205, qtn_wf_ERR_NSC_06 )   /// Supplied coordinates are impossible
+      NAV2ERROR_LINE(  NSC_OPERATION_NOT_SUPPORTED,      0x0206, qtn_wf_ERR_NSC_07 )   /// You called a forbidden request. Shame!
+      NAV2ERROR_LINE(  NSC_BEYOND_SALVATION,             0x0207, qtn_wf_ERR_NSC_08 )   ///PANIC
+      NAV2ERROR_LINE(  NSC_CANCELED_BY_SHUTDOWN,         0x0208, "" )                ///Shutdown, request wont be processed.
+      NAV2ERROR_LINE(  NSC_NO_USERNAME,                  0x0209, qtn_wf_ERR_NSC_09 )   ///Broken installation.
+      NAV2ERROR_LINE(  NSC_NO_TRANSACTIONS,              0x0210, qtn_wf_ERR_NSC_10 )   /// no transactions left
+      NAV2ERROR_LINE(  NSC_NO_LICENSE_ID,                0x0211, qtn_wf_ERR_NSC_11 )   //unable to find hardware id.
+      NAV2ERROR_LINE(  NSC_TCP_INTERNAL_ERROR,           0x0212, qtn_wf_ERR_NSC_08 )   //INTERNAL_ERROR signal from TcpSerial.
+      NAV2ERROR_LINE(  NSC_PARAM_REQ_NOT_FIRST,          0x0213, qtn_wf_ERR_NSC_08 )   //sync problem in NSC - NS com. Request was sent without preceeding param block.
+      NAV2ERROR_LINE(  NSC_REQUEST_ALLOC_FAILED,         0x0214, qtn_wf_ERR_NSC_08 )   //Couldnt allocate data structures for request tracking
+      NAV2ERROR_LINE(  NSC_NO_ROUTE_RIGHTS,              0x0215, qtn_EARTH_UPGRADE_ROUTE )   //User did not have the rights to route.
+      NAV2ERROR_LINE(  NSC_NO_NETWORK_AVAILABLE,         0x0216, qtn_wf_ERR_NSC_13)
+      NAV2ERROR_LINE(  NSC_FLIGHT_MODE,                  0x0217, qtn_wf_ERR_NSC_14)
+      NAV2ERROR_LINE(  NSC_NO_GPS_WARN,                  0x0218, qtn_wf_no_gps_pos_warn)   //First warning to user when a request for "navigate to" cant be completed since no gps positions has been received
+      NAV2ERROR_LINE(  NSC_NO_GPS_ERR,                   0x0219, qtn_wf_no_gps_pos_err)  //Error displayed to user when tried to calcualate a route for some time but no gps positions has been received
+      NAV2ERROR_LINE(  NSC_TCP_INTERNAL_ERROR2,          0x021a, qtn_wf_ERR_NSC_08 )   //INTERNAL_ERROR signal from NavServerCom.
+      NAV2ERROR_LINE(  NSC_UPGRADE_MUST_CHOOSE_REGION,          0x021b, qtn_wf_ERR_NSC_08 )   // Client must select region and retry upgrade.
+
+      // Server Errors.
+      // Note that the error text qtn_wf_ERR_NSC_SERVER_10 is out of order
+      NAV2ERROR_LINE(  NSC_SERVER_COMM_TIMEOUT_CONNECTED,0x0300, qtn_wf_ERR_NSC_SERVER_01 )   /// Server comm timeout while connected
+      NAV2ERROR_LINE(  NSC_SERVER_NOT_OK,                0x0301, qtn_wf_ERR_NSC_SERVER_02 )   /// Server couldnt respond to the request
+      NAV2ERROR_LINE(  NSC_SERVER_REQUEST_TIMEOUT,       0x0302, qtn_wf_ERR_NSC_SERVER_03 )   /// Internal server timeout
+      NAV2ERROR_LINE(  NSC_SERVER_OUTSIDE_MAP,           0x0303, qtn_wf_ERR_NSC_SERVER_04 )   /// Server didnt have a map of the relevant area
+      NAV2ERROR_LINE(  NSC_SERVER_UNAUTHORIZED_MAP,      0x0304, qtn_wf_ERR_NSC_SERVER_05 )   /// User hasnt paid for all needed maps.
+      NAV2ERROR_LINE(  NSC_SERVER_NOT_FOUND,             0x0305, qtn_wf_ERR_NSC_SERVER_10 )   /// DNS lookup failed
+      NAV2ERROR_LINE(  NSC_SERVER_UNREACHABLE,           0x0306, qtn_wf_ERR_NSC_SERVER_06 )   /// no computer with that address.
+      NAV2ERROR_LINE(  NSC_SERVER_NOT_RESPONDING,        0x0307, qtn_wf_ERR_NSC_SERVER_07 )   /// no open port
+      NAV2ERROR_LINE(  NSC_SERVER_PROTOCOL_ERROR,        0x0308, qtn_wf_ERR_NSC_SERVER_08 )   /// unmatching comm protocol
+      NAV2ERROR_LINE(  NSC_SERVER_CONNECTION_BROKEN,     0x0309, qtn_wf_ERR_NSC_SERVER_09 )   /// the connection disappeared
+      NAV2ERROR_LINE(  NSC_SERVER_NO_ROUTE_FOUND,        0x030a, qtn_wf_ERR_NSC_SERVER_11 )   /// Server was unable to find a route.
+      NAV2ERROR_LINE(  NSC_SERVER_ROUTE_TOO_LONG,        0x030b, qtn_wf_long_route )          /// The route was to long for the vehicle type
+      NAV2ERROR_LINE(  NSC_SERVER_BAD_ORIGIN,            0x030c, qtn_wf_ERR_NSC_SERVER_13 )   /// Couldnt find origin on any map
+      NAV2ERROR_LINE(  NSC_SERVER_BAD_DESTINATION,       0x030d, qtn_wf_ERR_NSC_SERVER_14 )   /// couldnt find destination on any map
+      NAV2ERROR_LINE(  NSC_SERVER_NO_HOTDEST,            0x030e, qtn_wf_ERR_NSC_SERVER_15 )   /// no hostdest available
+      NAV2ERROR_LINE(  NSC_SERVER_NEW_VERSION,           0x030f, qtn_wf_ERR_NSC_SERVER_16 )   //the server says that a new version is available
+      NAV2ERROR_LINE(  NSC_TRANSPORT_FAILED,             0x0310, qtn_wf_ERR_NSC_SERVER_06 )   // The transport (GPRS etc) failed to come up
+      NAV2ERROR_LINE(  NSC_UNAUTH_OTHER_HAS_LICENSE,     0x0311, qtn_wf_ERR_NSC_SERVER_17 )   /// Other user has locked your hardware id
+      NAV2ERROR_LINE(  NSC_OLD_LICENSE_NOT_IN_ACCOUNT,     0x0312, qtn_wf_ERR_NSC_SERVER_18 )   /// Problem migrating to new phone, license not in user
+      NAV2ERROR_LINE(  NSC_OLD_LICENSE_IN_MANY_ACCOUNTS,     0x0313, qtn_wf_ERR_NSC_SERVER_19 )   /// Problem migrating to new phone, old license in many users
+      NAV2ERROR_LINE(  NSC_NEW_LICENSE_IN_MANY_ACCOUNTS,     0x0314, qtn_wf_ERR_NSC_SERVER_20 )   /// Problem migrating to new phone, new license in many users
+      NAV2ERROR_LINE(  NSC_OLD_LICENSE_IN_OTHER_ACCOUNT,     0x0315, qtn_wf_ERR_NSC_SERVER_21 )   /// Problem migrating to new phone, old license in other user
+      NAV2ERROR_LINE(  NSC_SERVER_COMM_TIMEOUT_CONNECTING,      0x0316, qtn_wf_ERR_NSC_SERVER_01 )   /// Server comm timeout while connecting
+      NAV2ERROR_LINE(  NSC_SERVER_COMM_TIMEOUT_DISCONNECTING,   0x0317, qtn_wf_ERR_NSC_SERVER_01 )   /// Server comm timeout while disconnecting
+      NAV2ERROR_LINE(  NSC_SERVER_COMM_TIMEOUT_CLEAR,           0x0318, qtn_wf_ERR_NSC_SERVER_01 )   /// Server comm timeout while clear
+      NAV2ERROR_LINE(  NSC_SERVER_COMM_TIMEOUT_WAITING_FOR_USER,0x0319, qtn_wf_ERR_NSC_SERVER_01 )   /// Server comm timeout while waiting for user.
+      NAV2ERROR_LINE(  NSC_FAKE_CONNECT_TIMEOUT,           0x031a, qtn_wf_ERR_NSC_SERVER_06 )   /// no computer with that address.
+
+      // NavTask errors
+      NAV2ERROR_LINE(  NAVTASK_ROUTE_INVALID,            0x0400, qtn_wf_ERR_NAVTASK_01 )     // The route was invalid for some reason
+      NAV2ERROR_LINE(  NAVTASK_NSC_OUT_OF_SYNC,          0x0401, qtn_wf_ERR_NAVTASK_02 )     // Generic safety catch in NavTask
+      NAV2ERROR_LINE(  NAVTASK_INTERNAL_ERROR,           0x0402, qtn_wf_ERR_NAVTASK_03 )     // Internal inconsitencies in NavTask
+      NAV2ERROR_LINE(  NAVTASK_FAR_AWAY,                 0x0403, qtn_wf_ERR_NAVTASK_04 )     // Too far from the downloaded route
+      NAV2ERROR_LINE(  NAVTASK_CONFUSED,                 0x0404, qtn_wf_ERR_NAVTASK_05 )     // Bad route or internal error
+      NAV2ERROR_LINE(  NAVTASK_ALREADY_DOWNLOADING_ROUTE,0x0405, qtn_wf_ERR_NAVTASK_06 )     // Unable to have more than one request in flight
+      NAV2ERROR_LINE(  NAVTASK_NO_ROUTE,                 0x0406, qtn_wf_ERR_NAVTASK_03 )     // No route available when a request that required a route came
+
+      // UiCtrl errors
+      NAV2ERROR_LINE(  UC_REQUEST_TIMED_OUT,             0x0500, qtn_wf_ERR_UC_01 )   
+      NAV2ERROR_LINE(  UC_CONFUSED,                      0x0501, qtn_wf_ERR_UC_02 )   
+      NAV2ERROR_LINE(  UC_ASKED_ROUTE_FROM_WRONG_MODULE, 0x0502, qtn_wf_ERR_UC_03 )   
+      NAV2ERROR_LINE(  UC_INVALID_GUI_REQUEST,           0x0503, qtn_wf_ERR_UC_04 )   
+      NAV2ERROR_LINE(  UC_NO_ROUTE,                      0x0504, qtn_wf_ERR_UC_05 )   
+      NAV2ERROR_LINE(  UC_INVALID_PARAM,                 0x0505, qtn_wf_ERR_UC_06 )   
+      NAV2ERROR_LINE(  UC_UNKNOWN_PARAM,                 0x0506, qtn_wf_ERR_UC_07 )   
+      NAV2ERROR_LINE(  UC_UNKNOWN_SEARCH_ID,             0x0507, qtn_wf_ERR_UC_08 )   
+
+      // GuiProt errors
+      NAV2ERROR_LINE(  GUIPROT_FAILED_GET_TOP_REGION_LIST,       0x0600, qtn_wf_REQ_FAILED_05 )       
+      NAV2ERROR_LINE(  GUIPROT_FAILED_GET_CALL_CENTER_NUMBERS,   0x0601, qtn_wf_REQ_FAILED_06 )   //Deprecated
+      NAV2ERROR_LINE(  GUIPROT_FAILED_GET_SIMPLE_PARAMETER,      0x0602, qtn_wf_REQ_FAILED_07 )      
+      NAV2ERROR_LINE(  GUIPROT_FAILED_SET_CALL_CENTER_NUMBERS,   0x0603, qtn_wf_REQ_FAILED_08 )   //Deprecated
+      NAV2ERROR_LINE(  GUIPROT_FAILED_SET_SIMPLE_PARAMETER,      0x0604, qtn_wf_REQ_FAILED_09 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_GET_FAVORITES,             0x0605, qtn_wf_REQ_FAILED_10 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_GET_FAVORITES_ALL_DATA,    0x0606, qtn_wf_REQ_FAILED_11 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_SORT_FAVORITES,            0x0607, qtn_wf_REQ_FAILED_12 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_SYNC_FAVORITES,            0x0608, qtn_wf_REQ_FAILED_13 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_GET_FAVORITE_INFO,         0x0609, qtn_wf_REQ_FAILED_14 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_ADD_FAVORITE,              0x060a, qtn_wf_REQ_FAILED_15 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_ADD_FAVORITE_FROM_SEARCH,  0x060b, qtn_wf_REQ_FAILED_16 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_REMOVE_FAVORITE,           0x060c, qtn_wf_REQ_FAILED_17 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_CHANGE_FAVORITE,           0x060d, qtn_wf_REQ_FAILED_18 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_ROUTE_TO_FAVORITE,         0x060e, qtn_wf_REQ_FAILED_19 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_ROUTE_TO_HOT_DEST,         0x060f, qtn_wf_REQ_FAILED_20 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_DISCONNECT_GPS,            0x0610, qtn_wf_REQ_FAILED_21 )   
+      NAV2ERROR_LINE(  GUIPROT_FAILED_CONNECT_GPS,               0x0611, qtn_wf_REQ_FAILED_22 )   
+
+//      NAV2ERROR_LINE(  GUIPROT_OLD_FAILED_nWhereAmIMessage,        ??????, qtn_wf_REQ_FAILED_01 )   
+//      NAV2ERROR_LINE(  GUIPROT_OLD_FAILED_nSearchRequestMessage,   ??????, qtn_wf_REQ_FAILED_02 )   
+//      NAV2ERROR_LINE(  GUIPROT_OLD_FAILED_nCreateRouteMessage,     ??????, qtn_wf_REQ_FAILED_03 )   
+//      NAV2ERROR_LINE(  GUIPROT_OLD_FAILED_nRouteFromSearchMessage, ??????, qtn_wf_REQ_FAILED_04 )   
+
+      // Parameter module errors
+      NAV2ERROR_LINE(  PARAM_NO_OPEN_FILE,               0x0700, qtn_wf_ERR_PARAM_01 )   
+      NAV2ERROR_LINE(  PARAM_NO_READ_LINE,               0x0701, qtn_wf_ERR_PARAM_01 )   
+      NAV2ERROR_LINE(  PARAM_CORRUPT_BINARYBLOCK,        0x0702, qtn_wf_ERR_PARAM_01 )   
+      NAV2ERROR_LINE(  PARAM_CORRUPT_STRING,             0x0703, qtn_wf_ERR_PARAM_01 )   
+      NAV2ERROR_LINE(  PARAM_CORRUPT_SYNC,               0x0704, qtn_wf_ERR_PARAM_01 )   
+      NAV2ERROR_LINE(  PARAM_CORRUPT_TYPE,               0x0705, qtn_wf_ERR_PARAM_01 )   
+      NAV2ERROR_LINE(  PARAM_TRYING_BACKUP,              0x0706, qtn_wf_ERR_PARAM_02 )   
+      NAV2ERROR_LINE(  PARAM_TRYING_ORIGINAL,            0x0707, qtn_wf_ERR_PARAM_03 )   
+      NAV2ERROR_LINE(  PARAM_NO_VALID_PARAM_FILE,        0x0708, qtn_wf_ERR_PARAM_04 )   
+      NAV2ERROR_LINE(  PARAM_NO_SPACE_ON_DEVICE,         0x0709, qtn_wf_ERR_PARAM_05 )   
+      NAV2ERROR_LINE(  PARAM_NO_SPACE_ON_DEVICE_2,       0x0710, qtn_wf_ERR_PARAM_05 )   
+
+      NAV2ERROR_LINE_LAST(  INVALID_ERROR_NBR,                0xffff, "" )
+
+
+
+

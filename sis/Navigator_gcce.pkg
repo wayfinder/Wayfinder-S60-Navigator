@@ -1,0 +1,293 @@
+; For setting defines
+; Languages supported, build dependent.
+&EN
+
+; UID3 and pkg application name (visible in application installer on phone)
+#{ "Navigator" },(0x20016434),8, 80, 6000, TYPE=SA
+; Signatures for a signed sis.
+;Remove the semi-colon in the row below and change to your own .key and .cer file.
+;*"YOURKEY.key","YOURCER.cer"
+
+; Architecture dependent stuff
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+; Localized vendor name
+%{ "Navigator" }
+
+; Global vendor name
+:"Give Me A Name AB"
+
+; Only .rXX files are valid now, .rsc should not be used.
+"$(EPOCROOT)\epoc32\data\z\resource\apps\wayfinder8_s60v5.r01"-"!:\resource\apps\wayfinder8_s60v5.r01"
+"$(EPOCROOT)\epoc32\data\z\resource\apps\wayfinder8_s60v5_ll.r01"-"!:\resource\apps\wayfinder8_s60v5_ll.r01"
+"$(EPOCROOT)\epoc32\data\z\private\10003a3f\import\apps\wayfinder8_s60v5_reg.r01"-"!:\private\10003a3f\import\apps\wayfinder8_s60v5_reg.r01"
+
+; Svg icons for the application.
+"$(EPOCROOT)\epoc32\data\z\resource\apps\wayfinder8_s60v5\wficons.mif"-"!:\resource\apps\wayfinder8_s60v5\wficons.mif"
+; Application icon (formerly aif file)
+"$(EPOCROOT)\epoc32\data\z\resource\apps\wayfinder8_s60v5\wayfinder8_s60v5_aif.mif"-"!:\resource\apps\wayfinder8_s60v5\wayfinder8_s60v5_aif.mif"
+
+; AIF-file (Not really the aif file, but some of the same information)
+"$(EPOCROOT)\epoc32\data\z\resource\apps\wayfinder8_s60v5_appinfo.r01"-"!:\resource\apps\wayfinder8_s60v5_appinfo.r01"
+
+
+; Version file
+;"C++\Objs\armi-symbian-series60r5\Targets\WayFinder\symbian-r6\WayFinder+RELEASE_DEFAULT_BRONZE_SUPER.version"-"!:\shared\wayfinder8_s60v5\version.txt"
+
+; Application file.
+"$(EPOCROOT)\epoc32\release\$(PLATFORM)\$(TARGET)\wayfinder8_s60v5.exe"-"!:\sys\bin\wayfinder8_s60v5.exe"
+
+; Parameter files.
+""-"!:\shared\wayfinder8\params\paramfile.txt",FILENULL
+""-"!:\shared\wayfinder8\params\paramold.txt",FILENULL
+""-"!:\shared\wayfinder8\params\paramorig.txt",FILENULL
+
+"..\data\paramseed.txt"-"!:\shared\wayfinder8\params\paramseed.txt"
+
+; Currently in data directory.
+"$(EPOCROOT)\epoc32\data\z\shared\wayfinder8_s60v5\wayfinder_news.mif"-"!:\shared\wayfinder8_s60v5\wayfinder_news.mif"
+
+""-"!:\shared\wayfinder8_s60v5\wayfinder.ini",FILENULL
+""-"!:\shared\wayfinder8_s60v5\wayfinder.ini_new",FILENULL
+
+;;; Get rid of combined search downloaded icons and browser cache on uninstall
+""-"!:\shared\wayfinder8_s60v5\csicons\",FILENULL
+""-"!:\shared\wayfinder8_s60v5\WABrowserCache\",FILENULL
+
+""-"!:\shared\wayfinder8_s60v5\lang.txt",FILENULL
+""-"!:\shared\wayfinder8_s60v5\lang.txt_new",FILENULL
+""-"!:\system\data\wayfinder8\a\fil.0",FILENULL
+""-"!:\system\data\wayfinder8\a\fil.1",FILENULL
+""-"!:\system\data\wayfinder8\a\fil.2",FILENULL
+""-"!:\system\data\wayfinder8\a\fil.3",FILENULL
+""-"!:\system\data\wayfinder8\a\fil.4",FILENULL
+""-"!:\system\data\wayfinder8\a\fil.dump",FILENULL
+""-"!:\system\data\wayfinder8\a\initial_dump",FILENULL
+""-"!:\system\data\wayfinder8\a\cacheinfo",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_0",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_1",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_2",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_3",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_4",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_5",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_6",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_7",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_8",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_9",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_10",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_11",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_12",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_13",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_14",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_15",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_16",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_17",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_18",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_19",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_20",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_21",FILENULL
+""-"!:\system\data\wayfinder8\a\0\fili.0_22",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_0",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_1",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_2",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_3",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_4",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_5",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_6",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_7",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_8",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_9",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_10",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_11",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_12",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_13",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_14",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_15",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_16",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_17",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_18",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_19",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_20",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_21",FILENULL
+""-"!:\system\data\wayfinder8\a\1\fili.1_22",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_0",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_1",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_2",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_3",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_4",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_5",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_6",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_7",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_8",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_9",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_10",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_11",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_12",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_13",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_14",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_15",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_16",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_17",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_18",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_19",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_20",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_21",FILENULL
+""-"!:\system\data\wayfinder8\a\2\fili.2_22",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_0",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_1",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_2",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_3",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_4",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_5",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_6",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_7",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_8",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_9",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_10",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_11",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_12",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_13",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_14",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_15",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_16",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_17",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_18",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_19",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_20",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_21",FILENULL
+""-"!:\system\data\wayfinder8\a\3\fili.3_22",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_0",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_1",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_2",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_3",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_4",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_5",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_6",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_7",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_8",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_9",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_10",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_11",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_12",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_13",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_14",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_15",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_16",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_17",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_18",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_19",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_20",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_21",FILENULL
+""-"!:\system\data\wayfinder8\a\4\fili.4_22",FILENULL
+
+; Local html files
+"../Resources\Help\iap_fail.en.html"-"!:\shared\wayfinder8_s60v5\help\iap_fail.en.html"
+"../Resources\Help\iap_ok_but_fail.en.html"-"!:\shared\wayfinder8_s60v5\help\iap_ok_but_fail.en.html"
+"../Resources\Help\index.en.html"-"!:\shared\wayfinder8_s60v5\help\index.en.html"
+"../Resources\Help\36x36_application.gif"-"!:\shared\wayfinder8_s60v5\help\logo.gif"
+"../Resources\Help\comp.gif"-"!:\shared\wayfinder8_s60v5\help\comp.gif"
+"../Resources\Help\offer.gif"-"!:\shared\wayfinder8_s60v5\help\offer.gif"
+"../Resources\Help\tip.gif"-"!:\shared\wayfinder8_s60v5\help\tip.gif"
+"../Resources\Help\please_wait.en.html"-"!:\shared\wayfinder8_s60v5\help\please_wait.en.html"
+"../Resources\Help\disclaimer_page.en.html"-"!:\shared\wayfinder8_s60v5\help\disclaimer_page.en.html"
+
+
+;;;
+;;; Basic install file for minimal application
+;;;
+; Only .rXX files are valid now, .rsc should not be used.
+
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheHandler\s60\WFCacheHandler@EN.rsc"-"!:\resource\apps\cache_wayfinder8_s60v5.r01"
+
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheHandler\s60\WFCacheHandler_s60v3_reg+WAYFINDER@EN.rsc"-"!:\private\10003a3f\import\apps\cache_wayfinder8_s60v5_reg.r01"
+
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheHandler\s60\WFCacheHandler_s60v3_appinfo+WAYFINDER@EN.rsc"-"!:\resource\apps\cache_wayfinder8_s60v5_appinfo.r01"
+
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheHandler\s60\WFCacheHandler+WAYFINDER.app"-"!:\sys\bin\cache_wayfinder8_s60v5.exe"
+
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheHandler\s60\WFCacheHandler+WAYFINDER.version"-"!:\system\apps\cache_wayfinder8_s60v5\version.txt"
+
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheRecognizer\src\WFCacheRecognizer+WAYFINDER.dll"-"!:\sys\bin\rcg_wf8.dll"
+;"C++\Objs\armi-symbian-series60r5\Targets\WFCacheRecognizer\src\WFCacheRecognizer_s60v3+WAYFINDER.rsc"-"!:\resource\Plugins\rcg_wf8.rsc"
+
+
+
+
+
+
+; Required files
+; None
+
+; Component .sis files
+; None
+
+
+;;;;;; Globe data files
+""-"!:\system\data\wayfinder8\mapcache\a",FILENULL
+""-"!:\system\data\wayfinder8\mapcache",FILENULL
+""-"!:\system\data\wayfinder8",FILENULL
+""-"!:\shared\wayfinder8",FILENULL
+""-"!:\shared\wayfinder8_s60v5",FILENULL
+
+
+
+
+
+
+
+
+
+"..\voices\system\data\wfvoice7\vorbis\EN\en.syn"-"!:\resource\wfvoice8\syntax.s01"
+"..\voices\system\data\wfvoice7\vorbis\EN\resource_version.short"-"!:\resource\wfvoice8\EN\resource_version.short"
+"..\voices\system\data\wfvoice7\vorbis\EN\resource_version.txt"-"!:\resource\wfvoice8\EN\resource_version.txt"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound8th.ogg"-"!:\resource\wfvoice8\EN\EnSound8th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound1st.ogg"-"!:\resource\wfvoice8\EN\EnSound1st.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundLeft.ogg"-"!:\resource\wfvoice8\EN\EnSoundLeft.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundDriveStraightAhead.ogg"-"!:\resource\wfvoice8\EN\EnSoundDriveStraightAhead.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound500.ogg"-"!:\resource\wfvoice8\EN\EnSound500.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound7th.ogg"-"!:\resource\wfvoice8\EN\EnSound7th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound50.ogg"-"!:\resource\wfvoice8\EN\EnSound50.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundPleaseTurnAround.ogg"-"!:\resource\wfvoice8\EN\EnSoundPleaseTurnAround.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundTake.ogg"-"!:\resource\wfvoice8\EN\EnSoundTake.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound4th.ogg"-"!:\resource\wfvoice8\EN\EnSound4th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundFeet.ogg"-"!:\resource\wfvoice8\EN\EnSoundFeet.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundYouAreNowOffTrack.ogg"-"!:\resource\wfvoice8\EN\EnSoundYouAreNowOffTrack.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundMeters.ogg"-"!:\resource\wfvoice8\EN\EnSoundMeters.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound5th.ogg"-"!:\resource\wfvoice8\EN\EnSound5th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundNoGPSPositions.ogg"-"!:\resource\wfvoice8\EN\EnSoundNoGPSPositions.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundAndThen.ogg"-"!:\resource\wfvoice8\EN\EnSoundAndThen.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound3rd.ogg"-"!:\resource\wfvoice8\EN\EnSound3rd.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound2nd.ogg"-"!:\resource\wfvoice8\EN\EnSound2nd.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundNoGPSAvailable.ogg"-"!:\resource\wfvoice8\EN\EnSoundNoGPSAvailable.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound25.ogg"-"!:\resource\wfvoice8\EN\EnSound25.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundTurn.ogg"-"!:\resource\wfvoice8\EN\EnSoundTurn.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\endofturn.ogg"-"!:\resource\wfvoice8\EN\endofturn.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound100.ogg"-"!:\resource\wfvoice8\EN\EnSound100.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound200.ogg"-"!:\resource\wfvoice8\EN\EnSound200.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundRight.ogg"-"!:\resource\wfvoice8\EN\EnSoundRight.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundMiles.ogg"-"!:\resource\wfvoice8\EN\EnSoundMiles.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundMile.ogg"-"!:\resource\wfvoice8\EN\EnSoundMile.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound1.ogg"-"!:\resource\wfvoice8\EN\EnSound1.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundImmediately.ogg"-"!:\resource\wfvoice8\EN\EnSoundImmediately.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundHalf.ogg"-"!:\resource\wfvoice8\EN\EnSoundHalf.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundMakeAUTurn.ogg"-"!:\resource\wfvoice8\EN\EnSoundMakeAUTurn.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundKilometers.ogg"-"!:\resource\wfvoice8\EN\EnSoundKilometers.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundExitNoun.ogg"-"!:\resource\wfvoice8\EN\EnSoundExitNoun.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundIn.ogg"-"!:\resource\wfvoice8\EN\EnSoundIn.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundAtTheRoundabout.ogg"-"!:\resource\wfvoice8\EN\EnSoundAtTheRoundabout.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundExitVerb.ogg"-"!:\resource\wfvoice8\EN\EnSoundExitVerb.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundYouAreAtTheDestination.ogg"-"!:\resource\wfvoice8\EN\EnSoundYouAreAtTheDestination.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound2.ogg"-"!:\resource\wfvoice8\EN\EnSound2.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundYouHaveReachedYourDestination.ogg"-"!:\resource\wfvoice8\EN\EnSoundYouHaveReachedYourDestination.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundYards.ogg"-"!:\resource\wfvoice8\EN\EnSoundYards.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound6th.ogg"-"!:\resource\wfvoice8\EN\EnSound6th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundQuarter.ogg"-"!:\resource\wfvoice8\EN\EnSoundQuarter.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundHere.ogg"-"!:\resource\wfvoice8\EN\EnSoundHere.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundKilometer.ogg"-"!:\resource\wfvoice8\EN\EnSoundKilometer.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound9th.ogg"-"!:\resource\wfvoice8\EN\EnSound9th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundSpeedCamera.ogg"-"!:\resource\wfvoice8\EN\EnSoundSpeedCamera.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundKeep.ogg"-"!:\resource\wfvoice8\EN\EnSoundKeep.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSound10th.ogg"-"!:\resource\wfvoice8\EN\EnSound10th.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\EnSoundGPSAvailable.ogg"-"!:\resource\wfvoice8\EN\EnSoundGPSAvailable.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\positive.ogg"-"!:\resource\wfvoice8\EN\positive.ogg"
+"..\voices\system\data\wfvoice7\vorbis\EN\negative.ogg"-"!:\resource\wfvoice8\EN\negative.ogg"

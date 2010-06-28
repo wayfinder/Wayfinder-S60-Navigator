@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<path d="M100,49.998C100,22.386,77.614,0,49.998,0C22.386,0,0,22.386,0,49.998V100h50.002l0,0     C77.616,99.998,100,77.611,100,49.998z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="50.0005" y1="94.998" x2="50.0005" y2="4.9995">
+<stop offset="0" style="stop-color:#7BB9FA"/>
+<stop offset="0.1404" style="stop-color:#3D80C2"/>
+<stop offset="0.2132" style="stop-color:#3977B5"/>
+<stop offset="0.4392" style="stop-color:#2D6092"/>
+<stop offset="0.6522" style="stop-color:#254F79"/>
+<stop offset="0.845" style="stop-color:#204569"/>
+<stop offset="1" style="stop-color:#1E4164"/>
+</linearGradient>
+<path fill="url(#XMLID_3_)" d="M95.002,49.998     c0-24.848-20.151-44.999-45.004-44.999c-24.849,0-44.999,20.15-44.999,44.999v45h45.003l0,0     C74.854,94.995,95.002,74.85,95.002,49.998z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="50" y1="63.5654" x2="50" y2="7.3174">
+<stop offset="0" style="stop-color:#3E628A"/>
+<stop offset="0.1092" style="stop-color:#44678E"/>
+<stop offset="0.2599" style="stop-color:#567699"/>
+<stop offset="0.4348" style="stop-color:#738DAA"/>
+<stop offset="0.6277" style="stop-color:#9CAEC3"/>
+<stop offset="0.8331" style="stop-color:#D0D8E2"/>
+<stop offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M83.749,35.439c0,15.533-15.109,28.126-33.751,28.126     c-18.641,0-33.748-12.593-33.748-28.126c0-15.53,15.107-28.122,33.748-28.122C68.64,7.317,83.749,19.909,83.749,35.439z"/>
+<g>
+<g>
+<path fill="#192438" d="M38.167,18.556L14.415,82.094h21.028c0,0,2.857-8.112,3.688-10.472       c2.67,0,14.166,0,16.854,0c0.817,2.373,3.607,10.472,3.607,10.472h21.285L57.125,18.556H38.167z M53.656,23.556       c1.08,2.889,17.838,47.72,20.013,53.538c-3.686,0-8.419,0-10.512,0c-0.817-2.373-3.607-10.472-3.607-10.472H35.59       c0,0-2.857,8.112-3.688,10.472c-2.062,0-6.637,0-10.281,0c2.175-5.818,18.934-50.649,20.014-53.538       C44.026,23.556,51.266,23.556,53.656,23.556z"/>
+<path fill="#192438" d="M45.711,34.795l-8.258,25.526H57.58l-8.054-25.526H45.711z M47.583,45.253       c1.447,4.587,2.33,7.383,3.177,10.068c-2.456,0-3.966,0-6.434,0C45.198,52.625,46.101,49.835,47.583,45.253z"/>
+</g>
+</g>
+<g>
+<path fill="#FFFFFF" d="M18.018,79.594l21.883-58.538h15.49l21.882,58.538H61.374l-3.607-10.472H37.36      l-3.688,10.472H18.018z M47.53,37.295L40.89,57.821h13.28l-6.476-20.526H47.53z"/>
+</g>
+</g>
+</g>
+</switch>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<g>
+<path fill="url(#XMLID_2_)" d="M99.232,90.513      c0,4.812-3.914,8.712-8.739,8.712H9.506c-4.824,0-8.738-3.9-8.738-8.712V9.488c0-4.812,3.914-8.713,8.738-8.713h80.987      c4.825,0,8.739,3.901,8.739,8.713V90.513z"/>
+<path fill="#002900" d="M9.506,0C4.265,0,0,4.256,0,9.488v81.025C0,95.745,4.265,100,9.506,100h80.987      c5.242,0,9.507-4.255,9.507-9.487V9.488C100,4.256,95.735,0,90.493,0H9.506z M1.535,90.513V9.488      c0-4.377,3.575-7.938,7.971-7.938h80.987c4.396,0,7.972,3.56,7.972,7.938v81.025c0,4.377-3.576,7.938-7.972,7.938H9.506      C5.11,98.45,1.535,94.89,1.535,90.513z"/>
+<defs>
+<linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="50.0005" y1="99.2246" x2="50.0005" y2="0.7754">
+<stop offset="0" style="stop-color:#60A30B"/>
+<stop offset="0.6423" style="stop-color:#8AC63B"/>
+<stop offset="1" style="stop-color:#9DD651"/>
+</linearGradient>
+</defs>
+</g>
+</g>
+</g>
+</switch>
+</svg>

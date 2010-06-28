@@ -1,0 +1,45 @@
+/*
+============================================================================
+ Name		: bld.inf
+ Author	  : 
+ Copyright   : Your copyright notice
+ Description : This file provides the information required for building the
+				whole of a MyTestapp.
+============================================================================
+*/
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_MMPFILES
+gnumakefile icons.mk
+gnumakefile splash.mk
+GlobeLib.mmp
+GlobeMapLib.mmp
+MapLibShared.mmp
+MapLibSymbian.mmp
+OggVorbisLib.mmp
+SupportWFLib.mmp
+Common.mmp
+CtrlHub.mmp
+Destinations.mmp
+FakeNavServerCom.mmp
+GpsSirf.mmp
+GpsTrimble.mmp
+GuiProt.mmp
+Nav2lib.mmp
+NavServerCom.mmp
+NavTask.mmp
+Parameter.mmp
+QueueSerial.mmp
+// Should be removed, same as MapLibShared.mmp - Shared_remove.mmp
+Simulation.mmp
+TcpSerial.mmp
+TcpSymbianSerial.mmp
+TestShell.mmp
+UiCtrl.mmp
+//Nav2libTotal.mmp
+WayFinder.mmp
+
+PRJ_EXPORTS
+../data/paramseed.txt /epoc32/release/winscw/udeb/z/shared/wayfinder8/params/paramseed.txt

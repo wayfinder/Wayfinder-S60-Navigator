@@ -1,0 +1,15 @@
+#include "WayFinderSettings.h"
+<?xml version="1.0" standalone="yes"?>
+<backup_registration>
+  <passive_backup>
+    <include_directory name = "/" />
+  </passive_backup>
+  <public_backup>
+    <include_directory name = "c:/shared/"APPLICATION_DIR_NAME"" />
+    <include_directory name = "c:/shared/"APPLICATION_BASE_DIR_NAME"" />
+    <include_directory name = "e:/shared/"APPLICATION_DIR_NAME"" />
+    <include_directory name = "e:/shared/"APPLICATION_BASE_DIR_NAME"" />
+  </public_backup>
+  <system_backup/>
+  <restore requires_reboot = "no"/>
+</backup_registration>

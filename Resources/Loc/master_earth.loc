@@ -1,0 +1,89 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+#ifndef MASTER_EARTH_LOC
+#define MASTER_EARTH_LOC
+
+#include "master_globals.loc"
+#include "master_untranslated.loc"
+
+/* We need the or-style ifdefs if we want to be able to use this from
+   the nokia SDKs as well.*/
+#if defined LANGUAGE_EN   || defined LANGUAGE_01
+#include "master_EN_earth.loc"                          
+
+#elif defined LANGUAGE_SW || defined LANGUAGE_06
+#include "master_SV_earth.loc"                       
+
+#elif defined LANGUAGE_GE || defined LANGUAGE_03
+#include "master_DE_earth.loc"                        
+
+#elif defined LANGUAGE_DA || defined LANGUAGE_07
+#include "master_DA_earth.loc"                          
+
+#elif defined LANGUAGE_IT || defined LANGUAGE_05
+#include "master_IT_earth.loc"                          
+                                                                          
+#elif defined LANGUAGE_SP || defined LANGUAGE_04
+#include "master_ES_earth.loc"
+                                                                            
+#elif defined LANGUAGE_FR || defined LANGUAGE_02
+#include "master_FR_earth.loc"                          
+                                                                             
+#elif defined LANGUAGE_DU || defined LANGUAGE_18
+#include "master_NL_earth.loc"                          
+                                                                             
+#elif defined LANGUAGE_FI || defined LANGUAGE_09
+#include "master_FI_earth.loc"                          
+                                                                             
+#elif defined LANGUAGE_NO || defined LANGUAGE_08
+#include "master_NO_earth.loc"                          
+                                                                             
+#elif defined LANGUAGE_US || defined LANGUAGE_10
+#include "master_US_earth.loc"                          
+                                                                             
+#elif defined LANGUAGE_PO || defined LANGUAGE_13
+#include "master_PT_earth.loc"
+
+#elif defined LANGUAGE_HU || defined LANGUAGE_17
+#include "master_HU_earth.loc"
+
+#elif defined LANGUAGE_CS || defined LANGUAGE_25
+#include "master_CS_earth.loc"
+
+#elif defined LANGUAGE_PL || defined LANGUAGE_27
+#include "master_PL_earth.loc"
+
+#elif defined LANGUAGE_EL || defined LANGUAGE_54
+#include "master_EL_earth.loc"
+
+#elif defined LANGUAGE_SL || defined LANGUAGE_28
+#include "master_SL_earth.loc"
+
+#elif defined LANGUAGE_TR || defined LANGUAGE_14
+#include "master_TR_earth.loc"
+
+#elif defined LANGUAGE_RU || defined LANGUAGE_16
+#include "master_RU_earth.loc"
+
+#elif defined LANGUAGE_SC
+#include "master_EN_earth.loc"
+
+#else
+
+#error "Unsupported language in master_earth.loc"
+
+#endif
+
+
+#endif /* MASTER_LOC */

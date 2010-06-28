@@ -1,0 +1,60 @@
+TARGET              OggVorbisLib.lib
+TARGETTYPE          lib
+UID                 0
+
+#ifdef WINSCW
+MACRO               __WINS__
+MACRO               __WINSCW__
+#else
+MACRO				__GCCE__
+#endif
+MACRO               __SYMBIAN32__
+MACRO               __SYMBIAN__
+MACRO               NAV2_USE_UTF8
+MACRO               SYMBIAN_7S
+MACRO               SYMBIAN_9
+MACRO               SYMBIAN_AVKON
+MACRO               NAV2_CLIENT_SERIES60_V3
+MACRO               NAV2_CLIENT_SERIES60_V5
+MACRO               RELEASE_DEFAULT_BRONZE_SUPER_DEMO
+
+USERINCLUDE         ..\CPP\Modules\include
+USERINCLUDE         ..\CPP\Targets\OggVorbisLib
+USERINCLUDE         ..\CPP\Targets\OggVorbisLib\symbian
+USERINCLUDE         ..\CPP\Targets\OggVorbisLib\symbian\oggvorbisfile
+USERINCLUDE         ..\CPP\Targets\OggVorbisLib\symbian\tremor
+USERINCLUDE         ..\CPP\arch-include\symbian-r6
+USERINCLUDE         ..\CPP\include
+USERINCLUDE         ..\CPP\include\symbian-r6
+USERINCLUDE         ..\Resources\Loc
+
+SYSTEMINCLUDE       \epoc32\include
+SYSTEMINCLUDE       \epoc32\include\variant
+SYSTEMINCLUDE       \epoc32\include\mmf\plugin
+SYSTEMINCLUDE       \epoc32\include\stdapis
+SYSTEMINCLUDE       \epoc32\include\stdapis\sys
+SYSTEMINCLUDE       \epoc32\include\stdapis\stlport
+SYSTEMINCLUDE       \epoc32\include\stdapis\stlport\stl
+
+SOURCEPATH          ..\CPP\Targets\OggVorbisLib\symbian\oggvorbisfile
+SOURCE              leavealloc.cpp
+
+SOURCEPATH          ..\CPP\Targets\OggVorbisLib\symbian\tremor
+SOURCE              bitwise.cpp
+SOURCE              floor0.cpp
+SOURCE              registry.cpp
+SOURCE              info.cpp
+SOURCE              framing.cpp
+SOURCE              window.cpp
+SOURCE              codebook.cpp
+SOURCE              sharedbook.cpp
+SOURCE              mapping0.cpp
+SOURCE              vorbisfile.cpp
+SOURCE              floor1.cpp
+SOURCE              block.cpp
+SOURCE              res012.cpp
+SOURCE              synthesis.cpp
+SOURCE              mdct.cpp
+
+OPTION CW -wchar_t on
+MACRO  _WCHAR_T_DECLARED

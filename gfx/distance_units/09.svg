@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.001" height="40" viewBox="0 0 24.001 40">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<rect fill="url(#XMLID_2_)" width="24.001" height="40"/>
+<path d="M20.854,14.188c0,2.851-1.029,6.136-3.088,9.854L11.324,36.01H5.351l7.311-12.777c-0.449,0.002-0.877,0.002-1.286,0.002    c-2.801,0-4.89-0.865-6.271-2.6c-1.306-1.587-1.958-3.773-1.958-6.553c0-2.743,0.748-5.053,2.243-6.933    C7.031,5.056,9.236,4.009,12,4.009c2.803,0,5.006,1.046,6.612,3.139C20.107,9.063,20.854,11.409,20.854,14.188z M15.547,14.086    c0-1.189-0.284-2.235-0.846-3.137c-0.637-1.083-1.516-1.624-2.639-1.624c-1.16,0-2.06,0.542-2.693,1.624    c-0.563,0.901-0.845,1.966-0.845,3.191c0,1.189,0.281,2.217,0.845,3.083c0.634,1.046,1.533,1.569,2.693,1.569    c1.123,0,2.002-0.523,2.639-1.569C15.263,16.322,15.547,15.278,15.547,14.086z"/>
+<defs>
+<linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="12.0005" y1="40" x2="12.0005" y2="4.882813e-004">
+<stop offset="0" style="stop-color:#ABABAB"/>
+<stop offset="0.1421" style="stop-color:#C7C7C7"/>
+<stop offset="0.3062" style="stop-color:#DFDFDF"/>
+<stop offset="0.4782" style="stop-color:#F1F1F1"/>
+<stop offset="0.6617" style="stop-color:#FCFCFC"/>
+<stop offset="0.8764" style="stop-color:#FFFFFF"/>
+<stop offset="0.9373" style="stop-color:#F2F2F2"/>
+<stop offset="1" style="stop-color:#E0E0E0"/>
+</linearGradient>
+</defs>
+</g>
+</switch>
+</svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<path fill="#612900" d="M16.999,0H3C1.343,0,0,1.343,0,3v14c0,1.657,1.343,3,3,3h14C18.654,20,20,18.655,20,17     V3C20,1.343,18.657,0,16.999,0z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="10" y1="1.001" x2="10" y2="18.9971">
+<stop offset="0" style="stop-color:#FF5E00"/>
+<stop offset="0.1643" style="stop-color:#FF6201"/>
+<stop offset="0.334" style="stop-color:#FF6F04"/>
+<stop offset="0.5062" style="stop-color:#FF8308"/>
+<stop offset="0.6792" style="stop-color:#FFA00E"/>
+<stop offset="0.8146" style="stop-color:#FFBC14"/>
+<stop offset="1" style="stop-color:#FFBC14"/>
+</linearGradient>
+<path fill="url(#XMLID_3_)" d="M16.999,1.001H3C1.896,1.001,1,1.896,1,3v14c0,1.103,0.896,1.997,2,1.997h14     C18.104,18.997,19,18.103,19,17V3C19,1.896,18.104,1.001,16.999,1.001z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="10.0293" y1="4.7017" x2="10.0293" y2="1.0396">
+<stop offset="0" style="stop-color:#FF7B00"/>
+<stop offset="1" style="stop-color:#FFE1B5"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M19.014,2.871c0,1.011-0.768,1.831-1.712,1.831H2.754     c-0.945,0-1.71-0.82-1.71-1.831l0,0c0-1.011,0.765-1.832,1.71-1.832h14.547C18.246,1.04,19.014,1.86,19.014,2.871L19.014,2.871z"/>
+<rect x="6.998" y="7.001" fill="#FFFFFF" width="3.001" height="1.998"/>
+<rect x="6.998" y="11" fill="#FFFFFF" width="3.001" height="1.998"/>
+<path fill="#FFFFFF" d="M13,4c-1,0-1,0.001-2,0.001c-1,0-1-1-1-1V2H6.998v1.001c0,0,0-0.002,0,0.999l0,0l0,0     c0.003,1,1,2,2.001,2c1,0,2,0,2,0s1,0,1,1.001v5.997c0,1.001-1,1.001-1,1.001s-1,0-2,0c-1.001,0-2.001,0.999-2.001,2l0,0     c0,0.997,0,1.001,0,1.001v1H10v-1c0,0,0-1.001,1-1.001c1,0,0,0,2,0c0.998,0,1.998-0.997,1.998-2V6C14.998,5.001,13.998,4,13,4z"/>
+</g>
+</g>
+</switch>
+</svg>

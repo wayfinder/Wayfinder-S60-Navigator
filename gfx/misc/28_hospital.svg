@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd" [
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" baseProfile="tiny" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="20.028" height="19.987"
+	 viewBox="0 0 20.028 19.987" xml:space="preserve">
+<path fill="#474747" d="M17.024,0H3.005C1.346,0,0.001,1.343,0.001,2.998v9.994L0,19.987l5.752-3.998h11.272
+	c1.659,0,3.004-1.342,3.004-2.997V2.998C20.028,1.342,18.684,0,17.024,0z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="10.0146" y1="1" x2="10.0146" y2="18.1079">
+	<stop  offset="0" style="stop-color:#A3A3A3"/>
+	<stop  offset="0.1663" style="stop-color:#A7A7A7"/>
+	<stop  offset="0.3381" style="stop-color:#B4B4B4"/>
+	<stop  offset="0.5125" style="stop-color:#C8C8C8"/>
+	<stop  offset="0.6875" style="stop-color:#E5E5E5"/>
+	<stop  offset="0.8146" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M17.024,1H3.005C1.898,1,1.002,1.895,1.002,2.998v15.11l4.295-3.118h11.728
+	c1.105,0,2.003-0.895,2.003-1.998V2.998C19.027,1.895,18.13,1,17.024,1z"/>
+<linearGradient id="XMLID_5_" gradientUnits="userSpaceOnUse" x1="10.0444" y1="4.6987" x2="10.0444" y2="1.0405">
+	<stop  offset="0" style="stop-color:#BABABA"/>
+	<stop  offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<path fill="url(#XMLID_5_)" d="M19.041,2.87c0,1.01-0.767,1.829-1.713,1.829H2.76c-0.946,0-1.713-0.819-1.713-1.829l0,0
+	c0-1.01,0.767-1.829,1.713-1.829h14.568C18.274,1.041,19.041,1.859,19.041,2.87L19.041,2.87z"/>
+<path fill="#FFFFFF" d="M11.017,9.594"/>
+<path fill="#FFFFFF" d="M11.017,11.992"/>
+<linearGradient id="XMLID_6_" gradientUnits="userSpaceOnUse" x1="10.0142" y1="1.9995" x2="10.0142" y2="13.9917">
+	<stop  offset="0" style="stop-color:#FF4000"/>
+	<stop  offset="1" style="stop-color:#960000"/>
+</linearGradient>
+<polygon fill="url(#XMLID_6_)" points="16.022,5.996 12.018,5.996 12.018,2 8.012,2 8.012,5.996 4.006,5.996 4.006,9.994 
+	8.012,9.994 8.012,13.992 12.018,13.992 12.018,9.994 16.022,9.994 "/>
+</svg>

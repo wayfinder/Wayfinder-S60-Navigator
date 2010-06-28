@@ -1,0 +1,292 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+*/
+
+ /*
+ *    wait_many for sockets.
+ */
+#include "Selector.h"
+#include "Selectable.h"
+#include<vector>
+
+#ifndef MIN
+#define MIN(a,b) ( ((a) < (b)) ? (a) : (b))
+#endif
+
+using namespace isab;
+
+/**
+ *   Helper class for keeping track of the selectables.
+ *   Currently inherited from vector, can be reimplemented if
+ *   necessary. Insertion and removal are O(n) which shouldn't
+ *   be a problem. Using vector because I want to avoid iterators
+ *   in the Selector if the stl cannot be used.
+ */
+class isab::SelectorSet : private std::vector<Selectable*> {
+public:
+   /**
+    *   Inserts the selectable into the set if it does not exist.
+    *   @param s Selectable to insert.
+    *   @return Number of Selectables inserted.
+    */
+   int insert(Selectable* s);
+   
+   /**
+    *   Removes the selectable from the set if it does exist.
+    *   @param s Selectable to remove.
+    *   @return Number of Selectables removed.
+    */
+   int remove(Selectable* s);
+   
+   /**
+    *   Returns the selectable at position <code>idx</code>.
+    *   @param idx The index.
+    *   @return Selectable at index <code>idx</code>.
+    */
+   Selectable* operator[] (int idx) const;
+   
+   /** 
+    *   Returns the size of the SelectorSet.
+    */
+   int getSize() const;   
+};
+   
+int
+isab::SelectorSet::insert(Selectable* s)
+{
+   // Check if there is one already.
+   for(int i=0; i < getSize(); ++i ) {
+      if ( (*this)[i] == s ) {
+         // Found it - RETURN 0
+         return 0;
+      }
+   }
+   // Didn't find it.
+   push_back(s);
+   return 1;
+}
+
+int
+isab::SelectorSet::remove(Selectable* s)
+{
+   // Check if we can find the s
+   for( iterator it = begin();
+        it != end();
+        ++it ) {
+      if ( *it == s ) {
+         // Found it - remove it and RETURN 1
+         erase(it);
+         return 1; 
+      }
+   }
+   // Did not find it.
+   return 0;
+}
+
+int
+isab::SelectorSet::getSize() const
+{
+   return size();
+}
+
+isab::Selectable*
+isab::SelectorSet::operator[](int idx) const
+{
+#ifdef _MSC_VER
+   // Stupid VC++
+   std::vector<Selectable*>* vect = (std::vector<Selectable*>*)this;
+   return (*vect)[idx];
+#else
+   // Non-stupid g++
+   return std::vector<Selectable*>::operator[](idx);
+#endif
+}
+
+// ---------------- Selector --------------------
+   
+isab::Selector::Selector()
+{
+   m_reading = new SelectorSet;
+   m_writing = new SelectorSet;
+   m_selected = false;
+   m_terminated = false;
+   // Wait max 2 seconds before checking for termination
+   m_maxWaitMicros = 2 * 1000 * 1000; 
+}
+
+isab::Selector::~Selector()
+{
+   // If we had a wakeup socket we should set it to NULL
+   // in the ModuleQueues now.
+   delete m_reading;
+   delete m_writing;
+}
+
+int
+isab::Selector::addSelectable(Selectable* target,
+                              Selector::selectfor_t forWhat )
+{
+   int num = 0;
+   if ( forWhat & WRITING) {
+      num += m_writing->insert(target);
+   }
+   if ( forWhat & READING ) {
+      num += m_reading->insert(target);      
+   }
+   return num;
+}
+
+int
+isab::Selector::addSelectable(int num,
+                              Selectable* target[],
+                              Selector::selectfor_t forWhat)
+{
+   int nbr = 0;
+   for(int i=0; i < num; ++i ) {
+      nbr += addSelectable(target[i], forWhat);
+   }
+   return nbr;
+}
+
+int
+isab::Selector::removeSelectable(Selectable* target,
+                           Selector::selectfor_t forWhat)
+{
+   int num = 0;
+   if ( forWhat & WRITING ) {
+      num += m_writing->remove(target);      
+   }
+   if ( forWhat & READING ) {
+      num += m_reading->remove(target);
+   }
+   return num;
+}
+
+int
+isab::Selector::removeSelectable(int num,
+                                 Selectable* target[],
+                                 selectfor_t forWhat)
+{
+   int nbr = 0;
+   for(int i=0; i < num; ++i ) {
+      nbr += removeSelectable(target[i], forWhat);      
+   }
+   return nbr;
+}
+
+Selectable*
+isab::Selector::findAndClear(SelectorSet* selectorSet,
+                             fd_set* fdset)
+{
+   for(int i = 0; i < selectorSet->getSize(); ++i ) {
+      Selectable* curSelectable = (*selectorSet)[i];
+      if ( FD_ISSET(curSelectable->getFd(), fdset) ) {
+         FD_CLR(curSelectable->getFd(), fdset);
+         return curSelectable;
+      }
+   }
+   return NULL;
+}
+
+int
+isab::Selector::select(int32 micros, Selectable*& ready)
+{
+   ready = NULL;
+
+   // Only used when waiting with timeout.
+   int32 waitTimeLeft = micros;
+      
+   while ( ! m_terminated ) {
+      if ( m_selected ) {
+         // Someting was selected last time or this time if we have
+         // visited the code below.
+         Selectable* selectable = findAndClear(m_writing, &m_writefds);
+         if ( selectable != NULL ) {
+            ready = selectable;
+            return 1; // EARLY RETURN
+         }
+         selectable = findAndClear(m_reading, &m_readfds);
+         if ( selectable != NULL ) {
+            ready = selectable;
+            return 1; // EARLY RETURN
+         }
+         // Nothing found
+         m_selected = false;
+      }
+
+      // Nothing was found in the selectable sets.
+      FD_ZERO( &m_readfds );
+      FD_ZERO( &m_writefds );
+      
+      // Add the selectables for writing
+      int i; // Stupid vc++
+      for(i=0; i < m_writing->getSize(); ++i ) {         
+         FD_SET(((*m_writing)[i])->getFd(), &m_writefds);
+      }
+      // Add the reading ones
+      for(i=0; i < m_reading->getSize(); ++i ) {
+         FD_SET((*m_reading)[i]->getFd(), &m_readfds);
+      }
+
+#ifndef _WIN32
+      // This should really be the highest numbered
+      // filedescriptor + 1
+      int nfds = getdtablesize();
+#else
+      int nfds = 0; // Ignored in WIN32
+#endif
+      
+      int status = 0;
+      if (micros >= 0) {
+         int32 waitTime = MIN(m_maxWaitMicros, waitTimeLeft);
+         struct timeval tv;
+         tv.tv_sec = waitTime  / 1000000;
+         tv.tv_usec = waitTime % 1000000;
+         status = ::select(nfds, &m_readfds, 
+                           &m_writefds, (fd_set *)0, &tv);
+         // Decrease the waittime. Not exact
+         waitTimeLeft -= waitTime;
+      } else {
+         // Without any timeout (wait forever).
+         struct timeval tv;
+         tv.tv_sec =  m_maxWaitMicros / 1000000;
+         tv.tv_usec = m_maxWaitMicros % 1000000;         
+         status = ::select(nfds,
+                           &m_readfds,
+                           &m_writefds,
+                           (fd_set *)0, 
+                           &tv);
+      }
+      if ( status < 0 ) {
+         // Error
+         return -1; // RETURN
+      } else if ( status == 0 ) {
+         // Timeout
+         if ( micros >= 0 ) {
+            // The user has supplied a time.
+            if ( waitTimeLeft <= 0) {
+               return 0; // RETURN
+            }
+         } else {
+            // Timeout cannot happen. We will check for termination.
+         }
+      } else {
+         // If someting was selected - go another round in loop.
+         m_selected = true;
+      }
+   }
+   // Terminated
+   return -2;
+}
+
+
+

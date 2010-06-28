@@ -1,0 +1,226 @@
+TARGET		Nav2LibTotal.lib
+TARGETTYPE	LIB
+
+SRCDBG
+
+MACRO NAV2_CLIENT_UIQ
+MACRO NAV2_USE_UTF8
+
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE ..\..\..\include\symbian-r6\STLport-4.5.1\stlport
+SYSTEMINCLUDE ..\..\..\arch-include\symbian-r6
+
+USERINCLUDE ..
+USERINCLUDE ..\symbian
+USERINCLUDE ..\..\..\include
+USERINCLUDE ..\..\..\include\GuiProt
+USERINCLUDE ..\..\..\include\symbian-r6
+
+USERINCLUDE ..\..\..\Shared
+USERINCLUDE ..\..\..\Shared\GuiProt
+
+USERINCLUDE ..\..\..\Modules\include
+USERINCLUDE ..\..\..\Modules\Common
+USERINCLUDE ..\..\..\Modules\CtrlHub
+USERINCLUDE ..\..\..\Modules\QueueSerial
+USERINCLUDE ..\..\..\Modules\UiCtrl 
+USERINCLUDE ..\..\..\Modules\Destinations
+USERINCLUDE ..\..\..\Modules\TestShell
+USERINCLUDE ..\..\..\Modules\Parameter
+USERINCLUDE ..\..\..\Modules\NavServerCom
+USERINCLUDE ..\..\..\Modules\FakeNavServerCom
+USERINCLUDE ..\..\..\Modules\NavTask
+USERINCLUDE ..\..\..\Modules\GpsSirf
+USERINCLUDE ..\..\..\Modules\GpsTrimble
+USERINCLUDE ..\..\..\Modules\Simulation
+USERINCLUDE ..\..\..\Modules\TcpSerial
+USERINCLUDE ..\..\..\Modules\TcpSymbianSerial\symbian-r6
+USERINCLUDE ..\..\..\..\Resources\Loc
+
+SOURCEPATH ..
+SOURCE  Nav2.cpp
+SOURCE  Nav2Release.cpp
+SOURCE  Nav2Develop.cpp
+
+SOURCEPATH	..\symbian
+SOURCE  SprocketsEngine.cpp
+
+SOURCEPATH ..\..\..\Shared
+SOURCE  Buffer.cpp
+SOURCE  DistancePrintingPolicy.cpp
+SOURCE  FastTrig.cpp
+SOURCE  GpsSatelliteInfo.cpp
+SOURCE  GuiFileOperation.cpp
+SOURCE  Log.cpp
+SOURCE  LogMaster.cpp
+SOURCE  Matches.cpp
+SOURCE  md5.cpp
+SOURCE  MD5Class.cpp
+SOURCE  ModuleQueueShared.cpp
+SOURCE  Nav2Error.cpp
+SOURCE  Nav2ErrorSv.cpp
+SOURCE  Nav2ErrorEn.cpp
+SOURCE  Nav2ErrorDa.cpp
+SOURCE  Nav2ErrorDe.cpp
+SOURCE  Nav2ErrorEs.cpp
+SOURCE  Nav2ErrorIt.cpp
+SOURCE  Nav2ErrorFr.cpp
+SOURCE  Nav2ErrorNl.cpp
+SOURCE  Nav2ErrorFi.cpp
+SOURCE  Nav2ErrorNo.cpp
+SOURCE  Nav2ErrorPt.cpp
+SOURCE  nav2util.cpp
+SOURCE  Output.cpp
+SOURCE  RequestList.cpp
+SOURCE  RouteInfo.cpp
+SOURCE  TopRegion.cpp
+SOURCE  TrackPIN.cpp
+SOURCE  UTF8Util.cpp
+
+SOURCEPATH ..\..\..\Shared\GuiProt
+SOURCE  Favorite.cpp
+SOURCE  GuiProtFavoriteMess.cpp
+SOURCE  GuiProtFileMess.cpp
+SOURCE  GuiProtMapMess.cpp
+SOURCE  GuiProtMess.cpp
+SOURCE  GuiProtRouteMess.cpp
+SOURCE  GuiProtSearchMess.cpp
+SOURCE  GuiRequestFailed.cpp
+SOURCE  MapClasses.cpp
+SOURCE  SearchPrintingPolicy.cpp
+SOURCE  SearchPrintingPolicyFactory.cpp
+SOURCE  SearchPrintingPolicySwedish.cpp
+SOURCE  Serializable.cpp
+SOURCE  VectorMapCoordinates.cpp
+
+SOURCEPATH ..\..\..\Shared\symbian-r6
+SOURCE  ArchFastMath.cpp
+SOURCE  Conditional.cpp
+SOURCE  GetIMEI.cpp
+SOURCE  GetProxy.cpp
+SOURCE  MD5Symbian.cpp
+SOURCE  ModuleQueue.cpp
+SOURCE  Monitor.cpp
+SOURCE  Mutex.cpp
+SOURCE  Nav2ErrorSymbian.cpp
+SOURCE  OutputFactory.cpp
+SOURCE  RecursiveMutex.cpp
+SOURCE  RecursiveMutexImpl.cpp
+SOURCE  Selector.cpp
+SOURCE  snprintf.cpp
+SOURCE  TCPSocket.cpp
+SOURCE  TDesCHolder.cpp
+SOURCE  Thread.cpp
+SOURCE  ThreadOwner.cpp
+SOURCE  TimeOutTimer.cpp
+SOURCE  TimerThread.cpp
+SOURCE  TlsGlobalData.cpp
+SOURCE  WFTextUtil.cpp
+
+SOURCEPATH ..\..\..\Modules\Common
+SOURCE  ErrorModule.cpp
+SOURCE  Gps.cpp
+SOURCE  Module.cpp
+SOURCE  Serial.cpp
+
+SOURCEPATH ..\..\..\Modules\CtrlHub
+SOURCE  CtrlHub.cpp
+SOURCE  CtrlHubPublic.cpp
+
+SOURCEPATH ..\..\..\Modules\QueueSerial
+SOURCE  QueueSerial.cpp
+
+SOURCEPATH ..\..\..\Modules\UiCtrl
+SOURCE  AudioCtrl.cpp
+SOURCE  AudioCtrlCs.cpp
+SOURCE  AudioCtrlDa.cpp
+SOURCE  AudioCtrlDe.cpp
+SOURCE  AudioCtrlEn.cpp
+SOURCE  AudioCtrlEs.cpp
+SOURCE  AudioCtrlFi.cpp
+SOURCE  AudioCtrlFr.cpp
+SOURCE  AudioCtrlHu.cpp
+SOURCE  AudioCtrlIt.cpp
+SOURCE  AudioCtrlNl.cpp
+SOURCE  AudioCtrlNo.cpp
+SOURCE  AudioCtrlNone.cpp
+SOURCE  AudioCtrlPl.cpp
+SOURCE  AudioCtrlPt.cpp
+SOURCE  AudioCtrlSl.cpp
+SOURCE  AudioCtrlStd.cpp
+SOURCE  AudioCtrlSv.cpp
+SOURCE  AudioCtrlTr.cpp
+SOURCE  AudioCtrlUs.cpp
+SOURCE  GuiCtrl.cpp
+SOURCE  RoutePositionData.cpp
+SOURCE  UiCtrl.cpp
+
+SOURCEPATH ..\..\..\Modules\Destinations
+SOURCE  Destinations.cpp
+SOURCE  DestinationsInternal.cpp
+
+SOURCEPATH ..\..\..\Modules\TestShell
+SOURCE  TestShell.cpp
+
+SOURCEPATH ..\..\..\Modules\Parameter
+SOURCE  Parameter.cpp
+SOURCE  ParameterPublic.cpp
+
+SOURCEPATH ..\..\..\Modules\NavServerCom
+SOURCE  DestinationSync.cpp
+SOURCE  HttpServerParser.cpp
+SOURCE  NavHandler.cpp
+SOURCE  NavPacket.cpp
+SOURCE  NavServerCom.cpp
+SOURCE  NavServerComPublic.cpp
+SOURCE  NParam.cpp
+SOURCE  NParamBlock.cpp
+SOURCE  ParameterBlock.cpp
+SOURCE  Server.cpp
+SOURCE  ServerParser.cpp
+SOURCE  Tracking.cpp
+
+SOURCEPATH ..\..\..\Modules\FakeNavServerCom
+SOURCE  FakeNavServerCom.cpp
+SOURCE  Faker.cpp
+
+SOURCEPATH ..\..\..\Modules\NavTask
+SOURCE  DistanceCalc.cpp
+SOURCE  GuiCommandHandler.cpp
+SOURCE  NavTask.cpp
+SOURCE  NavTaskPublic.cpp
+SOURCE  Point.cpp
+SOURCE  Route.cpp
+SOURCE  RouteDatum.cpp
+
+SOURCEPATH ..\..\..\Modules\NavTask\symbian
+SOURCE  GuiCommandHandlerSymbian.cpp
+
+SOURCEPATH ..\..\..\Modules\GpsSirf
+SOURCE  GpsCommon.cpp
+SOURCE  GpsMotorola.cpp
+SOURCE  GpsParser.cpp
+SOURCE  GpsSirf.cpp
+SOURCE  MotorolaParser.cpp
+SOURCE  NmeaParser.cpp
+
+SOURCEPATH ..\..\..\Modules\GpsTrimble
+SOURCE  GpsTrimble.cpp
+SOURCE  TrimbleParser.cpp
+
+SOURCEPATH ..\..\..\Modules\Simulation
+SOURCE  Simulation.cpp
+
+SOURCEPATH ..\..\..\Modules\TcpSerial
+SOURCE  TcpSerial.cpp
+
+SOURCEPATH ..\..\..\Modules\TcpSymbianSerial\symbian-r6
+SOURCE  ConnectionControl.cpp
+SOURCE  SendDataReceiver.cpp
+SOURCE  TcpAdmin.cpp
+SOURCE  TcpSocketEngine.cpp
+SOURCE  TcpSocketReader.cpp
+SOURCE  TcpSocketWriter.cpp
+SOURCE  TcpSymbianSerial.cpp
+

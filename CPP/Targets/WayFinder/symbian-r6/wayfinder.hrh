@@ -1,0 +1,470 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/*
+*  Description:
+*     This file contains declarations for constants of WayFinder.
+*     The file can be included in C++ or resource file.
+*/
+
+#ifndef WAYFINDER_HRH
+#define WAYFINDER_HRH
+
+enum TWayFinderCommandIds
+    {
+   // Application wide
+    EWayFinderCmdPlaces      = 0x6000,
+    EWayFinderCmdView,
+    EWayFinderCmdTools,
+    EWayFinderCmdAbout,
+    EWayFinderCmdHelp,
+    EWayFinderCmdMapFiles,
+    EWayFinderCmdLaunchMoveWayfinder,
+    EWayFinderCmdLaunchGetWayfinder,
+    EWayFinderCmdRouteSubMenu,
+    EWayFinderCmdReportSpeedCam,
+    EWayFinderCmdReportProblem,
+    EWayFinderCmdReportTrafficJam,
+    EWayFinderCmdReportTrafficInfoCenter,
+    EWayFinderCmdReportBreakdown1,
+    EWayFinderCmdReportBreakdown2,
+    EWayFinderCmdReportDangerousPlace,
+    EWayFinderCmdReportWeatherWarning,
+    EWayFinderCmdReportMapProblem,
+    EWayFinderCmdReportPosition,
+    EWayFinderCmdReportRouteProblem,
+    EWayfinderCmdAsterisk,
+    EWayFinderCmdContentWindow,
+    EWayFinderCmdGotoHomepage,
+    EWayFinderCmdOpenUrl,
+    EServiceViewBack,
+    EWayFinderCmdServiceWindowCall,
+    EWayFinderCmdServiceWeather,
+    EWayFinderCmdServiceCityGuide,
+    EWayFinderCmdCallSupport,
+    EWayFinderCmdStartpageCall,
+    EWayFinderCmdStartpage,
+
+    EWFEmpty,
+    EWayFinderSoftkeyStart,
+    EWayFinderSoftKeyUpgrade,
+
+    EWayFinderCtrlConnectSMSAddressEdwin,
+    EWayFinderCtrlConnectEmailAddressEdwin,
+    EWayFinderCtrlConnectTransmitEdwin,
+    EWayFinderCtrlConnectFormatEdwin,
+    EWayFinderCtrlConnectContentsEdwin,
+    EWayFinderCtrlConnectMessageEdwin,
+
+    EWayFinderCmdReroute,
+    EWayFinderCmdClear,
+    EWayFinderCmdSave,
+    EWayFinderCmdLoad,
+    EWayFinderCmdDelete,
+    EWayFinderCmdSimulateItem,
+    EWayFinderCmdSimulateSubMenu,
+    EWayFinderCmdSimulateStart,
+    EWayFinderCmdSimulateStop,
+    EWayFinderCmdSimulateResume,
+    EWayFinderCmdSimulatePause,
+    EWayFinderCmdSimulateIncSpeed,
+    EWayFinderCmdSimulateDecSpeed,
+    EWayFinderCmdSimulateRepeatOn,
+    EWayFinderCmdSimulateRepeatOff,
+
+    // Main menu
+    EWayFinderCmdGPSConnect,
+    EWayFinderCmdServicesBuyExtensionWapLink,
+    EWayFinderCommunitySubMenu,
+    EWayFinderCmdFreeDownloads,
+    EWayFinderCmdExtraServices,
+    EWayFinderCmdService,
+    EWayFinderCmdGPSDisConnect,
+    EWayFinderCmdFleetInfo,
+    EWayFinderCmdSettings,
+
+    // Community menu
+    EWayFinderPublishMyPosition,
+    EWayFinderStopPublishMyPosition,
+    EWayFinderCmdServicesSpreadWayfinder,
+    EWayFinderCmdFindSms,
+
+    // Destination menu
+    EWayFinderCmdNewDest,
+    EWayFinderCmdNewDest2,
+    EWayFinderCmdMyDest,
+    EWayFinderCmdConnect,
+    EWayFinderCmdPositionSelect,
+   
+    // View menu
+    EWayFinderCmdGuide,
+    EWayFinderCmdItinerary,
+    EWayFinderCmdDestination,
+    EWayFinderCmdMap,
+    EWayFinderCmdInfo,
+
+    EWayFinderCmdInfoViewGPSConnect, 
+
+    // Tools menu
+    EWayFinderCmdMapGPSConnect,
+    EWayFinderCmdDebugAction,
+
+    // Settings
+    EWayFinderCmdSettingChange,
+    EWayFinderCmdSettingNewSearch,
+    EWayFinderCmdSettingServerToggle,
+
+    // Start page
+    EWayFinderCmdStartPageOpen,
+    EWayFinderCmdStartPageUpgradeInfo,
+    EWayFinderCmdStartPageUpgradeInfo2,
+    EWayFinderCmdStartPageUpgrade,
+    EWayFinderCmdStartPageNews,
+    EWayFinderCmdStartPageNewSearch,
+    EWayFinderCmdStartPageNew,
+
+    // Trial page
+    EWayFinderCmdTrialOpen,
+    EWayFinderCmdTrialRegister,
+    EWayFinderCmdTrialReRegister,
+    EWayFinderCmdTrialUpgrade,
+    EWayFinderCmdTrialTrial,
+    EWayFinderCmdTrialHelp,
+
+    // Upgrade page
+    EWayFinderCmdUpgradeSelect,
+    EWayFinderCmdUpgradeUpgrade,
+    EWayFinderCmdUpgradeUpgrade2,
+    EWayFinderCmdUpgradeCountry,
+
+    EWayFinderCtrlUpgradeCountryEdwin,
+    EWayFinderCtrlUpgradePhoneEdwin,
+    EWayFinderCtrlUpgradeRegNumberEdwin,
+    EWayFinderCtrlUpgradeNameEdwin,
+    EWayFinderCtrlUpgradeEmailEdwin,
+
+    // Position Select page
+    EWayFinderCmdPositionSelectNavigate,
+    EWayFinderCmdPositionSelectGetRoute,
+    EWayFinderCmdPositionSelectReroute,
+    EWayFinderCmdPositionSelectSearch,
+    EWayFinderCmdPositionSelectFavorite,
+    EWayFinderCmdPositionSelectFromGps,
+    EWayFinderCmdPositionSelectFromMap,
+    EWayFinderCmdEarthClearRoute,
+
+    // New Destination page
+    EWayFinderCmdNewDestCountry,
+    EWayFinderCmdNewDestCity,
+    EWayFinderCmdNewDestCategory,
+    EWayFinderCmdNewDestString,
+    EWayFinderCmdNewDestHistory,
+    EWayFinderCmdNewDestSearch,
+    EWayFinderCmdNewDestSave,
+    EWayFinderCmdNewDestShow,
+    EWayFinderCmdNewDestSendTo,
+    EWayFinderCmdNewDestNavigate,
+    EWayFinderCmdNewDestShowInfo,
+    EWayFinderCmdNewDestOrigin,
+    EWayFinderCmdNewDestDestination,
+    EWayFinderCmdNewDestNewSearch,
+    EWayFinderCmdNewDestQueryBack,
+    EWayFinderCmdNewDestSettings,
+    EWayFinderCmdNewDestInfo,
+    EWayFinderCmdNewDestCall,
+    EWayFinderCmdNewDestNextXHits,
+    EWayFinderCmdNewDestPrevXHits,
+
+    EWayFinderCtrlNewDestCountryEdwin,
+    EWayFinderCtrlNewDestCityEdwin,
+    EWayFinderCtrlNewDestHouseNumEdwin,
+    EWayFinderCtrlNewDestStringEdwin,
+
+    // My Destinations page
+    EWayFinderCmdMyDestNavigate,
+    EWayFinderCmdMyDestSync,
+    EWayFinderCmdMyDestAdd,
+    EWayFinderCmdMyDestEdit,
+    EWayFinderCmdMyDestRemove,
+    EWayFinderCmdMyDestShow,
+    EWayFinderCmdMyDestViewDetails,
+    EWayFinderCmdMyDestOrigin,
+    EWayFinderCmdMyDestDestination,
+    EWayFinderCmdMyDestManage,
+    EWayFinderCmdMyDestSend,
+    EWayFinderCmdMyDestCall,
+    // Buttons in My dest toolbar
+    EWayFinderCmdMyDestEditButton,
+    EWayFinderCmdMyDestRemoveButton,
+    EWayFinderCmdMyDestViewDetailsButton,    
+
+    EWayFinderCtrlMyDestNameEdwin,
+    EWayFinderCtrlMyDestDescriptionEdwin,
+    EWayFinderCtrlMyDestLatitudeEditor,
+    EWayFinderCtrlMyDestLongitudeEditor,
+
+    // Contacts page
+    EWayFinderCmdContactsNavigate,
+
+    // Connect page
+    EWayFinderCmdConnectSelect,
+    EWayFinderCmdConnectFindInPhonebook,
+    EWayFinderCmdConnectSend,
+    EWayFinderCmdConnectSendAs,
+    EWayFinderCmdConnectSendCurrentPosition,
+    EWayFinderCmdConnectSendThisPosition,
+    EWayFinderCmdConnectSms,
+    EWayFinderCmdConnectMms,
+    EWayFinderCmdConnectEmail,
+    EWayFinderCmdConnectSettings,
+    EWayFinderCmdConnectInfo,
+
+    // Guide page
+    EWayFinderCmdGuideVoice,
+    EWayFinderCmdGuideReroute,
+    EWayFinderCmdGuideShowRoute,
+    EWayFinderCmdGuideShowTurn,
+    EWayfinderCmdGuideSendTo,
+    EWayFinderCmdNightModeOn,
+    EWayFinderCmdNightModeOff,
+
+    // Itinerary page
+    EWayFinderCmdItineraryVoice,
+    EWayFinderCmdItineraryReroute,
+    EWayFinderCmdItineraryShowRoute,
+    EWayFinderCmdItineraryShowTurn,
+    EWayfinderCmdItinerarySendTo,
+
+    // Destination page
+    EWayFinderCmdDestinationVoice,
+    EWayFinderCmdDestinationReroute,
+    EWayFinderCmdDestinationShow,
+    EWayfinderCmdDestinationSendTo,
+
+    // Map page
+    EWayFinderCmdMapVoice,
+    EWayFinderCmdMapRoute,
+    EWayFinderCmdMapReroute,
+    EWayFinderCmdMapSmallScreen,
+    EWayFinderCmdMapFullScreen,
+    EWayFinderCmdMapViews,
+    EWayFinderCmdSend,
+    EWayFinderCmdMapZoom,
+    EWayFinderCmdMapZoomIn,
+    EWayFinderCmdMapZoomOut,
+    EWayFinderCmdMapViewOverview,
+    EWayFinderCmdMapMoveUp,
+    EWayFinderCmdMapMoveDown,
+    EWayFinderCmdMapMoveLeft,
+    EWayFinderCmdMapMoveRight,
+    EWayFinderCmdMapViewRoute,
+    EWayFinderCmdMapViewCurrent,
+    EWayFinderCmdMapViewDestination,
+    EWayFinderCmdMapViewOrigin,
+    EWayFinderCmdMapViewTrackingOn,
+    EWayFinderCmdMapViewTrackingOff,
+    EWayFinderCmdMapRouteTo,
+    EWayFinderCmdMapShowInfo,
+    EWayFinderCmdMapSetDestination,
+    EWayFinderCmdMapSetOrigin,
+    EWayFinderCmdMapSaveFavorite,
+    EWayFinderCmdMapCall,
+    EWayFinderCmdMapViewShowInstalledMaps,
+    EWayFinderCmdMapViewUpdateMapFiles,
+    EWayFinderCmdMapViewDeleteMapFiles,
+    EWayFinderCmdActivate3d,
+    EWayFinderCmdActivate2d,
+    EWayFinderCmdMapTracking,
+
+
+    EWayFinderMapViewWaitDlg,
+    EWayFinderSplashViewWaitDlg,
+    EWayFinderRouteCalcWaitDlg,
+    EWayFinderSearchWaitDlg,
+    // Info page
+    EWayFinderCmdInfoShow,
+
+    EWayFinderExitAppl,
+
+    EWayFinderQuery,
+    EWayFinderConfirm,
+    EWayFinderAbout,
+    EWayFinderFleetInfo,
+    EWayFinderError,
+    EWayFinderWarning,
+
+    EWayFinderSettingWebUsername,
+    EWayFinderSettingWebPassword,
+    EWayFinderSettingUsername,
+    EWayFinderSettingPassword,
+    EWayFinderSettingServer,
+    EWayFinderSettingVolume,
+    EWayFinderSettingAutoRoute,
+    EWayFinderSettingSpeaker,
+    EWayFinderSettingTurnSoundsLevel,
+    EWayFinderSettingVehicle,
+    EWayFinderSettingBacklight,
+    EWayFinderSettingLeftSideTraffic,
+    EWayFinderSettingIAP,
+    EWayFinderSettingCheckForUpdates,
+    EWayFinderSettingGPRSKeepAlive,
+    EWayFinderSettingLanguage,
+    EWayFinderSettingDistMode,
+    EWayFinderSettingTimeDist,
+    EWayFinderSettingTimeDistDisturbances,
+    EWayFinderSettingTollRoads,
+    EWayFinderSettingHighways,
+    EWayFinderSettingPreferredGuideMode,
+    EWayFinderSettingMuteTurnSound,
+    EWayFinderSettingRouteSetting1,
+    EWayFinderSettingRouteSetting2,
+
+    EWayFinderSettingSaveSMSDest,
+    EWayFinderSettingAutorouteSMS,
+    EWayFinderSettingKeepSMS,
+
+    ESocketsServerNameEdwin,
+    ESocketsPortNumberEdwin,
+
+    EWayFinderSettingMapCacheSize,
+    EWayFinderSettingTrackingOrientation,
+    EWayFinderSettingTrackingAutoOn,
+    EWayFinderSettingMapType,
+/*     EWayFinderSettingGuiMode, */
+    EWayFinderSettingMapLayers,
+    EWayFinderSettingFavoriteShow,
+    EWayFinderSettingEnableACP,
+    EWayfinderSettingGPSSelector,
+    EWayFinderSettingTrackingLevel,
+    EWayFinderSettingTrackingPIN,
+    EWayFinderSettingMapSetting1,
+    EWayFinderSettingMapSetting2,
+    EWayFinderSettingMapSetting3,
+    EWayFinderSettingMapSetting4,
+    EWayFinderSettingMapSetting5,
+    EWayFinderSettingMapSetting6,
+    EWayFinderSettingMapSetting7,
+    EWayFinderSettingMapSetting8,
+    EWayFinderSettingMapSetting9,
+    EWayFinderSettingMapSetting10,
+    EWayFinderSettingMapSetting11,
+    EWayFinderSettingMapSetting12,
+
+
+    EWayFinderCmdEmptyMapCache,
+    EWayFinderCmdStopNavigation,
+    EWayFinderCmdStartNavigation,
+    EWayfinderWaitDlg,
+    EWayfinderSingleCallbackSelectionList,
+    EWFProgressNote,
+
+    EWayFinderNightMode,
+    EWayFinderCmdShowNetworkInfo,
+    EWayFinderCmdGotoDebugUrl,
+
+    // Combined search views
+    EWayFinderCSSearchText,
+    EWayFinderCSPositionMethod,
+    EWayFinderCSCitySelect,
+    EWayFinderCSCountrySelect,
+    // Combined search commands
+    EWayFinderCmdCSMainView,
+    EWayFinderCmdCSCategoryResultView,
+    EWayFinderCmdCSDetailedResultView,
+    EWayFinderCmdCSSwitchToCountrySelect,
+    EWayFinderCmdCSSwitchToCategorySelect,
+    EWayFinderCmdCSSelect,
+    EWayFinderCmdCSSearchHistory,
+    EWayFinderCmdCSNewSearch,
+    EWayFinderCmdCSSetFromGps,
+    EWayFinderCmdCSCategoryResultReceived,
+    EWayFinderCmdButtonSearch,
+    EWayFinderCmdButtonFromGps,
+    EWayFinderCmdButtonCategorySelect,
+
+    // Edit favorite view
+    EWayFinderSoftkeyFavoriteSave,
+    EWayFinderEditFavoriteName,
+    EWayFinderEditFavoriteDesc,
+    EWayFinderEditFavoriteLat,
+    EWayFinderEditFavoriteLon,
+
+    // Dialog command id
+    EWayfinderDialogCancelId
+    };
+
+enum TWayFinderTabViewId
+    {
+    EWayFinderStartPageTab             = 1,
+    EWayFinderPositionSelectTab        = 2,
+    EWayFinderNewDestTab               = 3,
+    EWayFinderMyDestTab                = 4,
+    EWayFinderConnectTab               = 5,
+    EWayFinderContentWindowTab         = 6,
+    EWayFinderSettingsTab              = 7,
+    EWayFinderInfoTab                  = 8,
+    EWayFinderMapTab                   = 9,
+    EWayFinderGuideTab                 = 10,
+    EWayFinderItineraryTab             = 11,
+    EWayFinderWelcomeTab               = 12,
+    EWayFinderDestinationTab           = 13,
+    EWayFinderConnectDialog            = 14,
+    EWayFinderMainMenuView             = 15,
+    EWayFinderCSMainView               = 16,
+    EWayFinderCSCategoryResultView     = 17,
+    EWayFinderCSDetailedResultView     = 18,
+    EWayFinderSearchableListBoxView    = 19,
+    EWayFinderEditFavoriteView         = 20,
+    EWayFinderNavigationMapTab         = 21, // not really a view but a state for mapview.
+    EWayFinderTabGroup                 = 22,
+    EWayFinderMyAccountView            = 23,
+
+    EWayFinderInvalidViewId            = 2147483646
+    };
+
+enum TWayFinderSettingsTabViewId
+    {
+    EWayFinderSettingsMiscTab = 0,
+    EWayFinderSettingsRouteTab,
+    EWayFinderSettingsCommunicateTab,
+    EWayFinderSettingsMapTab,
+    EWayFinderSettingsDebugTab
+    };
+
+//////////////////////////////////////////////////////////////////////////////      
+//
+// Control ids
+// Identify all controls defined and used by this application.
+//
+//////////////////////////////////////////////////////////////////////////////   
+enum TWayFinderControlIds
+    {
+    EWayFinderCoordinatesID = 0x9500,
+    EWayFinderNameAddressID,
+    EWayFinderCityCountryID
+    };
+
+//////////////////////////////////////////////////////////////////////////////      
+//
+// Define the controls so they can be created as components in a dialog         
+//
+//////////////////////////////////////////////////////////////////////////////   
+// Assume there are less than 1000 framework controls, and they can't be defined anywhere else.      
+enum TWayFinderControls
+    {
+    EWayFinderCtCoordinates = 0x9000,
+    EWayFinderCtNameDescription
+    //EWayFinderCtCategoryAlias
+    };
+
+#endif      // WAYFINDER_HRH

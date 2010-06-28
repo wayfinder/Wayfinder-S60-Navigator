@@ -1,0 +1,84 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+*/
+
+#include "MsgBufferEnums.h"
+#include "Buffer.h"
+#include "MsgBuffer.h"
+#include "ModuleQueue.h"
+#include "Log.h"
+namespace isab {
+
+   MsgBuffer* ModuleQueue::getMessage(){
+      lock();
+      MsgBuffer* ret = NULL;
+      ListTimer now;
+      do{
+         // Time is now...
+         now.now();
+         while(m_timers != NULL && ((*m_timers) <= now)){
+            // all timers that should have expired by now are treated
+            // here. 
+            MsgBuffer* timerBuf = 
+               new MsgBuffer(MsgBufferEnums::ADDR_LINK_LOCAL, 0, MsgBufferEnums::TIMER);
+            timerBuf->setExtraData(m_timers->id);
+            insert(timerBuf);
+            ListTimer* timer = m_timers;
+            timer->unlink(&m_timers);
+            timer->insert(&m_expiredTimers);
+         }
+         if(m_queueHead.next == &m_queueHead){
+            // the list is empty
+            // find the timout
+            long timeout = DEFAULT_TIMEOUT;
+            if(m_timers != NULL){
+               isabTime timer(*m_timers);
+               timer.sub(now);
+               timeout = timer.millis();
+            }
+            // wait if the timeout is larger than 0, otherwise assume
+            // we timed out.
+            if(timeout <= 0 || (TIMED_OUT == wait(timeout) && m_timers != NULL)){
+               //if we were awoken by a timeout.
+               MsgBuffer* timerBuf = 
+                  new MsgBuffer(MsgBufferEnums::ADDR_LINK_LOCAL, 0, MsgBufferEnums::TIMER);
+               timerBuf->setExtraData(m_timers->id);
+               insert(timerBuf);
+               ListTimer* timer = m_timers;
+               timer->unlink(&m_timers);
+               timer->insert(&m_expiredTimers);
+            }
+         }
+      }while(m_queueHead.next == &m_queueHead);
+      // The list is not empty
+      if(m_queueHead.next != &m_queueHead){
+         ret = m_queueHead.next->buffer;
+         // deleting a QueueItem unlinks it from its list. 
+         delete m_queueHead.next;
+      }
+      unlock();
+      return ret;
+   }
+
+   ModuleQueue::ModuleQueue(const char* name) 
+      : Monitor(), m_timers(NULL), m_expiredTimers(NULL),
+        m_idSource(1), m_expireOffset(DEFAULT_EXPIRE_OFFSET), m_log(NULL)
+   {
+      char logname[128] = "";
+      strcpy(logname, name);
+      strcat(logname, "Queue");
+      m_log = new Log(logname);
+   }
+
+}
+
+

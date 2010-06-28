@@ -1,0 +1,326 @@
+TARGET              wayfinder8_s60v5.exe
+TARGETTYPE          exe
+UID                 0x100039ce 0x20016434
+SECUREID            0x20016434
+TARGETPATH          \sys\bin
+
+CAPABILITY          LocalServices NetworkServices ProtServ ReadDeviceData ReadUserData SwEvent WriteDeviceData WriteUserData Location
+
+EPOCSTACKSIZE       0x00005000
+EPOCALLOWDLLDATA    
+EPOCHEAPSIZE 0x00002000 0x007270E0
+VENDORID            0x00000000
+
+
+#ifdef WINSCW
+MACRO               __WINS__
+MACRO               __WINSCW__
+#else
+MACRO				__GCCE__
+#endif
+MACRO               __SYMBIAN32__
+MACRO               __SYMBIAN__
+MACRO               __COOK_NAV2__
+MACRO               NAV2_USE_UTF8
+MACRO               SYMBIAN_7S
+MACRO               SYMBIAN_9
+MACRO               SYMBIAN_AVKON
+MACRO               NAV2_CLIENT_SERIES60_V3
+MACRO               NAV2_CLIENT_SERIES60_V5
+MACRO               RELEASE_DEFAULT_BRONZE_SUPER_DEMO
+MACRO               SYMBIAN_S60
+
+START RESOURCE ..\data\Wayfinder_s60v5_appinfo.rss
+	TARGET wayfinder8_s60v5_appinfo
+	TARGETPATH \resource\apps
+	HEADER
+	LANG 01
+END
+
+START RESOURCE ..\data\Wayfinder_s60v5_reg.rss
+	TARGET wayfinder8_s60v5_reg
+	TARGETPATH \private\10003a3f\import\apps
+	HEADER
+	LANG 01
+END
+
+START RESOURCE      ..\data\LanguageList_s60.rss
+TARGET              wayfinder8_s60v5_ll
+TARGETPATH          \resource\apps
+HEADER              
+LANG                01
+END                 
+
+START RESOURCE      ..\data\WayFinder.rss
+TARGET              wayfinder8_s60v5
+TARGETPATH          \resource\apps
+HEADER              
+LANG                01
+END                 
+
+USERINCLUDE         ..\CPP\Modules\FakeNavServerCom
+USERINCLUDE         ..\CPP\Modules\NavServerCom
+USERINCLUDE         ..\CPP\Modules\NavTask
+USERINCLUDE         ..\CPP\Modules\TcpSerial
+USERINCLUDE         ..\CPP\Modules\TcpSymbianSerial\symbian-r6
+USERINCLUDE         ..\CPP\Modules\UiCtrl
+USERINCLUDE         ..\CPP\Modules\include
+USERINCLUDE         ..\CPP\Targets\GlobeLib\globe\include
+USERINCLUDE         ..\CPP\Targets\GlobeLib\shared\include
+USERINCLUDE         ..\CPP\Targets\GlobeMapLib\Shared\include
+USERINCLUDE         ..\CPP\Targets\GlobeMapLib\Symbian\include
+USERINCLUDE         ..\CPP\Targets\MapLib\Shared\include
+USERINCLUDE         ..\CPP\Targets\MapLib\Shared\include\Symbian
+USERINCLUDE         ..\CPP\Targets\MapLib\Symbian\include
+USERINCLUDE         ..\CPP\Targets\Nav2lib
+USERINCLUDE         ..\CPP\Targets\Nav2lib\symbian
+USERINCLUDE         ..\CPP\Targets\OggVorbisLib\symbian\oggvorbisfile
+USERINCLUDE         ..\CPP\Targets\OggVorbisLib\symbian\tremor
+USERINCLUDE         ..\CPP\Targets\SupportWFLib
+USERINCLUDE         ..\CPP\Targets\SupportWFLib\60
+USERINCLUDE         ..\CPP\Targets\SupportWFLib\symbian
+USERINCLUDE         ..\CPP\Targets\SupportWFLib\symbian\BTGPS
+USERINCLUDE         ..\CPP\Targets\SupportWFLib\symbian9
+USERINCLUDE         ..\CPP\Targets\WayFinder
+USERINCLUDE         ..\CPP\Targets\WayFinder\include
+USERINCLUDE         ..\CPP\Targets\WayFinder\symbian
+USERINCLUDE         ..\CPP\Targets\WayFinder\symbian-r6
+USERINCLUDE         ..\CPP\arch-include\factored
+USERINCLUDE         ..\CPP\arch-include\symbian-r6
+USERINCLUDE         ..\CPP\include
+USERINCLUDE         ..\CPP\include\GuiProt
+USERINCLUDE         ..\CPP\include\symbian-r6
+USERINCLUDE         ..\Resources\Loc
+
+#ifdef              WINSCW
+USERINCLUDE         ..\inc\winscw
+#else               
+USERINCLUDE         ..\inc\armv5
+#endif              
+
+SYSTEMINCLUDE       \epoc32\include
+SYSTEMINCLUDE       \epoc32\include\variant
+SYSTEMINCLUDE       \epoc32\include\mmf\plugin
+SYSTEMINCLUDE       \epoc32\include\stdapis
+SYSTEMINCLUDE       \epoc32\include\stdapis\sys
+SYSTEMINCLUDE       \epoc32\include\stdapis\stlport
+SYSTEMINCLUDE       \epoc32\include\stdapis\stlport\stl
+
+SOURCEPATH          ..\CPP\Targets\WayFinder\src
+SOURCE              WFCommonStartupEvents.cpp
+SOURCE              TmapImageHandler.cpp
+SOURCE              CombinedSearchDataHolder.cpp
+SOURCE              WFStartupEvent.cpp
+SOURCE              WayfinderUiBase.cpp
+SOURCE              WFViewStack.cpp
+SOURCE              CombinedSearchHistoryItem.cpp
+SOURCE              WFStartupEventHolder.cpp
+SOURCE              WFStartupHandler.cpp
+SOURCE              CombinedSearchDataTypes.cpp
+SOURCE              CombinedSearchDispatcher.cpp
+
+SOURCEPATH          ..\CPP\Targets\WayFinder\symbian
+SOURCE              WFCommonErrorBlocks.cpp
+SOURCE              CellPosInformation.cpp
+SOURCE              WayfinderSymbianUiBase.cpp
+SOURCE              WFStartupCommonBlocks.cpp
+SOURCE              ResourceFileName.cpp
+SOURCE              FavoriteSyncHandler.cpp
+SOURCE              CommunicationWizardBase.cpp
+SOURCE              CSImageConverterCache.cpp
+SOURCE              PathFinder.cpp
+SOURCE              ContactBkEngine.cpp
+SOURCE              BitmapConverter.cpp
+SOURCE              WFDataHolder.cpp
+SOURCE              FavoriteSyncManager.cpp
+SOURCE              FavoriteSyncServiceProvider.cpp
+SOURCE              SymbianGeneralParamReceiver.cpp
+SOURCE              SymbianSettingsData.cpp
+
+SOURCEPATH          ..\CPP\Targets\WayFinder\symbian-r6
+SOURCE              SettingsListBox.cpp
+SOURCE              QueryDialog.cpp
+SOURCE              MMSDemo1Engine.cpp
+SOURCE              TwoEdwinControl.cpp
+SOURCE              SearchableListBoxView.cpp
+SOURCE              Dialogs.cpp
+SOURCE              GuideView.cpp
+SOURCE              EditFavoriteContainer.cpp
+SOURCE              IAPSettingItem.cpp
+SOURCE              PositionSelectView.cpp
+SOURCE              MainMenuListView.cpp
+SOURCE              SpreadWFDialogs.cpp
+SOURCE              MyDestDialog.cpp
+SOURCE              SearchableListBoxContainer.cpp
+SOURCE              GuideContainer.cpp
+SOURCE              ExitQueryDlg.cpp
+SOURCE              MyAccountView.cpp
+SOURCE              MainMenuListContainer.cpp
+SOURCE              GpsSocket.cpp
+SOURCE              ViewBase.cpp
+SOURCE              EditFavoriteView.cpp
+SOURCE              BufferArray.cpp
+SOURCE              ProgressDlg.cpp
+SOURCE              WayfinderSMSMessage.cpp
+SOURCE              WayFinderAppUi.cpp
+SOURCE              RouteData.cpp
+SOURCE              InfoView.cpp
+SOURCE              MyAccountContainer.cpp
+SOURCE              MyDestContainer.cpp
+SOURCE              WelcomeContainer.cpp
+SOURCE              PositionSelectContainer.cpp
+SOURCE              SettingsBased.cpp
+SOURCE              PedestrianPositionControl.cpp
+SOURCE              WayFinderDocument.cpp
+SOURCE              SettingsView.cpp
+SOURCE              ContactsContainer.cpp
+SOURCE              TurnPictures.cpp
+SOURCE              PreviewPopUpContent.cpp
+SOURCE              GuidePreviewPopUpContent.cpp
+SOURCE              BackgroundTextContainer.cpp
+SOURCE              SocketsBaseDialog.cpp
+SOURCE              LanguageSettingItem.cpp
+SOURCE              MapTopBorderBar.cpp
+SOURCE              wayfinder.uid.cpp
+SOURCE              CSDetailedResultView.cpp
+SOURCE              SettingsData.cpp
+SOURCE              WayFinderApp.cpp
+SOURCE              WFLMSManager.cpp
+SOURCE              CallObserver.cpp
+SOURCE              InfoContainer.cpp
+SOURCE              SocketsWrite.cpp
+SOURCE              ItineraryView.cpp
+SOURCE              MapLayersCheckBox.cpp
+SOURCE              WFLMSOpWrapper.cpp
+SOURCE              ContextPaneAnimator.cpp
+SOURCE              SettingsContainer.cpp
+SOURCE              CSMainView.cpp
+SOURCE              CoordinatesControl.cpp
+SOURCE              MapFeatureHolder.cpp
+SOURCE              CommunicationWizard.cpp
+SOURCE              ItineraryContainer.cpp
+SOURCE              IAPSearcher_old.cpp
+SOURCE              DataHolder.cpp
+SOURCE              CSCategoryResultContainer.cpp
+SOURCE              S60NavTaskGuiHandler.cpp
+SOURCE              VectorMapContainer.cpp
+SOURCE              ImageHandler.cpp
+SOURCE              ContactsView.cpp
+SOURCE              CSMainContainer.cpp
+SOURCE              GuideContainerPreviewController.cpp
+SOURCE              GuiDataStore.cpp
+SOURCE              MapView.cpp
+SOURCE              GuidePicture.cpp
+SOURCE              MyDestView.cpp
+SOURCE              DrawComponent.cpp
+SOURCE              RoamingDialog.cpp
+SOURCE              MessageHandler.cpp
+SOURCE              IniFile.cpp
+SOURCE              GpsSettingItem.cpp
+SOURCE              WelcomeView.cpp
+SOURCE              buildid.cpp
+SOURCE              SocketsConnectDialog.cpp
+SOURCE              CSCategoryResultView.cpp
+SOURCE              TimeOutErrorFilter.cpp
+SOURCE              CallNumber.cpp
+SOURCE              SocketsRead.cpp
+SOURCE              WFS60Util.cpp
+SOURCE              S60SymbianGeneralParamReceiver.cpp
+SOURCE              S60SymbianSettingsData.cpp
+SOURCE              CSDetailedResultContainer.cpp
+SOURCE              SocketsEngine.cpp
+SOURCE              S60WFViewStack.cpp
+
+
+LIBRARY              aknicon.lib
+LIBRARY              aknnotify.lib
+LIBRARY              aknskins.lib
+LIBRARY              aknskinsrv.lib
+LIBRARY              aknswallpaperutils.lib
+LIBRARY              apengine.lib
+LIBRARY              apgrfx.lib
+LIBRARY              apparc.lib
+LIBRARY              avkon.lib
+LIBRARY              bafl.lib
+LIBRARY              bitgdi.lib
+LIBRARY              bitmaptransforms.lib
+LIBRARY              biut.lib
+LIBRARY              bluetooth.lib
+LIBRARY              btdevice.lib
+LIBRARY              btextnotifiers.lib
+LIBRARY              centralrepository.lib
+LIBRARY              charconv.lib
+LIBRARY              cntmodel.lib
+LIBRARY              commdb.lib
+LIBRARY              commonengine.lib
+LIBRARY              cone.lib
+LIBRARY              edbms.lib
+LIBRARY              efsrv.lib
+LIBRARY              egul.lib
+LIBRARY              eikcoctl.lib
+LIBRARY              eikcore.lib
+LIBRARY              eikctl.lib
+LIBRARY              eikdlg.lib
+LIBRARY              eposlandmarks.lib
+LIBRARY              eposlmdbmanlib.lib
+LIBRARY              esock.lib
+LIBRARY              estlib.lib
+LIBRARY              estor.lib
+LIBRARY              etel.lib
+LIBRARY              etel3rdparty.lib
+LIBRARY              etext.lib
+LIBRARY              euser.lib
+LIBRARY              ezip.lib
+LIBRARY              ezlib.lib
+LIBRARY              fbscli.lib
+LIBRARY              fepbase.lib
+LIBRARY              gdi.lib
+LIBRARY              gsmu.lib
+LIBRARY              imageconversion.lib
+LIBRARY              imcm.lib
+LIBRARY              inetprotutil.lib
+LIBRARY              insock.lib
+LIBRARY              lbs.lib
+LIBRARY              libc.lib
+LIBRARY              libstdcpp.lib
+LIBRARY              mediaclientaudio.lib
+LIBRARY              mediaclientaudiostream.lib
+LIBRARY              mediaclientimage.lib
+LIBRARY              msgs.lib
+LIBRARY              platformenv.lib
+LIBRARY              remconcoreapi.lib
+LIBRARY              remconinterfacebase.lib
+LIBRARY              sdpagent.lib
+LIBRARY              sdpdatabase.lib
+LIBRARY              smcm.lib
+LIBRARY              sysutil.lib
+LIBRARY              ws32.lib
+
+STATICLIBRARY       CtrlHub.lib
+STATICLIBRARY       QueueSerial.lib
+STATICLIBRARY       UiCtrl.lib
+STATICLIBRARY       Destinations.lib
+STATICLIBRARY       TestShell.lib
+STATICLIBRARY       Parameter.lib
+STATICLIBRARY       NavServerCom.lib
+STATICLIBRARY       FakeNavServerCom.lib
+STATICLIBRARY       NavTask.lib
+STATICLIBRARY       GpsSirf.lib
+STATICLIBRARY       GpsTrimble.lib
+STATICLIBRARY       Simulation.lib
+STATICLIBRARY       TcpSerial.lib
+STATICLIBRARY       TcpSymbianSerial.lib
+STATICLIBRARY       GuiProt.lib
+STATICLIBRARY       Common.lib
+STATICLIBRARY       Nav2lib.lib
+//STATICLIBRARY       WABrowser.lib
+STATICLIBRARY       SupportWFLib.lib
+STATICLIBRARY       OggVorbisLib.lib
+STATICLIBRARY       GlobeMapLib.lib
+STATICLIBRARY       MapLibShared.lib
+STATICLIBRARY       MapLibSymbian.lib
+STATICLIBRARY       GlobeLib.lib
+
+OPTION CW -wchar_t on
+MACRO  _WCHAR_T_DECLARED
+LIBRARY libm.lib

@@ -1,0 +1,93 @@
+# 
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#    * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+
+# check what we're compiling on
+ifndef ARCH
+   export archdefs := -DHAVE_ARCH
+   # System type
+   unames := $(shell uname -s)
+   # Machine type
+   unamem := $(shell uname -m)
+   # Processor type
+   unamep := $(shell uname -p)
+
+   ifeq ($(unames),SunOS)
+      export ARCH_SYS = solaris
+      archdefs += -DARCH_OS_SOLARIS
+   else
+      ifeq ($(unames),Linux)
+         export ARCH_SYS = linux
+         archdefs += -DARCH_OS_LINUX
+         export ARCH_RH_RELEASE := $(shell sed -e 's/.* release \([[:digit:]\.]*\) .*/\1/g' <  /etc/redhat-release)
+         archdefs += -DARCH_OS_LINUX_RH_REL=$(ARCH_RH_RELEASE)
+      $(warning ***INFO*** ARCH_OS_LINUX_RH_REL is: $(ARCH_RH_RELEASE))
+      else
+	 ifeq ($(unames),FreeBSD)
+           export ARCH_SYS = FreeBSD
+           archdefs += -DARCH_OS_FREEBSD
+         else
+         ifeq ($(unames),CYGWIN_NT-5.0)
+            export ARCH_SYS = cygwin
+            archdefs += -DARCH_OS_CYGWIN
+         else
+	   ifeq ($(unames),Darwin)
+	      export ARCH_SYS = darwin
+              archdefs += -DARCH_OS_DARWIN
+           else
+              $(error Fatal error, unknown operating system: $(unames))
+           endif
+         endif
+         endif
+      endif
+   endif
+
+   ifeq ($(unamem),i686)
+      export ARCH_HW = i386
+      archdefs += -DARCH_HW_I386
+   else
+      ifeq ($(unamem),i86pc)
+         export ARCH_HW = i386
+      else
+         ifeq ($(unamem),sparc)
+            export ARCH_HW = sparc
+            archdefs += -DARCH_HW_SPARC
+         else
+            ifeq ($(unamem),i386)
+               export ARCH_HW = i386
+               archdefs += -DARCH_HW_I386
+            else
+	       ifeq ($(unamep),powerpc)
+                  export ARCH_HW = ppc
+                  archdefs += -DARCH_HW_PPC
+	       else
+	       ifeq ($(unamep),x86_64)
+                  export ARCH_HW = x86_64
+                  archdefs += -DARCH_HW_X86_64
+	       else
+                  $(error Fatal error, unknown machine type: $(unamem))
+               endif
+               endif
+            endif
+         endif
+      endif
+   endif
+
+   export ARCH = $(ARCH_SYS)-$(ARCH_HW)
+
+   ifneq ($(ARCH), linux-i386)
+   export LIBSUFFIX = -$(ARCH)
+   endif
+
+   $(warning ***INFO*** Building for $(ARCH))
+
+endif

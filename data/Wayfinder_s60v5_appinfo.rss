@@ -1,0 +1,51 @@
+#include "nav2defines.h"
+/*
+ *    $Id: Wayfinder_s60v3_appinfo.rss,v 1.2 2006-07-25 09:03:48 petersv Exp $
+ *
+ *    Copyright, Wayfinder Systems AB, 2002, 2003
+ */
+
+/*
+*  Description:
+*     RSS for creating the aif file for WayFinder.
+*/
+
+
+#ifdef NAV2_CLIENT_SERIES60_V3
+
+# include "WayFinderSettings.h"
+# include "master.loc"
+# include <appinfo.rh>
+// This file localise the applications icons and caption
+RESOURCE LOCALISABLE_APP_INFO r_lai
+{
+   // The short caption text is defined in the rls file
+//    short_caption = STRING_r_wayfinder_short_caption;
+//   short_caption = qtn_app_caption_string;
+   short_caption = APPLICATION_VISIBLE_NAME;
+   caption_and_icon = 
+   {
+      CAPTION_AND_ICON_INFO
+      {
+         // The caption text is defined in the rls file
+//          caption = STRING_r_wayfinder_caption;
+         //caption = qtn_app_caption_string;
+         caption = APPLICATION_VISIBLE_NAME;
+         // Icons are used to represent applications in the 
+         // application launcher and application title bar.
+         // The number_of_icons value identifies how many icons 
+         // that exist in the icon_file.
+         number_of_icons = 1; 
+         icon_file = "\\Resource\\Apps\\"APPLICATION_DIR_NAME"\\"APPLICATION_DIR_NAME"_aif.mif";
+         // If application icon should be a bitmap
+         // number_of_icons = 2; //2 for BMP
+         // icon_file = STRING_r_wayfinder_icon_file;
+         // Note: in S60 2nd Edition FP3 the path is 
+         // "\\System\\Apps\\Myapp\\Myapp_aif.mif" 
+      }
+   };							
+}
+
+#endif
+
+// End of File

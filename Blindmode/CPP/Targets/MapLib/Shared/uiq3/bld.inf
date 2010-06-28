@@ -1,0 +1,17 @@
+
+PRJ_MMPFILES
+
+MapLibShared.mmp
+
+PRJ_PLATFORMS
+// Specify the platforms your component needs to be built for here.
+WINSCW
+
+// Remove comment if you want to compile for ARMV5.
+// You need a GCC or GCCE based compiler for building for ARM-based targets.
+
+// GCC based compiler
+// ARMV5
+
+// GCCE based compiler
+GCCE

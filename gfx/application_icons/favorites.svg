@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100.077" height="99.824" viewBox="0 0 100.077 99.824">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="50.3955" y1="7.6836" x2="50.3955" y2="67.3931">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="0.0056" style="stop-color:#FFFFFF"/>
+<stop offset="0.1468" style="stop-color:#FFFEFB"/>
+<stop offset="0.2796" style="stop-color:#FFFAF0"/>
+<stop offset="0.4091" style="stop-color:#FFF4DD"/>
+<stop offset="0.5357" style="stop-color:#FFECC2"/>
+<stop offset="0.6067" style="stop-color:#FFE6B0"/>
+<stop offset="1" style="stop-color:#FFE62B"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M50.751,67.393c6.075,0,17.453-2.109,23.516-6.277c5.407-3.718,15.944-12.735,17.934-15.277     c2.776-3.549,2.138-6.081,0.212-7.112c-6.18-3.303-22.142-1.749-25.431-5.078C63.23,29.854,57.214,7.684,51.148,7.684     c-5.963,0-12.893,23.019-15.979,26.138c-1.975,1.994-12.639-0.174-23.66,1.835c-7.103,1.296-4.185,8.668-4.27,8.507     c0,0,2.551,2.486,3.681,3.628c1.13,1.144,4.509,6.185,14.514,12.86C34.774,66.885,44.368,67.393,50.751,67.393z"/>
+<path fill="#B04400" d="M1.003,42.751c0,0-4.599-8.791,5.9-10.451c12.691-2.009,22.98-0.214,25.245-2.494     C35.688,26.241,44.415,0,51.258,0c6.959,0,13.859,24.997,18.167,29.33c3.775,3.799,21.714,2.377,28.194,6.773     c2.075,1.41,4.456,6.142-0.354,11.397c-8.84,9.651-15.341,15.211-17.017,17.545c-1.397,1.945,6.871,27.462,2.741,32.686     c-2.392,3.026-8.82,2.635-13.49-0.304c-4.719-2.969-10.514-7.949-13.879-9.435c-1.725-0.76-4.226-2.257-9.552,0.358     c-3.54,1.74-14.981,9.857-18.875,10.922c-2.732,0.752-5.308,0.836-7.315-1.183c-2.711-2.734-2.359-7.363-2.359-11.88     c0-4.51,4.248-18.642,2.715-21.017C19.05,63.363,5.132,47.856,3.835,46.551C2.536,45.241,1.003,42.751,1.003,42.751z"/>
+<radialGradient id="XMLID_5_" cx="50.2178" cy="49.5103" r="45.0807" gradientTransform="matrix(1 0 0 1.0257 0 0.1009)" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#FFE800"/>
+<stop offset="0.1067" style="stop-color:#FFE800"/>
+<stop offset="0.2397" style="stop-color:#FEE102"/>
+<stop offset="0.4352" style="stop-color:#FCCD08"/>
+<stop offset="0.6693" style="stop-color:#F9AD11"/>
+<stop offset="0.9312" style="stop-color:#F5801D"/>
+<stop offset="1" style="stop-color:#F47321"/>
+</radialGradient>
+<path fill="url(#XMLID_5_)" d="M5.369,43.944c0,0-4.509-7.959,4.955-9.462c11.442-1.824,21.696,0.103,23.735-1.96     C37.25,29.292,45.115,5.523,51.283,5.523c6.272,0,12.494,22.643,16.374,26.566c3.402,3.442,21.159,2.152,27.001,6.135     c1.87,1.275,2.148,4.053-0.205,7.485c-0.884,1.291-4.342,5.233-7.743,9.011c-3.879,4.315-7.959,8.349-9.296,9.72     c-1.503,1.54,5.153,25.668,3.448,29.607c-1.509,3.485-7.952,2.386-12.159-0.278c-4.255-2.685-10.455-8.273-13.486-9.618     c-1.558-0.693-3.809-2.047-8.611,0.32c-3.191,1.575-14.216,10.182-17.726,11.149c-2.462,0.677-4.786,0.754-6.592-1.075     c-2.446-2.472-2.535-8.033-1.882-12.067c0.791-4.881,4.296-15.751,2.915-17.903C22.255,62.916,9.709,48.87,8.539,47.687     C7.372,46.505,5.369,43.944,5.369,43.944z"/>
+<linearGradient id="XMLID_6_" gradientUnits="userSpaceOnUse" x1="50.3213" y1="6.2061" x2="50.3213" y2="67.9575">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="0.0056" style="stop-color:#FFFFFF"/>
+<stop offset="0.1468" style="stop-color:#FFFEFB"/>
+<stop offset="0.2796" style="stop-color:#FFFAF0"/>
+<stop offset="0.4091" style="stop-color:#FFF4DD"/>
+<stop offset="0.5357" style="stop-color:#FFECC2"/>
+<stop offset="0.6067" style="stop-color:#FFE6B0"/>
+<stop offset="1" style="stop-color:#FFE62B"/>
+</linearGradient>
+<path fill="url(#XMLID_6_)" d="M50.756,67.958c6.283,0,18.05-2.182,24.319-6.492c5.593-3.845,16.49-13.17,18.547-15.799     c2.872-3.67,2.211-6.289,0.22-7.355c-6.392-3.416-22.899-1.809-26.301-5.251C63.662,29.135,57.439,6.206,51.167,6.206     c-6.167,0-13.334,23.806-16.525,27.032c-2.042,2.063-13.037-0.169-24.435,1.908c-8.255,1.507-4.054,8.798-4.054,8.798     s2.243,2.561,3.412,3.743c1.168,1.183,4.664,6.396,15.01,13.3C34.233,67.432,44.154,67.958,50.756,67.958z"/>
+</g>
+</g>
+</switch>
+</svg>

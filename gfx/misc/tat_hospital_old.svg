@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40.014" height="40" viewBox="0 0 40.014 40">
+<g>
+<path fill="#474747" d="M37.01,0.007H22.99c-1.658,0-3.003,1.343-3.003,2.998v9.993l-0.001,6.995l5.752-3.998H37.01   c1.66,0,3.004-1.342,3.004-2.997V3.005C40.014,1.349,38.67,0.007,37.01,0.007z"/>
+<image width="20" height="18" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsSAAALEgHS3X78AAAA BGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABqSURB VHjazNA7CoAwFETRvOSZ79YEcaUiuL8YRCtTxVt424FTjJjWth/VAK3LLEJhT2qtNf8GnXMsqIqD yoJ+8jDoJxYMIbBgjDgYWTCnBIOZA0spIrXVG6U1gr7AUagLfsWu6h314ynAALAKHC6dxi69AAAA AElFTkSuQmCC" transform="matrix(1 0 0 1 20 1)" preserveAspectRatio="xMidYMid meet"/>
+<image width="19" height="4" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAECAYAAABsgwTvAAAACXBIWXMAAAsSAAALEgHS3X78AAAA BGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAuSURB VHjaYvwPBAxUAIwg8P79B6oYBgIs7z98oIpBSooKjCwfPnyklsMYAAIMAM4kDdzEcg7vAAAAAElF TkSuQmCC" transform="matrix(1 0 0 1 21 1)" preserveAspectRatio="xMidYMid meet"/>
+<path fill="#FFFFFF" d="M31.002,9.601"/>
+<path fill="#FFFFFF" d="M31.002,11.998"/>
+<image width="14" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAACXBIWXMAAAsSAAALEgHS3X78AAAA BGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABUSURB VHjaYmFAA/8dGP4zYAGMBxgYkfks6Ap+/GYgCmBo/E62xl/EaWS8o43dTwRtJNZPGBqJdRqmRnJt JNepjOgCGwWwB5b/BwIJ4DutEwBAgAEAXWIZtIRW72UAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 23 2)" preserveAspectRatio="xMidYMid meet"/>
+</g>
+</svg>

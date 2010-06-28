@@ -1,0 +1,290 @@
+Algerie
+Angola
+Benin
+Botswana
+Burkina Faso
+Burundi
+Kamerun
+Kapp Verde
+Den sentralafrikanske republikken
+Tsjad
+Komorene
+Kongo
+Elfenbenskysten
+Kongo
+Djibouti
+Egypt
+Ekvatorial-Guinea
+Eritrea
+Etiopia
+Gabon
+Gambia
+Ghana
+Guinea-Bissau
+Guinea
+Kenya
+Lesotho
+Liberia
+Libya
+Madagaskar
+Malawi
+Mali
+Mauritania
+Mauritius
+Mayotte
+Marokko
+Mosambik
+Namibia
+Niger
+Nigeria
+Reunion
+Rwanda
+St. Helena
+São Tomé og Príncipe
+Senegal
+Seychellene
+Sierra Leone
+Somalia
+Sør-Afrika
+Spania
+Sudan
+Swaziland
+Togo
+Tunisia
+Uganda
+Tanzania
+Vest-Sahara
+Zambia
+Zimbabwe
+Afghanistan
+Australia
+Bahrain
+Bangladesh
+Bhutan
+Brunei Darussalam
+Kambodsja
+Kina
+Nord-Korea
+Fiji
+Guam
+Hongkong
+India
+Indonesia
+Iran
+Irak
+Israel
+Japan
+Jordan
+Kasahkstan
+Kiribati
+Kuwait
+Kirgisistan
+Laos
+Libanon
+Macao
+Malaysia
+Maldivene
+Marshalløyene
+Mikronesia
+Mongolia
+Myanmar
+Nauru
+Nepal
+Ny Caledonia
+New Zealand
+Antarktis
+Nord-Marianene
+Okkupert palestinsk territorium
+Oman
+Pakistan
+Palau
+Papua Ny-Guinea
+Filippinene
+Qatar
+Sør-Korea
+Russland
+Saudi-Arabia
+Singapore
+Salomonøyene
+Sri Lanka
+Syria
+Taiwan
+Tadsjikistan
+Thailand
+Timor-Leste
+Tonga
+Turkmenistan
+Tuvalu
+Forente arabiske emirater
+De forente staters mindre utenforliggende øyer
+Usbekistan
+Wallis- og Futunaøyene
+Vanuatu
+Vietnam
+Yemen
+Aland Islands
+Albania
+Andorra
+Armenia
+Østerrike
+Aserbajdsjan
+Hviterussland
+Belgia
+Bosnia og Herzegovina
+Bulgaria
+Channel Islands
+Kroatia
+Kypros
+Tsjekkia
+Danmark
+Estland
+Færøyene
+Finland
+Frankrike
+Georgia
+Tyskland
+Gibraltar
+Hellas
+Ungarn
+Island
+Irland
+Isle of Man
+Italia
+Latvia
+Liechtenstein
+Litauen
+Luxemburg
+Malta
+Monaco
+Nederland
+Norge
+Polen
+Portugal
+Moldova
+Romania
+Russland
+San Marino
+Serbia og Montenegro
+Slovakia
+Slovenia
+Spania
+Svalbard og Jan Mayen
+Sverige
+Sveits
+Makedonia
+Tyrkia
+Ukraina
+Storbritannia
+Vatican
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Canada
+Colorado
+Connecticut
+Delaware
+District of Columbia
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+New Hampshire
+New Jersey
+New Mexico
+New York
+Nevada
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Washington
+Vermont
+West Virginia
+Virginia
+Wisconsin
+Wyoming
+Antarktis
+Grønland
+Amerikansk Samoa
+Anguilla
+Antigua og Barbuda
+Argentina
+Aruba
+Bahamas
+Barbados
+Belize
+Bermuda
+Bolivia
+Brasil
+Jomfruøyene (Br.)
+Caymanøyene
+Chile
+Colombia
+Cookøyene
+Costa Rica
+Cuba
+Dominica
+Den dominikanske republikken
+Ecuador
+El Salvador
+Falklandsøyene
+Frankrike
+Fransk Guyana
+Fransk Polynesia
+Grenada
+Guadeloupe
+Guatemala
+Guyana
+Haiti
+Honduras
+Jamaica
+Martinique
+Mexico
+Montserrat
+Nederlandske Antiller
+New Zealand
+Nicaragua
+Niue
+Panama
+Paraguay
+Peru
+Pitcairn
+Puerto Rico
+St. Kitts og Nevis
+St. Lucia
+Saint-Pierre-et-Miquelon
+St. Vincent og Grenadinene
+Samoa
+Surinam
+Tokelau
+Trinidad og Tobago
+Turks- og Caicosøyene
+De forente staters mindre utenforliggende øyer
+Jomfruøyene (USA)
+Uruguay
+Venezuela

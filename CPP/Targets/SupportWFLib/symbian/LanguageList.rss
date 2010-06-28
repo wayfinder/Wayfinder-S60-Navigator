@@ -1,0 +1,895 @@
+RESOURCE ARRAY r_wayfinder_language_list_new
+    {
+    items =
+        {
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = ELangSystemDefault;
+            fullname = qtn_settings_language_use_phone_text;
+            isoname = "XX";
+            symbianname = "XX";
+            nav2value = 0;
+            },
+         WF_LANGUAGE_LISTELEMENT
+            {
+            value = 1;
+            fullname = "English";
+            isoname = "EN";
+            symbianname = "EN";
+            nav2value = 0;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 2;
+            fullname = "Français";
+            isoname = "FR";
+            symbianname = "FR";
+            nav2value = 9;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 3;
+            fullname = "Deutsch";
+            isoname = "DE";
+            symbianname = "GE";
+            nav2value = 2;
+            },
+       WF_LANGUAGE_LISTELEMENT
+            {
+            value = 4;
+            fullname = "Español";
+            isoname = "ES";
+            symbianname = "SP";
+            nav2value = 8;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 5;
+            fullname = "Italiano";
+            isoname = "IT";
+            symbianname = "IT";
+            nav2value = 6;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 6;
+            fullname = "Svenska";
+            isoname = "SV";
+            symbianname = "SW";
+            nav2value = 1;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 7;
+            fullname = "Dansk";
+            isoname = "DA";
+            symbianname = "DA";
+            nav2value = 3;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 8;
+            fullname = "Norsk";
+            isoname = "NO";
+            symbianname = "NO";
+            nav2value = 5;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 9;
+            fullname = "Suomi";
+            isoname = "FI";
+            symbianname = "FI";
+            nav2value = 4;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 10;
+            fullname = "US English";
+            isoname = "US";
+            symbianname = "AM";
+            nav2value = 13;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 11;
+            fullname = "Swiss French";
+            isoname = "FR";
+            symbianname = "SF";
+            nav2value = 22;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 12;
+            fullname = "Swiss German";
+            isoname = "DE";
+            symbianname = "SG";
+            nav2value = 23;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 13;
+            fullname = "Portuguê";
+            isoname = "PT";
+            symbianname = "PO";
+            nav2value = 11;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 14;
+            fullname = "Turkish";
+            isoname = "TR";
+            symbianname = "TU";
+            nav2value = 20;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 15;
+            fullname = "Icelandic";
+            isoname = "IS";
+            symbianname = "IC";
+            nav2value = 24;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 16;
+            fullname = "Pусский";
+            isoname = "RU";
+            symbianname = "RU";
+            nav2value = 18;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 17;
+            fullname = "Hungarian";
+            isoname = "HU";
+            symbianname = "HU";
+            nav2value = 14;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 18;
+            fullname = "Nederlands";
+            isoname = "NL";
+            symbianname = "DU";
+            nav2value = 7;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 19;
+            fullname = "Belgian Flemish";
+            isoname = "FR";
+            symbianname = "BL";
+            nav2value = 25;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 20;
+            fullname = "Australian English";
+            isoname = "EN";
+            symbianname = "AU";
+            nav2value = 26;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 21;
+            fullname = "Belgian French";
+            isoname = "FR";
+            symbianname = "BF";
+            nav2value = 27;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 22;
+            fullname = "Austrian German";
+            isoname = "DE";
+            symbianname = "AS";
+            nav2value = 28;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 23;
+            fullname = "New Zealand English";
+            isoname = "EN";
+            symbianname = "NZ";
+            nav2value = 29;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 24;
+            fullname = "International French";
+            isoname = "FR";
+            symbianname = "IF";
+            nav2value = 9;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 25;
+            fullname = "Čeština";
+            isoname = "CS";
+            symbianname = "CS";
+            nav2value = 12;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 26;
+            fullname = "Slovak";
+            isoname = "SK";
+            symbianname = "SK";
+            nav2value = 17;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 27;
+            fullname = "Polski";
+            isoname = "PL";
+            symbianname = "PL";
+            nav2value = 16;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 28;
+            fullname = "Slovenščina";
+            isoname = "SL";
+            symbianname = "SL";
+            nav2value = 19;
+            }, 
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 29;
+            fullname = "Chinese (Taiwan)";
+            isoname = "ZH";
+            symbianname = "TC";
+            nav2value = 30;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 30;
+            fullname = "Chinese (Hong Kong)";
+            isoname = "ZH";
+            symbianname = "HK";
+            nav2value = 31;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 31;
+            fullname = "Chinese (Peoples Republic of China)";
+            isoname = "ZH";
+            symbianname = "ZH";
+            nav2value = 32;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 32;
+            fullname = "Japanese";
+            isoname = "JA";
+            symbianname = "JA";
+            nav2value = 33;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 33;
+            fullname = "Thai";
+            isoname = "TH";
+            symbianname = "TH";
+            nav2value = 34;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 34;
+            fullname = "Afrikaans";
+            isoname = "AF";
+            symbianname = "AF";
+            nav2value = 35;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 35;
+            fullname = "Albanian";
+            isoname = "SQ";
+            symbianname = "SQ";
+            nav2value = 36;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 36;
+            fullname = "Amharic";
+            isoname = "AM";
+            symbianname = "AH";
+            nav2value = 37;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 37;
+            fullname = "Arabic";
+            isoname = "AR";
+            symbianname = "AR";
+            nav2value = 21;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 38;
+            fullname = "Armenian";
+            isoname = "HY";
+            symbianname = "HY";
+            nav2value = 38;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 39;
+            fullname = "Tagalog";
+            isoname = "TL";
+            symbianname = "TL";
+            nav2value = 39;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 40;
+            fullname = "Belarusian";
+            isoname = "BE";
+            symbianname = "BE";
+            nav2value = 40;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 41;
+            fullname = "Bengali";
+            isoname = "BN";
+            symbianname = "BN";
+            nav2value = 41;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 42;
+            fullname = "Bulgarian";
+            isoname = "BG";
+            symbianname = "BG";
+            nav2value = 42;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 43;
+            fullname = "Burmese";
+            isoname = "MY";
+            symbianname = "MY";
+            nav2value = 43;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 44;
+            fullname = "Catalan";
+            isoname = "CA";
+            symbianname = "CA";
+            nav2value = 44;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 45;
+            fullname = "Croatian";
+            isoname = "HR";
+            symbianname = "HR";
+            nav2value = 45;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 46;
+            fullname = "Canadian English";
+            isoname = "EN";
+            symbianname = "CE";
+            nav2value = 46;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 47;
+            fullname = "English (International)";
+            isoname = "EN";
+            symbianname = "IE";
+            nav2value = 0;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 48;
+            fullname = "South African English";
+            isoname = "EN";
+            symbianname = "SA";
+            nav2value = 47;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 49;
+            fullname = "Estonian";
+            isoname = "ET";
+            symbianname = "ET";
+            nav2value = 48;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 50;
+            fullname = "Farsi";
+            isoname = "FA";
+            symbianname = "FA";
+            nav2value = 49;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 51;
+            fullname = "Canadian French";
+            isoname = "FR";
+            symbianname = "CF";
+            nav2value = 50;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 52;
+            fullname = "Gaelic";
+            isoname = "GD";
+            symbianname = "GD";
+            nav2value = 51;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 53;
+            fullname = "Georgian";
+            isoname = "KA";
+            symbianname = "KA";
+            nav2value = 52;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 54;
+            fullname = "Ελληνικά";
+            isoname = "EL";
+            symbianname = "EL";
+            nav2value = 15;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 55;
+            fullname = "Greek (Cyprus)";
+            isoname = "EL";
+            symbianname = "EL";
+            nav2value = 53;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 56;
+            fullname = "Gujarati";
+            isoname = "";
+            symbianname = "GU";
+            nav2value = 54;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 57;
+            fullname = "Hebrew";
+            isoname = "HE";
+            symbianname = "HE";
+            nav2value = 55;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 58;
+            fullname = "Hindi";
+            isoname = "HI";
+            symbianname = "HI";
+            nav2value = 56;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 59;
+            fullname = "Indonesian";
+            isoname = "ID";
+            symbianname = "IN";
+            nav2value = 57;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 60;
+            fullname = "Irish";
+            isoname = "GA";
+            symbianname = "GA";
+            nav2value = 58;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 61;
+            fullname = "Swiss Italian";
+            isoname = "IT";
+            symbianname = "SZ";
+            nav2value = 59;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 62;
+            fullname = "Kannada";
+            isoname = "KN";
+            symbianname = "KN";
+            nav2value = 60;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 63;
+            fullname = "Kazakh";
+            isoname = "KK";
+            symbianname = "KK";
+            nav2value = 61;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 64;
+            fullname = "Khmer";
+            isoname = "KM";
+            symbianname = "KM";
+            nav2value = 62;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 65;
+            fullname = "Korean";
+            isoname = "KO";
+            symbianname = "KO";
+            nav2value = 63;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 66;
+            fullname = "Lao";
+            isoname = "LO";
+            symbianname = "LO";
+            nav2value = 64;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 67;
+            fullname = "Latvian";
+            isoname = "LV";
+            symbianname = "LV";
+            nav2value = 65;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 68;
+            fullname = "Lithuanian";
+            isoname = "LT";
+            symbianname = "LT";
+            nav2value = 66;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 69;
+            fullname = "Macedonian";
+            isoname = "MK";
+            symbianname = "MK";
+            nav2value = 67;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 70;
+            fullname = "Malay";
+            isoname = "MS";
+            symbianname = "MS";
+            nav2value = 68;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 71;
+            fullname = "Malayalam";
+            isoname = "ML";
+            symbianname = "ML";
+            nav2value = 69;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 72;
+            fullname = "Marathi";
+            isoname = "MR";
+            symbianname = "MR";
+            nav2value = 70;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 73;
+            fullname = "Moldovian";
+            isoname = "MO";
+            symbianname = "MO";
+            nav2value = 71;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 74;
+            fullname = "Mongolian";
+            isoname = "MN";
+            symbianname = "MN";
+            nav2value = 72;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 75;
+            fullname = "Nynorsk";
+            isoname = "NN";
+            symbianname = "NN";
+            nav2value = 73;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 76;
+            fullname = "Brazilian Portuguese";
+            isoname = "PT";
+            symbianname = "BP";
+            nav2value = 74;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 77;
+            fullname = "Punjabi";
+            isoname = "PA";
+            symbianname = "PA";
+            nav2value = 75;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 78;
+            fullname = "Romanian";
+            isoname = "RO";
+            symbianname = "RO";
+            nav2value = 76;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 79;
+            fullname = "Serbian";
+            isoname = "SR";
+            symbianname = "SR";
+            nav2value = 77;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 80;
+            fullname = "Sinhalese";
+            isoname = "SI";
+            symbianname = "SI";
+            nav2value = 78;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 81;
+            fullname = "Somali";
+            isoname = "SO";
+            symbianname = "SO";
+            nav2value = 79;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 82;
+            fullname = "Spanish (International)";
+            isoname = "ES";
+            symbianname = "OS";
+            nav2value = 8;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 83;
+            fullname = "Latin American Spanish";
+            isoname = "ES";
+            symbianname = "LS";
+            nav2value = 80;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 84;
+            fullname = "Swahili";
+            isoname = "SW";
+            symbianname = "SH";
+            nav2value = 81;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 85;
+            fullname = "Finlandssvenska";
+            isoname = "SV";
+            symbianname = "FS";
+            nav2value = 82;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 86;
+            fullname = "Reserved for future use";
+            isoname = "XX";
+            symbianname = "NA";
+            nav2value = 0;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 87;
+            fullname = "Tamil";
+            isoname = "TA";
+            symbianname = "TA";
+            nav2value = 83;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 88;
+            fullname = "Telugu";
+            isoname = "TE";
+            symbianname = "TE";
+            nav2value = 84;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 89;
+            fullname = "Tibetan";
+            isoname = "BO";
+            symbianname = "BO";
+            nav2value = 85;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 90;
+            fullname = "Tigrinya";
+            isoname = "TI";
+            symbianname = "TI";
+            nav2value = 86;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 91;
+            fullname = "Cyprus Turkish";
+            isoname = "TR";
+            symbianname = "CT";
+            nav2value = 87;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 92;
+            fullname = "Turkmen";
+            isoname = "TK";
+            symbianname = "TK";
+            nav2value = 88;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 93;
+            fullname = "Ukrainian";
+            isoname = "UK";
+            symbianname = "UK";
+            nav2value = 89;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 94;
+            fullname = "Urdu";
+            isoname = "UR";
+            symbianname = "UR";
+            nav2value = 90;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 95;
+            fullname = "Reserved for future use";
+            isoname = "XX";
+            symbianname = "NA";
+            nav2value = 0;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 96;
+            fullname = "Vietnamese";
+            isoname = "";
+            symbianname = "VI";
+            nav2value = 91;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 97;
+            fullname = "Welsh";
+            isoname = "CY";
+            symbianname = "CY";
+            nav2value = 10;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 98;
+            fullname = "Zulu";
+            isoname = "ZU";
+            symbianname = "ZU";
+            nav2value = 92;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 99;
+            fullname = "Other";
+            isoname = "EN";
+            symbianname = "NA";
+            nav2value = 0;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 100;
+            fullname = "Manufacturer English";
+            isoname = "EN";
+            symbianname = "EN";
+            nav2value = 0;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 101;
+            fullname = "Sesotho";
+            isoname = "ST";
+            symbianname = "ST";
+            nav2value = 93;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 102;
+            fullname = "Basque";
+            isoname = "EU";
+            symbianname = "EU";
+            nav2value = 94;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 103;
+            fullname = "Galician";
+            isoname = "GL";
+            symbianname = "GL";
+            nav2value = 95;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 129;
+            fullname = "English Asia Pacific";
+            isoname = "EN";
+            symbianname = "EA";
+            nav2value = 96;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 157;
+            fullname = "English Taiwan";
+            isoname = "EN";
+            symbianname = "YW";
+            nav2value = 97;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 158;
+            fullname = "English Hong Kong";
+            isoname = "EN";
+            symbianname = "YH";
+            nav2value = 98;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 159;
+            fullname = "English China";
+            isoname = "EN";
+            symbianname = "YP";
+            nav2value = 99;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 160;
+            fullname = "English Japan";
+            isoname = "EN";
+            symbianname = "YJ";
+            nav2value = 100;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 161;
+            fullname = "English Thailand";
+            isoname = "EN";
+            symbianname = "YT";
+            nav2value = 101;
+            },
+        WF_LANGUAGE_LISTELEMENT
+            {
+            value = 326;
+            fullname = "Malay Asia-Pacific";
+            isoname = "EN";
+            symbianname = "MA";
+            nav2value = 102;
+            }
+        };
+    }
+

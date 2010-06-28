@@ -1,0 +1,38 @@
+// WAYFINDER.RH
+//
+//
+
+STRUCT COORDINATESCONTROL
+	{
+	WORD top = 0;
+	WORD left = 0;
+	WORD bottom = 50;
+	WORD right = 100;
+	}
+
+STRUCT NAMEDESCRIPTIONCONTROL
+	{
+	WORD top = 0;
+	WORD left = 0;
+	WORD bottom = 50;
+	WORD right = 150;
+	}
+
+STRUCT CATEGORYALIASCONTROL
+	{
+	WORD top = 0;
+	WORD left = 0;
+	WORD bottom = 50;
+	WORD right = 150;
+	}
+
+STRUCT PICTURECONTROL
+	{
+	WORD top = 0;
+	WORD left = 0;
+	WORD bottom = 50;
+	WORD right = 150;
+	}
+
+
+

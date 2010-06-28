@@ -1,0 +1,37 @@
+TARGET		OggVorbisLib.lib
+TARGETTYPE	LIB
+
+SRCDBG
+
+MACRO NAV2_CLIENT_UIQ3
+
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE ..\..\..\include\symbian-r6\STLport-4.5.1\stlport
+SYSTEMINCLUDE ..\..\..\arch-include\symbian-r6
+
+USERINCLUDE ..\symbian\tremor
+USERINCLUDE ..\symbian\tremor\vorbis
+USERINCLUDE ..\symbian\oggvorbisfile
+USERINCLUDE ..\..\..\include\symbian-r6
+
+
+SOURCEPATH	..\symbian\tremor
+SOURCE  bitwise.cpp
+SOURCE  codebook.cpp
+SOURCE  floor1.cpp
+SOURCE  info.cpp
+SOURCE  mapping0.cpp
+SOURCE  registry.cpp
+SOURCE  sharedbook.cpp
+SOURCE  vorbisfile.cpp
+SOURCE  block.cpp 
+SOURCE  floor0.cpp 
+SOURCE  framing.cpp 
+SOURCE  mdct.cpp 
+SOURCE  res012.cpp 
+SOURCE  synthesis.cpp 
+SOURCE  window.cpp
+
+SOURCEPATH	..\symbian\oggvorbisfile
+SOURCE  leavealloc.cpp 

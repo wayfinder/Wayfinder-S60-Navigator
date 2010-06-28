@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="19" viewBox="0 0 20 19">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<rect x="3" fill="#004585" width="14" height="11"/>
+<linearGradient id="XMLID_5_" gradientUnits="userSpaceOnUse" x1="10.0005" y1="9.9995" x2="10.0005" y2="1">
+<stop offset="0" style="stop-color:#5EA8FF"/>
+<stop offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<rect x="4" y="1" fill="url(#XMLID_5_)" width="12" height="9"/>
+<linearGradient id="XMLID_6_" gradientUnits="userSpaceOnUse" x1="9.9995" y1="2" x2="9.9995" y2="9">
+<stop offset="0" style="stop-color:#66A6FF"/>
+<stop offset="0.8989" style="stop-color:#004D8A"/>
+<stop offset="1" style="stop-color:#004D8A"/>
+</linearGradient>
+<path fill="url(#XMLID_6_)" d="M5,2v1h10V2H5z M11,4H5v1h6V4z M5,9h6V8H5V9z M5,7h8V6H5V7z"/>
+<path d="M18,10H2c-1.104,0-2,0.896-2,2v5c0,1.104,0.896,2,2,2h16c1.104,0,2-0.896,2-2v-5     C20,10.896,19.104,10,18,10z"/>
+<linearGradient id="XMLID_7_" gradientUnits="userSpaceOnUse" x1="9.9995" y1="11.0977" x2="9.9995" y2="17.9464">
+<stop offset="0" style="stop-color:#858585"/>
+<stop offset="1" style="stop-color:#FAFAFA"/>
+</linearGradient>
+<path fill="url(#XMLID_7_)" d="M18,11H2c-0.553,0-1,0.447-1,1v5c0,0.553,0.447,1,1,1h16c0.553,0,1-0.447,1-1v-5     C19,11.447,18.553,11,18,11z"/>
+<linearGradient id="XMLID_8_" gradientUnits="userSpaceOnUse" x1="10.0005" y1="13" x2="10.0005" y2="11">
+<stop offset="0" style="stop-color:#B8B8B8"/>
+<stop offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<path fill="url(#XMLID_8_)" d="M18,11H2c-0.552,0-1,0.447-1,1s0.448,1,1,1h16c0.553,0,1-0.447,1-1     S18.553,11,18,11z"/>
+<rect x="3" y="16" width="14" height="1"/>
+<path d="M16.5,12h-1c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h1c0.276,0,0.5-0.224,0.5-0.5     S16.776,12,16.5,12z"/>
+<path d="M13.5,12h-1c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h1c0.276,0,0.5-0.224,0.5-0.5     S13.776,12,13.5,12z"/>
+</g>
+</g>
+</switch>
+</svg>

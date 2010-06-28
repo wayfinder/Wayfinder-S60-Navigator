@@ -1,0 +1,290 @@
+Algeriet
+Angola
+Benin
+Botswana
+Burkina Faso
+Burundi
+Kamerun
+Kap Verde
+Centralafrikanska Republiken
+Tchad
+Comorerna
+Kongo
+Elfenbenskusten
+Demokratiska Republiken Kongo
+Djibouti
+Egypten
+Ekvatorialguinea
+Eritrea
+Etiopien
+Gabon
+Gambia
+Ghana
+Guinea-Bissau
+Guinea
+Kenya
+Lesotho
+Liberia
+Libyen
+Madagaskar
+Malawi
+Mali
+Mauretanien
+Mauritius
+Mayotte
+Marocko
+Moçambique
+Namibia
+Niger
+Nigeria
+Réunion
+Rwanda
+S:t Helena
+São Tomé och Principe
+Senegal
+Seychellerna
+Sierra Leone
+Somalia
+Sydafrika
+Spanien
+Sudan
+Swaziland
+Togo
+Tunisien
+Uganda
+Tanzania
+Västra Sahara
+Zambia
+Zimbabwe
+Afghanistan
+Australien
+Bahrain
+Bangladesh
+Bhutan
+Brunei Darussalam
+Kambodja
+Kina
+Nordkorea
+Fiji
+Guam
+Hong Kong
+Indien
+Indonesien
+Iran
+Irak
+Israel
+Japan
+Jordanien
+Kazakstan
+Kiribati
+Kuwait
+Kirgizistan
+Laos
+Libanon
+Macao
+Malaysia
+Maldiverna
+Marshallöarna
+Mikronesien
+Mongoliet
+Myanmar
+Nauru
+Nepal
+Nya Kaledonien
+Nya Zeeland
+Antarktis
+Norra Marianaöarna
+Ockuperade Palestina
+Oman
+Pakistan
+Palau
+Papua New Guinea
+Filippinerna
+Qatar
+Sydkorea
+Ryssland
+Saudiarabien
+Singapore
+Salomonöarna
+Sri Lanka
+Syrien
+Taiwan
+Tadzjikistan
+Thailand
+Timor-Leste
+Tonga
+Turkmenistan
+Tuvalu
+Förenade Arabemiraten
+Mindre öar utanför USA 
+Uzbekistan
+Wallis och Futunaöarna
+Vanuatu
+Vietnam
+Yemen
+Aland Islands
+Albanien
+Andorra
+Armenien
+Österrike
+Azerbajdzjan
+Vitryssland
+Belgien
+Bosnien-Hercegovina
+Bulgarien
+Channel Islands
+Kroatien
+Cypern
+Tjeckien
+Danmark
+Estland
+Färöarna
+Finland
+Frankrike
+Georgien
+Tyskland
+Gibraltar
+Grekland
+Ungern
+Island
+Irland
+Isle of Man
+Italien
+Lettland
+Liechtenstein
+Litauen
+Luxemburg
+Malta
+Monaco
+Nederländerna
+Norge
+Polen
+Portugal
+Moldavien
+Rumänien
+Ryssland
+San Marino
+Serbien och Montenegro
+Slovakien
+Slovenien
+Spanien
+Svalbard och Jan Mayen
+Sverige
+Schweiz
+Makedonien
+Turkiet
+Ukraina
+Storbritannien
+Vatican
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Canada
+Colorado
+Connecticut
+Delaware
+District of Columbia
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+New Hampshire
+New Jersey
+New Mexico
+New York
+Nevada
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Washington
+Vermont
+West Virginia
+Virginia
+Wisconsin
+Wyoming
+Antarktis
+Grönland
+Amerikanska Samoa
+Anguilla
+Antigua och Barbuda
+Argentina
+Aruba
+Bahamas
+Barbados
+Belize
+Bermuda
+Bolivia
+Brasilien
+Brittiska Jungfruöarna
+Caymanöarna
+Chile
+Colombia
+Cooköarna
+Costa Rica
+Kuba
+Dominica
+Dominikanska Republiken
+Ecuador
+El Salvador
+Falklandsöarna
+Frankrike
+Franska Guyana
+Franska Polynesien
+Grenada
+Guadeloupe
+Guatemala
+Guyana
+Haiti
+Honduras
+Jamaica
+Martinique
+Mexiko
+Montserrat
+Nederländska Västindien
+Nya Zeeland
+Nicaragua
+Niue
+Panama
+Paraguay
+Peru
+Pitcairn
+Puerto Rico
+S:t Kitts och Nevis
+S:t Lucia
+S:t Pierre och Miquelon
+S:t Vincent och Grenadinerna
+Samoa
+Surinam
+Tokelau
+Trinidad och Tobago
+Turks- och Caicosöarna
+Mindre öar utanför USA 
+Amerikanska Jungfruöarna
+Uruguay
+Venezuela

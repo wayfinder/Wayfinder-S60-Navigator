@@ -1,0 +1,20 @@
+# This is the loglevels file, used to set the debuglevels of individual 
+# debug prefixes.
+#
+# All lines with the very fist character set to '#' are comments.
+#
+# Each line must follow this syntax: 
+#           <prefix> [ ERROR | WARNING | INFO | NONE | ALL ]*
+# The order of the levels specifier doesn't matter.
+# If a log object with a matching prefix is created, its debuglevels are
+# set according to those specified. 
+#
+# Ex:
+#   Example DEBUG WARNING
+# Will let any Log object with prefix "Example" print DEBUG and WARNING
+# level messages, but not ERROR or INFO level messages.
+#
+# Note: NONE always overrides any other level specification.
+
+
+

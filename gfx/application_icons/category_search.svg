@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<linearGradient id="XMLID_28_" gradientUnits="userSpaceOnUse" x1="3.7402" y1="-0.3022" x2="9.9902" y2="13.6977">
+<stop offset="0" style="stop-color:#96C6EA"/>
+<stop offset="0.377" style="stop-color:#C2DBF2"/>
+<stop offset="0.7872" style="stop-color:#ECF3FB"/>
+<stop offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<polygon fill="url(#XMLID_28_)" points="0,0.021 14,0 14,9.344 9.281,14 0,14   "/>
+<linearGradient id="XMLID_29_" gradientUnits="userSpaceOnUse" x1="2" y1="8.5" x2="12" y2="8.5">
+<stop offset="0" style="stop-color:#335873"/>
+<stop offset="0.9607" style="stop-color:#2097B0"/>
+<stop offset="1" style="stop-color:#2097B0"/>
+</linearGradient>
+<path fill="url(#XMLID_29_)" d="M2,8h2V6H2V8z M2,11h2V9H2V11z M5,11h3V9H5V11z M5,6v2h7V6H5z"/>
+<linearGradient id="XMLID_30_" gradientUnits="userSpaceOnUse" x1="2" y1="4" x2="12" y2="4">
+<stop offset="0" style="stop-color:#87191A"/>
+<stop offset="0.9944" style="stop-color:#D44326"/>
+<stop offset="1" style="stop-color:#D44326"/>
+</linearGradient>
+<path fill="url(#XMLID_30_)" d="M2,5h2V3H2V5z M5,3v2h7V3H5z"/>
+<linearGradient id="XMLID_31_" gradientUnits="userSpaceOnUse" x1="0" y1="7" x2="14" y2="7">
+<stop offset="0" style="stop-color:#2097B0"/>
+<stop offset="1" style="stop-color:#335873"/>
+</linearGradient>
+<path fill="url(#XMLID_31_)" d="M12.979,0.021H0V14h1v-0.002h7V14h1.688L14,9.609V0L12.979,0.021z M9,13V9h3.979v0.021L9,13z M8,8    v4.959H1V1h11.979v7H8z"/>
+<linearGradient id="XMLID_32_" gradientUnits="userSpaceOnUse" x1="8.9951" y1="9.0059" x2="10.9326" y2="10.9434">
+<stop offset="0" style="stop-color:#5B90B5"/>
+<stop offset="0.7767" style="stop-color:#4C8C9F"/>
+<stop offset="1" style="stop-color:#488B99"/>
+</linearGradient>
+<polygon fill="url(#XMLID_32_)" points="9,9 12.979,9 9,13   "/>
+</g>
+</switch>
+</svg>

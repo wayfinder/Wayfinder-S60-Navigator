@@ -1,0 +1,140 @@
+TARGET SupportWFLib.lib
+TARGETTYPE LIB
+
+MACRO NAV2_CLIENT_SERIES60_V3
+MACRO NAV2_USE_UTF8
+MACRO SYMBIAN_9
+MACRO SYMBIAN_7S
+MACRO SYMBIAN_AVKON 
+MACRO SYMBIAN_S60
+MACRO SYMBIAN_S60_SCALABLE
+MACRO SYMBIAN_AVKON_SCALABLE
+MACRO SYMBIAN_ARMI
+//MACRO SYMBIAN_WINSCW
+//SYMBIAN_WINS
+
+SYSTEMINCLUDE \epoc32\include 
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE \epoc32\include\mmf\plugin
+SYSTEMINCLUDE ..\..\..\include\symbian-r6\STLport-4.5.1\stlport
+SYSTEMINCLUDE ..\..\..\arch-include\symbian-r6
+
+USERINCLUDE ..
+USERINCLUDE ..\symbian
+USERINCLUDE ..\symbian9
+USERINCLUDE ..\symbian\BTGPS
+
+USERINCLUDE ..\..\..\include
+USERINCLUDE ..\..\..\include\symbian-r6
+USERINCLUDE ..\..\..\Modules\include
+USERINCLUDE ..\..\..\Modules\UiCtrl
+
+USERINCLUDE ..\..\Nav2lib
+USERINCLUDE ..\..\Nav2lib\symbian
+
+USERINCLUDE ..\..\MapLib\Shared\include
+USERINCLUDE ..\..\MapLib\Shared\include\Symbian
+USERINCLUDE ..\..\MapLib\Symbian\include
+
+USERINCLUDE ..\..\OggVorbisLib\symbian\tremor
+USERINCLUDE ..\..\OggVorbisLib\symbian\oggvorbisfile
+
+//USERINCLUDE ..\..\Targets\Installer\
+//USERINCLUDE ..\..\Targets\Installer\UIQ\inc
+
+SOURCEPATH ..
+SOURCE AudioClipTable.cpp
+SOURCE MapMover.cpp
+SOURCE ScriptAudioClipTable.cpp
+
+SOURCEPATH ..\symbian
+SOURCE A1DebugSms.cpp
+SOURCE ActivationSms.cpp
+SOURCE ActiveDelay.cpp
+SOURCE ActiveLog.cpp
+SOURCE AnimatorFrame.cpp
+SOURCE BacklightManager.cpp
+SOURCE BitmapControl.cpp
+SOURCE BubbleLabel.cpp
+SOURCE Completer.cpp
+SOURCE ConnectionManager.cpp
+SOURCE ConnectionSettings.cpp
+SOURCE DeInstallFileList.cpp
+SOURCE DesTrackPIN.cpp
+SOURCE DiscoveryUtils.cpp
+SOURCE DistanceBitmap.cpp
+SOURCE DownloadHandler.cpp
+SOURCE DriveList.cpp
+SOURCE EventGeneratorTest.cpp
+SOURCE FileDownloader.cpp
+SOURCE FileList.cpp
+SOURCE FileWriter.cpp
+SOURCE FileZip.cpp
+SOURCE GuideProgressBar.cpp
+SOURCE IAPFileHandler.cpp
+SOURCE IAPObject.cpp
+SOURCE IAPSearcher.cpp
+SOURCE InfoCompass.cpp
+SOURCE LangFileHandler.cpp
+SOURCE LanguageList.cpp
+SOURCE LineObservableDialog.cpp
+SOURCE MapBorderBar.cpp
+SOURCE MapFileFinder.cpp
+SOURCE MapInfoControl.cpp
+SOURCE MapLibSymbianUtil.cpp
+SOURCE MoveWFLauncher.cpp
+SOURCE NavTaskGuiHandler.cpp
+SOURCE NetworkInfoHandler.cpp
+SOURCE NewAudioConverter.cpp
+SOURCE NewAudio.cpp
+SOURCE NewAudioMdaConverter.cpp
+SOURCE NewAudioOggConverter.cpp
+SOURCE NewAudioPlayer.cpp
+SOURCE NewAudioServer.cpp
+SOURCE NewAudioServerTypes.cpp
+SOURCE NewMessageHandler.cpp
+SOURCE NewSlaveAudio.cpp
+SOURCE NewSyntax.cpp
+SOURCE NokiaLbs.cpp
+SOURCE OggDecoder.cpp
+SOURCE OldSlaveAudio.cpp
+SOURCE PkgParser.cpp
+SOURCE PopUpList.cpp
+SOURCE PositionDisplay.cpp
+SOURCE PositionInterface.cpp
+SOURCE ProcessWaiter.cpp
+SOURCE SillyWaiter.cpp
+SOURCE SimpleConnectionManager.cpp
+SOURCE SisInstaller.cpp
+SOURCE SlaveAudio.cpp
+SOURCE SmsParser.cpp
+SOURCE SocketsEngine.cpp
+SOURCE SocketsRead.cpp
+SOURCE SocketsWrite.cpp
+SOURCE VectorMapConnection.cpp
+SOURCE VersionFileReader.cpp
+SOURCE WFInstallerController.cpp
+SOURCE WFLayoutUtils.cpp
+SOURCE WFSymbianUtil.cpp
+
+SOURCEPATH ..\symbian9
+SOURCE SmsHandler.cpp
+SOURCE SmsHandlerFactory.cpp
+SOURCE Symbian9CallHandler.cpp
+
+SOURCEPATH ..\symbian\BTGPS
+SOURCE BtGpsConnector.cpp
+SOURCE BtPower.cpp
+SOURCE BtSelector.cpp
+SOURCE BtSocketsEngine.cpp
+SOURCE BtSocketsRead.cpp
+SOURCE BtSocketsWrite.cpp
+SOURCE BtThread.cpp
+SOURCE BluetoothEngine.cpp
+SOURCE Reporter.cpp
+SOURCE SdpAttributeParser.cpp
+SOURCE SdpExaminer.cpp
+SOURCE SdpRepeater.cpp
+
+SOURCEPATH ..\..\SupportWFLib\60
+SOURCE LaunchWapBrowserUtil.cpp

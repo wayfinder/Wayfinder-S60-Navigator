@@ -1,0 +1,66 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+#ifndef BT_ENGINE_CODES_HRH
+#define BT_ENGINE_CODES_HRH
+
+/**
+ * This enum contains the events that the CBluetoothEngine thinks may
+ * be of interest to any class implementing the
+ * MBluetoothEngineObserver interface.
+ */
+enum TBtEngineEvent {
+   /** The Bluetooth connection is complete. */
+   EBtEngineConnectionComplete           = 0x00,
+   /** The disconnection from the remote device is complete. */
+   EBtEngineDisconnectionComplete        = 0x01,
+   /** The user canceled a search for a new device. */
+   EBtEngineSelectionFailed              = 0x02,
+   /** 
+    * The Sdp search for a serial port failed. 
+    * The search was done on a device the user just selected from the
+    * systems bluetooth selection dialog.
+    */
+   EBtEngineSelectionSdpFailed           = 0x03,
+   /** Connection to a known device has failed. */
+   EBtEngineConnectionFailed             = 0x04,
+   /** The serial port was found but the connection failed. */
+   EBtEngineSocketConnectionFailed       = 0x05,
+   /** The user canceled a request to turn on Bluetooth. */
+   EBtEnginePowerOnCancelled             = 0x06,
+   /** The power on request failed for unknown reasons. */
+   EBtEnginePowerOnFailed                = 0x07,
+   /** 
+    * The search retries ara all used up. The device is probably
+    * turned off or not in range.
+    */
+   EBtEngineRepeatedSearchFailed         = 0x08,
+   /**
+    * Hardware not available. Probable causes are low phone battery or
+    * flight mode. 
+    */
+   EBtEngineHardwareUnavailable          = 0x09,
+   /** The Bluetooth connection was lost due to a read error. */
+   EBtEngineConnectionLostReadError      = 0x11,
+   /** 
+    * The Bluetooth connection was lost due to hardware failure. The
+    * most likely cause of this is that the phone's battery is almost
+    * empty.
+    */
+   EBtEngineConnectionLostHardwareFailed = 0x12,
+   /** The Bluetooth connection was lost due to a write timeout.*/
+   EBtEngineConnectionLostWriteTimeout   = 0x13,
+   /** The Bluetooth connection was lost due to a write error.*/
+   EBtEngineConnectionLostWriteError     = 0x14
+};
+#endif

@@ -1,0 +1,59 @@
+#include "WayFinderSettings.h"
+
+# if   defined(NAV2_armi_symbian_series60r2) 
+/usr/local/packages/Nokia60_SymbianOS_SDK/epoc32/release/thumb/urel/flogger.lib
+# elif defined(NAV2_thumb_symbian_series60)
+/usr/local/packages/Nokia60_SymbianOS_SDK/epoc32/release/armi/urel/flogger.lib
+# elif defined(NAV2_wins_symbian_series60r2) || defined(NAV2_wins_symbian_series60)
+/usr/local/packages/Nokia60_SymbianOS_SDK/epoc32/release/wins/udeb/flogger.lib
+# endif
+
+
+
+#ifdef USE_AKM_20040428
+# if   defined(NAV2_armi_symbian_series60r2)
+   /usr/local/packages/AKMSeries60_20040428/binaries/series60/armi/urel/akmwrapper.lib
+# elif defined(NAV2_wins_symbian_series60r2)
+   /usr/local/packages/AKMSeries60_20040428/binaries/series60/wins/udeb/akmwrapper.lib
+# else
+#  error Akm is only available for armi-symbian-series60r2 and wins-symbian-series60r2
+# endif
+#endif
+
+
+
+#ifdef USE_AKM_20040602_EMEA
+# if   defined(NAV2_armi_symbian_series60r2)
+   /usr/local/packages/AKMSeries60_20040602_EMEA/binaries/series60/armi/urel/akmwrapper.lib
+# elif defined(NAV2_wins_symbian_series60r2)
+   /usr/local/packages/AKMSeries60_20040602_EMEA/binaries/series60/wins/udeb/akmwrapper.lib
+# else
+#  error Akm_20040602_EMEA is only available for armi-symbian-series60r2 and wins-symbian-series60r2
+# endif
+#endif
+
+
+
+#ifdef USE_LMPRO
+# if   defined(NAV2_armi_symbian_series60r2)
+   /usr/local/packages/LMProSeries60r2/binaries/series60/armi/urel/lmwrapper.lib
+   /usr/local/packages/LMProSeries60r2/binaries/series60/armi/urel/trialwrapper.lib
+# elif defined(NAV2_wins_symbian_series60r2)
+   /usr/local/packages/LMProSeries60r2/binaries/series60/wins/urel/lmwrapper.lib
+   /usr/local/packages/LMProSeries60r2/binaries/series60/wins/urel/trialwrapper.lib
+# else
+#  error LMPro is only available for armi-symbian-series60r2 and wins-symbian-series60r2
+# endif
+#endif
+
+
+
+#ifdef NOKIALBS
+# if   defined(NAV2_armi_symbian_series60r2)
+   /usr/local/packages/Nokia60_r2.0_SymbianOS_SDK/epoc32/release/armi/urel/lbs.lib
+# elif defined(NAV2_wins_symbian_series60r2)
+   /usr/local/packages/Nokia60_r2.0_SymbianOS_SDK/epoc32/release/wins/udeb/lbs.lib
+# else
+#  error Nokia LBS (MLFW) is only available for armi-symbian-series60r2 and wins-symbian-series60r2
+# endif
+#endif

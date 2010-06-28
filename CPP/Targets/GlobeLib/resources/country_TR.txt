@@ -1,0 +1,290 @@
+Cezayir
+Angola
+Benin
+Botswana
+Burkina Faso
+Burundi
+Kamerun
+Cape Verde
+Orta Afrika Cumhuriyeti
+Çad
+Comoros
+Kongo
+Fildişi Sahilleri
+Kongo Demoktratik Cumhuriyeti
+Cibuti
+Mısır
+Ekvator Ginesi
+Eritrea
+Etiyopya
+Gabon
+Gambia
+Gana
+Guinea-Bissau
+Gine
+Kenya
+Lesotho
+Liberya
+Libya
+Madagaskar
+Malawi
+Mali
+Moritanya
+Mauritius
+Mayotte
+Fas
+Mozambik
+Namibya
+Nijer
+Nijerya
+Reunion
+Ruanda
+Saint Helena
+Sao Tome ve Principe
+Senegal
+Seyşel
+Sierra Leone
+Somali
+Güney Afrika
+İspanya
+Sudan
+Swaziland
+Togo
+Tunus
+Uganda
+Birleşik Tanzanya Cumhuriyeti
+Batı Sahra
+Zambiya
+Zimbabve
+Afganistan
+Avustralya
+Bahreyn
+Bangladeş
+Butan
+Brunei Sultanlığı
+Kamboçya
+Çin
+Kuzey Kore
+Fiji
+Guam
+Hong Kong
+Hindistan
+Endonezya
+İran
+Irak
+İsrail
+Japonya
+Ürdün
+Kazakistan
+Kiribati
+Kuveyt
+Kırgızistan
+Laos
+Lübnan
+Macau
+Malezya
+Maldivler
+Marshall Adaları
+Mikronezya
+Moğolistan
+Mynamar
+Nauru
+Nepal
+Yeni Kaledonya
+Yeni Zelanda
+Antarktika
+Kuzey Mariana Adaları
+İşgal Altındaki Filistin Bölgesi
+Umman
+Pakistan
+Palau
+Papua Yeni Gine
+Filipinler
+Katar
+Güney Kore
+Rusya
+Suudi Arabistan
+Singapur
+Solomon Adaları
+Sri Lanka
+Suriye
+Çin Tayvan Bölgesi
+Tacikistan
+Tayland
+Timor-Leste
+Tonga
+Türkmenistan
+Tuvalu
+Birleşik Arap Emirlikleri
+Birleşik Devletler Küçük Uzak Adalar
+Özbekistan
+Wallis ve Futuna Adaları
+Vanuatu
+Vietnam
+Yemen
+Aland Islands
+Arnavutluk
+Andora
+Ermenistan
+Avusturya
+Azerbaycan
+Beyaz Rusya
+Belçika
+Bosna Hersek
+Bulgaristan
+Channel Islands
+Hırvatistan
+Kıbrıs
+Çek Cumhuriyeti
+Danimarka
+Estonya
+Faroe Adaları
+Finlandiya
+Fransa
+Gürcistan
+Almanya
+Gibraltar
+Yunanistan
+Macaristan
+İzlanda
+İrlanda
+Isle of Man
+İtalya
+Letonya
+Liechtenstein
+Litvanya
+Lüksemburg
+Malta
+Monako
+Hollanda
+Norveç
+Polonya
+Portekiz
+Moldovya
+Romanya
+Rusya
+San Marino
+Sırbistan-Karadağ
+Slovakya
+Slovenya
+İspanya
+Svalbard ve Jan Mayen
+İsveç
+İsviçre
+Makedonya
+Türkiye
+Ukrayna
+Birleşiık Krallık
+Vatican
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Kanada
+Colorado
+Connecticut
+Delaware
+District of Columbia
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+New Hampshire
+New Jersey
+New Mexico
+New York
+Nevada
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Washington
+Vermont
+West Virginia
+Virginia
+Wisconsin
+Wyoming
+Antarktika
+Grönland
+Amerikan Samoa
+Anguilla
+Antigua ve Barbuda
+Arjantin
+Aruba
+Bahama
+Barbados
+Beliz
+Bermuda
+Bolivya
+Brezilya
+Britanya Virgin Adaları
+Cayman Adaları
+Şili
+Kolombiya
+Cook Adaları
+Kosta Rika
+Küba
+Dominica
+Dominik Cumhuriyeti
+Ekvator
+El Salvador
+Falkland Adaları
+Fransa
+Fransız Guyanası
+Fransız Polinezyası
+Grenada
+Guadelup
+Guatemala
+Guyana
+Haiti
+Honduras
+Jamaika
+Martinik
+Meksika
+Montserrat
+Hollanda Antilleri
+Yeni Zelanda
+Nikaragua
+Niue
+Panama
+Paraguay
+Peru
+Pitcairn
+Puerto Rico
+Saint Kitts ve Nevis
+Saint Lucia
+Saintt Pierre ve Miquelon
+Saint Vincent ve Grenadines
+Samoa
+Surinam
+Tokelau
+Trinidad ve Tobago
+Turks ve Caicos Adaları
+Birleşik Devletler Küçük Uzak Adalar
+Amerika Birleşik Devletleri Virgin Adaları
+Uruguay
+Venezuela

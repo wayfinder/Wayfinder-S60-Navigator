@@ -1,0 +1,290 @@
+Alžírsko
+Angola
+Benin
+Botswana
+Burkina Faso
+Burundi
+Kamerun
+Kapverdy
+Středoafrická republika
+Čad
+Komory
+Kongo
+Pobřeží slonoviny
+Konžská demokratická republika
+Džibutsko
+Egypt
+Rovníková Guinea
+Eritrea
+Etiopie
+Gabon
+Gambie
+Ghana
+Guinea-Bissau
+Guinea
+Keňa
+Lesotho
+Libérie
+Libye
+Madagaskar
+Malawi
+Mali
+Mauritánie
+Mauricius
+Mayotte
+Maroko
+Mosambik
+Namibie
+Niger
+Nigérie
+Réunion
+Rwanda
+Svatá Helena
+Svatý Tomáš a Princův ostrov
+Senegal
+Seychely
+Sierra Leone
+Somálsko
+Jižní Afrika
+Španělsko
+Súdán
+Svazijsko
+Togo
+Tunisko
+Uganda
+Sjednocená republika Tanzanie
+Západní Sahara
+Zambie
+Zimbabwe
+Afghánistán
+Austrálie
+Bahrajn
+Bangladéš
+Bhútán
+Sultanát Brunej
+Kambodža
+Čína
+Severní Korea
+Fidži
+Guam
+ Hongkong
+Indie
+Indonésie
+Írán
+Irák
+Israel
+Japonsko
+Jordánsko
+Kazachstán
+Kiribati
+Kuvajt
+Kyrgyzstán
+Laos
+Libanon
+Macao
+Malajsie
+Maledivy
+Marshallovy ostrovy
+Mikronésie
+Mongolsko
+Myanmar
+Nauru
+Nepál
+Nová Kaledonie
+Nový Zéland
+Antarktida
+Severní Mariany
+Okupované palestinské území
+Omán
+Pákistán
+Palau
+Papua - Nová Guinea
+Filipíny
+Katar
+Jižní Korea
+Rusko
+Saúdská Arábie
+Singapur
+Šalamounovy ostrovy
+Srí Lanka
+Sýrie
+Tchaj-wan, čínská provincie
+Tádžikistán
+Thajsko
+Timor-Leste
+Tonga
+Turkmenistán
+Tuvalu
+Spojené arabské emiráty
+Americké menší zámořské ostrovy
+Uzbekistán
+Wallis a Futuna
+Vanuatu
+Vietnam
+Jemen
+Aland Islands
+Albánie
+Andorra
+Arménie
+Rakousko
+Azerbájdžán
+Bělorusko
+Belgie
+Bosna a Hercegovina
+Bulharsko
+Channel Islands
+Chorvatsko
+Kypr
+Česká republka
+Dánsko
+Estonsko
+Faerské ostrovy
+Finsko
+Francie
+Gruzie
+Německo
+Gibraltar
+Řecko
+Maďarsko
+Island
+Irsko
+Isle of Man
+Itálie
+Lotyšsko
+Lichtenštejnsko
+Litva
+Lucembursko
+Malta
+Monako
+Nizozemsko
+Norsko
+Polsko
+Portugalsko
+Moldavsko
+Rumunsko
+Rusko
+San Marino
+Srbsko a Černá Hora
+Slovensko
+Slovinsko
+Španělsko
+Svalbard a Jan Mayen
+Švédsko
+Švýcarsko
+Makedonie
+Turecko
+Ukrajina
+Spojené království
+Vatican
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Kanada
+Colorado
+Connecticut
+Delaware
+District of Columbia
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+New Hampshire
+New Jersey
+New Mexico
+New York
+Nevada
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Washington
+Vermont
+West Virginia
+Virginia
+Wisconsin
+Wyoming
+Antarktida
+Grónsko
+Americká Samoa
+Anguilla
+Antigua a Barbuda
+Argentina
+Aruba
+Bahamy
+Barbados
+Belize
+Bermudy
+Bolívie
+Brazílie
+Britské panenské ostrovy
+Kajmanské ostrovy
+Chile
+Kolumbie
+Cookovy ostrovy
+Kostarika
+Kuba
+Dominika
+Dominikánská republika
+Ekvádor
+Salvador
+Falklandy (Malvíny)
+Francie
+Francouzská Guyana
+Francouzská Polynésie
+Grenada
+Guadeloupe
+Guatemala
+Guayana
+Haiti
+Honduras
+Jamajka
+Martinik
+Mexiko
+Montserrat
+Nizozemské Antily
+Nový Zéland
+Nikaragua
+Niue
+Panama
+Paraguay
+Peru
+Pitcairn
+Puerto Rico
+Svatý Kryštof a Nevis
+Svatá Lucie
+Svatý Pierre a Miquelon
+Svatý Vincenc a Grenadiny
+Samoa
+Surinam
+Tokelau
+Trinidad a Tobago
+Turks a Caicos
+Americké menší zámořské ostrovy
+Americké panenské ostrovy
+Uruguay
+Venezuela

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="11.819" viewBox="0 0 28 11.819">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<path d="M26.489,7.751c-3.417-2.426-7.699-5.593-10.023-7.046C15.821,0.303,14.919,0.063,14,0     c-0.919,0.063-1.82,0.303-2.465,0.706C9.211,2.158,4.929,5.326,1.512,7.751c-2.252,1.598-2.106,4.067,1.235,4.067     c0,0,5.644,0,11.253,0s11.253,0,11.253,0C28.595,11.819,28.741,9.349,26.489,7.751z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="13.9512" y1="10.8188" x2="13.9512" y2="1.0005">
+<stop offset="0" style="stop-color:#7BB9FA"/>
+<stop offset="0.1404" style="stop-color:#3D80C2"/>
+<stop offset="0.2132" style="stop-color:#3977B5"/>
+<stop offset="0.4392" style="stop-color:#2D6092"/>
+<stop offset="0.6522" style="stop-color:#254F79"/>
+<stop offset="0.845" style="stop-color:#204569"/>
+<stop offset="1" style="stop-color:#1E4164"/>
+</linearGradient>
+<path fill="url(#XMLID_3_)" d="M24.938,7.819     c-3.173-2.016-6.654-4.981-8.813-6.188C15.527,1.296,14.854,1.053,14,1c-0.854,0.053-1.548,0.229-2.125,0.6     C9.665,3.02,6.302,5.589,3.188,7.694c-2.313,1.563-2.438,3.125,0.363,3.125c0,0,5.24,0,10.449,0s10.449,0,10.449,0     C27.032,10.819,27.029,9.146,24.938,7.819z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="13.9697" y1="6.9653" x2="13.9697" y2="1.0273">
+<stop offset="0" style="stop-color:#3E628A"/>
+<stop offset="0.012" style="stop-color:#43668E"/>
+<stop offset="0.0269" style="stop-color:#53739A"/>
+<stop offset="0.0337" style="stop-color:#5C7BA1"/>
+<stop offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M14.208,6.965c-3.771,0-8.604-1.021-6.083-2.75s2.854-2.084,3.813-2.667     s2.708-0.875,4.396,0.208s2.308,1.611,3.542,2.479C21.833,5.611,19.083,6.965,14.208,6.965z"/>
+</g>
+</g>
+</switch>
+</svg>

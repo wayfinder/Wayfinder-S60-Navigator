@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29.916" height="29.875" viewBox="0 0 29.916 29.875">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<path fill="#C90000" d="M6.98,0C3.125,0,0,3.12,0,6.971v4.98h1.996v-4.98c0-2.75,2.232-4.98,4.984-4.98h4.986V0     H6.98z"/>
+<path fill="#C90000" d="M29.916,6.971C29.916,3.12,26.792,0,22.936,0H17.95v1.991h4.985     c2.755,0,4.986,2.229,4.986,4.98v4.98h1.994V6.971z"/>
+<path fill="#C90000" d="M22.936,29.875c3.856,0,6.98-3.122,6.98-6.97v-4.98h-1.994v4.98     c0,2.749-2.231,4.979-4.986,4.979H17.95v1.991H22.936z"/>
+<path fill="#C90000" d="M0,22.905c0,3.848,3.125,6.97,6.98,6.97h4.986v-1.991H6.98     c-2.752,0-4.984-2.229-4.984-4.979v-4.98H0V22.905z"/>
+<polygon fill="#C90000" points="14.958,19.918 10.969,25.892 18.946,25.892    "/>
+<polygon fill="#C90000" points="9.971,14.938 3.989,10.954 3.989,18.921    "/>
+<polygon fill="#C90000" points="19.945,14.938 25.928,18.921 25.928,10.954    "/>
+<polygon fill="#C90000" points="14.958,9.958 18.946,3.984 10.969,3.984    "/>
+</g>
+</g>
+</switch>
+</svg>

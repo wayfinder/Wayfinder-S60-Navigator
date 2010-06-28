@@ -1,0 +1,5773 @@
+#include "nav2defines.h"
+/*
+ *    $Id: WayFinder.rss,v 1.350 2008-11-19 13:40:04 hfasth Exp $
+ *
+ *    Copyright, Wayfinder Systems AB, 2002, 2003
+ */
+
+/*
+*  Description:
+*     This file contains all the resources for the WayFinder.
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+CHARACTER_SET UTF8
+
+//  INCLUDES
+#include <eikon.rsg>
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.hrh>
+#include <avkon.mbg>
+#include <uikon.rh>
+
+#include "WayFinderSettings.h"
+
+#include "wficons.mbg"
+#include "wayfinder.rh"
+#include "wayfinder.hrh"
+#include "master.loc"
+
+//  CONSTANTS
+
+#define EDWIN_ONELINE_HEIGHT 1
+
+#define EDWIN_MAXLENGTH 64
+
+#define EDWIN_ONECHAR_PIXEL_WIDTH 9
+#define EDWIN_ONECHAR_MAXLENGTH 1
+
+#define EDWIN_TWOCHAR_PIXEL_WIDTH 17
+#define EDWIN_TWOCHAR_MAXLENGTH 2
+
+#define EDWIN_THREECHAR_PIXEL_WIDTH 24
+#define EDWIN_THREECHAR_MAXLENGTH 3
+
+#define EDWIN_NAME_PIXEL_WIDTH 150
+#define EDWIN_DESCRIPTION_PIXEL_WIDTH 150
+#define EDWIN_CATEGORY_PIXEL_WIDTH 100
+#define EDWIN_ALIAS_PIXEL_WIDTH 100
+
+#define EDWIN_NEWDEST_WIDTH 11
+
+#define EDWIN_INFO_SPEED_PIXEL_WIDTH 24
+#define EDWIN_INFO_DESTINATION_PIXEL_WIDTH 110
+#define EDWIN_INFO_DESTINATION_MAXLENGTH 20
+#define EDWIN_INFO_DISTANCE_PIXEL_WIDTH 55
+#define EDWIN_INFO_DISTANCE_MAXLENGTH 8
+
+#define EDWIN_DESTINATION_DESTINATION_PIXEL_WIDTH 160
+#define EDWIN_DESTINATION_DESTINATION_MAXLENGTH 20
+#define EDWIN_DESTINATION_DISTANCE_PIXEL_WIDTH 65
+#define EDWIN_DESTINATION_DISTANCE_MAXLENGTH 8
+#define EDWIN_DESTINATION_ETA_PIXEL_WIDTH 65
+#define EDWIN_DESTINATION_ETA_MAXLENGTH 8
+
+#define EDWIN_SETTING_PIXEL_WIDTH 160
+
+#define EDWIN_SERVER_MAXLENGTH 256
+
+#define EDWIN_CACHE_SIZE_MAXLENGTH 6
+
+#define EDWIN_MAP_DISTANCE_PIXEL_WIDTH 50
+#define EDWIN_MAP_DISTANCE_MAXLENGTH 8
+
+//  MACROS
+//#define ?macro
+
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF {
+   buf="Wayfinder";
+}
+
+RESOURCE EIK_APP_INFO
+{
+   status_pane = r_wayfinder_status_pane;
+}
+
+RESOURCE STATUS_PANE_APP_MODEL r_wayfinder_status_pane
+{
+   panes=
+   {
+      SPANE_PANE
+      {
+         id = EEikStatusPaneUidNavi;
+         type = EAknCtNaviPane;
+         resource = r_wayfinder_navi_decorator;
+      }
+   };
+}
+
+RESOURCE TBUF r_wayfinder_application_name { buf = qtn_app_caption_string; }
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_navi_decorator
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE NAVI_DECORATOR r_wayfinder_navi_decorator
+{
+   type = ENaviDecoratorControlTabGroup;
+   control = TAB_GROUP
+   {
+      tab_width = EAknTabWidthWithOneTab;
+      active = 1;
+      tabs = {
+         // NOTE!!! THE THREE FIRST VIEWS (start, map, guide)
+         // ARE IMPORTANT TO HAVE IN THIS ORDER!!! DO NOT CHANGE!!!
+         TAB
+         {
+            id = EWayFinderMainMenuView;//EWayFinderStartPageTab;
+            txt = qtn_startpage_tab;
+         },
+         TAB
+         {
+            id = EWayFinderMapTab;
+            txt = ""; //qtn_map_tab;
+         },
+         TAB
+         {
+            id = EWayFinderGuideTab;
+            txt = ""; //qtn_guide_tab;
+         },
+         TAB
+         {
+            id = EWayFinderPositionSelectTab;
+            txt = ""; //qtn_startpage_guidence_item;
+         },
+         TAB
+         {
+            id = EWayFinderCSMainView;
+            txt = ""; //qtn_newdest_search_item;
+         },
+         TAB
+         {
+            id = EWayFinderSearchableListBoxView;
+            txt = ""; //qtn_connect_select_item;
+         },
+         TAB
+         {
+            id = EWayFinderCSCategoryResultView;
+            txt = ""; // qtn_wf_search_results;
+         },
+         TAB
+         {
+            id = EWayFinderCSDetailedResultView;
+            txt = ""; // qtn_wf_search_results;
+         },
+         TAB
+         {
+            id = EWayFinderMyDestTab;
+            txt = ""; // qtn_mydest_tab;
+         },
+         TAB
+         {
+            id = EWayFinderEditFavoriteView;
+            txt = ""; // qtn_mydest_tab;
+         },
+         TAB
+         {
+            id = EWayFinderConnectTab;
+            txt = ""; // qtn_connect_tab;
+         },
+         TAB
+         {
+            id = EWayFinderSettingsTab;
+            txt = ""; //qtn_settings_tab;
+         },
+         TAB
+         {
+            id = EWayFinderItineraryTab;
+            txt = ""; //qtn_itinerary_tab;
+         },
+         TAB
+         {
+            id = EWayFinderWelcomeTab;
+            txt = "";
+         },
+         TAB
+         {
+            id = EWayFinderContentWindowTab;
+            txt = "";
+         },
+         TAB
+         {
+            id = EWayFinderDestinationTab;
+            txt = qtn_destination_tab;
+         },
+         TAB
+         {
+            id = EWayFinderInfoTab;
+            txt = qtn_info_tab;
+         }
+      };
+   };
+}
+
+/************************************************************/
+/************** Global Menues *******************************/
+/************************************************************/
+
+#include "wayfinder_menus.rss"
+
+/************************************************************/
+/*************** Hot Keys ***********************************/
+/************************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_hotkeys
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_wayfinder_hotkeys
+{
+   control=
+   {
+      HOTKEY { command=EAknSoftkeyExit; key='e'; }
+   };
+}
+
+
+/************************************************************/
+/**************** Soft Keys *********************************/
+/************************************************************/
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_softkeys_options_start
+//    Softkey 
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_wayfinder_softkeys_options_start
+    {
+    buttons =
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOptions; 
+            txt = qtn_wayfinder_softkey_options;
+            },
+        CBA_BUTTON 
+            {
+            id = EWayFinderSoftkeyStart; 
+            txt = qtn_wayfinder_softkey_start; 
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_softkeys_options_exit
+//    Softkey 
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_wayfinder_softkeys_options_exit
+    {
+    buttons =
+        {
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyOptions; 
+            txt = qtn_wayfinder_softkey_options;
+            },
+        CBA_BUTTON 
+            {
+            id = EAknSoftkeyExit; 
+            txt = qtn_wayfinder_softkey_exit; 
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_softkeys_options_back
+//    Softkey 
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_wayfinder_softkeys_options_back
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyOptions; 
+         txt = qtn_wayfinder_softkey_options;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyBack; 
+         txt = qtn_wayfinder_softkey_back; 
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_options_exit_but_back
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyOptions; 
+         txt = qtn_wayfinder_softkey_options;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyBack; 
+         txt = qtn_startpage_tab; 
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_softkeys_empty_back
+//    Softkey 
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_wayfinder_softkeys_empty_back
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyOptions; 
+         txt = "";
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyBack; 
+         txt = qtn_wayfinder_softkey_back; 
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//    r_wayfinder_softkeys_options_start_back
+//    Softkey 
+//-----------------------------------------------------------------------------
+RESOURCE CBA r_wayfinder_softkeys_options_start_back
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyOptions; 
+         txt = qtn_wayfinder_softkey_options;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyBack; 
+         txt = qtn_wayfinder_softkey_back; 
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_softkeys_upgrade_start
+//    Softkey 
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_wayfinder_softkeys_upgrade_start
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EWayFinderSoftKeyUpgrade;
+         //txt = qtn_wayfinder_softkey_upgrade;
+         txt = qtn_register_register_item;
+      },
+      CBA_BUTTON
+      {
+         id = EWayFinderSoftkeyStart; 
+         txt = qtn_wayfinder_softkey_start; 
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_service_start
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EWayFinderSoftKeyUpgrade;
+         txt = qtn_wayfinder_services;
+      },
+      CBA_BUTTON
+      {
+         id = EWayFinderSoftkeyStart; 
+         txt = qtn_wayfinder_softkey_start; 
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_softkeys_select_exit
+//    Softkey 
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE CBA r_wayfinder_softkeys_select_exit
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EWayFinderSoftkeyStart; 
+         txt = qtn_wayfinder_softkey_select;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyExit;
+         txt = qtn_wayfinder_softkey_exit;  
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_yes_no
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyYes;
+         txt = qtn_wayfinder_softkey_yes;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyNo;
+         txt = qtn_wayfinder_softkey_no;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_accept_exit
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyYes; 
+         txt = qtn_wf_accept10;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyNo;
+         txt = qtn_wayfinder_softkey_exit;  
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_debug_sms
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyYes;
+         txt = qtn_wayfinder_softkey_report;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyNo;
+         txt = qtn_wayfinder_softkey_back;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_eik_softkeys_yes_no
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EEikBidOk;
+         txt = qtn_wayfinder_softkey_yes;
+      },
+      CBA_BUTTON
+      {
+         id = EEikBidCancel;
+         txt = qtn_wayfinder_softkey_no;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_ok_cancel
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyOk;
+         txt = qtn_wayfinder_softkey_ok;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_cancel;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_ok_back
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyOk;
+         txt = qtn_wayfinder_softkey_ok;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_back;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_ok_empty
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyOk;
+         txt = qtn_wayfinder_softkey_ok;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyEmpty;
+         txt = qtn_wayfinder_softkey_empty;
+      }
+   };
+}
+RESOURCE CBA r_wayfinder_softkeys_empty_empty
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyEmpty;
+         txt = qtn_wayfinder_softkey_empty;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyEmpty;
+         txt = qtn_wayfinder_softkey_empty;
+      }
+   };
+}
+RESOURCE CBA r_wayfinder_softkeys_cancel
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyEmpty;
+         txt = qtn_wayfinder_softkey_empty;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_cancel;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_with_id_cancel
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyEmpty;
+         txt = qtn_wayfinder_softkey_empty;
+      },
+      CBA_BUTTON
+      {
+         id = EWayfinderDialogCancelId;
+         txt = qtn_wayfinder_softkey_cancel;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_open_cancel
+{
+   buttons = {
+      CBA_BUTTON {
+         id = EAknSoftkeyOk;
+         txt = qtn_startpage_open_item;
+      },
+      CBA_BUTTON {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_cancel;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_send_cancel
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyOk;
+         txt = qtn_connect_send_item;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_cancel;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_send_back
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyOk;
+         txt = qtn_connect_send_item;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_back;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_save_cancel
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyOk;
+         txt = qtn_fav_save_item;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyCancel;
+         txt = qtn_wayfinder_softkey_cancel;
+      }
+   };
+}
+
+RESOURCE CBA r_wayfinder_softkeys_save_back
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyOk; 
+         txt = qtn_fav_save_item;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyBack; 
+         txt = qtn_wayfinder_softkey_back; 
+      }
+   };
+}
+
+#if 0
+RESOURCE CBA r_wayfinder_softkeys_us_eu
+{
+   buttons =
+   {
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyYes;
+         txt = qtn_wayfinder_softkey_eu;
+      },
+      CBA_BUTTON
+      {
+         id = EAknSoftkeyNo;
+         txt = qtn_wayfinder_softkey_us;
+      }
+   };
+}
+#endif
+
+/************************************************************/
+/************* Sockets Connect Dialog ***********************/
+/************************************************************/
+
+// ---------------------------------------------------------
+//
+// r_sockets_dialog_connect
+// Dialog for connection details
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_sockets_dialog_connect
+{
+    title = "Connect details";
+    buttons = r_wayfinder_softkeys_ok_cancel;
+    flags = EEikDialogFlagNoDrag | 
+            EEikDialogFlagFillAppClientRect |
+            EEikDialogFlagCbaButtons |
+            EEikDialogFlagWait;
+
+    items =
+    {
+        DLG_LINE
+        {
+			type = EEikCtEdwin;
+			prompt = "Server name";
+			id = ESocketsServerNameEdwin;
+			control = EDWIN
+			{
+				width = 10;
+                maxlength = EDWIN_MAXLENGTH;
+			};
+        },
+        DLG_LINE
+        {
+			type = EEikCtNumberEditor;
+			prompt = "Port number";
+			id = ESocketsPortNumberEdwin;
+			control = NUMBER_EDITOR
+			{
+                min = 0;
+				max = 65534;
+			};
+        }
+    };
+}
+
+
+/*****************************************************/
+/************** Coordinates Control ******************/
+/*****************************************************/
+
+//----------------------------------------------------
+//    r_wayfinder_lat1_edwin
+//    resource for latitude degrees edit window
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_wayfinder_lat0_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinNoWrap;
+   width = EDWIN_ONECHAR_MAXLENGTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = EDWIN_ONECHAR_MAXLENGTH;
+}
+
+//----------------------------------------------------
+//    r_wayfinder_lat3_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_wayfinder_lat3_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinNoWrap;
+    width = EDWIN_THREECHAR_MAXLENGTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = EDWIN_THREECHAR_MAXLENGTH;
+    }
+
+//----------------------------------------------------
+//    r_wayfinder_lat2_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_wayfinder_lat2_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinNoWrap;
+   width = EDWIN_TWOCHAR_MAXLENGTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = EDWIN_TWOCHAR_MAXLENGTH;
+}
+
+
+/******************************************************/
+/********** Name Description Control ******************/
+/******************************************************/
+
+//----------------------------------------------------
+//    r_mydest_name_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_mydest_name_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+    width = EDWIN_NAME_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = 255;
+    }
+
+//----------------------------------------------------
+//    r_mydest_description_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_mydest_description_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+    width = EDWIN_DESCRIPTION_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = 255;
+    }
+
+/******************************************************/
+/********** Category Alias Control **********************/
+/******************************************************/
+	
+//----------------------------------------------------
+//    r_mydest_category_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_mydest_category_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+    width = EDWIN_CATEGORY_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = 255;
+    }
+
+//----------------------------------------------------
+//    r_mydest_alias_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_mydest_alias_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+    width = EDWIN_ALIAS_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = 30;
+    }
+
+/******************************************************/
+/************* Query Dialog ***************************/
+/******************************************************/
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_query_dialog
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_wayfinder_query_dialog
+	{
+    buttons = r_wayfinder_softkeys_yes_no;
+    flags = EGeneralQueryFlags;
+    items =
+		{
+        DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EWayFinderQuery;
+			control = AVERELL_CONFIRMATION_QUERY
+				{
+				layout = EConfirmationQueryLayout;
+				};
+			}
+		};
+	}
+
+
+/******************************************************/
+/************* Confirm Dialog ***************************/
+/******************************************************/
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_confirm_dialog
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_wayfinder_confirm_dialog
+	{
+    buttons = r_wayfinder_softkeys_ok_empty;
+    flags = EEikDialogFlagNoDrag |
+            EEikDialogFlagCbaButtons |
+            EEikDialogFlagNoTitleBar |
+            EEikDialogFlagFillAppClientRect |
+            EEikDialogFlagWait;
+
+    items =
+		{
+        DLG_LINE
+			{
+			type = EAknCtNote;
+			id = EWayFinderConfirm;
+			control = AVKON_NOTE
+				{
+				layout = ETextualNotificationLayout;
+				singular_label = "Confirm";
+				};
+			}
+		};
+	}
+
+
+/******************************************************/
+/************* Error Dialog ***************************/
+/******************************************************/
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_error_dialog
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_wayfinder_error_dialog
+	{
+    title = qtn_wayfinder_error_msg;
+    buttons = r_wayfinder_softkeys_ok_empty;
+    flags = EEikDialogFlagNoDrag |
+            EEikDialogFlagCbaButtons |
+            EEikDialogFlagWait;
+
+    items =
+		{
+        DLG_LINE
+			{
+			type = EAknCtNote;
+			id = EWayFinderError;
+			control = AVERELL_NOTE
+				{
+				layout = EGeneralLayout;
+				singular_label = qtn_wayfinder_error_msg;
+#if defined NAV2_CLIENT_SERIES60_V3
+                                imagefile = "z:\\resource\\apps\\avkon2.mbm";
+#else
+				imagefile = "z:\\system\\data\\avkon.mbm";
+#endif
+				imageid = EMbmAvkonQgn_note_error;
+				imagemask = EMbmAvkonQgn_note_error_mask;
+				};
+			}
+		};
+	}
+
+
+/******************************************************/
+/************* Warning Dialog ***************************/
+/******************************************************/
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_warning_dialog
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_wayfinder_warning_dialog
+	{
+    title = qtn_wayfinder_warning_msg;
+    buttons = r_wayfinder_softkeys_ok_empty;
+    flags = EEikDialogFlagNoDrag |
+            EEikDialogFlagCbaButtons |
+            EEikDialogFlagWait;
+
+    items =
+		{
+        DLG_LINE
+			{
+			type = EAknCtNote;
+			id = EWayFinderWarning;
+			control = AVERELL_NOTE
+				{
+				layout = EGeneralLayout;
+				singular_label = qtn_wayfinder_warning_msg;
+#if defined NAV2_CLIENT_SERIES60_V3
+                                imagefile = "z:\\resource\\apps\\avkon2.mbm";
+#else
+				imagefile = "z:\\system\\data\\avkon.mbm";
+#endif
+				imageid = EMbmAvkonQgn_note_warning;
+				imagemask = EMbmAvkonQgn_note_warning_mask;
+				};
+			}
+		};
+	}
+
+
+
+/******************************************************/
+/******* Used for autoclosing info dialogs ************/
+/******************************************************/
+RESOURCE DIALOG r_wayfinder_info_dialog
+{
+   buttons = r_wayfinder_softkeys_ok_empty;
+   flags = EEikDialogFlagNoDrag |
+      EEikDialogFlagCbaButtons;
+
+   items =
+      {
+         DLG_LINE
+         {
+            type = EAknCtNote;
+            id = EWayFinderError;
+            control = AVKON_NOTE
+            {
+               layout = EGeneralLayout;
+            };
+         }
+      };
+}
+
+
+/******************************************************/
+/************ Used for roaming message ****************/
+/******************************************************/
+RESOURCE DIALOG r_wayfinder_roaming_dialog
+{
+   buttons = r_wayfinder_softkeys_accept_exit;
+   flags = EEikDialogFlagNoDrag |
+      EEikDialogFlagCbaButtons;
+
+   items =
+      {
+         DLG_LINE
+         {
+            type = EAknCtNote;
+            id = EWayFinderError;
+            control = AVKON_NOTE
+            {
+               layout = EGeneralLayout;
+            };
+         }
+      };
+}
+
+
+/******************************************************/
+/************* Scrolling Dialog ***************************/
+/******************************************************/
+
+RESOURCE DIALOG r_message_dialog
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+   buttons = r_wayfinder_softkeys_ok_empty;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_non_blocking_query_message
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_eik_softkeys_yes_no;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_non_blocking_query_message_ok_cancel
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_ok_cancel;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_non_blocking_query_message_ok_back
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_ok_back;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_non_blocking_query_message_send_back
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_send_back;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_non_blocking_info_message
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_ok_empty;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_message_query
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+   buttons = r_wayfinder_softkeys_yes_no;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_wf_debugsms_message_query
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+   buttons = r_wayfinder_softkeys_debug_sms;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+
+/******************************************************/
+/************* Legal Notice Dialog ********************/
+/******************************************************/
+
+RESOURCE DIALOG r_wayfinder_legal_notice_dialog
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow | EEikDialogFlagWait;
+   buttons = r_wayfinder_softkeys_yes_no;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+
+/******************************************************/
+/************* End user warning dialog ****************/
+/******************************************************/
+RESOURCE DIALOG r_wayfinder_display_end_user_warning_query_dialog
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow | EEikDialogFlagWait;
+   buttons = r_wayfinder_softkeys_yes_no;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+/******************************************************/
+/************* End user warning dialog ****************/
+/******************************************************/
+RESOURCE DIALOG r_wayfinder_end_user_warning_dialog
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow | EEikDialogFlagWait;
+   buttons = r_wayfinder_softkeys_accept_exit;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+
+
+/******************************************************/
+/************* About Dialog ***************************/
+/******************************************************/
+
+#if 0
+// ---------------------------------------------------------
+//
+// r_wayfinder_about_dialog
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_wayfinder_about_dialog
+	{
+    title = qtn_wayfinder_about_msg;
+    buttons = r_wayfinder_softkeys_ok_empty;
+    flags = EEikDialogFlagNoDrag |
+            EEikDialogFlagCbaButtons |
+            EEikDialogFlagFillAppClientRect |
+            EEikDialogFlagWait;
+    items =
+		{
+        DLG_LINE
+			{
+			type = EAknCtNote;
+			id = EWayFinderAbout;
+			control = AVERELL_NOTE
+				{
+				layout = EGeneralLayout;
+				singular_label = "About";
+				imagefile = "\\system\\apps\\"APPLICATION_NAME"\\"APPLICATION_NAME".mbm";
+				imageid = EMbmWficons32x30_busy1;
+				imagemask = EMbmWficons32x30_busy1_m;
+				};
+			}
+		};
+	}
+
+
+RESOURCE DIALOG r_wayfinder_select_home_server_dialog
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow | EEikDialogFlagWait;
+   buttons = r_wayfinder_softkeys_us_eu;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtPopupHeadingPane;
+         id = EAknMessageQueryHeaderId;
+         control = AVKON_HEADING
+         {
+            headinglayout=R_AVKON_LAYOUT_POPUP_HEADING_PANE_IMAGE;
+         };
+      },
+      DLG_LINE
+      {
+         type = EAknCtMessageQuery;
+         id = EAknMessageQueryContentId;
+         control = AVKON_MESSAGE_QUERY
+         {
+         };
+      }
+   };
+}
+#endif
+
+
+
+RESOURCE DIALOG r_wf_non_blocking_data_query
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_ok_cancel;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_DATA_QUERY
+         {
+            layout = EDataLayout;
+            control = EDWIN
+            {
+               flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+               maxlength = 256;
+               width = 100;
+               lines = 1;
+            };
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_wf_blocking_data_query
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc |
+           EEikDialogFlagWait;
+   buttons = r_wayfinder_softkeys_ok_cancel;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_DATA_QUERY
+         {
+            layout = EDataLayout;
+            control = EDWIN
+            {
+               flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+               maxlength = 256;
+               width = 100;
+               lines = 1;
+            };
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_wf_blocking_data_query_ok_back
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc |
+           EEikDialogFlagWait;
+   buttons = r_wayfinder_softkeys_ok_back;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_DATA_QUERY
+         {
+            layout = EDataLayout;
+            control = EDWIN
+            {
+               flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+               maxlength = 256;
+               width = 100;
+               lines = 1;
+            };
+         };
+      }
+   };
+}
+
+RESOURCE DIALOG r_wf_non_blocking_number_data_query
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagNoTitleBar |
+           EEikDialogFlagCbaButtons | EEikDialogFlagNoBorder |
+           EEikDialogFlagNoShadow | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_ok_back;
+   items=
+   {
+      DLG_LINE 
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_DATA_QUERY
+         {
+            layout = EPhoneLayout;
+            control = EDWIN
+            {
+               flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+               avkon_flags = EAknEditorFlagNoT9;
+               numeric_keymap = EAknEditorStandardNumberModeKeymap;
+               allowed_input_modes = EAknEditorNumericInputMode;
+               default_input_mode = EAknEditorNumericInputMode;
+               maxlength = 256;
+               width = 100;
+               lines = 1;
+            };
+         };
+      }
+   };
+}
+
+RESOURCE AVKON_LIST_QUERY r_wayfinder_list_query
+{
+   flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | 
+           EEikDialogFlagNoShadow | EEikDialogFlagWait;
+   softkeys = r_wayfinder_softkeys_ok_cancel;
+   items=
+   {
+      AVKON_LIST_QUERY_DLG_LINE
+      {
+         control = AVKON_LIST_QUERY_CONTROL
+         {
+            listtype = EAknCtSinglePopupMenuListBox;
+            heading = "";
+            listbox = AVKON_LIST_QUERY_LIST
+            {
+               // Dynamic array of items.
+            };
+         };
+      }
+   };
+}
+
+#define CALLBACK_DIALOG(r_name,keys,type)               \
+RESOURCE AVKON_LIST_QUERY r_name                        \
+{                                                       \
+   flags = EEikDialogFlagNotifyEsc;                     \
+   softkeys = keys;                                     \
+   items = {                                            \
+      AVKON_LIST_QUERY_DLG_LINE {                       \
+         control = AVKON_LIST_QUERY_CONTROL {           \
+            heading  = "...";		                \
+            listtype = type;                            \
+            listbox  = AVKON_LIST_QUERY_LIST {	        \
+            };                                          \
+         };                                             \
+      }                                                 \
+   };                                                   \
+}
+
+CALLBACK_DIALOG(r_wayfinder_callback_single_list_open, 
+                r_wayfinder_softkeys_open_cancel, 
+                EAknCtSinglePopupMenuListBox)
+/******************************************************/
+/* Non blocking, single line, list dialog *************/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_single_list_query, 
+                r_wayfinder_softkeys_ok_cancel, 
+                EAknCtSinglePopupMenuListBox)
+/******************************************************/
+/* Non blocking, single line, list dialog *************/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_single_list_query_ok_back, 
+                r_wayfinder_softkeys_ok_back, 
+                EAknCtSinglePopupMenuListBox)
+/******************************************************/
+/* Non blocking, single line, list dialog *************/
+/* with ok button                         *************/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_single_list_query_ok, 
+                r_wayfinder_softkeys_ok_empty,
+                EAknCtSinglePopupMenuListBox)
+/******************************************************/
+/* Non blocking, double line, list dialog *************/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_double_list_query,
+                r_wayfinder_softkeys_ok_cancel, 
+                EAknCtMenuDoublePopupMenuListBox)
+/******************************************************/
+/* Non blocking, double line, list dialog *************/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_double_list_query_ok_back,
+                r_wayfinder_softkeys_ok_back, 
+                EAknCtMenuDoublePopupMenuListBox)
+/******************************************************/
+/* Non blocking, single line with icon, list dialog ***/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_single_icon_list_query,
+                r_wayfinder_softkeys_ok_cancel, 
+                EAknCtSingleGraphicPopupMenuListBox)
+
+/******************************************************/
+/* Non blocking, double line with icon, list dialog ***/
+/******************************************************/
+CALLBACK_DIALOG(r_wayfinder_callback_double_icon_list_query,
+                r_wayfinder_softkeys_ok_cancel,
+                EAknCtDoubleLargeGraphicPopupMenuListBox)
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_wait_dialog
+//    
+//----------------------------------------------------
+//
+
+RESOURCE DIALOG r_wayfinder_wait_dialog
+{
+   flags   = EAknWaitNoteFlags | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_cancel;
+   items   = {
+      DLG_LINE {
+         type = EAknCtNote;
+         id = EWayfinderWaitDlg;
+         control = AVKON_NOTE {
+            layout = EWaitLayout;
+            singular_label= "";
+#if defined NAV2_CLIENT_SERIES60_V3
+            imagefile = "z:\\resource\\apps\\avkon2.mbm";
+#else
+            imagefile = "z:\\system\\data\\avkon.mbm";
+#endif	
+            imageid = EMbmAvkonQgn_note_copy;
+            imagemask = EMbmAvkonQgn_note_copy_mask;
+            animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+         };
+      }
+   };
+}
+
+/******************************************************/
+/* Non blocking, selection list query dialog        ***/
+/******************************************************/
+RESOURCE DIALOG r_wayfinder_callback_select_list_query
+{
+   flags = EEikDialogFlagFillScreen | EEikDialogFlagCbaButtons | EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_ok_back;
+   items = 
+      {
+         DLG_LINE 
+         {
+            id = ESelectionListControl;
+            itemflags =  EEikDlgItemSeparatorAfter;
+            type = EAknCtSingleListBox;
+            control = LISTBOX 
+            {
+               flags = EAknListBoxSelectionList;
+            };
+         },
+         DLG_LINE 
+         {
+            id = EFindControl;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemSeparatorBefore ;
+            type = EAknCtSelectionListFixedFind;
+         }
+      };
+}
+
+// ---------------------------------------------------------
+//  
+// Non blocking, progress dialog.
+//
+// ---------------------------------------------------------  
+// This was used before but the one below is suggested on nokia wiki.
+// RESOURCE DIALOG r_progress_dialog
+// {
+//    buttons = R_AVKON_SOFTKEYS_CANCEL;
+//    flags = EAknProgressNoteFlags | EEikDialogFlagNotifyEsc;
+//    items = {
+//       DLG_LINE {
+//          type    = EAknCtNote;
+//          id      = EWFProgressNote;
+//          control = AVERELL_NOTE {
+//             layout         = EProgressLayout;
+//             singular_label = qtn_updatewf_downloading_txt;
+// #if defined NAV2_CLIENT_SERIES60_V3
+//             imagefile = "z:\\resource\\apps\\avkon2.mbm";
+// #else
+//             imagefile = "z:\\system\\data\\avkon.mbm";
+// #endif
+//             imageid        = EMbmAvkonQgn_note_progress;
+//             imagemask      = EMbmAvkonQgn_note_progress_mask;
+//          };
+//       }
+//    };
+// }
+
+RESOURCE DIALOG r_progress_dialog
+{
+   buttons = R_AVKON_SOFTKEYS_CANCEL;
+   flags = EAknProgressNoteFlags | EEikDialogFlagNotifyEsc;
+   items = {
+      DLG_LINE {
+         type    = EAknCtNote;
+         id      = EWFProgressNote;
+         control = AVKON_NOTE {
+            layout         = EProgressLayout;
+            singular_label = qtn_updatewf_downloading_txt;
+         };
+      }
+   };
+}
+
+
+/******************************************************/
+/************* Settings Page **************************/
+/******************************************************/
+
+//----------------------------------------------------
+//    r_wayfinder_settings_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_settings_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_settings;
+   cba=r_wayfinder_softkeys_options_back;    
+}
+
+//----------------------------------------------------
+//    r_settings_tab_decorator
+//----------------------------------------------------
+#ifdef NAV2_CLIENT_SERIES60_V5
+RESOURCE NAVI_DECORATOR r_settings_tab_group
+{
+    type = ENaviDecoratorControlTabGroup;
+    control = TAB_GROUP
+       {
+          tab_width = EAknTabWidthWithThreeTabs;
+          active = 1;
+          tabs = 
+          {
+             TAB
+             {
+                id = EWayFinderSettingsMiscTab; // from application hrh
+                txt = qtn_java_set_general;
+             },
+             TAB
+             {
+                id = EWayFinderSettingsRouteTab; // from application hrh
+                txt = qtn_settings_tab_route;
+             },
+           /*  TAB  // not used, replaced by MyAccount menu option
+             {
+                id = EWayFinderSettingsCommunicateTab; // from application hrh
+                txt = qtn_wf_settings_user;
+             }, */
+             TAB
+             {
+                id = EWayFinderSettingsMapTab; // from application hrh
+                txt = qtn_map_tab;
+             },
+             TAB
+             {
+                id = EWayFinderSettingsDebugTab; // from application hrh
+                txt = qtn_settings_tab_debug;
+             }
+          };
+       };
+}
+
+#else 
+
+RESOURCE NAVI_DECORATOR r_settings_tab_group
+{
+    type = ENaviDecoratorControlTabGroup;
+    control = TAB_GROUP
+       {
+          tab_width = EAknTabWidthWithThreeLongTabs;
+          active = 1;
+          tabs = 
+          {
+             TAB
+             {
+                id = EWayFinderSettingsMiscTab; // from application hrh
+                txt = qtn_java_set_general;
+             },
+             TAB
+             {
+                id = EWayFinderSettingsRouteTab; // from application hrh
+                txt = qtn_settings_tab_route;
+             },
+             /*  TAB  // not used, replaced by MyAccount menu option
+             {
+                id = EWayFinderSettingsCommunicateTab; // from application hrh
+                txt = qtn_wf_settings_user;
+             }, */
+             TAB
+             {
+                id = EWayFinderSettingsMapTab; // from application hrh
+                txt = qtn_map_tab;
+             },
+             TAB
+             {
+                id = EWayFinderSettingsDebugTab; // from application hrh
+                txt = qtn_settings_tab_debug;
+             }
+          };
+       };
+}
+
+#endif
+
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_settings_list
+// List for settings - phone
+//
+// ---------------------------------------------------------
+RESOURCE AVKON_SETTING_ITEM_LIST r_wayfinder_settings_list_phone
+{
+   title = qtn_settings_tab;
+   initial_number = 6;
+   items =
+   {
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingVolume;
+         name = qtn_settings_volume;
+         setting_page_resource = r_wayfinder_volume_page;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTurnSoundsLevel;
+         name = qtn_wayfinder_settings_sound_voice_prompts;
+         setting_page_resource = r_wayfinder_turnsounds_level_page;
+         associated_resource = r_wayfinder_popup_turnsounds_level_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingBacklight;
+         name = qtn_settings_backlight;
+         setting_page_resource = r_wayfinder_backlight_strategy_page;
+         associated_resource = r_wayfinder_popup_backlight_list;
+      },
+#ifndef NOKIALBS
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayfinderSettingGPSSelector;
+         name = qtn_wayfinder_gps_text;
+         setting_page_resource = r_wayfinder_gps_page;
+         associated_resource = r_wayfinder_popup_setting_gps_texts;
+      },
+#endif
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingLanguage;
+         name = qtn_settings_language;
+         setting_page_resource = r_wayfinder_language_page;
+         associated_resource = r_wayfinder_popup_language_list;
+      },
+#ifndef VODAFONE_IAP_SEARCH_METHOD
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingIAP;
+         name = qtn_settings_iap;
+         setting_page_resource = r_wayfinder_iap_page;
+         associated_resource = r_wayfinder_popup_iap_list;
+      },
+#endif
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingGPRSKeepAlive;
+         name = qtn_wayfinder_gprs_keep_alive;
+         setting_page_resource = r_wayfinder_keepalive_page;
+         associated_resource = r_wayfinder_popup_setting_binary_texts;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingDistMode;
+         name = qtn_settings_distmode;
+         setting_page_resource = r_wayfinder_distmode_page;
+         associated_resource = r_wayfinder_popup_distmode_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingCheckForUpdates;
+         name = qtn_s60_check_4_updatesq_txt;
+         setting_page_resource = r_wayfinder_keepalive_page; //r_wayfinder_check_update_page;
+         associated_resource = r_wayfinder_popup_setting_binary_texts;
+      }
+   };
+}
+
+// ---------------------------------------------------------
+// r_wayfinder_settings_list
+// List for settings - route
+// ---------------------------------------------------------
+RESOURCE AVKON_SETTING_ITEM_LIST r_wayfinder_settings_list_route
+{
+   title = qtn_settings_tab;
+   initial_number = 6;
+   items =
+   {
+#if 0
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingVehicle;
+         name = qtn_settings_vehicle;
+         setting_page_resource = r_wayfinder_vehicle_page;
+         associated_resource = r_wayfinder_popup_vehicle_list;
+      },
+#endif
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTimeDistDisturbances;
+         name = qtn_settings_timedist;
+         setting_page_resource = r_wayfinder_timedist_page;
+         associated_resource = r_wayfinder_popup_timedist_disturbances_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingRouteSetting1;
+         name = qtn_settings_disturbances; //qtn_wayfinder_settings_route_traffic_check;
+         setting_page_resource = r_wayfinder_settings_route_on_off;
+         associated_resource = r_wayfinder_popup_setting_on_off_texts;
+      },
+#ifdef NOTUSED
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingRouteSetting2;
+         name = qtn_wf_traffic_updates;
+         setting_page_resource = r_wayfinder_settings_route_integer;
+      },
+#endif
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTollRoads;
+         name = qtn_settings_tollroads;
+         setting_page_resource = r_wayfinder_tollroads_page;
+         associated_resource = r_wayfinder_popup_tollroads_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingHighways;
+         name = qtn_settings_highways;
+         setting_page_resource = r_wayfinder_highways_page;
+         associated_resource = r_wayfinder_popup_highways_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingAutoRoute;
+         name = qtn_settings_autoreroute;
+         setting_page_resource = r_wayfinder_autoroute_page;
+         associated_resource = r_wayfinder_popup_autoroute_binary_texts;
+      }
+#if 0
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingPreferredGuideMode;
+         name = qtn_wayfinder_settings_pref_guide_mode;
+         setting_page_resource = r_wayfinder_guide_mode_page;
+         associated_resource = r_wayfinder_popup_guide_mode_list;
+      }
+#endif
+   };
+}
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_settings_list
+// List for settings - communicate
+//
+// ---------------------------------------------------------
+RESOURCE AVKON_SETTING_ITEM_LIST r_wayfinder_settings_list_communicate
+{
+   title = qtn_settings_tab;
+   initial_number = 6;
+   items =
+   {
+#if 0
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingSaveSMSDest;
+         name = qtn_settings_savesmsdest;
+         setting_page_resource = r_wayfinder_save_sms_page;
+         associated_resource = r_wayfinder_popup_sms_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingAutorouteSMS;
+         name = qtn_settings_autoroutesms;
+         setting_page_resource = r_wayfinder_autoroute_sms_page;
+         associated_resource = r_wayfinder_popup_setting_binary_texts;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingKeepSMS;
+         name = qtn_settings_keepsmsdest;
+         setting_page_resource = r_wayfinder_keep_sms_page;
+         associated_resource = r_wayfinder_popup_sms_list;
+      },
+#endif
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingWebUsername;
+         name = qtn_settings_web_username;
+         setting_page_resource = r_wayfinder_web_username_page;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingWebPassword;
+         name = qtn_settings_web_password;
+         setting_page_resource = r_wayfinder_web_password_page;
+      }
+   };
+}
+
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_settings_list
+// List for settings - map
+//
+// ---------------------------------------------------------
+RESOURCE AVKON_SETTING_ITEM_LIST r_wayfinder_settings_list_map
+{
+   title = qtn_settings_tab;
+   initial_number = 6;
+   items =
+   {
+#if 0
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingMapCacheSize;
+         name = qtn_wayfinder_settings_map_cache_size;
+         setting_page_resource = r_wayfinder_map_cache_size_page;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingMapType;
+         name = qtn_wayfinder_settings_map_type_selection;
+         setting_page_resource = r_wayfinder_map_type_page;
+         associated_resource = r_wayfinder_popup_map_type_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingGuiMode;
+         name = qtn_wayfinder_settings_gui_mode_selection;
+         setting_page_resource = r_wayfinder_setting_gui_mode_page;
+         associated_resource = r_wayfinder_popup_setting_gui_mode_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTrackingAutoOn;
+         name = qtn_wayfinder_settings_show_my_position_on_map;
+         setting_page_resource = r_wayfinder_tracking_auto_on_page;
+         associated_resource = r_wayfinder_popup_setting_tracking_auto_on_texts;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTrackingOrientation;
+         name = qtn_wayfinder_settings_tracking_orientation;
+         setting_page_resource = r_wayfinder_tracking_orientation_page;
+         associated_resource = r_wayfinder_popup_tracking_orientation_list;
+      },
+#endif
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingEnableACP;
+         name = qtn_wf_poi_downloads;
+         setting_page_resource = r_wayfinder_settings_map_acp_normal_minimized;
+         associated_resource = r_wayfinder_popup_setting_normal_minimized_texts;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingMapLayers;
+         name = qtn_wayfinder_settings_map_layers_selection;
+         setting_page_resource = r_wayfinder_settings_map_layers_checkbox_page;
+         associated_resource = r_wayfinder_settings_checkbox_page_texts;
+      }
+#if 0
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingFavoriteShow;
+         name = qtn_wayfinder_settings_favorite_show_selection;
+         setting_page_resource = r_wayfinder_setting_favorite_show_page;
+         associated_resource = r_wayfinder_popup_setting_favorite_show_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingMapSetting1;
+         name = qtn_wayfinder_settings_map_traffic_list;
+         setting_page_resource = r_wayfinder_settings_map_on_off;
+         associated_resource = r_wayfinder_popup_setting_on_off_texts;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingMapSetting2;
+         name = qtn_wayfinder_settings_map_traffic_edit_integer;
+         setting_page_resource = r_wayfinder_settings_map_integer;
+/*          associated_resource = r_wayfinder_settings_map_integer_texts; */
+/*          setting_page_resource = r_wayfinder_settings_map_slider; */
+/*          associated_resource = r_wayfinder_settings_map_slider_texts; */
+      }
+#endif
+   };
+}
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_settings_list
+// List for settings - tracking
+//
+// ---------------------------------------------------------
+#if 0
+RESOURCE AVKON_SETTING_ITEM_LIST r_wayfinder_settings_list_tracking
+{
+   title = qtn_settings_tab;
+   initial_number = 6;
+   items =
+   {
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTrackingLevel;
+         name = qtn_STATUS;
+         setting_page_resource = r_wayfinder_tracking_level_page;
+         associated_resource = r_wayfinder_popup_tracking_level_list;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingTrackingPIN;
+         name = qtn_wayfinder_settings_tracking_pin;
+         setting_page_resource = r_wayfinder_tracking_pin_page;
+      }
+   };
+}
+#endif
+
+// ---------------------------------------------------------
+//
+// r_wayfinder_settings_list
+// List for settings - debug
+//
+// ---------------------------------------------------------
+RESOURCE AVKON_SETTING_ITEM_LIST r_wayfinder_settings_list_debug
+{
+   title = qtn_settings_tab;
+   initial_number = 6;
+   items =
+   {
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingServer;
+         name = qtn_settings_server;
+         setting_page_resource = r_wayfinder_server_page;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingUsername;
+         name = qtn_settings_username;
+         setting_page_resource = r_wayfinder_username_page;
+      },
+      AVKON_SETTING_ITEM
+      {
+         identifier = EWayFinderSettingPassword;
+         name = qtn_settings_password;
+         setting_page_resource = r_wayfinder_password_page;
+      }
+   };
+}
+
+
+//-----------------------------------------------------------------------------
+//    r_wayfinder_server_page
+//-----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_web_username_page
+{
+//   number = WEB_USERNAME_SETTING_PAGE_NUMBER;
+   label = qtn_settings_web_username;
+   type = EEikCtEdwin;
+   editor_resource_id = r_wayfinder_web_username_edwin;
+}
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_web_password_page
+{
+//   number = WEB_PASSWORD_SETTING_PAGE_NUMBER;
+   label = qtn_settings_web_password;
+//    type = EEikCtEdwin;
+//    editor_resource_id = r_wayfinder_username_edwin;
+   type = EEikCtSecretEd;
+   editor_resource_id = r_wayfinder_password_secreted;
+}
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_server_page
+{
+//   number = SERVER_SETTING_PAGE_NUMBER;
+   label = qtn_settings_server;
+   type = EEikCtEdwin;
+   editor_resource_id = r_wayfinder_server_edwin;
+}
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_username_page
+{
+//   number = USERNAME_SETTING_PAGE_NUMBER;
+   label = qtn_settings_username;
+   type = EEikCtEdwin;
+   editor_resource_id = r_wayfinder_username_edwin;
+}
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_password_page
+{
+//   number = PASSWORD_SETTING_PAGE_NUMBER;
+   label = qtn_settings_password;
+   type = EEikCtSecretEd;
+   editor_resource_id = r_wayfinder_password_secreted;
+}
+RESOURCE SECRETED r_wayfinder_password_secreted
+{
+   num_letters = 16;
+}
+
+RESOURCE EDWIN r_wayfinder_server_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+   width = EDWIN_SETTING_PIXEL_WIDTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = EDWIN_SERVER_MAXLENGTH;
+}
+RESOURCE EDWIN r_wayfinder_username_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+   width = EDWIN_SETTING_PIXEL_WIDTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = EDWIN_SERVER_MAXLENGTH;
+}
+RESOURCE EDWIN r_wayfinder_web_username_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels | EEikEdwinNoAutoSelection | EEikEdwinDisplayOnly | EEikEdwinAvkonDisableCursor;
+   width = EDWIN_SETTING_PIXEL_WIDTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = EDWIN_SERVER_MAXLENGTH;
+   allowed_input_modes = EAknEditorNullInputMode;
+   default_input_mode = EAknEditorNullInputMode;
+   avkon_flags = EAknEditorFlagNoEditIndicators;
+}
+#if 0
+RESOURCE EDWIN r_wayfinder_password_edwin
+{
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+    width = EDWIN_SETTING_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = EDWIN_SERVER_MAXLENGTH;
+}
+#endif
+
+//----------------------------------------------------
+//    r_wayfinder_volume_page
+//    resource for volume page
+//----------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_volume_page
+	{
+//	number = VOLUME_SETTING_PAGE_NUMBER;
+	label = qtn_settings_volume;
+	type = EAknCtVolumeControl;
+	editor_resource_id = r_wayfinder_volume_control;
+	}
+
+RESOURCE VOLUME r_wayfinder_volume_control
+	{
+	flags = ESettingsVolumeControl;
+	value = 10;
+	}
+
+//----------------------------------------------------------------------------
+//    r_wayfinder_popup_setting_binary_texts
+//----------------------------------------------------------------------------
+//
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_yes_no_texts
+{
+   flags = 0; // Possible EINVERTORDER;
+   setting_texts_resource = r_wayfinder_yes_no_texts;
+   popped_up_texts_resource = r_wayfinder_popped_up_yes_no_texts;
+}
+
+RESOURCE ARRAY r_wayfinder_yes_no_texts
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT { value=1; text = qtn_settings_yes; },
+      AVKON_ENUMERATED_TEXT { value=0; text = qtn_settings_no; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_popped_up_yes_no_texts
+{
+   items =
+   {
+      LBUF { txt = qtn_settings_yes; },
+      LBUF { txt = qtn_settings_no; }
+   };
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_binary_texts
+{
+   flags = 0; // Possible EINVERTORDER;
+   setting_texts_resource = r_wayfinder_on_off_texts;
+   popped_up_texts_resource = r_wayfinder_popped_up_on_off_texts;
+      //r_wayfinder_popped_up_enabled_disabled_texts;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_autoroute_binary_texts
+{
+   flags = 0; // Possible EINVERTORDER;
+   setting_texts_resource = r_wayfinder_autoroute_on_off_texts;
+   popped_up_texts_resource = r_wayfinder_popped_up_autoroute_on_off_texts;
+      //r_wayfinder_popped_up_enabled_disabled_texts;
+}
+
+RESOURCE ARRAY r_wayfinder_on_off_texts
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT { value=1; text = qtn_settings_on; },
+      AVKON_ENUMERATED_TEXT { value=0; text = qtn_settings_off; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_popped_up_on_off_texts
+{
+   items =
+   {
+      LBUF { txt = qtn_settings_on; },
+      LBUF { txt = qtn_settings_off; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_autoroute_on_off_texts
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT { value=1; text = qtn_vodaf_reroute_auto; },
+      AVKON_ENUMERATED_TEXT { value=0; text = qtn_settings_off; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_popped_up_autoroute_on_off_texts
+{
+   items =
+   {
+      LBUF { txt = qtn_vodaf_reroute_auto; },
+      LBUF { txt = qtn_settings_off; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_popped_up_enabled_disabled_texts
+{
+   items =
+   {
+      LBUF { txt = qtn_settings_enabled; },
+      LBUF { txt = qtn_settings_disabled; }
+   };
+}
+
+RESOURCE POPUP_SETTING_LIST r_wayfinder_empty_setting_list
+{
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_autoroute_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_autoroute_page
+{   
+   label = qtn_settings_autoreroute;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_sound_during_calls
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_sound_during_calls
+{   
+   label= qtn_settings_sound_during_calls;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_usespeaker_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_usespeaker_page
+{   
+   label= qtn_settings_sound;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_turnsounds_level_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_turnsounds_level_page
+{   
+   label= qtn_settings_sound;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_turnsounds_level_list
+{
+    setting_texts_resource = r_wayfinder_turnsounds_level_list;
+    popped_up_texts_resource = r_wayfinder_turnsounds_level_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_turnsounds_level_list
+{
+    items =
+    {
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 3;
+            text = qtn_wf_complete;
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 2;
+            text = qtn_wf_fewer;
+        },
+        AVKON_ENUMERATED_TEXT
+        {
+            value = 0;
+            text = qtn_CATEGORIES_NONE;
+        }
+    };
+}
+
+RESOURCE ARRAY r_wayfinder_turnsounds_level_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wf_complete;
+      },
+      LBUF
+      {
+         txt = qtn_wf_fewer;
+      },
+      LBUF
+      {
+         txt = qtn_CATEGORIES_NONE;
+      }
+   };
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_vehicle_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_vehicle_page
+{   
+   label= qtn_settings_vehicle;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_vehicle_list
+    {
+    setting_texts_resource = r_wayfinder_vehicle_list;
+    popped_up_texts_resource = r_wayfinder_vehicle_list_item_array;
+    }
+
+RESOURCE ARRAY r_wayfinder_vehicle_list
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 1;
+            text = qtn_settings_passengercar;
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 2;
+            text = qtn_settings_pedestrian;
+            },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 3;
+        //    text = qtn_settings_emergencyVehicle;
+        //    },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 4;
+            text = qtn_settings_taxi;
+        //  },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 5;
+        //    text = qtn_settings_publicBus;
+        //    },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 6;
+        //    text = qtn_settings_deliveryTruck;
+        //    },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 7;
+        //    text = qtn_settings_transportTruck;
+        //    },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 8;
+        //    text = qtn_settings_highOccupancyVehicle;
+        //    },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 9;
+        //    text = qtn_settings_bicycle;
+        //    },
+        //AVKON_ENUMERATED_TEXT
+        //    {
+        //    value = 10;
+        //    text = qtn_settings_publicTransportation;
+            }
+        };
+    }
+
+RESOURCE ARRAY r_wayfinder_vehicle_list_item_array
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = qtn_settings_passengercar;
+            },
+        LBUF
+            {
+            txt = qtn_settings_pedestrian;
+            },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_emergencyVehicle;
+        //    },
+        LBUF
+            {
+            txt = qtn_settings_taxi;
+        //    },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_publicBus;
+        //    },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_deliveryTruck;
+        //    },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_transportTruck;
+        //    },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_highOccupancyVehicle;
+        //    },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_bicycle;
+        //    },
+        //LBUF
+        //    {
+        //    txt = qtn_settings_publicTransportation;
+            }
+        };
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_keepalive_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_keepalive_page
+{   
+   label = qtn_wayfinder_gprs_keep_alive;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_distmode_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_distmode_page
+{   
+   label= qtn_settings_distmode;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_distmode_list
+{
+   setting_texts_resource = r_wayfinder_distmode_list;
+   popped_up_texts_resource = r_wayfinder_distmode_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_distmode_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_settings_distance_metric;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 2;
+         text = qtn_settings_distance_imperial_yards;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 3;
+         text = qtn_settings_distance_imperial_feet;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_distmode_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_settings_distance_metric;
+      },
+      LBUF
+      {
+         txt = qtn_settings_distance_imperial_yards;
+      },
+      LBUF
+      {
+         txt = qtn_settings_distance_imperial_feet;
+      }
+   };
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_timedist_page
+//
+//    Two version of some stuff to allow the release status to determine what 
+//    selections are shown.
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_timedist_page
+{   
+   //    number= TIMEDIST_SETTING_PAGE_NUMBER;
+   label= qtn_settings_timedist;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_timedist_list
+{
+   setting_texts_resource = r_wayfinder_timedist_list;
+   popped_up_texts_resource = r_wayfinder_timedist_list_item_array;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_timedist_disturbances_list
+{
+   setting_texts_resource = r_wayfinder_timedist_disturbances_list;
+   popped_up_texts_resource = r_wayfinder_timedist_disturbances_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_timedist_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_settings_dist;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_settings_time;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_timedist_disturbances_list
+{
+   items =
+   {
+      // The fastest setting has been disabled, the option:fastest will change to setting:traffic(2)
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 2;
+         //text = qtn_wf_traffic; //qtn_settings_disturbances;
+         text = qtn_wf_fastest; //qtn_settings_time;
+      },
+      /*AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wf_fastest; //qtn_settings_time;
+         },*/
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wf_shortest; //qtn_settings_dist;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_timedist_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_settings_dist;
+      },
+      LBUF
+      {
+         txt = qtn_settings_time;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_timedist_disturbances_list_item_array
+{
+   items =
+   {
+      // The fastest setting has been disabled, the option:fastest will change to setting:traffic(2)
+      /*LBUF
+      {
+         txt = qtn_wf_traffic; //qtn_settings_disturbances;
+         },*/
+      LBUF
+      {
+         txt = qtn_wf_fastest; //qtn_settings_time;
+      },
+      LBUF
+      {
+         txt = qtn_wf_shortest; //qtn_settings_dist;
+      }
+   };
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_tollroads_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_tollroads_page
+{   
+   //    number= TOLLROADS_SETTING_PAGE_NUMBER;
+   label= qtn_settings_tollroads;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_tollroads_list
+{
+   setting_texts_resource = r_wayfinder_tollroads_list;
+   popped_up_texts_resource = r_wayfinder_tollroads_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_tollroads_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_settings_tollroad_allow;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_settings_tollroad_avoid;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_tollroads_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_settings_tollroad_allow;
+      },
+      LBUF
+      {
+         txt = qtn_settings_tollroad_avoid;
+      }
+   };
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_settings_map_on_off
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_map_on_off
+{   
+   label= qtn_wayfinder_settings_map_traffic_list;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_on_off_texts
+{
+   setting_texts_resource = r_wayfinder_on_off_texts;
+   popped_up_texts_resource = r_wayfinder_popped_up_on_off_texts;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_route_on_off
+{   
+   label= qtn_wayfinder_settings_route_traffic_check;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_settings_map_acp_normal_minimized
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_map_acp_normal_minimized
+{   
+   label= qtn_wf_poi_downloads;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_normal_minimized_texts
+{
+   setting_texts_resource = r_wayfinder_normal_minimized_texts;
+   popped_up_texts_resource = r_wayfinder_popped_up_normal_minimized_texts;
+}
+
+RESOURCE ARRAY r_wayfinder_normal_minimized_texts
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT { value=1; text = qtn_wf_normal; },
+      AVKON_ENUMERATED_TEXT { value=0; text = qtn_wf_minimized; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_popped_up_normal_minimized_texts
+{
+   items =
+   {
+      LBUF { txt = qtn_wf_normal; },
+      LBUF { txt = qtn_wf_minimized; }
+   };
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_highways_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_highways_page
+{   
+   //    number= TOLLROADS_SETTING_PAGE_NUMBER;
+   label= qtn_settings_highways;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_highways_list
+{
+   setting_texts_resource = r_wayfinder_highways_list;
+   popped_up_texts_resource = r_wayfinder_highways_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_highways_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_settings_highway_allow;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_settings_highway_avoid;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_highways_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_settings_highway_allow;
+      },
+      LBUF
+      {
+         txt = qtn_settings_highway_avoid;
+      }
+   };
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_guide_mode_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_guide_mode_page
+{   
+   label= qtn_wayfinder_settings_pref_guide_mode;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_guide_mode_list
+{
+   setting_texts_resource = r_wayfinder_guide_mode_list;
+   popped_up_texts_resource = r_wayfinder_guide_mode_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_guide_mode_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_pref_guide_mode_guide;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_pref_guide_mode_map;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_guide_mode_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_pref_guide_mode_guide;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_pref_guide_mode_map;
+      }
+   };
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_settings_map_layers_checkbox_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_map_layers_checkbox_page
+{   
+   label= qtn_wayfinder_settings_map_layers_checkbox;
+   type = EAknSetListBox;
+   editor_resource_id = r_wayfinder_settings_map_layers_checkbox;
+}
+
+RESOURCE LISTBOX r_wayfinder_settings_map_layers_checkbox 
+{     
+   flags = EEikListBoxMultipleSelection;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_settings_checkbox_page_texts
+{
+   setting_texts_resource = r_wayfinder_settings_checkbox_list;
+   popped_up_texts_resource = r_wayfinder_settings_checkbox_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_settings_checkbox_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = -1;
+         text = "";
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_settings_checkbox_item_array
+{
+   items =
+   {
+   };
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_iap_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_iap_page
+{   
+   //    number= IAP_SETTING_PAGE_NUMBER;
+   label= qtn_settings_iap;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_iap_list
+    {
+    setting_texts_resource = r_wayfinder_iap_list;
+    popped_up_texts_resource = r_wayfinder_iap_list_item_array;
+    }
+
+RESOURCE ARRAY r_wayfinder_iap_list
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT
+            {
+            value = -1;
+            text = qtn_settings_iap_always_ask;
+            }
+        };
+    }
+
+RESOURCE ARRAY r_wayfinder_iap_list_item_array
+    {
+    items =
+        {
+        };
+    }
+
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_language_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_language_page
+{   
+   //    number= LANGUAGE_SETTING_PAGE_NUMBER;
+   label= qtn_settings_language;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_language_list
+    {
+    setting_texts_resource = r_wayfinder_language_list;
+    popped_up_texts_resource = r_wayfinder_language_list_item_array;
+    }
+
+RESOURCE ARRAY r_wayfinder_language_list
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 0;
+            text = qtn_settings_language_use_phone_text;
+            }
+        };
+    }
+
+RESOURCE ARRAY r_wayfinder_language_list_item_array
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = qtn_settings_language_use_phone_text;
+            }
+        };
+    }
+
+// Included from SupportWFLib
+//#include "LanguageList.rss"
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_sms_pages
+//
+//----------------------------------------------------------------------------
+//
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_sms_list
+    {
+    setting_texts_resource = r_wayfinder_sms_list;
+    popped_up_texts_resource = r_wayfinder_sms_list_item_array;
+    }
+
+RESOURCE ARRAY r_wayfinder_sms_list
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 0;
+            text = qtn_settings_yes;
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 1;
+            text = qtn_settings_no;
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 2;
+            text = qtn_settings_ask;
+            }
+        };
+    }
+
+RESOURCE ARRAY r_wayfinder_sms_list_item_array
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = qtn_settings_yes;
+            },
+        LBUF
+            {
+            txt = qtn_settings_no;
+            },
+        LBUF
+            {
+            txt = qtn_settings_ask;
+            }
+        };
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_save_sms_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_save_sms_page
+    {   
+//    number= SAVE_SMS_SETTING_PAGE_NUMBER;
+    label= qtn_settings_savesmsdest;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_wayfinder_empty_setting_list;
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_autoroute_sms_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_autoroute_sms_page
+{   
+   label= qtn_settings_autoroutesms;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_keep_sms_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_keep_sms_page
+    {   
+//    number= KEEP_SMS_SETTING_PAGE_NUMBER;
+    label= qtn_settings_keepsmsdest;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_wayfinder_empty_setting_list;
+    }
+
+//----------------------------------------------------------------------------
+RESOURCE ARRAY r_wayfinder_gps_texts
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT { value=1; text = qtn_wayfinder_settings_gps_none; },
+      AVKON_ENUMERATED_TEXT { value=0; text = qtn_wayfinder_settings_gps_new; }
+   };
+}
+RESOURCE ARRAY r_wayfinder_popped_up_gps_texts
+{
+   items =
+   {
+      LBUF { txt = qtn_wayfinder_settings_gps_none; },
+      LBUF { txt = qtn_wayfinder_settings_gps_new;  }
+   };
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_gps_texts
+{
+   flags = 0; // Possible EINVERTORDER;
+   setting_texts_resource = r_wayfinder_gps_texts;
+   popped_up_texts_resource = r_wayfinder_popped_up_gps_texts;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_gps_page
+{
+   label= qtn_wayfinder_gps_text;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE TBUF r_wayfinder_settingsitem_gps_none { buf = qtn_wayfinder_settings_gps_none; }
+RESOURCE TBUF r_wayfinder_setting_gps_new { buf = qtn_wayfinder_settings_gps_new; }
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_backlight_strategy_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_backlight_strategy_page
+{   
+   //    number= BACKLIGHT_SETTING_PAGE_NUMBER;
+   label= qtn_settings_backlight;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_backlight_list
+    {
+    setting_texts_resource = r_wayfinder_backlight_list;
+    popped_up_texts_resource = r_wayfinder_backlight_list_item_array;
+    }
+
+RESOURCE ARRAY r_wayfinder_backlight_list
+    {
+    items =
+        {
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 0;
+            text = qtn_settings_always_off;
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 3;
+            text = qtn_settings_before_turns;
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 1;
+            text = qtn_settings_only_on_route;
+            },
+        AVKON_ENUMERATED_TEXT
+            {
+            value = 2;
+            text = qtn_settings_always_on;
+            }
+        };
+    }
+
+RESOURCE ARRAY r_wayfinder_backlight_list_item_array
+    {
+    items =
+        {
+        LBUF
+            {
+            txt = qtn_settings_always_off;
+            },
+        LBUF
+            {
+            txt = qtn_settings_before_turns;
+            },
+        LBUF
+            {
+            txt = qtn_settings_only_on_route;
+            },
+        LBUF
+            {
+            txt = qtn_settings_always_on;
+            }
+        };
+    }
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_left_side_traffic_page
+//
+//----------------------------------------------------------------------------
+//
+#if 0
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_left_side_traffic_page
+{   
+//    number= LEFTSIDETRAFFIC_SETTING_PAGE_NUMBER;
+    label= qtn_settings_set_left_side;
+    type = EAknCtPopupSettingList;
+    editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_left_side_traffic_texts
+{
+    flags = 0; // Possible EINVERTORDER;
+    setting_texts_resource = r_wayfinder_left_side_traffic_list;
+    popped_up_texts_resource = r_wayfinder_left_side_traffic_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_left_side_traffic_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT { value = 0; text = qtn_settings_yes; },
+      AVKON_ENUMERATED_TEXT { value = 1; text = qtn_settings_no; }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_left_side_traffic_list_item_array
+    {
+    items =
+        {
+        LBUF { txt = qtn_settings_yes; },
+        LBUF { txt = qtn_settings_no; }
+        };
+    }
+#endif
+
+
+#if 0
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_settings_map_slider
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_map_slider
+{
+   label = qtn_wayfinder_settings_map_traffic_slider;
+   type = EAknCtSlider;
+   editor_resource_id = r_wayfinder_map_cache_slider_editor;
+}
+
+RESOURCE SLIDER r_wayfinder_map_cache_slider
+{
+   layout = EAknSettingsItemSliderLayout;
+   minvalue = 0;
+   maxvalue = 10;
+   step = 1;
+
+   valuetype = EAknSliderValueBareFigure;
+   minlabel = "0";
+   maxlabel = qtn_wayfinder_settings_map_cache_max;
+}
+#endif
+
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_map_integer {
+   label = qtn_wayfinder_settings_map_traffic_edit_integer;
+   type = EAknCtIntegerEdwin;
+   editor_resource_id = r_wayfinder_settings_map_integer_editor;
+}
+
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_settings_route_integer {
+   label = qtn_wayfinder_settings_map_traffic_edit_integer;
+   type = EAknCtIntegerEdwin;
+   editor_resource_id = r_wayfinder_settings_route_integer_editor;
+}
+
+RESOURCE AVKON_INTEGER_EDWIN r_wayfinder_settings_map_integer_editor {
+}
+
+RESOURCE AVKON_INTEGER_EDWIN r_wayfinder_settings_route_integer_editor {
+   maxlength = 4;
+   min = 5;
+   max = 35;//TimerThread(RTimer) can only handle timers up to 35 minutes. We limit it here until we can redesign that.
+   unset_value= 20;
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_map_cache_size_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_map_cache_size_page
+{
+   label = qtn_wayfinder_settings_map_cache_size;
+   type = EAknCtSlider;
+   editor_resource_id = r_wayfinder_map_cache_slider;
+}
+
+RESOURCE SLIDER r_wayfinder_map_cache_slider
+{
+   layout = EAknSettingsItemSliderLayout;
+   minvalue = 0;
+   maxvalue = 10;
+   step = 1;
+   valuelabel = qtn_wayfinder_settings_MB;
+
+   valuetype = EAknSliderValueBareFigure;
+   minlabel = qtn_wayfinder_settings_map_cache_min;
+   maxlabel = qtn_wayfinder_settings_map_cache_max;
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_tracking_orientation_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_tracking_orientation_page
+{
+   label= qtn_wayfinder_settings_tracking_orientation;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_tracking_orientation_list
+{
+   setting_texts_resource = r_wayfinder_tracking_orientation_list;
+   popped_up_texts_resource = r_wayfinder_tracking_orientation_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_tracking_orientation_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_rotating_map;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_north_oriented_map;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_tracking_orientation_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_rotating_map;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_north_oriented_map;
+      }
+   };
+}
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_tracking_auto_on_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_tracking_auto_on_page
+{   
+   label= qtn_wayfinder_settings_show_my_position_on_map;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_tracking_auto_on_texts
+{
+   setting_texts_resource = r_wayfinder_tracking_auto_on_list;
+   popped_up_texts_resource = r_wayfinder_tracking_auto_on_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_tracking_auto_on_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_tracking_auto_on_enabled;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_tracking_auto_on_disabled;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_tracking_auto_on_list_item_array
+{
+   items =
+   {
+      LBUF { txt = qtn_wayfinder_settings_tracking_auto_on_enabled; },
+      LBUF { txt = qtn_wayfinder_settings_tracking_auto_on_disabled; }
+   };
+}
+
+#if 0
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_map_type_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_map_type_page
+{
+   label= qtn_wayfinder_settings_map_type_selection;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_map_type_list
+{
+   setting_texts_resource = r_wayfinder_map_type_list;
+   popped_up_texts_resource = r_wayfinder_map_type_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_map_type_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_vector_map;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_bitmap_map;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_map_type_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_vector_map;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_bitmap_map;
+      }
+   };
+}
+
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_setting_gui_mode_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_setting_gui_mode_page
+{
+   label= qtn_wayfinder_settings_gui_mode_selection;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_gui_mode_list
+{
+   setting_texts_resource = r_wayfinder_setting_gui_mode_list;
+   popped_up_texts_resource = r_wayfinder_setting_gui_mode_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_setting_gui_mode_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_classic_gui;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_map_gui;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_setting_gui_mode_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_classic_gui;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_map_gui;
+      }
+   };
+}
+#endif
+
+//----------------------------------------------------------------------------
+//
+//    r_wayfinder_setting_favorite_show_page
+//
+//----------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_setting_favorite_show_page
+{
+   label= qtn_wayfinder_settings_favorite_show_selection;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_setting_favorite_show_list
+{
+   setting_texts_resource = r_wayfinder_setting_favorite_show_list;
+   popped_up_texts_resource = r_wayfinder_setting_favorite_show_list_item_array;
+}
+
+RESOURCE ARRAY r_wayfinder_setting_favorite_show_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_favorite_show_always;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_favorite_show_city;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 2;
+         text = qtn_wayfinder_settings_favorite_show_never;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_setting_favorite_show_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_favorite_show_always;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_favorite_show_city;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_favorite_show_never;
+      }
+   };
+}
+
+//------------------------------------------------------------------------
+//
+//    r_wayfinder_tracking_level_page
+//
+//------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_tracking_level_page
+{
+   label= qtn_wayfinder_settings_tracking_level_selection;
+   type = EAknCtPopupSettingList;
+   editor_resource_id = r_wayfinder_empty_setting_list;
+}
+
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_wayfinder_popup_tracking_level_list
+{
+   setting_texts_resource = r_wayfinder_on_off_texts; //r_wayfinder_tracking_level_list;
+   popped_up_texts_resource = r_wayfinder_popped_up_on_off_texts; //r_wayfinder_tracking_level_list_item_array;
+}
+
+#if 0
+RESOURCE ARRAY r_wayfinder_tracking_level_list
+{
+   items =
+   {
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 0;
+         text = qtn_wayfinder_settings_tracking_never;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 1;
+         text = qtn_wayfinder_settings_tracking_minimal;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 2;
+         text = qtn_wayfinder_settings_tracking_log;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 3;
+         text = qtn_wayfinder_settings_tracking_log_often;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 4;
+         text = qtn_wayfinder_settings_tracking_often;
+      },
+      AVKON_ENUMERATED_TEXT
+      {
+         value = 5;
+         text = qtn_wayfinder_settings_tracking_live;
+      }
+   };
+}
+
+RESOURCE ARRAY r_wayfinder_tracking_level_list_item_array
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_tracking_never;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_tracking_minimal;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_tracking_log;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_tracking_log_often;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_tracking_often;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_settings_tracking_live;
+      }
+   };
+}
+#endif
+//------------------------------------------------------------------------
+//    r_wayfinder_tracking_pin_page
+//------------------------------------------------------------------------
+//
+RESOURCE AVKON_SETTING_PAGE r_wayfinder_tracking_pin_page
+{
+   label = qtn_settings_tracking_pin_selection;
+   type = EEikCtEdwin;
+   editor_resource_id = r_wayfinder_tracking_pin_edwin;
+}
+RESOURCE EDWIN r_wayfinder_tracking_pin_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+   width = EDWIN_SETTING_PIXEL_WIDTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = 8;//EDWIN_SERVER_MAXLENGTH;
+   allowed_input_modes = EAknEditorNumericInputMode;
+   default_input_mode =  EAknEditorNumericInputMode;
+   avkon_flags = EAknEditorFlagNoT9;
+}
+
+#if 0
+
+/// XXX To be removed
+
+/******************************************************/
+/************* Splash Screen **************************/
+/******************************************************/
+//----------------------------------------------------
+//   
+//    r_wayfinder_splash_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_splash_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_startpage;
+   cba=r_wayfinder_softkeys_ok_empty;
+}
+#endif
+
+/************* Welcome Screen *************************/
+RESOURCE AVKON_VIEW r_wayfinder_welcome_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   cba=r_wayfinder_softkeys_empty_empty;
+}
+
+/******************************************************/
+/************* Start Page *****************************/
+/******************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_startpage_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_startpage_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_startpage;
+   cba=r_wayfinder_softkeys_options_exit;    
+}
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_mainmenu_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_mainmenu_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_startpage;
+   cba = r_wayfinder_softkeys_options_exit;    
+}
+
+//----------------------------------------------------
+//    r_wayfinder_main_menu_list_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_main_menu_list_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_startpage;
+   cba = r_wayfinder_softkeys_options_exit;    
+}
+
+RESOURCE LISTBOX r_wayfinder_main_menu_list_view_listbox
+{
+   flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_startpage_list
+//    ListBox( Single Graphic )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE LISTBOX r_wayfinder_startpage_list
+{
+   array_id = r_wayfinder_startpage_list_item;
+   flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_startpage_list_item
+//    Items array for ListBox( Single Graphic )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_wayfinder_startpage_list_item
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_map;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_find;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_mydest;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_services;
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_startpage_communicate_list
+//    ListBox( Single Graphic )
+//    for clients that do not have service. 
+//-----------------------------------------------------------------------------
+//
+RESOURCE LISTBOX r_wayfinder_startpage_communicate_list
+{
+   array_id = r_wayfinder_startpage_communicate_list_item;
+   flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+}
+
+// starpage for clients without services.
+RESOURCE ARRAY r_wayfinder_startpage_communicate_list_item
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_map;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_find;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_mydest;
+      },
+      LBUF
+      {
+         txt = qtn_wayfinder_startlist_connect;
+      }
+   };
+}
+
+
+/******************************************************/
+/************* Trial Page *****************************/
+/******************************************************/
+
+#if 0
+//----------------------------------------------------
+//   
+//    r_wayfinder_trial_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_trial_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_trial;
+   cba=r_wayfinder_softkeys_options_exit;    
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_trial_list
+//    ListBox( Single Graphic )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE LISTBOX r_wayfinder_trial_list
+{
+   array_id = r_wayfinder_trial_list_item;
+   flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_trial_list_item
+//    Items array for ListBox( Single Graphic )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_wayfinder_trial_list_item
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_startmenu_trial;
+      },
+      LBUF
+      {
+         txt = qtn_startmenu_register;
+      },
+      LBUF
+      {
+         txt = qtn_startmenu_alreadyregistered;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_upgrade_dialog
+//    query dialog resource
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_wayfinder_upgrade_dialog
+{
+   title = qtn_wayfinder_services;
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+      EEikDialogFlagCbaButtons;
+   buttons = r_wayfinder_softkeys_options_start_back;
+   form = r_wayfinder_upgrade_form;
+}
+
+
+RESOURCE FORM r_wayfinder_upgrade_form
+{
+   flags = EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly | EEikFormShowBitmaps;
+   items =
+   {
+      DLG_LINE
+      {
+         type = EEikCtEdwin;
+         prompt = qtn_upgrade_regnumber;
+         id = EWayFinderCtrlUpgradeRegNumberEdwin;
+         itemflags = EEikDlgItemTakesEnterKey| EEikDlgItemOfferAllHotKeys;
+         control = EDWIN
+         {
+            flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+            avkon_flags = EAknEditorFlagNoT9;
+            default_case = EAknEditorUpperCase;
+            allowed_case_modes = EAknEditorUpperCase;
+            width = EDWIN_NEWDEST_WIDTH;
+            lines = EDWIN_ONELINE_HEIGHT;
+            maxlength = EDWIN_MAXLENGTH;
+            // added to limit expanding in forms.
+            // If you want full screen use 6 here
+            max_view_height_in_lines = 6;
+            // if you have the line above, you must have this. 
+            // It is calculable from LAF
+            base_line_delta = 21;
+         };
+      },
+      DLG_LINE
+      {
+         type = EEikCtEdwin;
+         prompt = qtn_upgrade_phone;
+         id = EWayFinderCtrlUpgradePhoneEdwin;
+         itemflags = EEikDlgItemTakesEnterKey| EEikDlgItemOfferAllHotKeys;
+         control = EDWIN
+         {
+            flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+            numeric_keymap = EAknEditorStandardNumberModeKeymap;
+            allowed_input_modes = EAknEditorNumericInputMode;
+            avkon_flags = EAknEditorFlagNoT9;
+            width = EDWIN_NEWDEST_WIDTH;
+            lines = EDWIN_ONELINE_HEIGHT;
+            maxlength = EDWIN_MAXLENGTH;
+            // added to limit expanding in forms.
+            // If you want full screen use 6 here
+            max_view_height_in_lines = 6;
+            // if you have the line above, you must have this. 
+            // It is calculable from LAF
+            base_line_delta = 21;
+         };
+         //},
+         //DLG_LINE
+         //{
+         //type = EEikCtEdwin;
+         //prompt = qtn_upgrade_country;
+         //id = EWayFinderCtrlUpgradeCountryEdwin;
+         //itemflags = EEikDlgItemNonFocusing;
+         //control = EDWIN
+         //{
+         //flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable | EEikEdwinReadOnly;
+         //width = EDWIN_NEWDEST_WIDTH;
+         //lines = EDWIN_ONELINE_HEIGHT;
+         //maxlength = EDWIN_MAXLENGTH;
+         //// added to limit expanding in forms.
+         //// If you want full screen use 6 here
+         //max_view_height_in_lines = 6;
+         //// if you have the line above, you must have this. 
+         //// It is calculable from LAF
+         //base_line_delta = 21;
+         //};
+         //bmpfile = "\\system\\apps\\"APPLICATION_NAME"\\"APPLICATION_NAME".mbm";
+         //bmpid = EMbmWficonsRed_star;
+         //bmpmask = EMbmWficonsRed_star_m;
+   }
+   };
+}
+
+RESOURCE FORM r_earth_upgrade_form
+{
+   flags = EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly | EEikFormShowBitmaps;
+   items = {
+      DLG_LINE {
+         type      = EEikCtEdwin;
+         prompt    = qtn_wayfinder_name_text;
+         id        = EWayFinderCtrlUpgradeNameEdwin;
+         itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+         control   = EDWIN {
+            flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+            avkon_flags        = EAknEditorFlagNoT9;
+#if 0
+            default_case = EAknEditorUpperCase;
+            allowed_case_modes = EAknEditorUpperCase;
+#else
+            default_case       = EAknEditorTextCase;
+            allowed_case_modes = EAknEditorAllCaseModes;
+#endif
+            width              = EDWIN_NEWDEST_WIDTH;
+            lines              = EDWIN_ONELINE_HEIGHT;
+            maxlength          = EDWIN_MAXLENGTH;
+            // added to limit expanding in forms.
+            // If you want full screen use 6 here
+            max_view_height_in_lines = 6;
+            // if you have the line above, you must have this. 
+            // It is calculable from LAF
+            base_line_delta          = 21;
+         };
+      },
+      DLG_LINE {
+         type      = EEikCtEdwin;
+         prompt    = qtn_connect_email_item;
+         id        = EWayFinderCtrlUpgradeEmailEdwin;
+         itemflags = EEikDlgItemTakesEnterKey| EEikDlgItemOfferAllHotKeys;
+         control   = EDWIN {
+            flags  = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+            avkon_flags        = EAknEditorFlagNoT9;
+#if 0
+            numeric_keymap = EAknEditorStandardNumberModeKeymap;
+            allowed_input_modes = EAknEditorNumericInputMode;
+#else
+            default_case       = EAknEditorTextCase;
+            allowed_case_modes = EAknEditorAllCaseModes;
+#endif
+            width              = EDWIN_NEWDEST_WIDTH;
+            lines              = EDWIN_ONELINE_HEIGHT;
+            maxlength          = EDWIN_MAXLENGTH;
+            // added to limit expanding in forms.
+            // If you want full screen use 6 here
+            max_view_height_in_lines = 6;
+            // if you have the line above, you must have this. 
+            // It is calculable from LAF
+            base_line_delta          = 21;
+         };
+   }
+   };
+}
+ 
+//----------------------------------------------------
+//    r_wayfinder_register_dialog
+//    query dialog resource
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_wayfinder_register_dialog
+{
+   title = qtn_wayfinder_services;
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+      EEikDialogFlagCbaButtons;
+   buttons = r_wayfinder_softkeys_options_back;
+   form = r_wayfinder_upgrade_form;
+}
+//----------------------------------------------------
+//    r_earth_register_dialog
+//    query dialog resource
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_earth_register_dialog
+{
+   title = qtn_wayfinder_services;
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+      EEikDialogFlagCbaButtons;
+   buttons = r_wayfinder_softkeys_options_back;
+   form = r_earth_upgrade_form;
+}
+#endif
+
+/******************************************************/
+/********** Position select Page **********************/
+/******************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_positionselect_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_positionselect_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_positionselect;
+   cba = r_wayfinder_softkeys_options_back ;    
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_positionselect_list
+//    ListBox( Single Graphic )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE LISTBOX r_wayfinder_positionselect_list
+    {
+    array_id = r_wayfinder_positionselect_list_item;
+    flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_positionselect_list_item
+//    Items array for ListBox( Single Graphic )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_wayfinder_positionselect_list_item
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_positionselect_origin_text;
+      },
+      LBUF
+      {
+         txt = qtn_positionselect_destination_text;
+      }
+   };
+}
+
+
+//----------------------------------------------------
+//    r_newdest_details_dialog
+//    details dialog resource
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_newdest_details_dialog
+{
+   flags = EAknDialogSelectionList;
+   buttons = r_wayfinder_softkeys_empty_back;
+   items = 
+   {
+      DLG_LINE
+      {
+         type = EAknCtDoubleListBox;
+         id = ESelectionListControl;
+         control = LISTBOX
+         {
+            flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+         };
+      }
+   };
+}
+
+/******************************************************/
+/************** My Destination ************************/
+/******************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_mydest_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_mydest_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_mydest;
+   cba=r_wayfinder_softkeys_options_back; 
+#ifdef NAV2_CLIENT_SERIES60_V5
+   // The toolbar commented out for now to get more space for items in list.
+   //toolbar=r_fav_view_toolbar;
+#endif
+}
+
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_mydest_list
+//    ListBox( Double )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE LISTBOX r_wayfinder_mydest_list
+{
+//    array_id = r_wayfinder_mydest_list_items;
+   flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+}
+RESOURCE LISTBOX r_wayfinder_mydest_list_no_synchronize
+{
+//    array_id = r_wayfinder_mydest_list_items_no_synchronize;
+   flags = EAknListBoxSelectionList | EAknListBoxLoopScrolling;
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_mydest_list_items
+//    Items array for ListBox( Double )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE ARRAY r_wayfinder_mydest_list_items
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_mydest_empty;
+      }
+   };
+}
+RESOURCE ARRAY r_wayfinder_mydest_list_items_no_synchronize
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_wf_saved_fav;
+      }
+   };
+}
+
+
+//----------------------------------------------------
+//    r_wayfinder_mydest_dialog
+//    add/edit dialog resource
+//----------------------------------------------------
+//
+RESOURCE DIALOG r_wayfinder_mydest_dialog
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+      EEikDialogFlagNoTitleBar | EEikDialogFlagNoBorder |
+      EEikDialogFlagCbaButtons | EEikDialogFlagWait |
+      EEikDialogFlagNotifyEsc;
+   buttons = r_wayfinder_softkeys_save_cancel;
+
+   items =
+   {
+      DLG_LINE
+      {
+         type = EWayFinderCtNameDescription;
+         id = EWayFinderNameAddressID;
+         control = NAMEDESCRIPTIONCONTROL
+         {
+            top = 0;
+            left = 0;
+            bottom = 90;
+            right = 176;
+         };
+      },
+      DLG_LINE
+      {
+         type = EWayFinderCtCoordinates;
+         id = EWayFinderCoordinatesID;
+         control = COORDINATESCONTROL
+         {
+            top = 91;
+            left = 0;
+            bottom = 142;
+            right = 176;
+         };
+      }
+   };
+}
+
+/******************************************************/
+/************** Edit favorites on s60v5 ***************/
+/******************************************************/
+#if defined NAV2_CLIENT_SERIES60_V5 || defined NAV2_CLIENT_SERIES60_V32
+
+RESOURCE CBA r_wayfinder_softkeys_favorite_save_back
+{
+   buttons =
+   {
+      CBA_BUTTON 
+      {
+         id = EWayFinderSoftkeyFavoriteSave;
+         txt = qtn_fav_save_item;
+      },
+      CBA_BUTTON 
+      {
+         id = EAknSoftkeyBack; 
+         txt = qtn_wayfinder_softkey_back; 
+      }
+   };
+}
+
+RESOURCE AVKON_VIEW r_wayfinder_edit_favorite_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   //menubar = r_wayfinder_menubar_cs_main_view;
+   cba = r_wayfinder_softkeys_favorite_save_back;
+}
+
+RESOURCE DIALOG r_wayfinder_edit_favorite_form
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect | EEikDialogFlagCbaButtons | EEikDialogFlagNoTitleBar | EEikDialogFlagNotifyEsc | EEikDialogFlagModeless;
+   buttons = r_wayfinder_softkeys_favorite_save_back;
+   form = r_wayfinder_edit_favorite_form_form;
+}
+
+RESOURCE FORM r_wayfinder_edit_favorite_form_form
+{
+   flags = EEikFormEditModeOnly | EEikFormUseDoubleSpacedFormat;
+   items =
+      {
+         DLG_LINE
+         {
+            type = EEikCtEdwin;
+            prompt = qtn_mydest_name;
+            id = EWayFinderEditFavoriteName;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+            {
+               maxlength = 255;
+               default_case = EAknEditorTextCase;
+               allowed_case_modes = EAknEditorAllCaseModes;
+               numeric_keymap = EAknEditorStandardNumberModeKeymap;
+               default_input_mode = EAknEditorTextInputMode;
+               //allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;
+            };
+         },
+         DLG_LINE
+         {
+            type = EEikCtEdwin;
+            prompt = qtn_mydest_description;
+            id = EWayFinderEditFavoriteDesc;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+            {
+               maxlength = 255;
+               default_case = EAknEditorTextCase;
+               allowed_case_modes = EAknEditorAllCaseModes;
+               numeric_keymap = EAknEditorStandardNumberModeKeymap;
+               default_input_mode = EAknEditorTextInputMode;
+               //allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;
+            };
+         },
+         DLG_LINE
+         {
+            type = EAknCtLocationEditor;
+            prompt = qtn_wayfinder_latitude_text;
+            id = EWayFinderEditFavoriteLat;
+            control = LATITUDE_EDITOR
+            {
+               flags = ELocationEdFlagLatitude;
+               latlongresourceid = R_EIK_LATITUDE_AND_LONGITUDE;
+            };
+         },
+         DLG_LINE
+         {
+            type = EAknCtLocationEditor;
+            prompt = qtn_wayfinder_longitude_text;
+            id = EWayFinderEditFavoriteLon;
+            control = LONGITUDE_EDITOR
+            {
+               flags = ELocationEdFlagLongitude;
+               latlongresourceid = R_EIK_LATITUDE_AND_LONGITUDE;
+            };
+         }
+      };
+}
+
+#endif
+
+/******************************************************/
+/***************** Contacts ***************************/
+/******************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_contacts_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_contacts_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_contacts;  
+   cba=r_wayfinder_softkeys_options_back; 
+}
+
+
+/******************************************************/
+/*************** Call Number **************************/
+/******************************************************/
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_callcenter_add_new_number_query
+//    Items array for ListBox( Single )
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_wayfinder_callcenter_add_new_number_query
+{
+   flags = EAknGeneralQueryFlags;
+   buttons = r_wayfinder_softkeys_ok_cancel;
+   items = 
+   {
+      DLG_LINE
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_DATA_QUERY
+         {
+            layout = EPhoneLayout;
+            label = qtn_wayfinder_phonenumber_text;
+            control = EDWIN
+            {
+            flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+            maxlength = 30;
+            width = 10;
+            lines = 1;
+            };
+         };
+      }
+   };
+}
+
+
+/******************************************************/
+/******************** Connect *************************/
+/******************************************************/
+
+
+//----------------------------------------------------
+//    r_wayfinder_connect_dialog
+//    query dialog resource
+//----------------------------------------------------
+//
+#if 0
+RESOURCE DIALOG r_wayfinder_connect_dialog
+	{
+	flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+            EEikDialogFlagCbaButtons;
+    buttons = r_wayfinder_softkeys_options_back;
+	form = r_connect_form;
+	}
+
+RESOURCE FORM r_connect_form
+    {
+	flags = EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly | EEikFormShowBitmaps;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = qtn_connect_transmit;
+            id = EWayFinderCtrlConnectTransmitEdwin;
+            itemflags = EEikDlgItemNonFocusing;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable | EEikEdwinReadOnly | EEikEdwinDisplayOnly;
+                width = EDWIN_NEWDEST_WIDTH;
+                lines = EDWIN_ONELINE_HEIGHT;
+                maxlength = EDWIN_MAXLENGTH;
+                // added to limit expanding in forms.
+                // If you want full screen use 6 here
+                max_view_height_in_lines = 6;
+                // if you have the line above, you must have this. 
+                // It is calculable from LAF
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = qtn_connect_address;
+            id = EWayFinderCtrlConnectSMSAddressEdwin;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                width = EDWIN_NEWDEST_WIDTH;
+                lines = EDWIN_ONELINE_HEIGHT;
+                maxlength = EDWIN_MAXLENGTH;
+                // added to limit expanding in forms.
+                // If you want full screen use 6 here
+                max_view_height_in_lines = 6;
+                // if you have the line above, you must have this. 
+                // It is calculable from LAF
+                base_line_delta = 21;
+                };
+			},
+/*        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = qtn_connect_email_address;
+            id = EWayFinderCtrlConnectEmailAddressEdwin;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                width = EDWIN_NEWDEST_WIDTH;
+                lines = EDWIN_ONELINE_HEIGHT;
+                maxlength = EDWIN_MAXLENGTH;
+                // added to limit expanding in forms.
+                // If you want full screen use 6 here
+                max_view_height_in_lines = 6;
+                // if you have the line above, you must have this. 
+                // It is calculable from LAF
+                base_line_delta = 21;
+                };
+            },*/
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = qtn_connect_format;
+            id = EWayFinderCtrlConnectFormatEdwin;
+            itemflags = EEikDlgItemNonFocusing;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable | EEikEdwinReadOnly | EEikEdwinDisplayOnly;
+                width = EDWIN_NEWDEST_WIDTH;
+                lines = EDWIN_ONELINE_HEIGHT;
+                maxlength = EDWIN_MAXLENGTH;
+                // added to limit expanding in forms.
+                // If you want full screen use 6 here
+                max_view_height_in_lines = 6;
+                // if you have the line above, you must have this. 
+                // It is calculable from LAF
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = qtn_connect_contents;
+            id = EWayFinderCtrlConnectContentsEdwin;
+            itemflags = EEikDlgItemNonFocusing;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable | EEikEdwinReadOnly | EEikEdwinDisplayOnly;
+                width = EDWIN_NEWDEST_WIDTH;
+                lines = EDWIN_ONELINE_HEIGHT;
+                maxlength = EDWIN_MAXLENGTH;
+                // added to limit expanding in forms.
+                // If you want full screen use 6 here
+                max_view_height_in_lines = 6;
+                // if you have the line above, you must have this. 
+                // It is calculable from LAF
+                base_line_delta = 21;
+                };
+            },
+        DLG_LINE
+            {
+            type = EEikCtEdwin;
+            prompt = qtn_connect_message;
+            id = EWayFinderCtrlConnectMessageEdwin;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+                {
+                flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                width = EDWIN_NEWDEST_WIDTH;
+                lines = EDWIN_ONELINE_HEIGHT;
+                maxlength = EDWIN_MAXLENGTH;
+                // added to limit expanding in forms.
+                // If you want full screen use 6 here
+                max_view_height_in_lines = 6;
+                // if you have the line above, you must have this. 
+                // It is calculable from LAF
+                base_line_delta = 21;
+                };
+            }
+        };
+    }
+
+#endif
+/******************************************************/
+/********************** Map ***************************/
+/******************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_map_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_map_view
+    {
+    hotkeys=r_wayfinder_hotkeys;
+    menubar=r_wayfinder_menubar_map;  
+    cba=r_wayfinder_softkeys_options_back; 
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_map_view_waitdlg
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_map_view_waitdlg
+	{
+        flags = EAknWaitNoteFlags | EEikDialogFlagNotifyEsc;
+	buttons = r_wayfinder_softkeys_with_id_cancel;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtNote;
+			id = EWayFinderMapViewWaitDlg;
+			control = AVERELL_NOTE
+				{
+				layout = EProgressLayout;
+				singular_label = "";
+				animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+				};
+			}
+		};
+	}
+
+
+//----------------------------------------------------
+//    r_map_distancetogoal_edwin
+//----------------------------------------------------
+//
+#if 0
+RESOURCE EDWIN r_map_distancetogoal_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels  | 
+	        EEikEdwinNoWrap | EEikEdwinReadOnly;
+    width = EDWIN_MAP_DISTANCE_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = EDWIN_MAP_DISTANCE_MAXLENGTH;
+    }
+#endif
+ 
+//----------------------------------------------------
+//    r_arial_small_font
+//    font
+//----------------------------------------------------
+//
+RESOURCE NAMED_FONT r_arial_small_font
+{
+    name = "Arial";
+    height = 140;
+}
+
+/******************************************************/
+/******************** Guide ***************************/
+/******************************************************/
+
+//----------------------------------------------------
+//   
+//    r_wayfinder_guide_view
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_wayfinder_guide_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_guide;  
+   cba=r_wayfinder_softkeys_options_back; 
+}
+
+/******************************************************/
+/************** Itinerary Page ************************/
+/******************************************************/
+//----------------------------------------------------
+//    r_wayfinder_itinerary_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_itinerary_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_itinerary;
+   cba=r_wayfinder_softkeys_options_back;    
+}
+
+//----------------------------------------------------
+//    r_wayfinder_itinerary_list
+//    ListBox( Single Graphic )
+//----------------------------------------------------
+RESOURCE LISTBOX r_wayfinder_itinerary_list
+{
+   array_id = r_wayfinder_itinerary_list_item;
+   flags = EAknListBoxSelectionList;
+}
+
+//----------------------------------------------------
+//    r_wayfinder_itinerary_list_item
+//    Items array for ListBox( Single Graphic )
+//----------------------------------------------------
+RESOURCE ARRAY r_wayfinder_itinerary_list_item
+{
+   items =
+   {
+      LBUF
+      {
+         txt = qtn_itinerary_create_route;
+      }
+   };
+}
+
+/******************************************************/
+/************** Destination ***************************/
+/******************************************************/
+//----------------------------------------------------
+//    r_wayfinder_destination_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_destination_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_destination;  
+   cba=r_wayfinder_softkeys_options_back; 
+}
+
+
+//----------------------------------------------------
+//    r_wayfinder_service_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_service_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_service;  
+   //cba=r_wayfinder_softkeys_options_exit_but_back; 
+   cba=r_wayfinder_softkeys_options_back;
+}
+
+
+/******************************************************/
+/************** Combined Search ***********************/
+/******************************************************/
+//----------------------------------------------------
+//    r_wayfinder_cs_main_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_cs_main_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_cs_main_view;
+   cba = r_wayfinder_softkeys_options_back;
+#ifdef NAV2_CLIENT_SERIES60_V5
+   toolbar = r_cs_main_view_toolbar;
+#endif
+}
+
+RESOURCE DIALOG r_wayfinder_cs_search_form
+{
+   flags = EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect | EEikDialogFlagCbaButtons | EEikDialogFlagNoTitleBar | EEikDialogFlagNotifyEsc | EEikDialogFlagModeless;
+   buttons = r_wayfinder_softkeys_options_back;
+   form = r_wayfinder_cs_search_form_form;
+}
+
+RESOURCE FORM r_wayfinder_cs_search_form_form
+{
+   flags = EEikFormEditModeOnly | EEikFormUseDoubleSpacedFormat;
+   items =
+      {
+         DLG_LINE 
+         {
+            type = EEikCtEdwin;
+            prompt = qtn_wayfinder_search_search_for;
+            id = EWayFinderCSSearchText;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+            {
+               maxlength = 255;
+               default_case = EAknEditorTextCase;
+               allowed_case_modes = EAknEditorAllCaseModes;
+               numeric_keymap = EAknEditorStandardNumberModeKeymap;
+               default_input_mode = EAknEditorTextInputMode;
+               //allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;               
+               //special_character_table = 0;
+            };
+         },
+         DLG_LINE
+         {
+            type = EEikCtEdwin;
+            prompt = qtn_wayfinder_search_in_or_close_to;
+            id = EWayFinderCSCitySelect;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+            {
+               maxlength = 255;
+               default_case = EAknEditorTextCase;
+               allowed_case_modes = EAknEditorAllCaseModes;
+               numeric_keymap = EAknEditorStandardNumberModeKeymap;
+               default_input_mode = EAknEditorTextInputMode;
+               //allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;
+               //special_character_table = 0;
+            };
+         },
+         DLG_LINE
+         {
+            type = EEikCtEdwin;
+            prompt = qtn_newdest_country;
+            id = EWayFinderCSCountrySelect;
+            itemflags = EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            control = EDWIN
+            {
+               flags = EEikEdwinReadOnly | EEikEdwinAvkonDisableCursor | EEikEdwinDisplayOnly | EEikEdwinAvkonNotEditable;
+               maxlength = 255;
+               default_case = EAknEditorTextCase;
+               allowed_case_modes = EAknEditorAllCaseModes;
+               numeric_keymap = EAknEditorStandardNumberModeKeymap;
+               default_input_mode = EAknEditorTextInputMode;
+               //allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;               
+               special_character_table = 0;
+            };
+         }
+      };
+}
+
+//----------------------------------------------------
+//    r_install_new_version_dialog
+//----------------------------------------------------
+RESOURCE DIALOG r_install_new_version_dialog
+{
+   buttons = R_AVKON_SOFTKEYS_YES_NO;
+   flags = EGeneralQueryFlags;
+   items =
+   {
+      DLG_LINE
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_CONFIRMATION_QUERY
+         {
+            layout = EConfirmationQueryLayout;
+            label = qtn_s60_new_vers_aval_dwnld_nowq_txt;
+
+         };
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_remind_me_again_dialog
+//----------------------------------------------------
+RESOURCE DIALOG r_remind_me_again_dialog
+{
+   buttons = R_AVKON_SOFTKEYS_YES_NO;
+   flags = EGeneralQueryFlags;
+   items =
+   {
+      DLG_LINE
+      {
+         type = EAknCtQuery;
+         id = EGeneralQuery;
+         control = AVKON_CONFIRMATION_QUERY
+         {
+            layout = EConfirmationQueryLayout;
+            label = qtn_s60_check_4_updat_evry_startupq_txt;
+         };
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_cs_category_result_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_cs_category_result_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_cs_category_result_view;
+   cba = r_wayfinder_softkeys_options_back;
+}
+
+RESOURCE LISTBOX r_wayfinder_cs_category_result_listbox
+{
+   flags = EAknListBoxSelectionList;
+}
+
+//----------------------------------------------------
+//    r_wayfinder_cs_detailed_result_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_cs_detailed_result_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_cs_detailed_result_view;
+   cba = r_wayfinder_softkeys_options_back;
+}
+
+RESOURCE LISTBOX r_wayfinder_cs_detailed_result_listbox
+{
+   flags = EAknListBoxSelectionList;
+}
+
+//----------------------------------------------------
+//    r_wayfinder_searchable_listbox_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_searchable_listbox_view
+{
+   hotkeys = r_wayfinder_hotkeys;
+   menubar = r_wayfinder_menubar_searchable_listbox_view;
+   cba = r_wayfinder_softkeys_options_back;
+}
+
+RESOURCE LISTBOX r_wayfinder_searchable_listbox
+{
+   flags = EAknListBoxSelectionList | EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+}
+
+/******************************************************/
+/********************* Info ***************************/
+/******************************************************/
+//----------------------------------------------------
+//    r_wayfinder_info_view
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_wayfinder_info_view
+{
+   hotkeys=r_wayfinder_hotkeys;
+   menubar=r_wayfinder_menubar_info;  
+   cba=r_wayfinder_softkeys_options_back; 
+}
+
+//----------------------------------------------------
+//    r_wayfinder_info_coordinates
+//----------------------------------------------------
+RESOURCE COORDINATESCONTROL r_wayfinder_info_coordinates
+{
+   top = 5;
+   left = 0;
+   bottom = 170;
+   right = 200;
+}
+
+//----------------------------------------------------
+//    r_info_speed_edwin
+//----------------------------------------------------
+RESOURCE EDWIN r_info_speed_edwin
+{
+   flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+   width = EDWIN_INFO_SPEED_PIXEL_WIDTH;
+   lines = EDWIN_ONELINE_HEIGHT;
+   maxlength = EDWIN_MAXLENGTH;
+}
+
+//----------------------------------------------------
+//    r_info_heading_edwin
+//----------------------------------------------------
+//
+RESOURCE EDWIN r_info_heading_edwin
+    {
+    flags = EAknEditorFlagDefault | EEikEdwinWidthInPixels;
+    width = EDWIN_THREECHAR_PIXEL_WIDTH;
+    lines = EDWIN_ONELINE_HEIGHT;
+    maxlength = EDWIN_THREECHAR_MAXLENGTH;
+    }
+
+#ifdef NAV2_CLIENT_SERIES60_V5
+RESOURCE AVKON_TOOLBAR r_cs_main_view_toolbar
+{
+   flags = KAknToolbarTransparent | KAknToolbarFixed;
+   items = 
+      {
+         // Empty items array, will be initialized from code.
+      };
+}
+
+RESOURCE AVKON_TOOLBAR r_fav_view_toolbar
+{
+   flags = KAknToolbarTransparent | KAknToolbarFixed;
+   items = 
+      {
+         // Empty items array, will be initialized from code.
+      };
+}
+#endif
+
+RESOURCE AVKON_LIST_QUERY r_route_as_query_dialog
+{
+   flags = EGeneralQueryFlags;
+   softkeys = r_wayfinder_softkeys_ok_cancel;
+   items =
+   {
+      AVKON_LIST_QUERY_DLG_LINE
+      {
+         control = AVKON_LIST_QUERY_CONTROL
+         {
+            listtype = EAknCtSingleGraphicPopupMenuListBox;
+            listbox = AVKON_LIST_QUERY_LIST
+            {
+            };
+            heading = qtn_drive_or_walk;
+         };
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//
+//    r_route_calc_waitdlg
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_route_calc_waitdlg
+    {
+    flags = EAknWaitNoteFlags | EEikDialogFlagNotifyEsc;
+    buttons = r_wayfinder_softkeys_empty_empty;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EWayFinderRouteCalcWaitDlg;
+            control = AVKON_NOTE {
+               layout = EProgressLayout;
+               singular_label = "";
+               animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+               };
+            }
+        };
+    }
+
+//-----------------------------------------------------------------------------
+//
+//    r_search_waitdlg
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_search_waitdlg
+	{
+    flags = EAknWaitNoteFlags | EEikDialogFlagNotifyEsc;
+    buttons = r_wayfinder_softkeys_empty_empty;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtNote;
+            id = EWayFinderSearchWaitDlg;
+            control = AVKON_NOTE {
+               layout = EProgressLayout;
+               singular_label = "";
+               animation = R_QGN_GRAF_WAIT_BAR_ANIM;
+               };
+            }
+        };
+    }
+
+//----------------------------------------------------
+//  r_my_account_view used by MyAccountView
+//----------------------------------------------------
+RESOURCE AVKON_VIEW r_my_account_view
+	{
+	cba = r_my_account_view_control_pane;
+	} 
+	
+
+// used by MyAccountView / Container
+RESOURCE CBA r_my_account_view_control_pane
+	{
+	buttons =
+		{
+		CBA_BUTTON
+			{
+			id = EAknSoftkeyOk;
+			txt = qtn_vodaf_account_upd; 
+			},
+		CBA_BUTTON
+			{
+			id = EAknSoftkeyCancel;
+			txt =  qtn_wayfinder_softkey_cancel;
+			}
+		};
+	}
+
+//----------------------------------------------------
+// used by MyAccountView / Container
+//----------------------------------------------------
+RESOURCE SECRETED r_my_account_view_secret_editor
+	{
+	}
+
+//----------------------------------------------------
+// used by MyAccountView / Container
+//----------------------------------------------------
+RESOURCE LABEL r_my_account_view_password_label
+	{
+	txt = qtn_s60_password_txt;
+	horiz_align = EEikLabelAlignHLeft;
+	standard_font = EEikLabelFontNormal;
+	}
+
+//----------------------------------------------------
+// used by MyAccountView / Container
+//----------------------------------------------------
+RESOURCE LABEL r_my_account_view_my_account_label
+	{
+	txt = qtn_s60_my_account_txt;
+	horiz_align = EEikLabelAlignHLeft;
+	standard_font = EEikLabelFontNormal;
+	}
+
+//----------------------------------------------------
+// used by MyAccountView / Container
+//----------------------------------------------------
+RESOURCE LABEL r_my_account_view_instructions_label
+	{
+	txt = qtn_s60_instruction_txt;
+	horiz_align = EEikLabelAlignHLeft;
+	standard_font = EEikLabelFontLegend;
+	}
+
+//----------------------------------------------------
+// used by MyAccountView / Container
+//----------------------------------------------------
+RESOURCE LABEL r_my_account_view_user_name_label
+	{
+	txt = qtn_s60_user_name_txt;
+	horiz_align = EEikLabelAlignHLeft;
+	standard_font = EEikLabelFontNormal;
+	}
+
+/******************************************************/
+/********************* Strings ************************/
+/******************************************************/
+
+//-----------------------------------------------------------------------------
+//
+//    r_wayfinder_two_capital_chars_lang_code
+//
+//-----------------------------------------------------------------------------
+//
+RESOURCE TBUF64 r_wayfinder_two_capital_chars_lang_code
+{
+   buf = WAYFINDER_EXE_SYMBIAN_TWO_CAPITAL_CHARS_LANGUAGE_CODE_STRING;
+}
+
+//----------------------------------------------------
+//
+//----------------------------------------------------
+
+RESOURCE TBUF r_s60_my_account_txt {  buf = qtn_s60_my_account_txt ; }
+RESOURCE TBUF r_s60_instruction_txt {  buf = qtn_s60_instruction_txt ; } 
+RESOURCE TBUF r_s60_user_name_txt {  buf = qtn_s60_user_name_txt ; } 
+RESOURCE TBUF r_s60_password_txt {  buf = qtn_s60_password_txt ; } 
+
+RESOURCE TBUF r_wf_parse_error {  buf = qtn_wf_parse_error; }
+RESOURCE TBUF r_wayfinder_lat_short { buf = qtn_wayfinder_latitude_short; }
+RESOURCE TBUF r_wayfinder_lon_short { buf = qtn_wayfinder_longitude_short; }
+RESOURCE TBUF r_info_lat_minus_sign {  buf = qtn_info_lat_minus_sign; }
+RESOURCE TBUF r_info_lat_plus_sign {  buf = qtn_info_lat_plus_sign; }
+RESOURCE TBUF r_info_lon_minus_sign {  buf = qtn_info_lon_minus_sign; }
+RESOURCE TBUF r_info_lon_plus_sign {  buf = qtn_info_lon_plus_sign; }
+RESOURCE TBUF r_mydest_name_label { buf = qtn_mydest_name; }
+RESOURCE TBUF r_mydest_description_label { buf = qtn_mydest_description; }
+RESOURCE TBUF r_mydest_show_info { buf = qtn_SHOW_INFO; }
+RESOURCE TBUF r_mydest_edit_item { buf = qtn_mydest_edit_item; }
+RESOURCE TBUF r_mydest_remove_item { buf = qtn_mydest_remove_item; }
+
+RESOURCE TBUF r_settings_iap_always_ask {  buf = qtn_settings_iap_always_ask; }
+RESOURCE TBUF r_settings_iap_system_default {  buf = qtn_settings_iap_system_default; }
+RESOURCE TBUF r_earth_im_currently_in {  buf = qtn_EARTH_IM_CURRENTLY_IN; }
+RESOURCE TBUF r_earth_im_in {  buf = qtn_EARTH_IM_IN; }
+
+RESOURCE TBUF r_wayfinder_service_help_gold_title_text   { buf= qtn_wayfinder_service_help_gold_title_text ;}
+RESOURCE TBUF r_wayfinder_service_help_gold_info1        { buf= qtn_wayfinder_service_help_gold_info1 ;}
+RESOURCE TBUF r_wayfinder_service_help_gold_info2        { buf= qtn_wayfinder_service_help_gold_info2 ;}
+RESOURCE TBUF r_wayfinder_service_help_silver_title_text { buf= qtn_wayfinder_service_help_silver_title_text ;}
+RESOURCE TBUF r_wayfinder_service_help_silver_info1      { buf= qtn_wayfinder_service_help_silver_info1 ;}
+RESOURCE TBUF r_wayfinder_service_help_silver_info2      { buf= qtn_wayfinder_service_help_silver_info2 ;}
+RESOURCE TBUF r_wayfinder_service_help_trial_title_text  { buf= qtn_wayfinder_service_help_trial_title_text ;}
+RESOURCE TBUF r_wayfinder_service_help_trial_info1       { buf= qtn_wayfinder_service_help_trial_info1 ;}
+RESOURCE TBUF r_wayfinder_service_help_trial_info2       { buf= qtn_wayfinder_service_help_trial_info2 ;}
+RESOURCE TBUF r_wayfinder_offline_mode_msg               { buf= qtn_wf_ERR_NSC_14 ;} 
+RESOURCE TBUF r_wayfinder_no_network_msg                 { buf= qtn_wf_ERR_NSC_13 ;} 
+RESOURCE TBUF r_wayfinder_no_gps_pos_msg                 { buf= qtn_wf_ERR_NSC_01 ;} 
+
+//For all dialogs and menus in Share Wayfinder feature.
+RESOURCE TBUF r_wf_send_to                    { buf= qtn_wayfinder_spread_wayfinder; }
+RESOURCE TBUF r_wf_share_wayfinder            { buf= qtn_SHARE_WAYFINDER; }
+RESOURCE TBUF r_wf_share_wayfinder_info_text  { buf= qtn_SHARE_TRY; }
+RESOURCE TBUF r_wf_options_header             { buf= qtn_ENTER_PHONE_NO; }
+RESOURCE TBUF r_wf_option_contacts            { buf= qtn_connect_find_in_phonebook; }
+RESOURCE TBUF r_wf_option_manually            { buf= qtn_java_sendtoview_enter_manually_choice; }
+RESOURCE TBUF r_wf_contact_no_details         { buf= qtn_wf_contact_no_details; }
+RESOURCE TBUF r_wf_contact_search_busy        { buf= qtn_wf_contact_search_busy; }
+RESOURCE TBUF r_wf_mobile_phone_number        { buf= qtn_FRIENDS_PHONE_NO; }
+RESOURCE TBUF r_wf_inbox_title                { buf = qtn_wf_sms_inbox_menu_item; }
+RESOURCE TBUF r_wf_sms_inbox_empty_msg        { buf = qtn_wayfinder_no_sms_msg; }
+RESOURCE TBUF r_wf_send_sms                   { buf= qtn_SEND_SMS; }
+RESOURCE TBUF r_wf_confirm_send_sms_text      { buf= qtn_wf_confirm_send_sms; }
+RESOURCE TBUF r_wf_spread_wayfinder_message   { buf= qtn_SMS_SHARE_WAYFINDER; }
+RESOURCE TBUF r_wayfinder_information_title   { buf= qtn_wayfinder_information_title; }
+RESOURCE TBUF r_wayfinder_invalidnumber_msg   { buf = qtn_wayfinder_invalidnumber_msg; }
+RESOURCE TBUF r_wayfinder_dialerror_msg       { buf = qtn_wayfinder_dialerror_msg; }
+
+//For all dialogs and menus for Communication wizard.
+RESOURCE TBUF r_wf_what_to_send_title         { buf = qtn_wf_what_to_send_title; }
+RESOURCE TBUF r_wf_send_gps_position          { buf = qtn_wf_sms_command_gps; }
+RESOURCE TBUF r_wf_send_map_position          { buf = qtn_wf_sms_command_map_position; }
+RESOURCE TBUF r_wf_send_destination           { buf = qtn_bio_ctrl_destination; }
+RESOURCE TBUF r_wf_send_route                 { buf = qtn_bio_ctrl_route; } 
+RESOURCE TBUF r_wf_send_favorite              { buf = qtn_bio_ctrl_favorite; } 
+RESOURCE TBUF r_wf_send_as_title              { buf = qtn_connect_sendas_item; }
+RESOURCE TBUF r_wf_recipient_title            { buf = qtn_wf_user_recipent_msg; }
+RESOURCE TBUF r_wf_subject_title              { buf = qtn_subject_text; } 
+RESOURCE TBUF r_wf_enter_email                { buf = qtn_wf_enter_email; }   
+RESOURCE TBUF r_wf_error_sending_sms          { buf = qtn_wf_error_occured_while_sending_message; }
+RESOURCE TBUF r_wayfinder_send_email          { buf = qtn_wayfinder_send_email; } 
+
+RESOURCE TBUF r_wf_none                    { buf= qtn_NONE; }
+RESOURCE TBUF r_wf_categories_none         { buf= qtn_CATEGORIES_NONE; }
+RESOURCE TBUF r_positionselect_origin_text { buf = qtn_positionselect_origin_text; }
+RESOURCE TBUF r_positionselect_destination_text { buf = qtn_positionselect_destination_text; }
+RESOURCE TBUF r_positionselect_navigate_text { buf = qtn_positionselect_navigate_item; }
+RESOURCE TBUF r_positionselect_getroute_text { buf = qtn_GET_ROUTE; }
+RESOURCE TBUF r_positionselect_from_gps_text { buf = qtn_connect_personal_current_position   ; }
+RESOURCE TBUF r_positionselect_show_on_map_text { buf = qtn_positionselect_show_on_map_item; }
+RESOURCE TBUF r_positionselect_search_text { buf = qtn_positionselect_search_item; }
+RESOURCE TBUF r_positionselect_favorite_text { buf = qtn_positionselect_favorite_item; }
+RESOURCE TBUF r_positionselect_category_text { buf = qtn_positionselect_category_item; }
+RESOURCE TBUF r_positionselect_from_map_text { buf = qtn_wayfinder_positionselect_from_map_item; }
+RESOURCE TBUF r_positionselect_current_pos_text { buf = qtn_positionselect_current_pos_text; }
+RESOURCE TBUF r_text_search_detail_01  {  buf = qtn_wf_SEARCH_DETAIL_01 ; }
+RESOURCE TBUF r_text_search_detail_02  {  buf = qtn_wf_SEARCH_DETAIL_02 ; }
+RESOURCE TBUF r_text_search_detail_03  {  buf = qtn_wf_SEARCH_DETAIL_03 ; }
+RESOURCE TBUF r_text_search_detail_04  {  buf = qtn_wf_SEARCH_DETAIL_04 ; }
+RESOURCE TBUF r_text_search_detail_05  {  buf = qtn_wf_SEARCH_DETAIL_05 ; }
+RESOURCE TBUF r_text_search_detail_06  {  buf = qtn_wf_SEARCH_DETAIL_06 ; }
+RESOURCE TBUF r_text_search_detail_07  {  buf = qtn_wf_SEARCH_DETAIL_07 ; }
+RESOURCE TBUF r_text_search_detail_08  {  buf = qtn_wf_SEARCH_DETAIL_08 ; }
+RESOURCE TBUF r_text_search_detail_09  {  buf = qtn_wf_SEARCH_DETAIL_09 ; }
+RESOURCE TBUF r_text_search_detail_11  {  buf = qtn_wf_SEARCH_DETAIL_11 ; }
+RESOURCE TBUF r_titlepane_navigation_text { buf = qtn_s60_navigation_txt; }
+RESOURCE TBUF r_titlepane_search_text { buf = qtn_s60_search_txt; }
+RESOURCE TBUF r_titlepane_favourites_text { buf =  qtn_s60_favourites_txt ;}
+RESOURCE TBUF r_titlepane_settings_text { buf = qtn_s60_settings_txt ;}
+RESOURCE TBUF r_titlepane_search_results_text { buf = qtn_s60_search_results_txt ;}
+RESOURCE TBUF r_titlepane_save_as_favourite_text { buf = qtn_s60_save_as_favourite_txt ;}
+RESOURCE TBUF r_titlepane_select_category_text { buf = qtn_s60_select_category_txt ;}
+RESOURCE TBUF r_titlepane_plan_route_text { buf = qtn_s60_plan_route_txt ;}
+RESOURCE TBUF r_titlepane_guide_text { buf = qtn_s60_guide_txt ;}
+RESOURCE TBUF r_titlepane_itinerary_text { buf = qtn_s60_itinerary_txt ;}
+RESOURCE TBUF r_titlepane_country_list_text { buf = qtn_s60_country_list_txt ;}
+RESOURCE TBUF r_wayfinder_mydest_empty_list_item { buf = qtn_wf_saved_fav; }
+RESOURCE TBUF r_wayfinder_mydest_empty_list_item_no_synchronize { buf = qtn_wf_saved_fav; }
+RESOURCE TBUF r_mydest_set_origin_text { buf = qtn_wf_set_as_start; }
+RESOURCE TBUF r_mydest_set_destination_text { buf = qtn_mydest_destination_item; }
+RESOURCE TBUF r_mydest_show_on_map_text { buf = qtn_mydest_show_item; }
+RESOURCE TBUF r_mydest_view_details_text { buf = qtn_newdest_details_item; }
+RESOURCE TBUF r_connect_send_message_query { buf = qtn_connect_send_message_query; }
+RESOURCE TBUF r_wayfinder_recipient_address_invalid_msg { buf = qtn_wayfinder_recipient_address_invalid_msg; }
+RESOURCE TBUF r_wayfinder_verify_form_msg { buf = qtn_wayfinder_verify_form_msg; }
+RESOURCE TBUF r_connect_current_route { buf = qtn_connect_current_route; }
+RESOURCE TBUF r_connect_plain_text { buf = qtn_connect_plain_text; }
+RESOURCE TBUF r_connect_sms_item { buf = qtn_connect_sms_item; }
+RESOURCE TBUF r_connect_email_item { buf = qtn_connect_email_item; }
+RESOURCE TBUF r_connect_mms_item { buf = qtn_connect_mms_item; }
+RESOURCE TBUF r_connect_mail_subject { buf = qtn_connect_mail_subject; }
+RESOURCE TBUF r_connect_current_destination { buf = qtn_connect_current_destination; }
+RESOURCE TBUF r_connect_current_position { buf = qtn_connect_current_position; }
+RESOURCE TBUF r_connect_send_favorite { buf = qtn_connect_send_favorite; }
+RESOURCE TBUF r_connect_personal_current_route { buf = qtn_connect_personal_current_route; }
+RESOURCE TBUF r_connect_personal_current_destination { buf = qtn_connect_personal_current_destination; }
+RESOURCE TBUF r_connect_personal_current_position { buf = qtn_connect_personal_current_position; }
+RESOURCE TBUF r_connect_selected_position { buf = qtn_wayfinder_connect_selected_position; }
+RESOURCE TBUF r_connect_personal_my_favorite { buf = qtn_connect_personal_my_favorite; }
+RESOURCE TBUF r_connect_text_and_images { buf = qtn_connect_text_and_images; }
+RESOURCE TBUF r_connect_make_route { buf = qtn_connect_make_route; }
+RESOURCE TBUF r_connect_no_current_position { buf = qtn_connect_no_current_position; }
+RESOURCE TBUF r_connect_no_current_destination { buf = qtn_connect_no_current_destination; }
+RESOURCE TBUF r_connect_sent_by_server { buf = qtn_connect_sent_by_server; }
+RESOURCE TBUF r_connect_no_matches_found { buf = qtn_connect_no_matches_found; }
+RESOURCE TBUF r_connect_about_to_send { buf = qtn_connect_about_to_send; }
+RESOURCE TBUF r_connect_dialog_busy { buf = qtn_connect_dialog_busy; }
+RESOURCE TBUF r_hack_for_connect_dialog_text_err_uc_05 { buf = qtn_wf_ERR_UC_05; }
+/* RESOURCE TBUF r_text_mapv_map_err  {  buf = qtn_wf_MAPV_MAP_ERR ; } */
+/* RESOURCE TBUF r_text_mapv_map_err_05  {  buf = qtn_wf_MAPV_MAP_ERR_05 ; } */
+/* RESOURCE TBUF r_text_mapv_map_err_06  {  buf = qtn_wf_MAPV_MAP_ERR_06 ; } */
+RESOURCE TBUF r_text_mapv_map_err_07  {  buf = qtn_wf_MAPV_MAP_ERR_07 ; }
+RESOURCE TBUF r_wayfinder_itinerary_noroute { buf = qtn_itinerary_noroute; }
+RESOURCE TBUF r_wayfinder_itinerary_create_route { buf = qtn_itinerary_create_route; }
+RESOURCE TBUF32 r_wayfinder_itinerary_start { buf = qtn_itinerary_start; }
+RESOURCE TBUF32 r_wayfinder_itinerary_exit { buf = qtn_itinerary_exit; }
+RESOURCE TBUF r_wayfinder_itinerary_detour_start   { buf = qtn_wayfinder_itinerary_detour_start; }
+RESOURCE TBUF r_wayfinder_itinerary_detour_end     { buf = qtn_wayfinder_itinerary_detour_end; }
+RESOURCE TBUF r_wayfinder_itinerary_speedcam_start { buf = qtn_wayfinder_itinerary_speedcam_start; }
+RESOURCE TBUF r_wayfinder_itinerary_speedcam_end   { buf = qtn_wayfinder_itinerary_speedcam_end; }
+RESOURCE TBUF r_destination_destination_label { buf = qtn_destination_destination; }
+RESOURCE TBUF r_destination_distance_label { buf = qtn_destination_distance; }
+RESOURCE TBUF r_wayfinder_destination_eta_label { buf = qtn_wayfinder_destination_eta; }
+RESOURCE TBUF r_wayfinder_destination_etg_label { buf = qtn_wayfinder_destination_etg; }
+RESOURCE TBUF r_info_kmh_label { buf = qtn_wayfinder_kmh_text; }
+RESOURCE TBUF r_info_mph_label { buf = qtn_wayfinder_mph_text; }
+RESOURCE TBUF r_text_infov_direction {  buf = qtn_wf_INFOV_DIRECTION; }
+RESOURCE TBUF r_text_routev_etg_sec    {  buf = qtn_wf_ROUTEV_ETG_SEC   ; }
+RESOURCE TBUF r_text_routev_etg_min    {  buf = qtn_wf_ROUTEV_ETG_MIN   ; }
+RESOURCE TBUF r_text_routev_etg_hours  {  buf = qtn_wf_ROUTEV_ETG_HOURS ; }
+RESOURCE TBUF r_text_routev_etg_days   {  buf = qtn_wf_ROUTEV_ETG_DAYS  ; }
+RESOURCE TBUF r_text_routev_etg_weeks  {  buf = qtn_wf_ROUTEV_ETG_WEEKS ; }
+RESOURCE TBUF r_info_speed_label { buf = qtn_wayfinder_speed_text; }
+RESOURCE TBUF r_wf_gps_altitude { buf = qtn_wf_gps_altitude; }
+RESOURCE TBUF r_wayfinder_from_gps_text { buf = qtn_connect_personal_current_position; }
+RESOURCE TBUF r_wayfinder_from_gps_tooltip { buf = qtn_wayfinder_from_gps_text; }
+RESOURCE TBUF r_wayfinder_from_origin_text { buf = qtn_wayfinder_from_origin_text; }
+RESOURCE TBUF r_wf_tooltip_searcharound { buf = qtn_wf_tooltip_searcharound; }
+RESOURCE TBUF r_wf_tooltip_makesearch { buf = qtn_wf_tooltip_makesearch; }
+RESOURCE TBUF r_wf_tooltip_selectcat { buf = qtn_wf_tooltip_selectcat; }
+RESOURCE TBUF r_wayfinder_empty_msg { buf = ""; }
+RESOURCE TBUF r_wayfinder_routing_msg { buf = qtn_wayfinder_routing_msg; }
+RESOURCE TBUF r_wayfinder_searching_msg { buf = qtn_wayfinder_searching_msg; }
+RESOURCE TBUF r_wayfinder_synch_msg { buf = qtn_wayfinder_synch_msg; }
+RESOURCE TBUF r_wayfinder_processing_msg { buf = qtn_wayfinder_processing_msg; }
+RESOURCE TBUF r_wayfinder_gettingmap_msg { buf = qtn_wayfinder_gettingmap_msg; }
+RESOURCE TBUF r_wayfinder_move_wayfinder_launch_failed { buf = qtn_wayfinder_move_wayfinder_launch_failed; }
+RESOURCE TBUF r_wayfinder_get_wayfinder_launch_failed { buf = qtn_wayfinder_get_wayfinder_launch_failed; }
+
+RESOURCE TBUF64 r_wayfinder_current_country_text { buf = qtn_wayfinder_current_country_text; }
+RESOURCE TBUF64 r_wayfinder_current_city_text { buf = qtn_wayfinder_current_city_text; }
+RESOURCE TBUF64 r_wayfinder_select_country_text { buf = qtn_wayfinder_select_country_text; }
+RESOURCE TBUF64 r_wayfinder_select_city_text { buf = qtn_wayfinder_select_city_text; }
+RESOURCE TBUF64 r_wayfinder_next_street_text { buf = qtn_wayfinder_next_street_text; }
+RESOURCE TBUF64 r_wayfinder_current_street_text { buf = qtn_wayfinder_current_street_text; }
+RESOURCE TBUF64 r_wayfinder_creating_map_msg { buf = qtn_wayfinder_creating_map_msg; }
+RESOURCE TBUF64 r_wayfinder_unknown_msg_msg { buf = qtn_wayfinder_unknown_msg_msg; }
+RESOURCE TBUF r_wayfinder_unhandled_msg_msg { buf = qtn_wayfinder_unhandled_msg_msg; }
+RESOURCE TBUF r_wayfinder_nodestination_msg { buf = qtn_wayfinder_nodestination_msg; }
+RESOURCE TBUF r_wayfinder_nohits_msg { buf = qtn_wayfinder_nohits_msg; }
+RESOURCE TBUF r_wayfinder_searchincomplete_country_msg { buf = qtn_wayfinder_searchincomplete_country_msg; }
+RESOURCE TBUF r_wayfinder_searchincomplete_city_msg { buf = qtn_wayfinder_searchincomplete_city_msg; }
+RESOURCE TBUF r_wayfinder_favoriteincomplete_msg { buf = qtn_wayfinder_favoriteincomplete_msg; }
+RESOURCE TBUF r_wayfinder_favoritesaved_msg { buf = qtn_wayfinder_favoritesaved_msg; }
+RESOURCE TBUF r_wayfinder_favoritechanged_msg { buf = qtn_wayfinder_favoritechanged_msg; }
+RESOURCE TBUF r_wayfinder_favoriteremoved_msg { buf = qtn_wayfinder_favoriteremoved_msg; }
+RESOURCE TBUF r_wayfinder_favoritesupdated_msg { buf = qtn_wayfinder_favoritesupdated_msg; }
+RESOURCE TBUF64 r_wayfinder_savesmsdestination_msg { buf = qtn_wayfinder_savesmsdestination_msg; }
+RESOURCE TBUF r_wayfinder_keepsmsdestination_msg { buf = qtn_wayfinder_keepsmsdestination_msg; }
+RESOURCE TBUF r_wayfinder_badresourcefile_msg { buf = qtn_wayfinder_badresourcefile_msg; }
+RESOURCE TBUF r_wayfinder_badlangresourcefile_msg { buf = qtn_wayfinder_badlangresourcefile_msg; }
+RESOURCE TBUF r_wayfinder_deletedestination_msg { buf = qtn_wayfinder_deletedestination_msg; }
+RESOURCE TBUF r_wayfinder_btbusy_msg { buf = qtn_wayfinder_btbusy_msg; }
+RESOURCE TBUF r_wayfinder_nobtdeviceselected_msg { buf = qtn_wayfinder_nobtdeviceselected_msg; }
+RESOURCE TBUF r_wayfinder_getbtdeviceerror_msg { buf = qtn_wayfinder_getbtdeviceerror_msg; }
+RESOURCE TBUF r_wayfinder_btconnectionerror_msg { buf = qtn_wayfinder_btconnectionerror_msg; }
+RESOURCE TBUF r_wayfinder_btdisconnecterror_msg { buf = qtn_wayfinder_btdisconnecterror_msg; }
+RESOURCE TBUF r_wayfinder_btreciveerror_msg { buf = qtn_wayfinder_btreciveerror_msg; }
+RESOURCE TBUF r_wayfinder_btdisconnected_msg { buf = qtn_wayfinder_btdisconnected_msg; }
+RESOURCE TBUF r_wayfinder_btrunerror_msg { buf = qtn_wayfinder_btrunerror_msg; }
+RESOURCE TBUF r_wayfinder_bt_not_enabled_msg { buf = qtn_wayfinder_bt_not_enabled_msg; }
+RESOURCE TBUF r_wf_bt_selectionsdpfailed { buf = qtn_wayfinder_getbtdeviceerror_msg; }
+RESOURCE TBUF r_wf_bt_gpsconnectionfailed { buf = qtn_wayfinder_getbtdeviceerror_msg; }
+RESOURCE TBUF r_wf_bt_poweronfailed { buf = qtn_wayfinder_bt_power_on_failed; }
+RESOURCE TBUF r_wf_bt_repeatedsearchfailed { buf = qtn_wayfinder_bt_device_timeout; }
+RESOURCE TBUF r_wf_bt_hardwarefailed { buf = qtn_wayfinder_bt_disconnect_battery;}
+RESOURCE TBUF r_wayfinder_internalcomerror_msg { buf = qtn_wayfinder_internalcomerror_msg; }
+RESOURCE TBUF r_wayfinder_internalcomtimeout_msg { buf = qtn_wayfinder_internalcomtimeout_msg; }
+RESOURCE TBUF r_wayfinder_internalreaderror_msg { buf = qtn_wayfinder_internalreaderror_msg; }
+RESOURCE TBUF r_wayfinder_internalwriteerror_msg { buf = qtn_wayfinder_internalwriteerror_msg; }
+
+RESOURCE TBUF r_wayfinder_resourcemissing_msg { buf = qtn_wayfinder_resourcemissing_msg; }
+RESOURCE TBUF r_wayfinder_lang_resourcemissing_msg { buf = qtn_wayfinder_lang_resourcemissing_msg; }
+RESOURCE TBUF r_wayfinder_initprogramproblem_msg { buf = qtn_wayfinder_initprogramproblem_msg; }
+RESOURCE TBUF r_wayfinder_programmissing_msg            { buf = qtn_wayfinder_programmissing_msg; }
+RESOURCE TBUF r_wayfinder_confirm_exit_msg              { buf = qtn_wayfinder_confirm_exit_msg; }
+RESOURCE TBUF r_wayfinder_confirm_clear_route_msg       { buf = qtn_wayfinder_confirm_clear_route_msg; }
+RESOURCE TBUF r_wayfinder_memory_low_exit_msg           { buf = qtn_wayfinder_memory_low_exit_msg; }
+RESOURCE TBUF r_wayfinder_about_msg                     { buf = qtn_wayfinder_about_msg; }
+RESOURCE TBUF r_wayfinder_warning_msg                   { buf = qtn_wayfinder_warning_msg; }
+RESOURCE TBUF r_wayfinder_error_msg                     { buf = qtn_wayfinder_error_msg; }
+RESOURCE TBUF r_wayfinder_memory_low_msg                { buf = qtn_wayfinder_memory_low_msg; }
+RESOURCE TBUF r_wayfinder_web_username_text             { buf = qtn_settings_web_username; }
+RESOURCE TBUF r_wayfinder_trial_version_text            { buf = qtn_wayfinder_trial_version_text; }
+RESOURCE TBUF r_wayfinder_set_password_text             { buf = qtn_wayfinder_set_password_text; }
+// Trial menu replies
+RESOURCE TBUF r_wayfinder_register_gold_fail_reg_key_msg { buf = qtn_wayfinder_register_gold_fail_reg_key_msg; }
+RESOURCE TBUF r_wayfinder_register_gold_fail_number_msg  { buf = qtn_wayfinder_register_gold_fail_number_msg ; }
+RESOURCE TBUF r_wayfinder_register_gold_fail_region_msg  { buf = qtn_wayfinder_register_gold_fail_region_msg ; }
+RESOURCE TBUF r_wayfinder_register_gold_fail_email_msg   { buf = qtn_wayfinder_register_gold_fail_email_msg  ; }
+RESOURCE TBUF r_wayfinder_register_gold_fail_name_msg    { buf = qtn_wayfinder_register_gold_fail_name_msg   ; }
+
+
+RESOURCE TBUF r_format_trial_transactiondaysleft { buf = qtn_format_trial_transactiondaysleft; }
+RESOURCE TBUF r_format_trial_transactionsleft    { buf = qtn_format_trial_transactionsleft   ; }
+RESOURCE TBUF r_format_trial_daysleft            { buf = qtn_format_trial_daysleft           ; }
+RESOURCE TBUF r_wayfinder_iap_search1_msg  { buf = qtn_wayfinder_iap_search1 ; }
+RESOURCE TBUF r_wayfinder_iap_search2_msg  { buf = qtn_wayfinder_iap_search2 ; }
+RESOURCE TBUF r_wayfinder_iap_search3_msg  { buf = qtn_wayfinder_iap_search3 ; }
+RESOURCE TBUF r_wayfinder_iap_search4_msg  { buf = qtn_wayfinder_iap_search4 ; }
+RESOURCE TBUF r_wayfinder_iap_success_header       { buf = qtn_wayfinder_iap_success_header          ; }
+RESOURCE TBUF r_wayfinder_iap_success_working      { buf = qtn_wayfinder_iap_success_working         ; }
+RESOURCE TBUF r_wayfinder_iap_fail_header          { buf = qtn_wayfinder_iap_fail_header             ; }
+RESOURCE TBUF r_wayfinder_iap_fail_no_working_iaps { buf = qtn_wayfinder_iap_fail_no_working_iaps    ; }
+RESOURCE TBUF r_wayfinder_iap_fail_no_iaps         { buf = qtn_wayfinder_iap_fail_no_iaps            ; }
+RESOURCE TBUF r_wayfinder_iap_fail_not_selected    { buf = qtn_wayfinder_iap_fail_not_selected       ; }
+RESOURCE TBUF r_wayfinder_iap_fail_not_working     { buf = qtn_wayfinder_iap_fail_not_working       ; }
+RESOURCE TBUF r_text_resource_too_old      { buf = qtn_wf_RESOURCE_TOO_OLD ; }
+RESOURCE TBUF r_text_resource_your_version { buf = qtn_wf_RESOURCE_YOUR_VERSION ; }
+RESOURCE TBUF r_text_resource_need_version { buf = qtn_wf_RESOURCE_NEED_VERSION ; }
+RESOURCE TBUF r_text_resource_program_exit { buf = qtn_wf_RESOURCE_PROGRAM_EXIT ; }
+RESOURCE TBUF r_wayfinder_about_extra_msg {buf = qtn_wayfinder_about_extra_msg; }
+RESOURCE TBUF r_connect_service_not_defined  {  buf = qtn_connect_service_not_defined  ; }
+RESOURCE TBUF r_connect_fail_body            {  buf = qtn_connect_fail_body            ; }
+RESOURCE TBUF r_connect_fail_originator      {  buf = qtn_connect_fail_originator      ; }
+RESOURCE TBUF r_connect_fail_recipient       {  buf = qtn_connect_fail_recipient       ; }
+RESOURCE TBUF r_connect_fail                 {  buf = qtn_connect_fail                 ; }
+RESOURCE TBUF r_connect_send_sms_header      {  buf = qtn_connect_send_sms_header      ; }
+RESOURCE TBUF r_wayfinder_silver_title         { buf = qtn_wayfinder_silver_title; }
+RESOURCE TBUF r_wayfinder_send_sms_reg_title   { buf = qtn_wayfinder_send_sms_reg_title; }
+RESOURCE TBUF r_wayfinder_send_sms_reg_msg     { buf = qtn_wayfinder_send_sms_reg_msg; }
+RESOURCE TBUF r_wayfinder_sms_reg_number       { buf = "+46709032017"; }
+RESOURCE TBUF r_wayfinder_notice_title { buf = qtn_wayfinder_notice_title; }
+RESOURCE TBUF r_wayfinder_query_iap_header { buf =qtn_wayfinder_query_iap_header; }
+RESOURCE TBUF r_wayfinder_query_iap_auto   { buf =qtn_wayfinder_query_iap_auto; }
+RESOURCE TBUF r_wayfinder_query_iap_manual { buf =qtn_wayfinder_query_iap_manual; }
+RESOURCE TBUF r_wayfinder_query_iap_select { buf =qtn_wayfinder_query_iap_select_connection; }
+RESOURCE TBUF r_wayfinder_unknown_text { buf =qtn_wayfinder_unknown_text; }
+RESOURCE TBUF r_wayfinder_language_changed_header { buf = qtn_wayfinder_language_changed_header; }
+RESOURCE TBUF r_wayfinder_language_changed_text { buf = qtn_wayfinder_language_changed_text; }
+RESOURCE TBUF r_wayfinder_startlist_map         { buf = qtn_wayfinder_startlist_map; }
+RESOURCE TBUF r_wayfinder_startlist_newdest     { buf = qtn_wayfinder_startlist_newdest; }
+RESOURCE TBUF r_wayfinder_startlist_newroute     { buf = qtn_wayfinder_startlist_newroute; }
+RESOURCE TBUF r_wayfinder_startlist_mydest      { buf = qtn_wayfinder_startlist_mydest; }
+RESOURCE TBUF r_wayfinder_startlist_connect     { buf = qtn_wayfinder_startlist_connect; }
+RESOURCE TBUF r_wayfinder_settings_changed_header { buf = qtn_wayfinder_settings_changed_header; }
+RESOURCE TBUF r_wayfinder_settings_changed_text { buf = qtn_wayfinder_settings_changed_text; }
+
+RESOURCE TBUF r_wayfinder_more_text      { buf = qtn_wayfinder_more_text; }
+RESOURCE TBUF r_wayfinder_softkey_ok     { buf = qtn_wayfinder_softkey_ok; }
+RESOURCE TBUF r_wayfinder_softkey_back   { buf = qtn_wayfinder_softkey_back; }
+RESOURCE TBUF r_startmenu_trial              { buf = qtn_startmenu_trial; }
+RESOURCE TBUF r_startmenu_register           { buf = qtn_startmenu_register; }
+RESOURCE TBUF r_startmenu_alreadyregistered  { buf = qtn_startmenu_alreadyregistered; }
+
+RESOURCE TBUF r_map_route_to_text        { buf = qtn_newdest_navigate_item;   }
+RESOURCE TBUF r_map_show_info_text       { buf = qtn_newdest_details_item;    }
+RESOURCE TBUF r_map_set_destination_text { buf = qtn_mydest_destination_item; }
+RESOURCE TBUF r_map_set_origin_text      { buf = qtn_wf_set_as_start;      }
+RESOURCE TBUF r_map_save_favorite_text   { buf = qtn_newdest_save_item;       }
+
+RESOURCE TBUF r_bio_ctrl_unknown_type         { buf = qtn_bio_ctrl_unknown_type      ; }
+RESOURCE TBUF r_vector_map_copyright_label    { buf = qtn_vector_map_copyright_label; }
+
+RESOURCE TBUF r_wayfinder_download_audio_resources { buf = qtn_wayfinder_download_audio_resources; }
+RESOURCE TBUF r_wayfinder_download_audio_resources_header { buf = qtn_wayfinder_download_audio_resources_header; }
+
+RESOURCE TBUF r_wayfinder_dl_readpackagelist            { buf = qtn_updatewf_readpackagelist_text; }
+RESOURCE TBUF r_wayfinder_dl_downloadcomplete           { buf = qtn_updatewf_downloadcomplete_text; }
+RESOURCE TBUF r_wayfinder_dl_nopackagelist              { buf = qtn_updatewf_nopackagelist_text; }
+RESOURCE TBUF r_wayfinder_dl_downloadfailed             { buf = qtn_updatewf_downloadfailed_text; }
+RESOURCE TBUF r_wayfinder_dl_downloading_prompt         { buf = qtn_updatewf_downloading_prompt_text; }
+
+RESOURCE TBUF r_wayfinder_dl_cantconnect_msg             { buf = qtn_updatewf_cantconnect_msg; }
+RESOURCE TBUF r_wayfinder_dl_nopackagelist_msg           { buf = qtn_updatewf_nopackagelist_msg; }
+RESOURCE TBUF r_wayfinder_dl_downloading_msg             { buf = qtn_updatewf_downloading_msg; }
+RESOURCE TBUF r_wayfinder_dl_downloadfailed_msg          { buf = qtn_updatewf_downloadfailed_msg; }
+RESOURCE TBUF r_wayfinder_dl_installwaiterror_msg        { buf = qtn_updatewf_installwaiterror_msg; }
+RESOURCE TBUF r_wayfinder_dl_installreturnederror_msg    { buf = qtn_updatewf_installreturnederror_msg; }
+RESOURCE TBUF r_wayfinder_dl_no_user_file_msg            { buf = qtn_updatewf_no_user_file_msg; }
+RESOURCE TBUF r_wayfinder_dl_unreadable_user_file_msg    { buf = qtn_updatewf_unreadable_user_file_msg; }
+
+RESOURCE TBUF r_wayfinder_dl_connectionfailed_msg        { buf = qtn_updatewf_connectionfailed_msg; }
+RESOURCE TBUF r_wayfinder_dl_connection_timeout_msg      { buf = qtn_updatewf_connection_timeout_msg; }
+RESOURCE TBUF r_wayfinder_dl_downloadfailure_msg         { buf = qtn_updatewf_downloadfailure_msg; }
+RESOURCE TBUF r_wayfinder_dl_errorreading_msg            { buf = qtn_updatewf_errorreading_msg; }
+RESOURCE TBUF r_wayfinder_dl_errorsending_msg            { buf = qtn_updatewf_errorsending_msg; }
+RESOURCE TBUF r_wayfinder_dl_fileerror_msg               { buf = qtn_updatewf_fileerror_msg; }
+
+RESOURCE TBUF r_wayfinder_dl_downloadparts1              { buf = qtn_updatewf_downloadparts1_text; }
+RESOURCE TBUF r_wayfinder_dl_downloadparts2              { buf = qtn_updatewf_downloadparts2_text; }
+RESOURCE TBUF r_wayfinder_dl_partof1                     { buf = qtn_updatewf_partof1_text; }
+RESOURCE TBUF r_wayfinder_dl_partof2                     { buf = qtn_updatewf_partof2_text; }
+
+RESOURCE TBUF r_wayfinder_dl_spacewarning1               { buf = qtn_updatewf_spacewarning1_msg; }
+RESOURCE TBUF r_wayfinder_dl_spacewarning2               { buf = qtn_updatewf_spacewarning2_msg; }
+RESOURCE TBUF r_wayfinder_dl_spacewarning3               { buf = qtn_updatewf_spacewarning3_msg; }
+
+RESOURCE TBUF r_wayfinder_dl_download_not_needed_version_ok { buf = qtn_updatewf_download_not_needed_version_ok; }
+
+RESOURCE TBUF r_wayfinder_dl_installing_text             { buf = qtn_updatewf_installing_text; }
+RESOURCE TBUF r_wayfinder_dl_empty_text                  { buf = ""; }
+
+RESOURCE TBUF r_wayfinder_dl_downloadcomplete_msg        { buf = qtn_updatewf_downloadcomplete_msg; }
+RESOURCE TBUF r_wayfinder_dl_downloading_text        { buf = qtn_updatewf_downloading_text; }
+
+RESOURCE TBUF r_wf_show_buy_extension_query_header { buf = qtn_wf_show_buy_extension_query_header; }
+RESOURCE TBUF r_wf_show_buy_extension_query_text   { buf = qtn_wf_show_buy_extension_query_text; }
+
+RESOURCE TBUF r_wayfinder_message_no_sms {buf = qtn_wayfinder_no_sms_msg;}
+
+// Texts in route planner view
+RESOURCE TBUF r_wf_route_button_title   { buf = qtn_drive_or_walk; } 
+RESOURCE TBUF r_wf_route_car_button_txt { buf = qtn_DRIVE; }
+RESOURCE TBUF r_wf_route_ped_button_txt { buf = qtn_WALK; }
+RESOURCE TBUF r_wf_stop_navigation_title { buf = qtn_wayfinder_stop_navigation; }
+RESOURCE TBUF r_wf_stop_navigation_text { buf = qtn_wf_stop_navigation; }
+
+#ifndef NAV2_CLIENT_SERIES60_V1
+RESOURCE TBUF r_wayfinder_lbs_warn_no_gps            { buf = qtn_wayfinder_lbs_warn_no_gps; }
+RESOURCE TBUF r_wayfinder_lbs_info_searching_for_gps { buf = qtn_wayfinder_lbs_info_searching_for_gps; }
+RESOURCE TBUF r_wayfinder_lbs_warn_user_disabled     { buf = qtn_wayfinder_lbs_warn_user_disabled; }
+RESOURCE TBUF r_wayfinder_lbs_info_pre_startup       { buf = qtn_wayfinder_lbs_info_pre_startup; }
+RESOURCE TBUF r_wayfinder_lbs_info_waiting_for_pos   { buf = qtn_wayfinder_lbs_info_waiting_for_pos; }
+RESOURCE TBUF r_wayfinder_lbs_warn_unsupported       { buf = qtn_wayfinder_lbs_warn_unsupported; }
+RESOURCE TBUF r_wayfinder_lbs_warn_access_denied     { buf = qtn_wayfinder_lbs_warn_access_denied; }
+RESOURCE TBUF r_wayfinder_lbs_warn_canceled_bt       { buf = qtn_wayfinder_lbs_warn_canceled_bt; }
+RESOURCE TBUF r_wayfinder_lbs_warn_bad_gps_data      { buf = qtn_wayfinder_lbs_warn_bad_gps_data; }
+RESOURCE TBUF r_wayfinder_lbs_info_got_first_pos     { buf = qtn_wayfinder_lbs_info_got_first_pos; }
+#endif
+
+RESOURCE TBUF r_wf_safety_information_body           { buf = qtn_wf_safety_information_body; }
+RESOURCE TBUF r_wf_safety_information_header         { buf = qtn_wf_safety_information_head; }
+RESOURCE TBUF r_connect_select_item                  { buf = qtn_connect_select_item; }
+RESOURCE TBUF r_wf_no_files_available                { buf = qtn_wf_no_files_available; }
+RESOURCE TBUF r_wf_enter_name                        { buf = qtn_wf_enter_name; }
+RESOURCE TBUF r_privacy_statement_text               { buf = qtn_privacy_statement_text; }
+RESOURCE TBUF r_privace_statement_title              { buf = qtn_privacy_statement_head; }
+
+RESOURCE TBUF r_vodaf_startup_warning { buf = qtn_vodaf_startup_warning; }
+RESOURCE TBUF r_vodaf_startup_safety  { buf = qtn_vodaf_startup_safety; }
+RESOURCE TBUF r_vodaf_startupdatacost { buf = qtn_vodaf_startupdatacost; }
+RESOURCE TBUF r_vodaf_display_warning_title { buf = qtn_vodaf_warning_title; }
+RESOURCE TBUF r_vodaf_display_warning_txt { buf = qtn_vodaf_warning_txt; }
+
+RESOURCE TBUF r_wf_confirm_overwrite_header          { buf = qtn_wf_confirm_overwrite_header; }
+RESOURCE TBUF r_wf_confirm_overwrite_body            { buf = qtn_wf_confirm_overwrite_body; }
+RESOURCE TBUF r_wf_confirm_delete_header             { buf = qtn_wf_confirm_delete_header; }
+RESOURCE TBUF r_wf_confirm_delete_body               { buf = qtn_wf_confirm_delete_body; }
+RESOURCE TBUF r_wayfinder_fleet_info_msg             { buf = qtn_wayfinder_fleet_info_msg; }
+RESOURCE TBUF r_wayfinder_fleet_info_label           { buf = qtn_wayfinder_fleet_info_menu; }
+RESOURCE TBUF r_wf_report_event                      { buf = qtn_wf_report_event; }
+RESOURCE TBUF r_wf_report_event_help                 { buf = qtn_wf_report_event_help; }
+
+RESOURCE TBUF r_wf_traffic_jam_report_msg         { buf = qtn_wf_traffic_jam_report_msg; }
+RESOURCE TBUF r_wf_traffic_special_event_msg      { buf = qtn_wf_traffic_special_event_msg; }
+RESOURCE TBUF r_wf_traffic_breakdown1_msg         { buf = qtn_wf_traffic_breakdown1_msg; }
+RESOURCE TBUF r_wf_traffic_breakdown2_msg         { buf = qtn_wf_traffic_breakdown2_msg; }
+RESOURCE TBUF r_wf_traffic_speed_cam_msg          { buf = qtn_wf_traffic_speed_cam_msg; }
+RESOURCE TBUF r_wf_traffic_report_problem_msg     { buf = qtn_wf_traffic_report_problem_msg; }
+RESOURCE TBUF r_wf_traffic_dangerous_place_msg    { buf = qtn_wf_traffic_dangerous_place_msg; }
+RESOURCE TBUF r_wf_traffic_weather_warning_msg    { buf = qtn_wf_traffic_weather_warning_msg; }
+RESOURCE TBUF r_wf_traffic_report_map_error_msg   { buf = qtn_wf_traffic_report_map_error_msg; }
+RESOURCE TBUF r_wf_traffic_report_position_msg    { buf = qtn_wf_traffic_report_position_msg; }
+RESOURCE TBUF r_wf_traffic_report_route_error_msg { buf = qtn_wf_traffic_report_route_error_msg; }
+
+RESOURCE TBUF r_wf_traffic_jam_report       { buf = qtn_wf_traffic_jam_report; }
+RESOURCE TBUF r_wf_traffic_dangerous_place  { buf = qtn_wf_traffic_dangerous_place; }
+RESOURCE TBUF r_wf_traffic_special_event    { buf = qtn_wf_traffic_special_event; }
+RESOURCE TBUF r_wf_traffic_weather_warning  { buf = qtn_wf_traffic_weather_warning; }
+RESOURCE TBUF r_wf_breakdown1               { buf = qtn_wf_breakdown1; }
+RESOURCE TBUF r_wf_breakdown2               { buf = qtn_wf_breakdown2; }
+RESOURCE TBUF r_wf_speed_cam                { buf = qtn_wf_speed_cam; }
+RESOURCE TBUF r_wf_report_route_problem { buf = qtn_wf_report_route_problem; }
+RESOURCE TBUF r_wf_report_map_problem { buf = qtn_wf_report_map_problem; }
+RESOURCE TBUF r_wf_report_problem           { buf = qtn_wf_report_problem; }
+RESOURCE TBUF r_wf_report_position          { buf = qtn_wf_report_position; }
+
+RESOURCE TBUF r_wf_startup_failed_body      { buf = qtn_wf_startup_failed_body;}
+RESOURCE TBUF r_wf_startup_failed_header    { buf = qtn_wf_startup_failed_header;}
+
+RESOURCE TBUF r_map_show_installed_maps { buf = qtn_wf_installed_maps; }
+RESOURCE TBUF r_map_delete_files { buf = qtn_wf_dialog_title_select; }
+RESOURCE TBUF r_map_info_title { buf = qtn_wayfinder_info_item; }
+RESOURCE TBUF r_map_delete_file_success { buf = qtn_wf_map_deleted; }
+RESOURCE TBUF r_map_new_maps_installed { buf = qtn_wf_new_maps_installed; }
+RESOURCE TBUF r_map_new_map_installed { buf = qtn_wf_new_map_installed; }
+RESOURCE TBUF r_map_no_maps_available { buf = qtn_wf_no_maps_available; }
+RESOURCE TBUF r_map_delete_map_file_failed_title { buf = qtn_wayfinder_error_msg; }
+RESOURCE TBUF r_map_delete_map_file_failed_text { buf = qtn_wf_delete_map_file_failed; }
+RESOURCE TBUF r_map_search_files_result_title { buf = qtn_wf_search_result_msg; }
+RESOURCE TBUF r_map_delete_file_title { buf = qtn_java_cmd_delete; }
+RESOURCE TBUF r_degree { buf = qtn_wf_degree_sign; }
+
+RESOURCE TBUF r_mm_map { buf = qtn_map_tab; }
+RESOURCE TBUF r_mm_guide { buf = qtn_guide_tab; }
+RESOURCE TBUF r_mm_info { buf = qtn_wf_gps_info_msg; }
+RESOURCE TBUF r_mm_search { buf = qtn_newdest_search_item; }
+RESOURCE TBUF r_mm_route { buf = qtn_positionselect_tab; }
+RESOURCE TBUF r_mm_favorites { buf = qtn_mydest_tab; }
+RESOURCE TBUF r_mm_services { buf = qtn_wayfinder_services; }
+RESOURCE TBUF r_mm_communicate { buf = qtn_connect_tab; }
+RESOURCE TBUF r_mm_settings { buf = qtn_settings_tab; }
+RESOURCE TBUF r_mm_exit { buf = qtn_wayfinder_menu_exit; }
+RESOURCE TBUF r_mm_services_weather { buf = qtn_WEATHER_LM; }
+RESOURCE TBUF r_mm_services_cityguide { buf = qtn_CITY_GUIDE; }
+RESOURCE TBUF r_mm_search_subtitle { buf = qtn_search_subtitle; }
+RESOURCE TBUF r_mm_map_subtitle { buf = qtn_map_subtitle; }
+RESOURCE TBUF r_mm_favorites_subtitle { buf = qtn_myplaces_subtitle; }
+RESOURCE TBUF r_mm_title_text { buf = qtn_main_question; }
+RESOURCE TBUF r_mm_plan_route { buf = qtn_startpage_guidence_item; }
+
+RESOURCE TBUF r_cs_category_select { buf = qtn_newdest_category_item; }
+RESOURCE TBUF r_cs_next_hits_title { buf = qtn_wf_next20; }
+RESOURCE TBUF r_cs_next_hits_text { buf = qtn_wf_nextres23; }
+RESOURCE TBUF r_cs_prev_hits_title { buf = qtn_wf_prev20; }
+RESOURCE TBUF r_cs_prev_hits_text { buf = qtn_wf_prevres23; }
+RESOURCE TBUF r_cs_no_coords_msg { buf = qtn_wf_no_coordinates; }
+RESOURCE TBUF r_wf_set_as_dest { buf = qtn_newdest_destination_item; }
+RESOURCE TBUF r_wf_no_results { buf = qtn_wf_no_results; }
+
+RESOURCE TBUF r_wf_the_navigation_will_start { buf = qtn_wf_the_navigation_will_start; }
+RESOURCE TBUF r_wf_waiting_for_gps { buf = qtn_wf_wait_GPS; }
+RESOURCE TBUF r_wf_start_navigation { buf = qtn_wayfinder_start_navigation; }
+RESOURCE TBUF r_wf_do_you_want_to_connect { buf = qtn_wf_do_you_want_to_connect; }
+
+RESOURCE TBUF r_wf_you_are_on { buf = qtn_wf_you_are_on; }
+RESOURCE TBUF r_wf_next_street { buf = qtn_wayfinder_next_street_text; }
+RESOURCE TBUF r_wf_distance_left { buf = qtn_wf_distance_left; }
+RESOURCE TBUF r_wf_time_left { buf = qtn_wf_time_left; }
+RESOURCE TBUF r_wf_wayfinder_arrival_time { buf = qtn_wayfinder_arrival_time; }
+
+RESOURCE TBUF r_wf_pos_no_coordinates { buf = qtn_wf_info_no_pos; }
+
+RESOURCE TBUF r_wf_roaming_mess_title { buf = qtn_wf_roaming_mess_title; }
+RESOURCE TBUF r_wf_roaming_mess_text { buf = qtn_wf_roaming_mess_text; }
+
+RESOURCE TBUF r_s60_searching_txt { buf = qtn_s60_searching_txt; }
+
+/******************************************************/
+/********************** EARTH *************************/
+/******************************************************/
+RESOURCE TBUF r_earth_upgrade_gps { buf = qtn_EARTH_UPGRADE_GPS; }
+
+/******************************************************/
+/**************** Error Table *************************/
+/******************************************************/
+#include "ErrorTable.rss"
+
+
+
+
+
+
+
+// End of File

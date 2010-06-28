@@ -1,0 +1,36 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#define qtn_wayfinder_settings_map_layers_selection "Lagen wählen"
+#define qtn_newdest_origin_item                 "Als Startpunkt festlegen"
+#define qtn_mydest_origin_item                  "Als Startpunkt festlegen"
+#define qtn_itinerary_show_turn_item     "Abzweigung anzeigen"
+#define qtn_guide_show_turn_item        "Abzweigung zeigen"
+#define qtn_wayfinder_settings_map_layers_checkbox "Kartenlagen"
+#define qtn_upgrade_regnumber_old     "Registrierungscode"
+#define qtn_wayfinder_register_gold_fail_reg_key_msg_old   "Der eingegebene Registrierungsschlüssel war ungültig"
+#define qtn_register_info_text1_old                "Nach erfolgreicher Aktivierung haben Sie Zugriff auf Wayfinder und mywayfinder.com. Die Aktivierung erfolgt durch das Eingeben Ihrer Handynummer und Ihres Registrierungscodes auf der folgenden Seite."
+#define qtn_register_info_text2_old                "Überprüfen Sie, ob Sie die Handynummer einschließlich der Landesvorwahl aber ohne Nullen (z.B. +49XXXXXX für Deutschland) eingegeben haben. Der Aktivierungscode sollte folgendermaßen eingegeben werden: XXXX-XXXX-XXXX-XXXX. Wählen Sie danach  im Menü Wählen die Option Aktivieren."
+#define qtn_upgrade_info_text2_old 	"Geben Sie den von Wayfinder Systems erhaltenen Registrierungscode ein. Wählen Sie im Menü Wählen den Punkt Aktualisieren."
+#define qtn_upgrade_info_text1_old 	"Geben Sie Ihre Handynummer einschließlich der Landesvorwahl und Ihren Registrierungscode ein."
+#define qtn_wayfinder_settings_tracking_orientation_old "Trackingkarte"
+#define qtn_wayfinder_settings_favorite_show_always_old "Immer"
+#define qtn_wayfinder_settings_favorite_show_city_old "Stadtlevel"
+#define qtn_wayfinder_settings_north_oriented_map_old "Nach Norden gerichtet"
+#define qtn_wayfinder_settings_rotating_map_old    "Rotierend"
+#define TEXT_MAPV_MAP_ERR_01                       "Wayfinder konnte keine neue Karte erstellen. Bitte starten Sie Ihr Mobiltelefon neu. "
+#define TEXT_MAPV_MAP_ERR_02                       "Wayfinder konnte die alte Karte nicht löschen. Bitte starten Sie Ihr Mobiltelefon neu. "
+#define TEXT_MAPV_MAP_ERR_03                       "Wayfinder konnte die Datei nicht umbenennen. Bitte starten Sie Ihr Mobiltelefon neu. "
+#define TEXT_MAPV_MAP_ERR_04                       "Wayfinder konnte die Karte nicht speichern. Bitte starten Sie Ihr Mobiltelefon neu. "
+#define TEXT_MAPV_MAP_ERR_05                       "Wayfinder hat eine ungültige Karte empfangen. Bitte starten Sie Ihr Mobiltelefon neu. "
+#define TEXT_MAPV_MAP_ERR_06                       "Tracking ist deaktiviert. Bitte zoomen Sie heraus und schalten Sie anschließend Tracking an."

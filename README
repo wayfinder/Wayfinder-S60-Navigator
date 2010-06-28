@@ -1,0 +1,6 @@
+This is the repository for the Wayfinder Navigator client for Symbian S60.
+It is released under the BSD license.
+
+The repository contains the source code for a complete turn-by-turn navigation client. In addition to this the repository also contains the source code for adapting the application with the functionality provided in the Wayfinder Access product. For more information read the README.txt located in the Blindmode folder.
+
+For more information about the source code please go to oss.wayfinder.com

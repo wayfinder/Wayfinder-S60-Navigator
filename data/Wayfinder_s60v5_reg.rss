@@ -1,0 +1,35 @@
+#include "nav2defines.h"
+// Wayfindedr_reg.rss
+//
+// Copyright (c) Symbian Software Ltd 2005. All rights reserved.
+//
+
+// All registration files need to #include appinfo.rh. 
+#include <appinfo.rh>
+#include "Wayfinder8_s60v5_appinfo.rsg"
+#include "WayFinderSettings.h"
+
+// All registration files must define UID2, which is always 
+// KUidAppRegistrationResourceFile, and UID3, which is the application's UID.
+UID2 KUidAppRegistrationResourceFile
+UID3 WayFinder_uid3 // application UID
+// UID3 0x20000173 // application UID
+
+// Registration file need to containo an APP_REGISTRATION_INFO resource that
+// minimally needs to provide the name of the application binary (using the 
+// app_file statement). 
+RESOURCE APP_REGISTRATION_INFO
+{
+   app_file = APPLICATION_DIR_NAME; // filename of application binary (minus extension)
+   // Specify the location of the localisable icon/caption definition file
+   // XXX hfasth, Added .rsc to the filename
+   localisable_resource_file = "\\resource\\apps\\"APPLICATION_DIR_NAME"_appinfo.rsc";
+   // XXX hfasth, new rows.
+   localisable_resource_id = R_LAI;
+//    embeddability = KAppNotEmbedable;
+//    newfile = KAppDoesNotSupportNewFile;
+#ifdef APPLICATION_GROUP_NAME
+	group_name = APPLICATION_GROUP_NAME;
+#endif
+}
+

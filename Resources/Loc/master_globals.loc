@@ -1,0 +1,80 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+#ifndef MASTER_GLOBAL_H
+#define MASTER_GLOBAL_H
+
+// Global strings that are the same in all languages
+
+#define qtn_app_caption_string "Wayfinder"
+#define qtn_app_short_caption_string "Wayfinder"
+#define qfn_wayfinder_font_latinbold12 "LatinBold12"
+#define qfn_wayfinder_fontsize_latinbold12  140
+#define qtn_wayfinder_softkey_empty       ""
+
+/* #define qtn_updatewf_caption_string "GetWayfinder" */
+/* #define qtn_updatewf_short_caption_string "GetWayf" */
+
+/*** java ***/
+
+#define qtn_wayfinder_settings_map_cache_min    "0"
+#define qtn_wayfinder_settings_MB               "%U MB"
+
+/* Strings that will never be translated */
+/* (since they're only used in debug builds) */
+#define qtn_settings_iap_system_default         "System default"
+#define qtn_settings_tab_debug                  "Debug"
+#define qtn_wayfinder_setting_server_toggle     "Toggle server"
+
+/*** launchwf ***/
+
+/* #define qtn_lwf_prime_caption_string        "Wayfinder" */
+/* #define qtn_lwf_prime_short_caption_string  "Wayfinder" */
+
+#define qtn_settings_map_cache_promp      " 0                                       10"
+#define qtn_settings_cache_lable_promp    "(MB)"
+
+/* Language names. Spelling should be for the language in question. */
+#define qtn_wf_language_da "Dansk"
+#define qtn_wf_language_de "Deutsch"
+#define qtn_wf_language_en "English"
+#define qtn_wf_language_es "Español"
+#define qtn_wf_language_fi "Suomi"
+#define qtn_wf_language_fr "Français"
+#define qtn_wf_language_hu "Hungarian"
+#define qtn_wf_language_it "Italiano"
+#define qtn_wf_language_nl "Nederlands"
+#define qtn_wf_language_no "Norsk"
+#define qtn_wf_language_po "Portuguese"
+#define qtn_wf_language_sv "Svenska"
+#define qtn_wf_language_us "US English"
+
+#define qtn_wf_language_iso_da "DA"
+#define qtn_wf_language_iso_de "DE"
+#define qtn_wf_language_iso_en "EN"
+#define qtn_wf_language_iso_es "ES"
+#define qtn_wf_language_iso_fi "FI"
+#define qtn_wf_language_iso_fr "FR"
+#define qtn_wf_language_iso_hu "HU"
+#define qtn_wf_language_iso_it "IT"
+#define qtn_wf_language_iso_nl "NL"
+#define qtn_wf_language_iso_no "NO"
+#define qtn_wf_language_iso_pt "PT"
+#define qtn_wf_language_iso_sv "SV"
+#define qtn_wf_language_iso_us "US"
+
+/********* UIQ ***********/
+
+#define qtn_wayfinder_degree_sign "�"
+
+#endif /* MASTER_GLOBAL_H */

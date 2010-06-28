@@ -1,0 +1,576 @@
+# 
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#
+#    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#    * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+SHELL		=	/bin/sh
+
+.SUFFIXES:
+.SUFFIXES:	.cpp .h .o .d
+
+.PHONY:		all install docs clean alldocs
+
+CXX          ?=    g++
+ifndef CXXFLAGS
+CXXFLAGS     =
+endif
+ifndef LDFLAGS
+LDFLAGS      =
+endif
+
+CXXFLAGS     += $(OPTFLAGS)
+
+# Java
+JAVAC	     =    javac
+JAVACFLAGS   =    -d .
+JAR	     =    jar
+JARFLAGS     =    cvf 
+ifndef MC2DIR
+   ifndef MC2DIR_MAYBE
+      MC2DIR_MAYBE := $(CURDIR)
+   endif
+   export MC2DIR := $(MC2DIR_MAYBE)
+   CHECKMC2ARG := $(MC2DIR)/this_is_the_top_dir
+   CHECKMC2RES := $(shell /bin/ls -1d $(CHECKMC2ARG) 2>/dev/null)
+   ifneq "$(CHECKMC2RES)" "$(CHECKMC2ARG)"
+	   $(error Fatal error, MC2DIR: $(MC2DIR) isn't correctly set, the automagical way has failed, please specify the correct path on the command line.)
+   endif
+   $(warning ***INFO*** Setting MC2DIR to: $(MC2DIR))
+endif
+
+# check what we're compiling on
+ifeq ($(MC2DIR), $(CURDIR))
+	include Makefile.sys
+endif
+
+CXXFLAGS += -I$(MC2DIR)/Unix/include
+CXXFLAGS += -I$(MC2DIR)/Gtk/include
+
+# Normal version
+ifneq ($(release), on)
+
+   # Produce debugging information in the operating system's native format 
+   # (stabs, COFF, XCOFF, or DWARF).
+   # GDB can work with this debugging information.
+   CXXFLAGS    +=    -g 
+
+   # use pipes instead of temp-files
+   CXXFLAGS    +=    -pipe
+
+   # nasty warning strategy
+#   CXXFLAGS    +=    -Wall -Werror
+   CXXFLAGS    +=    -Wall -m32
+   CXXFLAGS    +=    -Wpointer-arith -Wcast-align 
+   CXXFLAGS    +=    -Woverloaded-virtual
+   # gcc-3.3.1 says that these are valid for C/ObjC but not for C++
+   # CXXFLAGS    +=    -Wmissing-declarations  -Wnested-externs 
+
+
+   # We are in maplib
+   CXXFLAGS    += -DUSE_MC2_CONFIG_H
+
+   # enable profiling
+#   CXXFLAGS    +=    -pg
+
+   # processor optimization
+   # CXXFLAGS    +=    -march=pentiumpro
+
+   # code optimization
+   # CXXFLAGS    +=    -O3
+
+   ifndef OPTFLAGS
+      OPTFLAGS    = 
+   endif
+
+   # Omits all symbol information from the output file.
+   #LDFLAGS     +=    -s
+
+   # Makes calls threadsafer by changing some unsafe function to their 
+   # safe counterpart.
+   CXXFLAGS	+=	-D_REENTRANT=1
+
+   # Turn off assertions, primarily for release versions.
+   #CXXFLAGS += -DNDEBUG
+
+else
+   # Release version
+
+   # nasty warning strategy
+   CXXFLAGS    +=    -Wall -Werror
+   CXXFLAGS    +=    -Wpointer-arith -Wcast-align 
+   CXXFLAGS    +=    -Woverloaded-virtual -Wnested-externs 
+   CXXFLAGS    +=    -Wmissing-declarations
+
+   # use pipes instead of temp-files
+   CXXFLAGS    +=    -pipe
+
+   # processor optimization 
+   CXXFLAGS    +=    -march=pentiumpro
+
+   # code optimization
+#   CXXFLAGS    +=    -O3 -fschedule-insns -fschedule-insns2
+   ifndef OPTFLAGS
+      OPTFLAGS    =    -O3
+   endif
+
+   # Omits all symbol information from the output file.
+   #LDFLAGS     +=    -s
+
+   # Makes calls threadsafer by changing some unsafe function to their 
+   # safe counterpart.
+   CXXFLAGS	+=	-D_REENTRANT=1
+   
+   # Turn off assertions.
+   CXXFLAGS += -DNDEBUG
+
+   # Define for use in code (#ifdef RELEASE_VERSION)
+   CXXFLAGS	+=	-DRELEASE_VERSION   
+
+   # Get rid of DEBUG flags
+   CXXFLAGS := $(patsubst -DDEBUG_LEVEL%,,$(CXXFLAGS))
+
+endif  # release
+
+# Add SSL define if not NO_SSL=1 on command line
+# Add ld cxx flags later 
+ifneq ($(NO_SSL),1) 
+   USE_SSL=1
+   CXXFLAGS	+= -DUSE_SSL
+   # Enable compression in OpenSSL, XXX: Make a check if openssl was compiled
+   # with ZLIB.
+   CXXFLAGS	+= -DZLIB
+endif # NO_SSL
+
+ifeq ($(USE_ORACLE),1) 
+   CXXFLAGS	+= -DUSE_ORACLE
+   CXXFLAGS    += -I/usr/local/oracle/orahome/rdbms/demo
+   CXXFLAGS    += -I/usr/local/oracle/orahome/rdbms/public
+endif
+
+# Add xerces XML library
+ifneq ($(NO_XML),1) 
+   USE_XML=1
+   CXXFLAGS	+= -DUSE_XML
+endif # NO_XML
+
+# Add Tactel MMS Module
+ifeq ($(TACTEL_MMS),1)
+   USE_TACTEL_MMS=1
+   CXXFLAGS	+= -DTACTEL_MMS
+endif # TACTEL_MMS
+
+# =========================================================
+#                                               D o c + + =
+# Path to the docc++ binary
+DOCPP          =  /home/stefan/bin/doc++
+#DOCPP          =  /home/stefan/bin/doc++debug
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Set the doc++-flags that should be included in both html and tex
+# include documentation for private functions
+DOCFLAGS       =  --private
+
+# Skip the defines in the parsed files
+#DOCFLAGS       += --no-define
+
+# Include documentation for the included files
+#DOCFLAGS       += --scan-includes
+
+# include documentation for all classes
+#DOCFLAGS       += --all
+
+# Print some debug when generating documentation. To use this the
+# binary must be compiled with debug (e.g. /home/stefan/bin/doc++debug)!
+#DOCFLAGS       += --verbose
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Doc++-flags that should be included when generating html
+
+# Use our own file as footer
+DOCHTMLFLAGS   =  --footer $(DOCFOOT)
+DOCFOOT        =  /home/stefan/bin/docfoot.html
+
+# Instructs DOC++ to sort documentation entries alphabetically. 
+DOCHTMLFLAGS   += --sort
+
+# include the filename on each generated HTML-page
+DOCHTMLFLAGS   += --filenames
+
+# suppres the java applets in the class graphs
+#DOCHTMLFLAGS   += --no-java-graphs
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Doc++-flags that should be included when generating TeX
+# Create TeX output
+DOCTEXFLAGS    =  --tex
+
+# Add graphics to doc++
+#DOCTEXFLAGS    += --package graphics
+
+# =========================================================
+
+# SINGLE version without multicast
+ifeq ($(VERSION), single)
+	CXXFLAGS	+=	-DSINGLE_VERSION
+endif
+
+ifeq ($(ARCH_SYS), linux)
+   LDFLAGS += -L/usr/X11R6/lib -m32
+endif
+
+ifeq ($(ARCH_SYS), cygwin)
+   CXXFLAGS    +=    -Wno-deprecated
+   vpath %a /usr/local/lib
+endif
+
+ifeq ($(ARCH_SYS), solaris)
+   vpath %a /usr/local/lib
+   LDFLAGS += -R/usr/local/lib
+endif
+
+ifeq ($(NEEDSSL), yes)
+   ifeq ($(USE_SSL),1) 
+      LDFLAGS		+= -lssl
+      LDFLAGS		+= -lcrypto
+   endif
+endif
+
+ifeq ($(NEEDTECLA), yes)
+   LIBS += -ltecla
+   ifeq ($(ARCH_SYS), solaris)
+      LIBS += -lcurses
+   endif
+   ifeq ($(ARCH_SYS), cygwin)
+      LIBS += -lcurses
+   endif
+endif
+
+ifeq ($(NEEDFREETYPE), yes)
+   LDFLAGS += -lttf
+   ifeq ($(ARCH_SYS), linux)
+      CXXFLAGS += -I/usr/include/freetype2
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+      CXXFLAGS    += -I/usr/local/include/freetype2
+   endif
+endif
+   
+ifeq ($(NEEDMAGICK), yes)
+   LDFLAGS += -lMagick
+   ifeq ($(ARCH_SYS), linux)
+      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+   
+ifeq ($(NEEDGD), yes)
+   LDFLAGS += -lgd
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+   
+ifeq ($(NEEDPNG), yes)
+   LDFLAGS += -lpng
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+
+ifeq ($(NEEDGDKPIXBUF), yes)
+   LDFLAGS += -lgdk_pixbuf
+   ifeq ($(ARCH_SYS), linux)
+      CXXFLAGS += -I/usr/include/gdk-pixbuf-1.0
+   endif
+endif
+   
+ifeq ($(NEEDJPEG), yes)
+   LDFLAGS += -ljpeg
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+
+ifeq ($(NEEDZLIB), yes)
+   LDFLAGS += -lz
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+
+ifeq ($(NEEDPOSTGRESPLUSPLUS), yes)
+   LDFLAGS     += -lpq++
+   LDFLAGS     += -lpq
+   ifeq ($(ARCH_SYS), linux)
+   CXXFLAGS    += -I/usr/include/pgsql
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+   CXXFLAGS    += -I/usr/local/include/pgsql
+   endif
+endif
+
+ifeq ($(NEEDGTKMM), yes)
+   CXXFLAGS    +=   $(shell gtkmm-config --cflags)
+   LDFLAGS     +=   $(shell gtkmm-config --libs)
+endif
+
+ifeq ($(NEEDGTK2), yes)
+   CXXFLAGS    +=   $(shell pkg-config --cflags gtk+-2.0)
+   LDFLAGS     +=   $(shell pkg-config --cflags gtk+-2.0)
+   LDFLAGS     +=   $(shell pkg-config --libs gtk+-2.0)
+endif
+
+
+ifeq ($(NEEDPOSTGRES), yes)
+   LDFLAGS     += -lpq
+   ifeq ($(ARCH_SYS), linux)
+   CXXFLAGS    += -I/usr/include/pgsql
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+   CXXFLAGS    += -I/usr/local/include/pgsql
+   endif
+endif
+
+ifeq ($(NEEDMYSQL), yes)
+   LDFLAGS     += -lmysqlclient_r -lz
+endif
+
+ifeq ($(NEEDORACLE), yes)
+# the line below is _not_ a mistake (unfortunately)
+   LDFLAGS     += -L/usr/local/oracle/orahome/lib -lclntsh /usr/local/oracle/orahome/rdbms/lib/kpuadef.o -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lclient8 -lvsn8 -lwtc8 -lcommon8 -lgeneric8 -lwtc8 -lmm -lnls8 -lcore8 -lnls8 -lcore8 -lnls8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lclient8 -lvsn8 -lwtc8 -lcommon8 -lgeneric8 -ltrace8 -lnls8 -lcore8 -lnls8 -lcore8 -lnls8 -lclient8 -lvsn8 -lwtc8 -lcommon8 -lgeneric8 -lnls8 -lcore8 -lnls8 -lcore8 -lnls8 -ldl -lm -lpthread -ldl -lm -ldl -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lsql8 -lsql8
+endif
+
+ifeq ($(NEEDXML), yes)
+   ifeq ($(USE_XML),1) 
+      LDFLAGS   += -lxerces-c
+      ifeq ($(ARCH_SYS), linux)
+         CXXFLAGS  += -I/usr/include/xercesc
+      endif
+      ifeq ($(ARCH_SYS), solaris)
+         CXXFLAGS  += -I/usr/local/include/xerces
+      endif
+   endif
+endif
+
+ifeq ($(NEEDTACMMS),yes)
+   ifeq ($(USE_TACTEL_MMS),1)
+      LDFLAGS    += -L$(MC2DIR)/Server/lib
+      LDFLAGS    += -lMMS
+   endif
+endif
+
+ifeq ($(NEEDSOAP), yes)
+   LDFLAGS    += -leasysoap
+endif
+
+ifeq ($(NEEDEXPAT), yes)
+   LDFLAGS    += -lexpat
+endif
+
+ifeq ($(NEEDARCHDEFS), yes)
+   CXXFLAGS += $(archdefs)
+endif
+
+ifeq ($(ARCH_SYS), solaris)
+      LDFLAGS     += -lsocket -lnsl -lrt
+endif
+
+# we don't want any .so:s automagically found
+.LIBPATTERNS = lib%.a
+
+ifdef LIBNAME
+sources		:=	$(shell echo *.cpp)
+
+all: $(LIBPATH)/lib$(LIBNAME).a
+
+$(LIBPATH)/lib$(LIBNAME).a	: $(patsubst %,.objects-$(ARCH)/%, $(sources:.cpp=.o))
+	mkdir -p $(LIBPATH)
+	$(AR) r $(LIBPATH)/lib$(LIBNAME).a $^
+
+depclean:
+	-rm -rf .depend-$(ARCH)
+
+clean:
+	-rm -rf .objects-$(ARCH) .depend-$(ARCH) core $(LIBPATH)/lib$(LIBNAME).a
+
+ifneq ($(CLEAN), true)
+   include $(patsubst %,.depend-$(ARCH)/%, $(sources:.cpp=.d))
+endif
+endif
+
+ifdef TARGET
+sources		:=	$(shell echo *.cpp)
+
+NODEPS := no
+
+ifdef ONLY
+   ifeq ($(ONLY), $(TARGET))
+      all: $(BINPATH)/$(TARGET)
+   else
+      all:
+      NODEPS := yes
+   endif
+else
+all: $(BINPATH)/$(TARGET)
+endif
+
+# the ugly EXTRAOBJS-hack is currently only used by the ugly hack in the
+# GenerateMapServer Makefile
+# EXTRALIBS is needed depending on dependecies between libraries and our own
+# object files
+$(BINPATH)/$(TARGET)	: $(patsubst %,.objects-$(ARCH)/%, $(sources:.cpp=.o)) $(EXTRAOBJS) $(LIBS) $(EXTRALIBS)
+	mkdir -p $(BINPATH)
+	$(CXX) -o $(BINPATH)/$(TARGET) $(CXXFLAGS) $^ $(LDFLAGS)
+
+depclean:
+	-rm -rf .depend-$(ARCH)
+
+clean:
+	-rm -rf .objects-$(ARCH) .depend-$(ARCH) core $(BINPATH)/$(TARGET)
+
+ifeq ($(CLEAN), true)
+   NODEPS = yes
+endif
+
+ifneq ($(NODEPS), yes)
+   include $(patsubst %,.depend-$(ARCH)/%, $(sources:.cpp=.d))
+endif
+endif
+
+ifdef SUBDIRS
+all docs::
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			echo "Making $@ in $$subdir"; \
+			(unset CDIR; cd $$subdir && $(MAKE) $@) || exit 1; \
+		fi; \
+	done
+
+clean::
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			echo "Making $@ in $$subdir"; \
+			(unset CDIR; cd $$subdir && $(MAKE) $@ CLEAN=true) || exit 1; \
+		fi; \
+	done
+	rm -f ./docs/html/*.* ./docs/$(DOCFILE).tex
+
+depclean::
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			echo "Making $@ in $$subdir"; \
+			(unset CDIR; cd $$subdir && $(MAKE) $@ CLEAN=true) || exit 1; \
+		fi; \
+	done
+endif
+
+ifdef DOCFILE
+html::
+	mkdir -p docs
+	$(DOCPP) $(DOCFLAGS) $(DOCHTMLFLAGS) \
+	-d ./docs/html \
+	$(shell find include -name *.h)
+
+tex::
+	mkdir -p docs
+	$(DOCPP) $(DOCFLAGS) $(DOCTEXFLAGS) \
+	-o ./docs/$(DOCFILE).tex \
+	$(shell find include -name *.h)
+
+docs::   html tex
+endif
+
+ifdef DOCFILEJAVA
+DOCFLAGS     =    -J -l
+      # Overrides the -p above ( ?? taken from CMateServer originally)
+
+javadocs:: #$(shell find . -name *.java)
+	$(DOCPP) $(DOCFLAGS) \
+	-d ./docs/html \
+	java/CMateLookup.java
+	#$(shell find . -name *.java)
+
+	$(DOCPP) $(DOCFLAGS) -t -l \
+	-o ./docs/$(DOCFILE).tex \
+	java/CMateLookup.java
+	#$(shell find . -name *.java)
+
+html::
+	$(DOCPP) $(DOCFLAGS) $(DOCHTMLFLAGS) \
+	-d ./docs/html \
+	$(shell find . -name *.java)
+
+tex::
+	$(DOCPP) $(DOCFLAGS) $(DOCTEXFLAGS) \
+	-o ./docs/$(DOCFILE).tex \
+	$(shell find . -name *.java)
+
+docs::   html tex
+endif
+
+ifdef DOCDIRS
+html::
+	@for subdir in $(DOCSUBDIRS); do \
+		if test -d $$subdir; then \
+			echo "Making $@ in $$subdir"; \
+			(unset CDIR; cd $$subdir && $(MAKE) html $@ ) || exit 1; \
+		fi; \
+	done
+
+tex::
+	@for subdir in $(DOCSUBDIRS); do \
+		if test -d $$subdir; then \
+			echo "Making $@ in $$subdir"; \
+			(unset CDIR; cd $$subdir && $(MAKE) tex $@ ) || exit 1; \
+		fi; \
+	done
+
+docs::	html tex
+
+endif
+
+# shared rules
+
+.objects-$(ARCH)/%.o: %.cpp
+	mkdir -p .objects-$(ARCH)
+	$(CXX) -c $(CXXFLAGS) $< -o $@
+
+INCLUDES = $(filter -I%, $(CXXFLAGS))
+DEFINES = $(filter -D%, $(CXXFLAGS))
+
+FASTDEP = $(shell /bin/ls /usr/bin/fastdep 2>/dev/null)
+
+ifeq ($(FASTDEP), /usr/bin/fastdep)
+.depend-$(ARCH)/%.d: %.cpp
+		$(SHELL) -ec 'mkdir -p .depend-$(ARCH); $(FASTDEP) $(INCLUDES) $(DEFINES) $< | sed -e '\''s#\($*\)\.o[ :]*#.objects-$(ARCH)/\1.o $@ : #g'\'' -e '\''s#$(MC2DIR)#$$(MC2DIR)#g'\'' > $@;  [ -s $@ ] || rm -f $@'
+else
+.depend-$(ARCH)/%.d: %.cpp
+		$(SHELL) -ec 'mkdir -p .depend-$(ARCH); $(CXX) -MM $(INCLUDES) $(DEFINES) $< \
+	| sed -e '\''s#\($*\)\.o[ :]*#.objects-$(ARCH)/\1.o $@ : #g'\''\
+      -e '\''s#$(MC2DIR)#$$(MC2DIR)#g'\'' > $@; \
+	[ -s $@ ] || rm -f $@'
+endif
+%.class: %.java
+	$(JAVAC) $(JAVACFLAGS) $(shell echo *.java) 
+

@@ -1,0 +1,290 @@
+Algeria
+Angola
+Benin
+Botswana
+Burkina Faso
+Burundi
+Kamerun
+Kap Verde
+Keski-Afrikan tasavalta
+Tsad
+Komorit
+Kongo
+Norsunluurannikko
+Kongon demokraattinen tasavalta
+Djibouti
+Egypti
+Päiväntasaajan Guinea
+Eritrea
+Etiopia
+Gabon
+Gambia
+Ghana
+Guinea-Bissau
+Guinea
+Kenia
+Lesotho
+Liberia
+Libya
+Madagaskar
+Malawi
+Mali
+Mauritania
+Mauritius
+Mayotte
+Marokko
+Mosambik
+Namibia
+Niger
+Nigeria
+Reunion
+Ruanda
+Saint Helena
+Sao Tome ja Principe
+Senegal
+Seychellit
+Sierra Leone
+Somalia
+Etelä-Afrikka
+Espanja
+Sudan
+Swazimaa
+Togo
+Tunisia
+Uganda
+Tansania
+Länsi-Sahara
+Sambia
+Zimbabwe
+Afghanistan
+Australia
+Bahrain
+Bangladesh
+Bhutan
+Brunei darussalam
+Kambodza
+Kiina
+Pohjois-Korea
+Fidzi
+Guam
+Hongkong
+Intia
+Indonesia
+Iran
+Irak
+Israel
+Japani
+Jordania
+Kazakstan
+Kiribati
+Kuwait
+Kirgisia
+Laos
+Libanon
+Macao
+Malesia
+Malediivit
+Marshallinsaaret
+Mikronesia
+Mongolia
+Myanmar
+Nauru
+Nepal
+Uusi-Kaledonia
+Uusi Seelanti
+Etelämanner
+Pohjois-Mariaanit
+Palestiinalaisalue
+Oman
+Pakistan
+Palau
+Papua-Uusi-Guinea
+Filippiinit
+Qatar
+Etelä-Korea
+Venäjä
+Saudi-Arabia
+Singapore
+Salomonsaaret
+Sri Lanka
+Syyria
+Taiwan
+Tadzikistan
+Thaimaa
+Timor-Leste
+Tonga
+Turkmenia
+Tuvalu
+Yhdistyneet Arabiemiirikunnat
+Yhdysvaltain Tyynenmeren erillissaaret
+Uzbekistan
+Wallis- ja Futunasaaret
+Vanuatu
+Vietnam
+Jemen
+Aland Islands
+Albania
+Andorra
+Armenia
+Itävalta
+Azerbaidzan
+Belarus
+Belgia
+Bosnia ja Hertsegovina
+Bulgaria
+Channel Islands
+Kroatia
+Kypros
+Tsekin Tasavalta
+Tanska
+Viro
+Färsaaret
+Suomi
+Ranska
+Georgia
+Saksa
+Gibraltar
+Kreikka
+Hungary
+Islanti
+Irlanti
+Isle of Man
+Italia
+Latvia
+Liechtenstein
+Liettua
+Luxemburg
+Malta
+Monaco
+Alankomaat
+Norja
+Puola
+Portugali
+Moldova
+Romania
+Venäjä
+San Marino
+Serbia ja Montenegro
+Slovakia
+Slovenia
+Espanja
+Svalbard ja Jan Mayen
+Ruotsi
+Sveitsi
+Makedonia
+Turkki
+Ukraina
+Yhdistynyt Kuningaskunta
+Vatican
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Kanada
+Colorado
+Connecticut
+Delaware
+District of Columbia
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+New Hampshire
+New Jersey
+New Mexico
+New York
+Nevada
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Washington
+Vermont
+West Virginia
+Virginia
+Wisconsin
+Wyoming
+Etelämanner
+Grönlanti
+Amerikan Samoa
+Anguilla
+Antigua ja Barbuda
+Argentiina
+Aruba
+Bahama
+Barbados
+Belize
+Bermuda
+Bolivia
+Brasilia
+Brittiläiset Neitsytsaaret
+Caymansaaret
+Chile
+Kolumbia
+Cookinsaaret
+Costa Rica
+Kuuba
+Dominica
+Dominikaaninen tasavalta
+Ecuador
+El Salvador
+Falklandinsaaret
+Ranska
+Ranskan Guyana
+Ranskan Polynesia
+Grenada
+Guadeloupe
+Guatemala
+Guyana
+Haiti
+Honduras
+Jamaika
+Martinique
+Meksiko
+Montserrat
+Alankomaiden Antillit
+Uusi Seelanti
+Nicaragua
+Niuesaari
+Panama
+Paraguay
+Peru
+Pitcairn
+Puerto Rico
+Saint Kitts ja Nevis
+Saint Lucia
+Saint Pierre ja Miquelon
+Saint Vincent ja Grenadiinit
+Samoa
+Surinam
+Tokelau
+Trinidad ja Tobago
+Turks- ja Caicossaaret
+Yhdysvaltain Tyynenmeren erillissaaret
+Yhdysvaltain Neitsytsaaret
+Uruguay
+Venezuela

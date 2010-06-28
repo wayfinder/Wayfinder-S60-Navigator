@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.938" height="40" viewBox="0 0 23.938 40">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<rect fill="url(#XMLID_2_)" width="23.938" height="40"/>
+<path d="M2.961,20.154h3.664v1.827l0,0c0.488-1.291,1.432-2.255,3.133-2.255c2.006,0,2.898,0.977,3.295,2.164    c0.566-1.282,1.729-2.164,3.367-2.164c2.865,0,4.557,1.32,4.557,4.933v11.345l-3.885-0.029v-9.694    c0-1.965,0.016-3.127-1.641-3.127c-1.172,0-1.584,0.871-1.584,3.1v9.722H9.982V26.17c0-2.125-0.354-3.018-1.59-3.018    c-1.026,0-1.549,0.537-1.549,2.912v9.909H2.961V20.154z"/>
+<defs>
+<linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="11.9692" y1="40" x2="11.9692" y2="4.882813e-004">
+<stop offset="0" style="stop-color:#ABABAB"/>
+<stop offset="0.1421" style="stop-color:#C7C7C7"/>
+<stop offset="0.3062" style="stop-color:#DFDFDF"/>
+<stop offset="0.4782" style="stop-color:#F1F1F1"/>
+<stop offset="0.6617" style="stop-color:#FCFCFC"/>
+<stop offset="0.8764" style="stop-color:#FFFFFF"/>
+<stop offset="0.9373" style="stop-color:#F2F2F2"/>
+<stop offset="1" style="stop-color:#E0E0E0"/>
+</linearGradient>
+</defs>
+</g>
+</switch>
+</svg>

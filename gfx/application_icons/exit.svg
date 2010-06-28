@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="59.999" height="60" viewBox="0 0 59.999 60">
+<linearGradient id="XMLID_5_" gradientUnits="userSpaceOnUse" x1="29.9995" y1="57.835" x2="29.9995" y2="1.8556">
+<stop offset="0" style="stop-color:#FFC0C0"/>
+<stop offset="0.1404" style="stop-color:#FF4040"/>
+<stop offset="0.2957" style="stop-color:#FF2E2E"/>
+<stop offset="0.5625" style="stop-color:#FF1515"/>
+<stop offset="0.8051" style="stop-color:#FF0505"/>
+<stop offset="1" style="stop-color:#FF0000"/>
+</linearGradient>
+<circle fill="url(#XMLID_5_)" cx="29.999" cy="30" r="29.072"/>
+<path fill="#2B2B2B" d="M29.999,0C13.458,0,0,13.457,0,29.999C0,38,3.124,45.53,8.797,51.203C14.469,56.875,21.998,60,29.999,60  c8,0,15.531-3.125,21.203-8.797C56.874,45.53,59.999,38,59.999,29.999C59.999,13.457,46.541,0,29.999,0z M29.999,58.145  c-15.518,0-28.143-12.627-28.143-28.146c0-15.518,12.625-28.144,28.143-28.144c15.519,0,28.145,12.625,28.145,28.144  C58.144,45.518,45.518,58.145,29.999,58.145z"/>
+<linearGradient id="XMLID_6_" gradientUnits="userSpaceOnUse" x1="29.9995" y1="37.3848" x2="29.9995" y2="2.3579">
+<stop offset="0" style="stop-color:#FF2020"/>
+<stop offset="0.0995" style="stop-color:#FF2626"/>
+<stop offset="0.2368" style="stop-color:#FF3838"/>
+<stop offset="0.3961" style="stop-color:#FF5555"/>
+<stop offset="0.5719" style="stop-color:#FF7E7E"/>
+<stop offset="0.7613" style="stop-color:#FFB2B2"/>
+<stop offset="0.9592" style="stop-color:#FFF1F1"/>
+<stop offset="1" style="stop-color:#FFFFFF"/>
+</linearGradient>
+<ellipse fill="url(#XMLID_6_)" cx="30" cy="19.871" rx="21.515" ry="17.514"/>
+<g>
+<linearGradient id="XMLID_7_" gradientUnits="userSpaceOnUse" x1="29.9995" y1="14.7295" x2="29.9995" y2="47.0005">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="1" style="stop-color:#BFBFBF"/>
+</linearGradient>
+<path fill="url(#XMLID_7_)" d="M35.231,15.795c-0.516,0.977-0.143,2.188,0.834,2.703C40.343,20.759,43,25.167,43,30   c0,7.168-5.832,13-13,13c-7.168,0-13-5.832-13-13c0-4.833,2.657-9.241,6.935-11.502c0.977-0.516,1.35-1.726,0.833-2.703   s-1.726-1.35-2.703-0.833C16.473,17.917,13,23.68,13,30c0,9.374,7.626,17,17,17s17-7.626,17-17c0-6.32-3.474-12.082-9.065-15.038   C36.958,14.446,35.747,14.819,35.231,15.795z"/>
+</g>
+<g>
+<linearGradient id="XMLID_8_" gradientUnits="userSpaceOnUse" x1="29.9985" y1="7" x2="29.9985" y2="29">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="1" style="stop-color:#BFBFBF"/>
+</linearGradient>
+<path fill="url(#XMLID_8_)" d="M27.999,9v18c0,1.104,0.896,2,2,2s2-0.896,2-2V9c0-1.104-0.896-2-2-2S27.999,7.896,27.999,9z"/>
+</g>
+</svg>

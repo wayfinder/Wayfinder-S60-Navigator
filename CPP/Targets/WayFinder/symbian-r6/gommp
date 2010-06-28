@@ -1,0 +1,88 @@
+#!/bin/sh
+
+INCDIR=/tmp/includedirs$$
+MMPADD=/tmp/mmpadd$$
+CPPDIR=/tmp/cppdirs$$
+
+echo >$MMPADD
+
+#echo "LIBRARY edll.lib" >> $MMPADD
+#echo "LIBRARY euser.lib" >> $MMPADD
+#echo "LIBRARY apparc.lib" >> $MMPADD
+#echo "LIBRARY cone.lib" >> $MMPADD
+#echo "LIBRARY eikcore.lib" >> $MMPADD
+#echo "LIBRARY estlib.lib" >> $MMPADD
+#echo "LIBRARY wapstdlib.lib" >> $MMPADD
+#echo "LIBRARY esock.lib" >> $MMPADD
+#echo "LIBRARY avkon.lib" >> $MMPADD 
+#echo "LIBRARY bafl.lib" >> $MMPADD 
+echo "LIBRARY bluetooth.lib" >> $MMPADD
+echo "LIBRARY btextnotifiers.lib" >> $MMPADD
+echo "LIBRARY efsrv.lib" >> $MMPADD
+#echo "LIBRARY eikcoctl.lib" >> $MMPADD
+#echo "LIBRARY eikctl.lib" >> $MMPADD
+#echo "LIBRARY eikdlg.lib" >> $MMPADD
+echo "LIBRARY estor.lib" >> $MMPADD
+#echo "LIBRARY fbscli.lib" >> $MMPADD
+#echo "LIBRARY insock.lib" >> $MMPADD
+#echo "LIBRARY mediaclientimage.lib" >> $MMPADD
+#echo "LIBRARY mediaclientaudio.lib" >> $MMPADD
+echo "LIBRARY sdpagent.lib" >> $MMPADD
+echo "LIBRARY sdpdatabase.lib" >> $MMPADD
+echo "LIBRARY ws32.lib" >> $MMPADD
+
+echo "SYSTEMINCLUDE ..\\C__\\include\\symbian-r6\\STLport-4.5.1\\stlport" >> $MMPADD
+echo "SYSTEMINCLUDE ..\\C__\\arch-include" >> $MMPADD
+echo "SYSTEMINCLUDE ..\\C__\\arch-include\\symbian-r6" >> $MMPADD
+#echo "SYSTEMINCLUDE \\epoc32\\include\\libc" >> $MMPADD
+echo "SYSTEMINCLUDE \\epoc32\\include\\libc\\netinet" >> $MMPADD
+echo "SYSTEMINCLUDE \\epoc32\\include\\libc\\sys" >> $MMPADD
+echo "SYSTEMINCLUDE \\epoc32\\include\\libc\\arpa" >> $MMPADD
+echo "SYSTEMINCLUDE ..\\C__\\Targets\\WayFinder\\symbian-r6" >> $MMPADD
+NOTARCH='-and -not -name CVS -and -not -name pocketpc -and -not -name i386-redhat-linux -and -not -name h8300-unknown-hms -and -not -name wins-symbian-series60 -and -not -name factored'
+
+REMOVE_DIRS='pocketpc|i386-redhat-linux|h8300|STLport-4.5.1/test|4.5.1/src|4.5.1/etc|4.5.1/doc|BC50|old_hp|DisplaySerial|stlport/|BtManager|SerialModule|ThinClient'
+
+find C++/include C++/arch-include C++/Shared C++/Modules -type d $NOTARCH |\
+    egrep -v "$REMOVE_DIRS" > $INCDIR
+echo "C__\\Targets\\Wayfinder" >> $INCDIR
+echo "C__\\Targets\\WayFinder\\symbian-r6" >> $INCDIR
+
+ 
+for dir in `cat $INCDIR`; do
+    dir2=`echo $dir | sed -e's_/_\\\\_g' -e's/+/_/g'`;
+#    echo "USERINCLUDE C:\\symbian\\6.1\\series60\\series60ex\\bmpmanip\\$dir2" >> $MMPADD;
+    echo "USERINCLUDE ..\\$dir2" >> $MMPADD;
+done
+echo >> $MMPADD
+
+#find C++/Shared C++/Modules C++/Targets/WayFinderSeries60 -type d $NOTARCH \
+#-and -not -name include \
+#-and -not -name RouteChunker \
+#-and -not -name BtManager \
+#-and -not -name ThinClient \
+#-and -not -name SerialModule \
+#-and -not -name PositionLogger \
+#-and -not -name DisplaySerial \
+#-and -not -name src  > $CPPDIR
+
+#for dir in `cat $CPPDIR`; do
+#    dir2=`echo $dir | sed -e's_/_\\\\_g' -e's/+/_/g'`
+#    echo "SOURCEPATH ..\\$dir2" >> $MMPADD;
+#    for file in `find $dir -type f -name '*.cpp' -maxdepth 1`; do
+#        echo 'SOURCE    ' `basename $file` >> $MMPADD;
+#    done;
+#    grep cpp $dir/Cook.frag |\
+#        sed -e's/.*=//' -e's/;//' -e'/\/\*/,/\*\//d' \
+#            -e's/^ */SOURCE     /' >> $MMPADD;
+#done;
+
+cook foomaticlist
+sed -e's_/_\\_g' -e's/C++/..\\C__/g' foomaticlist.tmp |\
+ grep -v '.uid.cpp' >> $MMPADD
+
+echo >> $MMPADD
+
+cat C++/Targets/WayFinder/symbian-r6/real_mmp.mmp $MMPADD > C++/Targets/WayFinder/symbian-r6/wayfinder.mmp
+
+rm -f $CPPDIR $INCDIR $MMPADD

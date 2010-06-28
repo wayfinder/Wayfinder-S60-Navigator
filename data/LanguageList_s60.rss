@@ -1,0 +1,20 @@
+#include "nav2defines.h"
+NAME WFLL
+
+CHARACTER_SET UTF8
+
+#include <eikon.rh>
+#include <eikon.rsg>
+//#include <qikon.rh>
+//#include <qikon.hrh>
+
+#include "master.loc"
+
+#include "LanguageList.rh"
+#include "LanguageList.hrh"
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf=""; }
+
+#include "LanguageList.rss"

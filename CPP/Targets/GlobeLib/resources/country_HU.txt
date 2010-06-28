@@ -1,0 +1,290 @@
+Algéria
+Angola
+Benin
+Botswana
+Burkina Faso
+Burundi
+Kamerun
+Zöld-foki-szigetek
+Közép-afrikai Köztársaság
+Csád
+Comore-szigetek
+Kongó
+Elefántcsontpart
+Kongói Dem. Köztársaság
+Dzsibuti
+Egyiptom
+Egyenlítői Guinea
+Eritrea
+Etiópia
+Gabon
+Gambia
+Ghána
+Guinea-Bissau
+Guinea
+Kenya
+Lesotho
+Libéria
+Líbia
+Madagaszkár
+Malawi
+Mali
+Mauritánia
+Mauritius
+Mayotte
+Marokkó
+Mozambik
+Namíbia
+Niger
+Nigéria
+Réunion
+Ruanda
+Szent Ilona-sziget
+Sao Tome és Principe
+Szenegál
+Seychelle-szigetek
+Sierra Leone
+Szomália
+Dél-Afrika
+Spanyolország
+Szudán
+Szváziföld
+Togo
+Tunézia
+Uganda
+Tanzánia
+Nyugat-Szahara
+Zambia
+Zimbabwe
+Afganisztán
+Ausztrália
+Bahrain
+Banglades
+Bhután
+Brunei Darussalam
+Kambodzsa
+Kína
+Észak-Korea
+Fidzsi
+Guam
+Hong Kong
+India
+Indonézia
+Irán
+Irak
+Izrael
+Japán
+Jordánia
+Kazahsztán
+Kiribati
+Kuvait
+Kirgizisztán
+Laosz
+Libanon
+Makaó
+Malajzia
+Maldív-szigetek
+Marshall-szigetek
+Mikronézia
+Mongólia
+Mianmar
+Nauru
+Nepál
+Új-Kaledónia
+Új-Zéland
+Antarktisz
+Északi Mariana-szigetek
+Palesztína
+Omán
+Pakisztán
+Palau
+Pápua Új-Guinea
+Fülöp-szigetek
+Katar
+Dél-Korea
+Russia
+Szaudi-Arábia
+Szingapúr
+Salamon-szigetek
+Sri Lanka
+Szíria
+Tajvan
+Tádzsikisztán
+Thaiföld
+Kelet-Timor
+Tonga
+Türkmenisztán
+Tuvalu
+Egyesült Arab Emirátusok
+Egyesült Államok kisebb külső szigetei 
+Üzbegisztán
+Wallis és Futuna-szigetek
+Vanuatu
+Vietnám
+Jemen
+Aland Islands
+Albánia
+Andorra
+Örményország
+Ausztria
+Azerbajdzsán
+Belarusz
+Belgium
+Bosznia-Hercegovina
+Bulgária
+Channel Islands
+Horvátország
+Ciprus
+Cseh köztársaság
+Dánia
+Észtország
+Feröer-szigetek
+Finnország
+Franciaország
+Grúzia
+Németország
+Gibraltar
+Görögország
+Magyarország
+Izland
+Írország
+Isle of Man
+Olaszország
+Lettország
+Liechtenstein
+Litvánia
+Luxemburg
+Málta
+Monaco
+Hollandia
+Norvégia
+Lengyelország
+Portugália
+Moldova
+Románia
+Russia
+San Marino
+Szerbia és Montenegró
+Eslováquia
+Slovenia
+Spanyolország
+Svalbard és Jan Mayen
+Svédország
+Svájc
+Macedónia
+Turkey
+Ukrajna
+Egyesült Királyság
+Vatican
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Kanada
+Colorado
+Connecticut
+Delaware
+District of Columbia
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+New Hampshire
+New Jersey
+New Mexico
+New York
+Nevada
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Washington
+Vermont
+West Virginia
+Virginia
+Wisconsin
+Wyoming
+Antarktisz
+Grönland
+Amerikai Szamoa
+Anguilla
+Antigua és Barbuda
+Argentína
+Aruba
+Bahama-szigetek
+Barbados
+Belize
+Bermuda
+Bolívia
+Brazília
+Brit Virgin-szigetek
+Kajmán-szigetek
+Chile
+Kolumbia
+Cook-szigetek
+Costa Rica
+Kuba
+Dominika
+Dominikai Köztársaság
+Ecuador
+Salvador
+Falkland-szigetek
+Franciaország
+Francia Guyana
+Francia Polinézia
+Grenada
+Guadeloupe
+Guatemala
+Guyana
+Haiti
+Honduras
+Jamaica
+Martinique
+Mexikó
+Montserrat
+Holland Antillák
+Új-Zéland
+Nicaragua
+Niue
+Panama
+Paraguay
+Peru
+Pitcairn
+Puerto Rico
+Szent Kitts és Nevis
+Szent Lucia
+Szent Pierre és Miquelon
+Szent Vincent
+Szamoa
+Suriname
+Tokelau
+Trinidad és Tobago
+Turks és Caicos-szigetek
+Egyesült Államok kisebb külső szigetei 
+Amerikai Virgin-szigetek
+Uruguay
+Venezuela

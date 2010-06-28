@@ -1,0 +1,60 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+#define qtn_CONFIRM_SHARE_WF          "The message has been sent to your friend!"
+#define qtn_installer_splash_prodname          "Wayfinder Navigator 6"
+#define qtn_qtn_wayfinder_file_corrupted          "File corrupted!"
+#define qtn_qtn_wayfinder_file_corrupt_download_again          "The downloaded file contains errors. Do you want to try again?"
+#define qtn_share_wayfinder_list_item          "2\tShare Wayfinder"
+#define qtn_wayfinder_iron_version_text          "Earth"
+#define qtn_wayfinder_select_install_destination          "Select install destination"
+#define qtn_wayfinder_settings_map_traffic_edit_integer_msp          "Traffic update time"
+#define qtn_wayfinder_settings_route_traffic_check_msp          "Check traffic info"
+#define qtn_wayfinder_spread_wayfinder_message          "Your friend wants you to test Wayfinder, follow the link to download a trial version. http://getwf.com"
+#define qtn_wfid_account_created_earth          "We have now created your WayfinderID account. Your WayfinderID is the key to your personal data on the mobile and also on the web: We welcome you to our great route planning and mapping application www.MyWayfinder.com!"
+#define qtn_wf_call_support          "Callcenter"
+#define qtn_wf_eniro_foretag          "Eniro Företag"
+#define qtn_wf_eniro_privat          "Eniro personer"
+#define qtn_wf_guide_now          "Now"
+#define qtn_wf_no_gps_pos_err1          "Wayfinder can not receive any positions from the GPS after trying for"
+#define qtn_wf_no_gps_pos_err2          "minutes. Please check that your GPS is switched on, and connected to your phone."
+#define qtn_wf_parse_error          "Parse error"
+#define qtn_wf_preferred_guide_mode_msp          "Preferred guide mode"
+#define qtn_wf_report_position          "Report position"
+#define qtn_wf_report_route_map_problem          "Route or Map error"
+#define qtn_wf_report_route_problem          "Report route problem"
+#define qtn_wf_searchcat_sub_address          "Street addresses"
+#define qtn_wf_searchcat_sub_cityguide          "City guide"
+#define qtn_wf_searchcat_sub_comp          "Companies"
+#define qtn_wf_searchcat_sub_people          "People"
+#define qtn_wf_searchcat_sub_poi          "Points of interest"
+#define qtn_wf_search_for_ex          "e.g. address, person, POI"
+#define qtn_wf_search_in_ex          "e.g. London, West End, Wales"
+#define qtn_wf_send_content          "Content"
+#define qtn_wf_startup_error_noIMEI          "Wayfinder was unable to detect the imei of the device"
+#define qtn_wf_stop_navigation          "Do you want to stop navigation?"
+#define qtn_wf_tooltip_makesearch          "Make a search"
+#define qtn_wf_tooltip_searcharound          "Search around your current position"
+#define qtn_wf_tooltip_selectcat          "Select a category to search for, e.g. restaurant or hotel"
+#define qtn_wf_traffic_breakdown1_msg          "Do you wish to report a break down?"
+#define qtn_wf_traffic_breakdown2_msg          "Do you wish to report a break down?"
+#define qtn_wf_traffic_dangerous_place_msg          "Do you wish to report a dangerous location?"
+#define qtn_wf_traffic_jam_report_msg          "Do you wish to report a traffic jam?"
+#define qtn_wf_traffic_report_map_error_msg          "Do you wish to report a map error?"
+#define qtn_wf_traffic_report_position_msg          "Do you wish to report your current position?"
+#define qtn_wf_traffic_report_problem_msg          "Do you wish to send a problem report?"
+#define qtn_wf_traffic_report_route_error_msg          "Do you wish to report a route error?"
+#define qtn_wf_traffic_special_event          "Special traffic event"
+#define qtn_wf_traffic_special_event_msg          "Do you wish to report a special event?"
+#define qtn_wf_traffic_speed_cam_msg          "Do you wish to report a speed camera?"
+#define qtn_wf_traffic_weather_warning_msg          "Do you wish to report bad weather?"

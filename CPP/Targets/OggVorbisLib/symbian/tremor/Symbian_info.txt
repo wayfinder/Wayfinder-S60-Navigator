@@ -1,0 +1,9 @@
+Symbian port of the Tremor Integer library
+------------------------------------------
+
+This package is required by the Ogg Vorbis plugins for Symbian. It should be extracted to the same location before building. It has been modified from the source code available from xiph.org, for distribution terms see the file COPYING.
+
+Here is a summary of the changes made to the library:
+- All lookup tables have been made const - Symbian does not allow writable static data within DLLs.
+- A few bug fixes and memory leak fixes.
+- Added #ifdefs for __SYMBIAN32__ in the os_types.h file.

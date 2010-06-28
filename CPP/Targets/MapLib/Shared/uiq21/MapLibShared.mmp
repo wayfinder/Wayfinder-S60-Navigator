@@ -1,0 +1,72 @@
+TARGET		MapLibShared.lib
+TARGETTYPE	LIB
+
+SRCDBG
+
+MACRO NAV2_CLIENT_UIQ
+
+SYSTEMINCLUDE	.. ..\include
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE ..\..\..\..\include\symbian-r6\STLport-4.5.1\stlport
+SYSTEMINCLUDE ..\..\..\..\arch-include\symbian-r6
+
+USERINCLUDE	..
+USERINCLUDE ..\include
+USERINCLUDE ..\include\Symbian
+USERINCLUDE ..\..\Symbian\include
+USERINCLUDE ..\..\..\..\include\symbian-r6
+
+SOURCEPATH	..\src\Symbian
+SOURCE	FileDBufRequester.cpp
+
+SOURCEPATH	..\src
+SOURCE	BitBuffer.cpp
+SOURCE   ClipUtil.cpp
+SOURCE   Cursor.cpp
+SOURCE	DbufRequester.cpp
+SOURCE   DirectedPolygon.cpp
+SOURCE   FileHandler.cpp
+SOURCE	GfxConstants.cpp
+SOURCE	GunzipUtil.cpp
+SOURCE	HttpClientConnection.cpp
+SOURCE	LangTypes.cpp
+SOURCE	MapLib.cpp
+SOURCE	MapPlotter.cpp
+SOURCE	MapProjection.cpp
+SOURCE	MC2BoundingBox.cpp
+SOURCE	MC2Coordinate.cpp
+SOURCE	MC2Logging.cpp
+SOURCE	MC2SimpleString.cpp
+SOURCE	MemoryDBufRequester.cpp
+SOURCE   MultiFileDBufRequester.cpp
+SOURCE   MFileDBufReqIdxHandler.cpp
+SOURCE	RandomFuncs.cpp
+SOURCE	RouteAllowedFilter.cpp
+SOURCE	RouteID.cpp
+SOURCE	ScreenOrWorldCoordinate.cpp
+SOURCE	SharedBuffer.cpp
+SOURCE   SharedDBufRequester.cpp
+SOURCE	SharedHttpDbufRequester.cpp
+SOURCE	SharedHttpHeader.cpp
+SOURCE	TileFeature.cpp
+SOURCE	TileFeatureArg.cpp
+SOURCE	TileImportanceTable.cpp
+SOURCE	TileMap.cpp
+SOURCE	TileMapContainer.cpp
+SOURCE	TileMapFormatDesc.cpp
+SOURCE	TileMapGarbage.cpp
+SOURCE	TileMapHandler.cpp
+SOURCE	TileMapKeyHandler.cpp
+SOURCE	TileMapLayerInfo.cpp
+SOURCE	TileMapParams.cpp
+SOURCE	TileMapTextHandler.cpp
+SOURCE	TileMapTextSettings.cpp
+SOURCE	TileMapUtil.cpp
+SOURCE	TransformMatrix.cpp
+SOURCE	UserDefinedBitMapFeature.cpp
+SOURCE	UserDefinedFeature.cpp
+SOURCE   UserDefinedScaleFeature.cpp
+SOURCE   WFDRMUtil.cpp
+
+

@@ -1,0 +1,30 @@
+TARGET		MapLibSymbian.lib
+TARGETTYPE	LIB
+
+SRCDBG
+
+MACRO NAV2_CLIENT_UIQ
+
+SYSTEMINCLUDE \epoc32\include
+SYSTEMINCLUDE \epoc32\include\libc
+SYSTEMINCLUDE ..\..\..\..\include\symbian-r6\STLport-4.5.1\stlport
+SYSTEMINCLUDE ..\..\..\..\arch-include\symbian-r6
+
+USERINCLUDE	..
+USERINCLUDE ..\include
+USERINCLUDE ..\..\Shared\include
+USERINCLUDE ..\..\Shared\include\Symbian
+USERINCLUDE ..\..\..\..\include\symbian-r6
+
+
+SOURCEPATH	..\src
+SOURCE   Image.cpp
+SOURCE   MapRenderer.cpp
+SOURCE   MapUtility.cpp
+SOURCE   Surface.cpp
+SOURCE   SymbianMFDBufRequester.cpp
+SOURCE   SymbianSprite.cpp
+SOURCE   SymbianTCPConnectionHandler.cpp
+SOURCE   SymbianTilemapToolkit.cpp 
+SOURCE   TileMapControl.cpp
+SOURCE   userbitmap.cpp

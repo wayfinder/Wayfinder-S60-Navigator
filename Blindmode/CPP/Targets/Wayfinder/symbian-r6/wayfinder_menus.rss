@@ -1,0 +1,1576 @@
+
+//----------------------------------------------------
+//    r_wayfinder_app_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_app_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdGPSConnect;
+         txt = qtn_wayfinder_gpsconnect_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdServicesBuyExtensionWapLink;
+         txt = qtn_wf_services_mobile_shop;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdServicesSpreadWayfinder;
+         txt = qtn_SHARE_WAYFINDER;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdRouteSubMenu;
+         cascade = r_wayfinder_route_menu;
+         txt = qtn_settings_tab_route;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdService;
+         cascade = r_wayfinder_service_menu;
+         txt = qtn_wayfinder_f_goodies;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdGPSDisConnect;
+         txt = qtn_wayfinder_gpsdisconnect_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdFleetInfo;
+         txt = qtn_wayfinder_fleet_info_menu;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdSettings;
+         txt = qtn_wayfinder_settings_menu;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdFindSms;
+         txt = qtn_wayfinder_process_sms_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdAbout;
+         txt = qtn_wayfinder_about_menu;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportEvent;
+/*          cascade = r_wayfinder_report_menu; */
+         txt = qtn_wf_report_event;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      },
+      MENU_ITEM 
+      { //Nokia OK requires this option /Ola 20060517
+         command = EAknSoftkeyExit;
+         txt = qtn_wayfinder_menu_exit;
+      }
+   };
+}
+
+RESOURCE MENU_PANE r_wayfinder_help_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportEvent;
+/*          cascade = r_wayfinder_report_menu; */
+         txt = qtn_wf_report_event;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//    r_wayfinder_route_menu
+//-----------------------------------------------------------------------------
+RESOURCE MENU_PANE r_wayfinder_route_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateStart;
+         txt = qtn_wf_play_route;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulatePause;
+         txt = qtn_wayfinder_pause_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateResume;
+         txt = qtn_wayfinder_resume_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateStop;
+         txt = qtn_wayfinder_stop_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateIncSpeed;
+         txt = qtn_wayfinder_increase_speed_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateDecSpeed;
+         txt = qtn_wayfinder_decrease_speed_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateRepeatOn;
+         txt = qtn_wayfinder_repeat_on_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateRepeatOff;
+         txt = qtn_wayfinder_repeat_off_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdClear;
+         txt = qtn_wf_clear_route;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdLoad;
+         txt = qtn_wayfinder_load_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdSave;
+         txt = qtn_wayfinder_save_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdDelete;
+         txt = qtn_java_cmd_delete;
+      }
+
+   };
+}
+
+#if 0
+//-----------------------------------------------------------------------------
+//    r_wayfinder_report_menu
+//-----------------------------------------------------------------------------
+RESOURCE MENU_PANE r_wayfinder_report_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportTrafficJam;
+         txt = qtn_wf_traffic_jam_report;
+      },
+      MENU_ITEM
+      {  
+         command = EWayFinderCmdReportDangerousPlace;
+         txt = qtn_wf_traffic_dangerous_place;                       
+      },                                                             
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportTrafficInfoCenter;
+         txt = qtn_wf_traffic_special_event;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportWeatherWarning;
+         txt = qtn_wf_traffic_weather_warning;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportBreakdown1;
+         txt = qtn_wf_breakdown1;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportBreakdown2;
+         txt = qtn_wf_breakdown2;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportSpeedCam;
+         txt = qtn_wf_speed_cam;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportRouteMapProblem;
+         txt = qtn_wf_report_route_map_problem;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportProblem;
+         txt = qtn_wf_report_problem;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdReportPosition;
+         txt = qtn_wf_report_position;
+      }
+   };
+}
+#endif
+
+RESOURCE MENU_PANE r_wayfinder_simulate_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateStart;
+         txt = qtn_wayfinder_start_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateStop;
+         txt = qtn_wayfinder_stop_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateResume;
+         txt = qtn_wayfinder_resume_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulatePause;
+         txt = qtn_wayfinder_pause_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateIncSpeed;
+         txt = qtn_wayfinder_increase_speed_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateDecSpeed;
+         txt = qtn_wayfinder_decrease_speed_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateRepeatOn;
+         txt = qtn_wayfinder_repeat_on_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdSimulateRepeatOff;
+         txt = qtn_wayfinder_repeat_off_item;
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//    r_wayfinder_tools_menu
+//    cascade menu for Selection item
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_tools_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdEmptyMapCache;
+         txt = qtn_wayfinder_empty_map_cache_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdDebugAction;
+         txt = "Debug action";
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdStartNavigation;
+         txt = qtn_wayfinder_start_navigation;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdStopNavigation;
+         txt = qtn_wayfinder_stop_navigation_new;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdInfoShow;
+         txt = qtn_info_show_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdConnectSendCurrentPosition;
+         txt = qtn_wayfinder_connect_send_my_position;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdInfo;
+         txt = qtn_wayfinder_info_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdGPSConnect;
+         txt = qtn_wayfinder_gpsconnect_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdGPSDisConnect;
+         txt = qtn_wayfinder_gpsdisconnect_item;
+      }
+   };
+}
+    
+//-----------------------------------------------------------------------------
+//    r_wayfinder_service_menu
+//    cascade menu for Service item
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_service_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdStartPageUpgradeInfo2;
+         txt = qtn_wayfinder_upgrade_submit_code;
+		},
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdStartPageNews;
+         txt = qtn_startpage_news_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdFindSms;
+         txt = qtn_wf_sms_inbox_menu_item;
+      }
+   };
+}
+    
+//-----------------------------------------------------------------------------
+//    r_wayfinder_map_files_menu
+//    cascade menu for map files 
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_map_files_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewShowInstalledMaps;
+         txt = qtn_wf_installed_maps;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewUpdateMapFiles;
+         txt = qtn_wf_update_map_files;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewDeleteMapFiles;
+         txt = qtn_wf_delete_map_files;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_settings_view_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_settings_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdSettingServerToggle;
+         txt = qtn_wayfinder_setting_server_toggle;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdSettingChange;
+         txt = qtn_setting_change_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      }
+   };
+}
+
+
+//----------------------------------------------------
+//    r_wayfinder_splash_view_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_splash_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdStartPageOpen;
+         txt = qtn_startpage_open_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_startpage_view_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_startpage_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdStartPageOpen;
+         txt = qtn_startpage_open_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_trial_view_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_trial_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdTrialOpen;
+         txt = qtn_wayfinder_softkey_select;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdAbout;
+         txt = qtn_wayfinder_about_menu;
+      }
+   };
+}
+
+
+//----------------------------------------------------
+//    r_wayfinder_upgrade_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_upgrade_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdUpgradeUpgrade;
+         txt = qtn_register_register_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdUpgradeUpgrade2;
+         txt = qtn_wayfinder_upgrade_submit_code;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdUpgradeCountry;
+         txt = qtn_upgrade_country_item;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdAbout;
+         txt = qtn_wayfinder_about_menu;
+      },
+      MENU_ITEM
+      {
+         command = EAknSoftkeyExit;
+         txt = qtn_wayfinder_menu_exit;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_register_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_register_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdUpgradeUpgrade;
+         txt = qtn_register_register_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdUpgradeUpgrade2;
+         txt = qtn_wayfinder_upgrade_submit_code;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdUpgradeCountry;
+         txt = qtn_upgrade_country_item;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdAbout;
+         txt = qtn_wayfinder_about_menu;
+      },
+      MENU_ITEM
+      {
+         command = EAknSoftkeyExit;
+         txt = qtn_wayfinder_menu_exit;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_positionselect_view_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_positionselect_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdPositionSelectNavigate;
+         txt = qtn_positionselect_navigate_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdPositionSelectSearch;
+         txt = qtn_positionselect_search_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdPositionSelectFavorite;
+         txt = qtn_positionselect_favorite_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdPositionSelectCategory;
+         txt = qtn_positionselect_category_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdPositionSelectFromMap;
+         txt = qtn_wayfinder_positionselect_from_map_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdPositionSelectShowOnMap;
+         txt = qtn_wf_use_as_position;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_newdest_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_newdest_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestNavigate;
+         txt = qtn_wayfinder_route_to_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestOrigin;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestDestination;
+         txt = qtn_newdest_destination_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestOrigin2;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestShowInfo;
+         txt = qtn_SHOW_INFO;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestSendTo;
+         txt = qtn_wf_share_txt;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestSave;
+         txt = qtn_newdest_save_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestShow;
+         txt = qtn_wf_use_as_position;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestNextXHits;
+         txt = qtn_newdest_next_25_hits;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestPrevXHits;
+         txt = qtn_newdest_prev_25_hits;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestOrigin3;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestDestination3;
+         txt = qtn_newdest_destination_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_newdest_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_newdest_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestSearch;
+         txt = qtn_newdest_search_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestCategory;
+         txt = qtn_newdest_category_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestCity;
+         txt = qtn_newdest_city_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestCountry;
+         txt = qtn_newdest_country_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdNewDestString;
+         txt = qtn_newdest_selsearch_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_mydest_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_mydest_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestNavigate;
+         txt = qtn_wayfinder_route_to_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestOrigin;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestDestination;
+         txt = qtn_mydest_destination_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestOrigin2;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestShow;
+         txt = qtn_wf_use_as_position;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestViewDetails;
+         txt = qtn_newdest_details_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestSend;
+         txt = qtn_wf_share_txt;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestManage;
+         cascade = r_wf_manage_favorite_menu;
+         txt = qtn_mydest_manage_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestOrigin3;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestDestination3;
+         txt = qtn_mydest_destination_item;
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//    r_wf_manage_favorite_menu
+//-----------------------------------------------------------------------------
+RESOURCE MENU_PANE r_wf_manage_favorite_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestEdit;
+         txt = qtn_mydest_edit_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestAdd;
+         txt = qtn_mydest_add_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestRemove;
+         txt = qtn_mydest_remove_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdMyDestSync;
+         txt = qtn_mydest_sync_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_contacts_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_contacts_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdContactsNavigate;
+         txt = qtn_contacts_navigate_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_connect_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_connect_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdConnectFindInPhonebook;
+         txt = qtn_connect_find_in_phonebook;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdConnectSelect;
+         txt = qtn_connect_select_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdConnectSend;
+         txt = qtn_connect_send_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//    r_connect_sendas_menu
+//    cascade menu for Selection item
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_connect_sendas_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdConnectSms;
+         txt = qtn_connect_sms_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdConnectMms;
+         txt = qtn_connect_mms_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdConnectEmail;
+         txt = qtn_connect_email_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_map_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_map_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapRouteTo;
+         txt = qtn_wayfinder_route_to_item ;
+      },
+      MENU_ITEM 
+      { 
+         command=EWayFinderCmdMapReroute;
+         txt = qtn_map_reroute_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapSetOrigin;
+         txt = qtn_wf_set_as_start;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapSetDestination;
+         txt = qtn_mydest_destination_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapZoom;
+         cascade = r_wayfinder_map_zoom_menu;
+         txt = qtn_map_zoom_item;
+      },
+      MENU_ITEM 
+      {
+         command = EWayFinderCmdMapFiles;
+         cascade = r_wayfinder_map_files_menu;
+         txt = qtn_wf_map_files_menu;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapSaveFavorite;
+         txt = qtn_newdest_save_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdRouteSubMenu;
+         cascade = r_wayfinder_route_menu;
+         txt = qtn_settings_tab_route;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapShowInfo;
+         txt = qtn_SHOW_INFO;
+      },
+#if !defined NAV2_CLIENT_SERIES60_V3
+      MENU_ITEM
+      {
+         command = EWayFinderCmdSend;
+         cascade = r_wayfinder_send_menu;
+         txt = qtn_connect_send_item;
+      },
+#endif
+      MENU_ITEM 
+      { 
+         command=EWayFinderCmdMapFullScreen;
+         txt = qtn_map_fullscreen_item;
+      }
+   };
+}
+
+#if 0
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMap;
+         txt = qtn_wayfinder_map_item;
+      },
+      MENU_ITEM 
+      { 
+         command=EWayFinderCmdMapViewTrackingOn;
+         txt = qtn_map_trackingon_item;
+      },
+      MENU_ITEM 
+      { 
+         command=EWayFinderCmdMapViewTrackingOff;
+         txt = qtn_map_trackingoff_item;
+      },
+      MENU_ITEM 
+      { 
+         command=EWayFinderCmdMapVoice;
+         txt = qtn_map_voice_item;
+      },
+#endif
+
+//-----------------------------------------------------------------------------
+//    r_wayfinder_views_menu
+//    cascade menu for views 
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_views_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdGuide;
+         txt = qtn_wayfinder_guide_item;
+/*          extratxt = "(#)";  Will crash Series60... */
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdItinerary;
+         txt = qtn_wayfinder_itinerary_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdDestination;
+         txt = qtn_wayfinder_destination_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdInfo;
+         txt = qtn_wayfinder_info_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdConnect;
+         txt = qtn_wayfinder_connect_item;
+      }
+   };
+}
+
+#if 0
+//-----------------------------------------------------------------------------
+//    r_wayfinder_actions_menu
+//    cascade menu for actions 
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_actions_menu
+{
+   items =
+   {
+      MENU_ITEM 
+      { 
+         command=EWayFinderCmdMapRoute;
+         txt = qtn_positionselect_navigate_item;
+      }
+   };
+}
+#endif
+
+RESOURCE MENU_PANE r_wayfinder_send_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdConnectSendThisPosition;
+         txt = qtn_wayfinder_connect_send_this_position;
+      },
+      MENU_ITEM 
+      {
+         command=EWayfinderCmdGuideSendTo;
+         txt = qtn_wayfinder_send_route;
+      },
+      MENU_ITEM 
+      {
+         command=EWayfinderCmdDestinationSendTo;
+         txt = qtn_wayfinder_send_destination;
+      }
+   };
+}
+
+//-----------------------------------------------------------------------------
+//    r_wayfinder_map_zoom_menu
+//    cascade menu for Zoom 
+//-----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_map_zoom_menu
+{
+   items =
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewRoute;
+         txt = qtn_map_viewroute_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewDestination;
+         txt = qtn_map_viewdestination_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewOrigin;
+         txt = qtn_map_vieworigin_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewCurrent;
+         txt = qtn_map_viewcurrent_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapViewOverview;
+         txt = qtn_wayfinder_map_to_overview;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapZoomIn;
+         txt = qtn_map_zoomin_item;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdMapZoomOut;
+         txt = qtn_map_zoomout_item;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_guide_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_guide_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdGuideVoice; 
+         txt = qtn_guide_voice_item;
+      },
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdGuideReroute; 
+         txt = qtn_guide_reroute_item;
+      },
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdGuideShowRoute; 
+         txt = qtn_guide_show_route_item;
+      },
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdGuideShowTurn; 
+         txt = qtn_wf_show_turn;
+      },
+      MENU_ITEM 
+      {
+         command=EWayfinderCmdGuideSendTo;
+         txt = qtn_wf_share_route;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdRouteSubMenu;
+         cascade = r_wayfinder_route_menu;
+         txt = qtn_settings_tab_route;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_itinerary_view_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_itinerary_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdItineraryVoice;
+         txt = qtn_itinerary_voice_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdItineraryReroute;
+         txt = qtn_itinerary_reroute_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdItineraryShowRoute;
+         txt = qtn_itinerary_show_route_item;
+      },
+      MENU_ITEM 
+      {
+         command=EWayFinderCmdItineraryShowTurn;
+         txt = qtn_wf_show_turn;
+      },
+      MENU_ITEM 
+      {
+         command=EWayfinderCmdItinerarySendTo;
+         txt = qtn_wf_share_route;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdRouteSubMenu;
+         cascade = r_wayfinder_route_menu;
+         txt = qtn_settings_tab_route;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_destination_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_destination_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdDestinationVoice;
+         txt = qtn_destination_voice_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdDestinationReroute;
+         txt = qtn_destination_reroute_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdDestinationShow;
+         txt = qtn_wf_use_as_position;
+      },
+      MENU_ITEM 
+      {
+         command=EWayfinderCmdDestinationSendTo;
+         txt = qtn_wf_share_destination;
+      },
+      MENU_ITEM
+      {
+         command = EWayFinderCmdRouteSubMenu;
+         cascade = r_wayfinder_route_menu;
+         txt = qtn_settings_tab_route;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_info_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_info_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdRefreshInfoList;
+         txt = qtn_refresh_list_option;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdInfoShow;
+         txt = qtn_info_show_item;
+      }
+   };
+}
+
+
+//----------------------------------------------------
+//    r_wayfinder_vicinity_menu
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_wayfinder_vicinity_menu
+{
+   items=
+   {
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdRefreshVicinityList;
+         txt = qtn_refresh_list_option;
+      },
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdVicinityDetails;
+         txt = qtn_view_details_option;
+      },
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdVicinityLockTo;
+         txt = qtn_lock_to_option;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdVicinityNavigate;
+         txt = qtn_wayfinder_route_to_item;
+      },
+      MENU_ITEM 
+      { 
+         command = EWayFinderCmdWhereAmI;
+         txt = qtn_where_am_i_option;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_service_view_menu
+//----------------------------------------------------
+RESOURCE MENU_PANE r_wayfinder_service_view_menu
+{
+   items=
+   {
+      MENU_ITEM
+      {
+         command=EWayFinderCmdOpenUrl;
+         txt = qtn_startpage_open_item;
+      },
+      MENU_ITEM
+      {
+         command=EWayFinderCmdGotoHomepage;
+         txt = qtn_wf_goto_homepage;
+      },
+      MENU_ITEM 
+      {
+         command = EServiceViewExit;
+         txt = qtn_wayfinder_menu_exit;
+      }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_settings
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_settings
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_settings_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_splash
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_splash
+{
+   titles=
+   {
+      //MENU_TITLE { menu_pane=r_wayfinder_splash_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_startpage
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_startpage
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_app_menu; txt="App"; },
+      MENU_TITLE { menu_pane=r_wayfinder_startpage_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_trial
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_trial
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_trial_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_upgrade_menubar
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_upgrade_menubar
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_upgrade_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_register_menubar
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_register_menubar
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_register_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_positionselect
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_positionselect
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_positionselect_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_newdest
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_newdest
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_newdest_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_newdest_menubar
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_newdest_query_menubar
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_newdest_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_newdest_details_menubar
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_newdest_details_menubar
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane = R_AVKON_MENUPANE_SELECTION_LIST; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_mydest
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_mydest
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_mydest_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_contacts
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_contacts
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_contacts_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_connect_menubar
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_connect_menubar
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_connect_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_map
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_map
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_map_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_guide
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_guide
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_guide_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_itinerary
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_itinerary
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_itinerary_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_destination
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_destination
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_destination_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_info
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_info
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_info_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_vicinity
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_vicinity
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_vicinity_menu; txt="View"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_service
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menubar_service
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_help_menu; txt="Help"; },
+      MENU_TITLE { menu_pane=r_wayfinder_service_view_menu; txt="View"; }
+   };
+}
+
+RESOURCE MENU_BAR r_wayfinder_menubar_locked_and_feed
+{
+   titles=
+   {
+      MENU_TITLE { menu_pane=r_wayfinder_menu_locked_and_feed; txt="Help"; }
+   };
+}
+
+//----------------------------------------------------
+//    r_wayfinder_menubar_locked_navigation
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_wayfinder_menu_locked_and_feed
+{
+   titles=
+   {
+      MENU_ITEM
+      {
+         command = EWayFinderCmdHelp;
+         txt = qtn_wayfinder_help_menu;
+      }   
+   };
+}

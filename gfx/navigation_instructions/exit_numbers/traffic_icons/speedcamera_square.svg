@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+<switch>
+<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1" content="structured text"/>
+<g>
+<g>
+<path fill="#A10300" d="M16.999,0H3C1.343,0,0,1.344,0,3v14c0,1.658,1.343,3,3,3h13.999     C18.656,20,20,18.658,20,17V3C20,1.344,18.657,0,16.999,0z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="10" y1="1" x2="10" y2="19">
+<stop offset="0" style="stop-color:#E0291C"/>
+<stop offset="0.2143" style="stop-color:#E22D1D"/>
+<stop offset="0.4357" style="stop-color:#E93A20"/>
+<stop offset="0.6596" style="stop-color:#F54E25"/>
+<stop offset="0.8146" style="stop-color:#FF6129"/>
+<stop offset="1" style="stop-color:#FF6129"/>
+</linearGradient>
+<path fill="url(#XMLID_3_)" d="M16.999,1H3C1.896,1,1,1.896,1,3v14c0,1.105,0.896,2,2,2h13.999     C18.104,19,19,18.105,19,17V3C19,1.896,18.104,1,16.999,1z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="10.0288" y1="4.7021" x2="10.0288" y2="1.042">
+<stop offset="0" style="stop-color:#ED2B0C"/>
+<stop offset="1" style="stop-color:#FFA68C"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M19.014,2.872c0,1.012-0.766,1.831-1.71,1.831H2.755     c-0.944,0-1.711-0.819-1.711-1.831l0,0c0-1.011,0.767-1.83,1.711-1.83h14.549C18.248,1.042,19.014,1.861,19.014,2.872     L19.014,2.872z"/>
+<rect x="12" y="6" fill="#FFFFFF" width="1" height="7.001"/>
+<polygon fill="#FFFFFF" points="15,9 15,7.001 14,7.001 14,14.003 12,14.003 12,14.999 15,14.999 15,13.002      16.999,13.002 16.999,9    "/>
+<path fill="#FFFFFF" d="M6.5,11.002c-0.828,0-1.5,0.67-1.5,1.5c0,0.828,0.673,1.501,1.5,1.501     c0.829,0,1.5-0.673,1.5-1.501C8,11.672,7.329,11.002,6.5,11.002z M11,5.001C11,4.448,10.551,4,10,4     C9.998,4,9.997,4.001,9.996,4.001H4c-0.552,0-1,0.447-1,1v10.001c0,0.551,0.448,1,1,1h6c0.551-0.004,0.999-0.449,0.999-1v-0.004     l0,0V5.001L11,5.001z M6.5,14.999c-1.38,0-2.5-1.117-2.5-2.497c0-1.382,1.12-2.5,2.5-2.5S9,11.12,9,12.502     C9,13.882,7.88,14.999,6.5,14.999z M8.5,8.001c-0.828,0-1.5-0.672-1.5-1.5c0-0.829,0.671-1.5,1.5-1.5     c0.829,0,1.501,0.671,1.501,1.5C10,7.329,9.329,8.001,8.5,8.001z"/>
+</g>
+</g>
+</switch>
+</svg>

@@ -1,0 +1,164 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/* Fast math functions and defines.
+ * (arch specific parts)
+ */
+
+#ifndef ARCH_ArchFastMath_H
+#define ARCH_ArchFastMath_H
+
+#include <math.h>
+
+/*
+ *  Inline magic.
+ */
+#ifdef SHARED_ArchFastMath_C
+#define INLINE inline
+#else
+#define INLINE extern inline
+#endif
+
+namespace isab {
+
+
+/*+ Define if the cpu has a uin16/uint16 divide that is 
+ * significantly faster than a uint32/uint16 divide  +*/
+#undef HAS_UINT16_UINT16_DIV
+
+
+   INLINE uint16 fast_div_uint32_uint16_to_uint16(uint32 a, uint16 b)  
+#if !defined(_MSC_VER) && !defined(__MWERKS__)
+      __attribute__ ((const))
+#endif
+      ;
+   /**
+   * Divide an uint32 by an uint16 to a uint16
+   * 
+   * @param a   The numerator
+   * @param b   The divisor
+   */
+   INLINE uint16 fast_div_uint32_uint16_to_uint16(uint32 a, uint16 b)
+   {
+      return uint16(a/b);
+   }
+
+
+   INLINE int32 fast_sqr_int16_to_int32(int16 a)
+#if !defined(_MSC_VER) && !defined(__MWERKS__)
+      __attribute__ ((const))
+#endif
+      ;
+   /**
+    * Square an int16 to an int32.
+    * 
+    * @param a   The argument to be squared
+    */
+   INLINE int32 fast_sqr_int16_to_int32(int16 a)
+   {
+     int32 a32 = a;
+     return a32*a32;
+   }
+
+
+   INLINE uint32 fast_sqr_uint16_to_uint32(uint16 a)
+#if !defined(_MSC_VER) && !defined(__MWERKS__)
+      __attribute__ ((const))
+#endif
+      ;
+   /**
+    * Square an uint16 to an uint32.
+    * 
+    * @param a   The argument to be squared
+    */
+   INLINE uint32 fast_sqr_uint16_to_uint32(uint16 a)
+   {
+     uint32 a32 = a;
+     return a32*a32;
+   }
+
+
+   INLINE uint32 fast_mul_uint16_uint16_to_uint32(uint16 a, uint16 b)
+#if !defined(_MSC_VER) && !defined(__MWERKS__)
+      __attribute__ ((const))
+#endif
+      ;
+   /**
+    * Multiply two uint16 to an uint32.
+    * 
+    * @param a   The first factor
+    * @param b   The second factor
+    */
+   INLINE uint32 fast_mul_uint16_uint16_to_uint32(uint16 a, uint16 b)
+   {
+     uint32 a32=a;
+     uint32 b32=b;
+     return a32*b32;
+   }
+
+
+   INLINE int32 fast_mul_int16_int16_to_int32(int16 a, int16 b)
+#if !defined(_MSC_VER) && !defined(__MWERKS__)
+      __attribute__ ((const))
+#endif
+      ;
+   /**
+    * Multiply two int16 to an int32.
+    * 
+    * @param a   The first factor
+    * @param b   The second factor
+    */
+   INLINE int32 fast_mul_int16_int16_to_int32(int16 a, int16 b)
+   {
+     int32 a32=a;
+     int32 b32=b;
+     return a32*b32;
+   }
+
+
+   INLINE uint16 sqrt_int_fast(int32 R)
+#if !defined(_MSC_VER) && !defined(__MWERKS__)
+      __attribute__ ((const))
+#endif
+      ;
+   /**
+    * Calculate the (truncated) sqruare root of an integer
+    * 
+    * @param R
+    *           The number to take the square root of. Only
+    *           non-negative numbers are allowed.
+    *
+    * @return the integer part (truncated) of the square root
+    * of R. NOTE! The return value os not correctly rounded, it is
+    * truncated.
+    */
+   INLINE uint16 sqrt_int_fast(int32 R)
+   {
+      float r = float(R);
+#if !defined(_MSC_VER) && !defined(__SYMBIAN32__)
+      r = sqrtf(r);
+#else
+      r = float(sqrt(r));
+#endif
+      uint16 ret = uint16(r);
+      return ret;
+   }
+
+
+}
+
+
+#undef INLINE
+
+#endif /* ARCH_ArchFastMath_H */
+

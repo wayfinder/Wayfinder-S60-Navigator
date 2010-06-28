@@ -1,0 +1,98 @@
+TARGET SupportWFLib.lib
+TARGETTYPE LIB
+
+MACRO NAV2_CLIENT_UIQ
+
+SYSTEMINCLUDE \epoc32\include \epoc32\include\libc
+SYSTEMINCLUDE ..\..\..\include\symbian-r6\STLport-4.5.1\stlport
+SYSTEMINCLUDE ..\..\..\arch-include\symbian-r6
+
+USERINCLUDE ..
+USERINCLUDE ..\symbian
+USERINCLUDE ..\symbian\BTGPS
+
+USERINCLUDE ..\..\..\include
+USERINCLUDE ..\..\..\include\symbian-r6
+USERINCLUDE ..\..\..\Modules\include
+USERINCLUDE ..\..\..\Modules\UiCtrl
+
+USERINCLUDE ..\..\Nav2lib
+USERINCLUDE ..\..\Nav2lib\symbian
+
+USERINCLUDE ..\..\MapLib\Shared\include
+USERINCLUDE ..\..\MapLib\Shared\include\Symbian
+USERINCLUDE ..\..\MapLib\Symbian\include
+
+USERINCLUDE ..\..\OggVorbisLib\symbian\tremor
+USERINCLUDE ..\..\OggVorbisLib\symbian\oggvorbisfile
+
+SOURCEPATH ..
+SOURCE AudioClipTable.cpp
+SOURCE MapMover.cpp
+
+SOURCEPATH ..\symbian
+SOURCE ActivationSms.cpp
+SOURCE AnimatorFrame.cpp
+SOURCE BacklightManager.cpp
+SOURCE BitmapControl.cpp
+SOURCE BubbleLabel.cpp
+SOURCE ConnectionManager.cpp
+SOURCE ConnectionSettings.cpp
+SOURCE DeInstallFileList.cpp
+SOURCE DistanceBitmap.cpp
+SOURCE DownloadHandler.cpp
+SOURCE DriveList.cpp
+SOURCE EventGeneratorTest.cpp
+SOURCE FileDownloader.cpp
+SOURCE FileList.cpp
+SOURCE FileWriter.cpp
+SOURCE FileZip.cpp
+SOURCE IAPFileHandler.cpp
+SOURCE IAPObject.cpp
+SOURCE IAPSearcher.cpp
+SOURCE InfoCompass.cpp
+SOURCE LangFileHandler.cpp
+SOURCE LanguageList.cpp
+SOURCE LineObservableDialog.cpp
+SOURCE MapInfoControl.cpp
+SOURCE MapLibSymbianUtil.cpp
+SOURCE MoveWFLauncher.cpp
+SOURCE NavTaskGuiHandler.cpp
+SOURCE NewAudioConverter.cpp
+SOURCE NewAudio.cpp
+SOURCE NewAudioMdaConverter.cpp
+SOURCE NewAudioOggConverter.cpp
+SOURCE NewAudioPlayer.cpp
+SOURCE NewAudioServer.cpp
+SOURCE NewAudioServerTypes.cpp
+SOURCE NewMessageHandler.cpp
+SOURCE NewSlaveAudio.cpp
+SOURCE NewSyntax.cpp
+SOURCE NokiaLbs.cpp
+SOURCE OggDecoder.cpp
+SOURCE OldSlaveAudio.cpp
+SOURCE PkgParser.cpp
+SOURCE PopUpList.cpp
+SOURCE PositionDisplay.cpp
+SOURCE PositionInterface.cpp
+SOURCE ProcessWaiter.cpp
+SOURCE SillyWaiter.cpp
+SOURCE SisInstaller.cpp
+SOURCE SlaveAudio.cpp
+SOURCE SocketsEngine.cpp
+SOURCE SocketsRead.cpp
+SOURCE SocketsWrite.cpp
+SOURCE VectorMapConnection.cpp
+SOURCE VersionFileReader.cpp
+SOURCE WFInstallerController.cpp
+SOURCE WFSymbianUtil.cpp
+
+SOURCEPATH ..\symbian\BTGPS
+SOURCE BtGpsConnector.cpp
+SOURCE BtThread.cpp
+SOURCE BluetoothEngine.cpp
+SOURCE Reporter.cpp
+SOURCE SdpAttributeParser.cpp
+
+SOURCEPATH ..\..\SupportWFLib\uiq
+SOURCE LaunchWapBrowserUtil.cpp

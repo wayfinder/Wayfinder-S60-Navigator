@@ -1,0 +1,25 @@
+/*
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#define qtn_wayfinder_settings_map_layers_selection "Choisir couches"
+#define qtn_newdest_origin_item                 "Régler comme démarrer"
+#define qtn_mydest_origin_item                  "Régler comme démarrer"
+#define qtn_guide_show_turn_item                   "Afficher bifurcation"
+#define qtn_itinerary_show_turn_item               "Afficher bifurcation"
+#define qtn_wayfinder_settings_map_layers_checkbox "Couches de carte"
+#define TEXT_MAPV_MAP_ERR_01                    "Wayfinder ne peut pas créer de nouvelle carte. Merci de redémarrer votre téléphone."
+#define TEXT_MAPV_MAP_ERR_02                    "Wayfinder ne peut pas supprimer d'anciennes cartes. Merci de redémarrer votre téléphone."
+#define TEXT_MAPV_MAP_ERR_03                    "Wayfinder ne peut pas renommer le fichier. Merci de redémarrer votre téléphone."
+#define TEXT_MAPV_MAP_ERR_04                    "Wayfinder ne peut pas sauvegarder la carte. Merci de redémarrer votre téléphone."
+#define TEXT_MAPV_MAP_ERR_05                    "Wayfinder a reçu une carte non valide. Merci de redémarrer votre téléphone."
+#define TEXT_MAPV_MAP_ERR_06                    "L'obervation de la carte a échoué. Merci de faire un zoom arrière et de mettre en marche l'obervation."

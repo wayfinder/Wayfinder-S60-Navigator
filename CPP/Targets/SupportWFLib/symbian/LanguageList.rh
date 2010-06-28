@@ -1,0 +1,10 @@
+
+STRUCT WF_LANGUAGE_LISTELEMENT
+	{
+        WORD value = 0;
+        LTEXT fullname;
+        LTEXT isoname;
+        LTEXT symbianname;
+        WORD nav2value = 0;
+	}
+
