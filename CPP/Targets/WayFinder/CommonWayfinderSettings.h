@@ -72,7 +72,7 @@
 #define __RELEASE__
 
 // Use HTTP Protocol
-// #define HTTP_PROTO
+#define HTTP_PROTO
 // The Http User-Agent string, default none
 #define HTTP_USER_AGENT NULL
 // The Http request string, default none (which will give "/nav")
@@ -343,9 +343,9 @@
 /* The architecture based part of the client type. Used in the 
  * specific targets below. */
 #if defined NAV2_CLIENT_SERIES60_V5
-# define NAV2_CLIENT_TYPE_ARCH_BASE "wf-s60v5"
+# define NAV2_CLIENT_TYPE_ARCH_BASE "wf-s-60-v5"
 #elif defined NAV2_CLIENT_SERIES60_V3
-# define NAV2_CLIENT_TYPE_ARCH_BASE "wf-s60v3" 
+# define NAV2_CLIENT_TYPE_ARCH_BASE "wf-s-60-v3" 
 #else
 # error "Unsupported architecture"
 #endif
